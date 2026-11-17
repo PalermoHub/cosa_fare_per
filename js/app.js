@@ -2,7 +2,7 @@
 // Nessuna rete oltre ai dati locali, nessun modello linguistico: la risposta viene
 // dalle voci preparate (data/argomenti.json) e dalle schede servizio del Comune.
 
-import { indicizza, cerca, cercaUffici, suggerimenti, SOGLIA_SICURA, SOGLIA_MINIMA } from './motore.js';
+import { indicizza, cerca, cercaSezioni, cercaUffici, suggerimenti, SOGLIA_SICURA, SOGLIA_MINIMA } from './motore.js';
 import { caricaBase, caricaUffici, stato, ufficiDellaVoce } from './dati.js';
 
 const $ = sel => document.querySelector(sel);
@@ -58,10 +58,10 @@ function paragrafi(testo) {
   return frammento;
 }
 
-function sezione(titolo, contenuto) {
+function sezione(titolo, contenuto, livello = 3) {
   if (!contenuto) return null;
   const s = el('div', 'sezione');
-  s.append(el('h3', null, titolo));
+  s.append(el(`h${livello}`, null, titolo));
   if (Array.isArray(contenuto)) {
     const lista = el('ol');
     for (const voce of contenuto) lista.append(el('li', null, voce));
@@ -72,10 +72,10 @@ function sezione(titolo, contenuto) {
   return s;
 }
 
-function sezioneElenco(titolo, voci) {
+function sezioneElenco(titolo, voci, livello = 3) {
   if (!voci || !voci.length) return null;
   const s = el('div', 'sezione');
-  s.append(el('h3', null, titolo));
+  s.append(el(`h${livello}`, null, titolo));
   const lista = el('ul');
   for (const v of voci) lista.append(el('li', null, v));
   s.append(lista);
@@ -191,13 +191,13 @@ async function apriPercorso(ufficio, bottone) {
   }
 }
 
-function schedaUfficio(ufficio) {
+function schedaUfficio(ufficio, { livello = 3, mappa = true } = {}) {
   const card = el('article', 'ufficio');
 
   const pulito = nome => (nome && !/^uffici non collocati$/i.test(nome) ? nome : '');
   const gerarchia = [pulito(ufficio.area), pulito(ufficio.settore)].filter(Boolean).join(' › ');
   if (gerarchia) card.append(el('p', 'percorso-ufficio', gerarchia));
-  card.append(el('h3', null, ufficio.nome));
+  card.append(el(`h${livello}`, null, ufficio.nome));
 
   if (ufficio.responsabili) card.append(el('p', 'responsabile', `Responsabile: ${ufficio.responsabili}`));
 
@@ -247,7 +247,7 @@ function schedaUfficio(ufficio) {
   if (ufficio.aggiornata) riga('Scheda aggiornata il', ufficio.aggiornata);
   if (dl.childElementCount) card.append(dl);
 
-  card.append(mappaIncorporata(ufficio));
+  if (mappa) card.append(mappaIncorporata(ufficio));
 
   const azioni = el('div', 'azioni');
   // senza un indirizzo o delle coordinate il «Percorso» non porta da nessuna parte:
@@ -309,21 +309,21 @@ function avvisoRevisione(voce) {
   return p;
 }
 
-function corpoRisposta(voce) {
+function corpoRisposta(voce, { livello = 2, classe = 'risposta' } = {}) {
   const scheda = voce.servizio ? stato.servizi[voce.servizio] : null;
-  const articolo = el('article', 'risposta');
+  const articolo = el('article', classe);
 
   articolo.append(el('p', 'etichetta', voce.categoria || scheda?.categorie?.[0] || 'Comune di Palermo'));
-  articolo.append(el('h2', null, voce.titolo));
+  articolo.append(el(`h${livello}`, null, voce.titolo));
 
   const revisione = avvisoRevisione(voce);
   if (revisione) articolo.append(revisione);
 
   if (voce.risposta) {
     if (voce.risposta.sintesi) articolo.append(el('p', 'sintesi', voce.risposta.sintesi));
-    const come = sezione('Come fare', voce.risposta.passi);
+    const come = sezione('Come fare', voce.risposta.passi, livello + 1);
     if (come) articolo.append(come);
-    const serve = sezioneElenco('Cosa serve', voce.risposta.serve);
+    const serve = sezioneElenco('Cosa serve', voce.risposta.serve, livello + 1);
     if (serve) articolo.append(serve);
     if (voce.risposta.nota) {
       const nota = el('p', 'nota');
@@ -333,7 +333,7 @@ function corpoRisposta(voce) {
   } else if (scheda) {
     if (scheda.sommario) articolo.append(el('p', 'sintesi', scheda.sommario));
     for (const [chiave, titolo] of SEZIONI_SCHEDA) {
-      const s = sezione(titolo, scheda.sezioni?.[chiave]);
+      const s = sezione(titolo, scheda.sezioni?.[chiave], livello + 1);
       if (s) articolo.append(s);
     }
     const nota = el('p', 'nota');
@@ -363,12 +363,12 @@ function corpoRisposta(voce) {
   return articolo;
 }
 
-async function schedeUffici(voce) {
+async function schedeUffici(voce, { livello = 3, mappa = true } = {}) {
   if (!voce) return null;
   const uffici = ufficiDellaVoce(voce);
   if (!uffici.length) return null;
   const contenitore = el('div', 'uffici');
-  for (const u of uffici.slice(0, 3)) contenitore.append(schedaUfficio(u));
+  for (const u of uffici.slice(0, 3)) contenitore.append(schedaUfficio(u, { livello, mappa }));
   return contenitore;
 }
 
@@ -400,6 +400,32 @@ async function rispostaIncerta(voce, domanda, alternative) {
   if (alternative.length) frammento.append(domandeVicine(alternative));
   if (domanda) frammento.append(bloccoUtile(voce, domanda));
   return frammento;
+}
+
+// Una domanda può contenere due richieste: la scheda principale resta quella, questa
+// è la seconda, con i suoi uffici ma senza il riquadro «ti è stato utile?» (uno basta).
+async function rispostaAnche(sezioni) {
+  const box = el('section', 'anche');
+  const titolo = el('h3', null, 'Nella domanda c’è anche questo');
+  titolo.id = 'anche-titolo';
+  box.setAttribute('aria-labelledby', titolo.id);
+  box.append(titolo);
+  await caricaUffici();
+  for (const sezione of sezioni) {
+    box.append(corpoRisposta(sezione.voce, { livello: 4, classe: 'risposta risposta-anche' }));
+    // niente mappa nella seconda scheda: raddoppierebbe i riquadri OpenStreetMap della pagina.
+    // Gli uffici stanno chiusi in un <details>: la seconda scheda non deve raddoppiare la
+    // lunghezza della pagina, ma i recapiti devono restare a una riga di distanza.
+    const schede = await schedeUffici(sezione.voce, { livello: 5, mappa: false });
+    if (schede) {
+      const quanti = schede.querySelectorAll('.ufficio').length;
+      const dettagli = el('details', 'anche-uffici');
+      dettagli.append(el('summary', null, quanti > 1 ? `A chi rivolgerti (${quanti} uffici)` : 'A chi rivolgerti'));
+      dettagli.append(schede);
+      box.append(dettagli);
+    }
+  }
+  return box;
 }
 
 function domandeVicine(elencoDomande) {
@@ -600,7 +626,13 @@ async function chiedi(testo, { daStorico = false } = {}) {
 
     if (migliore && migliore.punteggio >= SOGLIA_SICURA) {
       contenuto.append(await rispostaSicura(migliore.indice.voce, domanda));
-      annuncia(`Risposta pronta: ${migliore.indice.voce.titolo}.`);
+      const anche = cercaSezioni(indice, domanda, { esclusa: migliore.indice.voce.id, quante: 2 });
+      if (anche.length) contenuto.append(await rispostaAnche(anche));
+      annuncia(
+        anche.length
+          ? `Risposta pronta: ${migliore.indice.voce.titolo}. Nella domanda c’è anche: ${anche.map(a => a.voce.titolo).join(', ')}.`
+          : `Risposta pronta: ${migliore.indice.voce.titolo}.`,
+      );
       portaFocusSullaRisposta(contenuto);
     } else if (migliore && migliore.punteggio >= SOGLIA_MINIMA) {
       const alternative = [
@@ -644,11 +676,26 @@ function tornaAllInizio({ daStorico = false } = {}) {
   if (!daStorico) history.pushState({}, '', window.location.pathname);
   campo.focus({ preventScroll: true });
   risultati.scrollTo({ top: 0, behavior: 'smooth' });
-  // chi torna all'inizio ricomincia anche dalle prime domande, non dalla colonna lasciata a metà
-  contenitoreSuggerimenti.querySelector('.riga-domande')?.scrollTo({ left: 0, behavior: 'instant' });
+  // chi torna all'inizio ritrova un altro giro di domande di prova, non le stesse di prima
+  if (stato.voci.length) mostraSuggerimenti(suggerimenti(stato.voci, domandeDiProva()));
 }
 
 // ---------- avvio ----------
+
+// domande di prova: sul telefono quindici che girano in tre colonne da cinque (se ne vedono
+// cinque per volta, si passa alle altre scorrendo), sullo schermo largo otto in fila
+const DOMANDE_STRETTO = 15;
+const DOMANDE_LARGO = 8;
+const RIGHE_STRETTO = 5;
+const LARGHEZZA_STRETTO = '(max-width: 40rem)';
+
+function schermoStretto() {
+  return window.matchMedia(LARGHEZZA_STRETTO).matches;
+}
+
+function domandeDiProva() {
+  return schermoStretto() ? DOMANDE_STRETTO : DOMANDE_LARGO;
+}
 
 function mostraSuggerimenti(elenco) {
   contenitoreSuggerimenti.textContent = '';
@@ -664,10 +711,10 @@ function mostraSuggerimenti(elenco) {
   aggiungiPuntini(riga);
 }
 
-// su schermo stretto si vede una colonna da tre domande per volta: i puntini dicono quante colonne
-// ci sono e quale si sta guardando (decorativi: si naviga scorrendo o con Tab)
+// su schermo stretto si vede una colonna alla volta: i puntini dicono quante colonne ci sono
+// e quale si sta guardando (decorativi: si naviga scorrendo o con Tab)
 function aggiungiPuntini(riga) {
-  const colonne = Math.ceil(riga.children.length / 3);
+  const colonne = Math.ceil(riga.children.length / RIGHE_STRETTO);
   if (colonne < 2) return;
   const puntini = el('div', 'puntini');
   puntini.setAttribute('aria-hidden', 'true');
@@ -730,9 +777,8 @@ async function avvia() {
   try {
     await caricaBase();
     indice = stato.voci.map(v => indicizza(v, stato.servizi));
-    // su schermo stretto le domande stanno in colonne da tre, una alla volta: nove, senza nastro da scorrere
-    const quanteDomande = window.matchMedia('(max-width: 40rem)').matches ? 9 : 8;
-    mostraSuggerimenti(suggerimenti(stato.voci, quanteDomande).slice(0, quanteDomande));
+    // quindici domande che girano, cinque per colonna sul telefono (vedi domandeDiProva)
+    mostraSuggerimenti(suggerimenti(stato.voci, domandeDiProva()));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
     // js/offline.js aspetta questo evento per scrivere la data nell'avviso «senza rete»

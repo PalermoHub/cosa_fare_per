@@ -72,6 +72,7 @@ const VISTE = [
   ['home', '/', 390],
   ['risposta con scheda ufficio', '/?q=come%20cambio%20residenza', 390],
   ['«non ho capito»', '/?q=rumore%20dei%20locali%20la%20notte', 390],
+  ['domanda con due richieste', '/?q=come%20ottengo%20il%20contrassegno%20disabili%20e%20come%20prenoto%20un%20campo%20di%20calcio', 390],
   ['privacy', '/privacy.html', 390],
   ['tutti gli uffici', '/uffici.html', 390],
   ['tutte le domande', '/domande.html', 390],

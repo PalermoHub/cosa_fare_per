@@ -304,6 +304,37 @@ export function cerca(indiceVoci, domanda, n = 4) {
   return migliore.slice(0, n);
 }
 
+// Una domanda può chiedere due cose diverse («come cambio residenza e come iscrivo la tari»):
+// spezzandola sui connettivi si vede se i pezzi portano a voci diverse.
+const SEPARATORE_SEZIONI = /\s*(?:[.;!?,]|\be anche\b|\binoltre\b|\boppure\b|\bpoi\b|\be\b)\s*/gi;
+
+export function sezioniDomanda(domanda) {
+  return (domanda || '')
+    .split(SEPARATORE_SEZIONI)
+    .map(sezione => sezione.trim())
+    // due parole piene: «che cos» o «qual» sono pezzi di frase, non richieste
+    .filter(sezione => parole(sezione).length >= 2);
+}
+
+// Le altre cose chieste dalla stessa domanda: una voce diversa da quella principale per
+// ogni pezzo che, preso da solo, trova una risposta sicura. Serve alla scheda «nella
+// domanda c'è anche questo»: su una domanda di un solo tema restituisce [].
+export function cercaSezioni(indiceVoci, domanda, { esclusa = null, quante = 1 } = {}) {
+  const sezioni = sezioniDomanda(domanda);
+  if (sezioni.length < 2) return [];
+  const trovate = [];
+  const visti = new Set(esclusa ? [esclusa] : []);
+  for (const sezione of sezioni) {
+    const migliore = cerca(indiceVoci, sezione, 1)[0];
+    if (!migliore || migliore.punteggio < SOGLIA_SICURA) continue;
+    const id = migliore.indice.voce.id;
+    if (visti.has(id)) continue;
+    visti.add(id);
+    trovate.push({ voce: migliore.indice.voce, punteggio: migliore.punteggio, sezione });
+  }
+  return trovate.sort((a, b) => b.punteggio - a.punteggio).slice(0, quante);
+}
+
 // Ricerca di riserva: quale ufficio si occupa di questa cosa (usa nome, area e competenze)
 export function cercaUffici(uffici, domanda, n = 3) {
   const qp = parole(domanda, { conSinonimi: true });
@@ -337,24 +368,48 @@ export function cercaUffici(uffici, domanda, n = 3) {
 
 // domande suggerite: le voci marcate `inEvidenza` aprono sempre la lista con la loro
 // prima domanda (sono quelle che devono stare in home); le altre si scelgono a caso,
-// partendo da un punto qualsiasi dell'elenco (termina sempre, anche se `caso`
-// restituisce sempre lo stesso numero)
+// con l'elenco mescolato a ogni avvio (termina sempre, anche se `caso` restituisce sempre
+// lo stesso numero). Al massimo due domande per tema: la home non deve sembrare fatta
+// solo di TARI.
+const TETTO_TEMA = 2;
+
 export function suggerimenti(voci, n = 6, caso = Math.random) {
   const pool = voci.filter(v => (v.domande || []).length);
   if (!pool.length) return [];
   const scelti = [];
+  const conto = new Map();
+  const usate = new Set();
+  const prendi = v => {
+    const tema = v.categoria || '';
+    conto.set(tema, (conto.get(tema) || 0) + 1);
+    usate.add(v.id);
+  };
   for (const v of pool) {
     if (!v.inEvidenza) continue;
     if (scelti.length >= n) return scelti;
     scelti.push(v.domande[0]);
+    prendi(v);
   }
   const girabili = pool.filter(v => !v.inEvidenza);
   if (!girabili.length) return scelti;
-  const partenza = Math.floor(caso() * girabili.length) || 0;
-  for (let k = 0; k < girabili.length && scelti.length < n; k++) {
-    const v = girabili[(partenza + k) % girabili.length];
-    const i = Math.floor(caso() * v.domande.length) || 0;
-    scelti.push(v.domande[i % v.domande.length]);
+  // mescolate con `caso`: ogni avvio (e ogni ritorno alla pagina bianca) porta un giro
+  // diverso di domande, non una finestra spostata dello stesso elenco
+  for (let k = girabili.length - 1; k > 0; k--) {
+    const j = Math.floor(caso() * (k + 1)) % (k + 1);
+    [girabili[k], girabili[j]] = [girabili[j], girabili[k]];
+  }
+  // primo giro con il tetto per tema, secondo giro senza: se i temi finiscono si riempie
+  // lo stesso, e nessuna voce compare due volte
+  for (const tetto of [TETTO_TEMA, Infinity]) {
+    for (const v of girabili) {
+      if (scelti.length >= n) return scelti;
+      if (usate.has(v.id)) continue;
+      const tema = v.categoria || '';
+      if ((conto.get(tema) || 0) >= tetto) continue;
+      const i = Math.floor(caso() * v.domande.length) || 0;
+      scelti.push(v.domande[i % v.domande.length]);
+      prendi(v);
+    }
   }
   return scelti;
 }

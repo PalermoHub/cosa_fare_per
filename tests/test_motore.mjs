@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { indicizza, cerca, cercaUffici, normalizza, parole, suggerimenti, SOGLIA_MINIMA } from '../js/motore.js';
+import { indicizza, cerca, cercaSezioni, cercaUffici, normalizza, parole, sezioniDomanda, suggerimenti, SOGLIA_MINIMA, SOGLIA_SICURA } from '../js/motore.js';
 
 const leggi = f => JSON.parse(readFileSync(new URL(`../data/${f}`, import.meta.url), 'utf8'));
 const servizi = Object.fromEntries(leggi('servizi.json').map(s => [s.id, s]));
@@ -162,6 +162,54 @@ test('il motore trova la voce giusta per le domande tipiche', () => {
   assert.equal(falliti.length, 0, `${falliti.length}/${CASI.length} domande con la risposta sbagliata in prima posizione`);
 });
 
+// due richieste nella stessa domanda: la prima diventa la scheda principale, la seconda
+// finisce nel riquadro «nella domanda c'è anche questo» (js/app.js). Le coppie sono
+// costruite unendo due domande vere di categorie diverse.
+const CASI_DOPPI = [
+  ['ho trovato un cane randagio cosa faccio, poi contributo per eliminare le barriere architettoniche in casa', ['canile', 'barriere-architettoniche-contributo']],
+  ['come apro un bar a palermo, poi quali tasse comunali devo pagare', ['aprire-un-bar', 'tributi-locali']],
+  ['mi hanno portato via la macchina col carro attrezzi e come faccio il passaporto', ['rimozione-forzata-recupero-veicolo', 'passaporto']],
+  ['come ottengo il contrassegno disabili e come prenoto un campo di calcio', ['contrassegno-disabili', 'impianti-sportivi']],
+  ['come faccio la carta di identità e come mi sposo in comune', ['cie', 'matrimonio-civile']],
+  ['come segnalo una buca e dove pago la multa', ['strade', 'pagare-contravvenzioni-2']],
+  ['come iscrivo mio figlio al nido e come ottengo lo spid', ['nidi', 'spid-identita-digitale']],
+  ['posso pagare la multa a rate e come chiedo l accesso agli atti', ['rateizzazione-multe-cartelle', 'accesso-agli-atti-civico-semplice-e-generalizzato']],
+  ['devo rinnovare il permesso ztl e come ottengo il pass h', ['richiedere-permesso-di-accesso-ad-area-ztl-31', 'contrassegno-disabili']],
+  ['come apro un negozio e come faccio il servizio civile', ['sportello-unico-attivita-produttive', 'servizio-civile-universale']],
+  ['come faccio il passaporto e dove trovo i dati aperti del comune', ['passaporto', 'open-data']],
+  ['come ottengo il contrassegno disabili e come chiedo il passo carrabile', ['contrassegno-disabili', 'richiedere-permesso-per-passo-carrabile-2']],
+];
+
+test('una domanda con due richieste trova tutte e due le voci', () => {
+  const falliti = [];
+  for (const [domanda, attesi] of CASI_DOPPI) {
+    const principale = cerca(indice, domanda, 1)[0];
+    const anche = cercaSezioni(indice, domanda, { esclusa: principale?.indice.voce.id, quante: 2 });
+    const mostrate = new Set([principale?.indice.voce.id, ...anche.map(a => a.voce.id)]);
+    if (!attesi.every(a => mostrate.has(a))) falliti.push({ domanda, attesi, mostrate: [...mostrate] });
+  }
+  if (falliti.length) console.error(JSON.stringify(falliti, null, 1));
+  assert.equal(falliti.length, 0, `${falliti.length}/${CASI_DOPPI.length} domande doppie senza tutte e due le voci`);
+});
+
+test('una domanda di un solo tema non apre una seconda scheda', () => {
+  const falliti = [];
+  for (const [domanda] of CASI) {
+    const principale = cerca(indice, domanda, 1)[0];
+    if (!principale || principale.punteggio < SOGLIA_SICURA) continue;
+    const anche = cercaSezioni(indice, domanda, { esclusa: principale.indice.voce.id, quante: 2 });
+    if (anche.length) falliti.push({ domanda, anche: anche.map(a => a.voce.id) });
+  }
+  if (falliti.length) console.error(JSON.stringify(falliti, null, 1));
+  assert.equal(falliti.length, 0, `${falliti.length} domande di un solo tema con una seconda scheda`);
+});
+
+test('la domanda si spezza sui connettivi, non sulle parole vuote', () => {
+  assert.deepEqual(sezioniDomanda('come cambio residenza e come iscrivo la tari'), ['come cambio residenza', 'come iscrivo la tari']);
+  assert.deepEqual(sezioniDomanda('devo pagare la tari'), ['devo pagare la tari']);
+  assert.deepEqual(sezioniDomanda('che cos è e a che serve'), []);
+});
+
 test('un refuso non cambia la risposta', () => {
   const falliti = [];
   for (const [domanda, attesi] of CASI_REFUSO) {
@@ -227,6 +275,8 @@ test('le domande in evidenza stanno in testa ai suggerimenti', () => {
   assert.equal(s.length, 8);
 });
 
+// la home sul telefono mostra quindici domande di prova, cinque per volta: devono girare
+// (un altro punto di partenza, altre domande) e non essere tutte lo stesso tema
 test('ogni voce ha domande e titolo', () => {
   for (const v of argomenti) {
     assert.ok(v.titolo && v.titolo.length > 3, `titolo mancante in ${v.id}`);

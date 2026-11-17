@@ -542,6 +542,45 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .vuoto h2 { margin: 0 0 .5rem; font-family: var(--serif); font-weight: 500; font-size: 1.6rem; }
 .vuoto p { margin: 0 0 .9rem; color: var(--inchiostro-tenue); }
 
+/* seconda richiesta dentro la stessa domanda: sta sotto la risposta principale, separata
+   da una riga, con la scheda in tono più basso (sfondo carta-alt, titolo h4 più piccolo) */
+.anche { max-width: 42rem; margin: 2rem 0 0; padding: 1.2rem 0 0; border-top: 1px solid var(--linea); }
+.anche > h3 {
+  margin: 0 0 .7rem;
+  font: 600 .72rem/1.6 var(--sans);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
+.risposta-anche {
+  padding: 1rem 1.1rem;
+  background: var(--carta-alt);
+  border-radius: var(--tondo);
+}
+.risposta-anche h4 {
+  margin: 0 0 .45rem;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.22rem;
+  line-height: 1.22;
+  letter-spacing: -.005em;
+}
+.risposta-anche .sintesi { margin-bottom: .9rem; font-size: 1rem; }
+.anche .ufficio h5 { margin: 0 0 .2rem; font: 600 1.06rem/1.35 var(--sans); color: var(--inchiostro); }
+.anche-uffici { margin: .9rem 0 0; }
+.anche-uffici > summary {
+  font: 600 .72rem/1.6 var(--sans);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+  cursor: pointer;
+  padding: .35rem 0;
+  list-style-position: inside;
+}
+.anche-uffici > summary:hover { color: var(--accento); }
+.anche-uffici > summary:focus-visible { outline: 2px solid var(--accento); outline-offset: 3px; border-radius: 3px; }
+.anche-uffici .uffici { margin-top: .6rem; }
+
 .domande-vicine { margin: 1.2rem 0 0; }
 .domande-vicine h3 {
   font: 600 .72rem/1.6 var(--sans); letter-spacing: .11em; text-transform: uppercase;
@@ -661,12 +700,12 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 @media (max-width: 40rem) {
   :root { --testo: .98rem; }
-  /* su schermo stretto una colonna alla volta: tre domande impilate, si passa alla colonna
+  /* su schermo stretto una colonna alla volta: cinque domande impilate, si passa alla colonna
      successiva scorrendo in orizzontale (senza barra visibile, basta la colonna che si intravede) */
   .riga-domande {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(3, minmax(2.4rem, auto));
+    grid-template-rows: repeat(5, minmax(2.4rem, auto));
     grid-auto-columns: 100%; /* una colonna occupa tutto: le altre si raggiungono scorrendo */
     justify-content: start; /* la base centra la griglia: qui centrare la sposterebbe fuori asse */
     gap: .35rem;

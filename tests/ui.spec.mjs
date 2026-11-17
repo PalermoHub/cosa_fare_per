@@ -1,7 +1,7 @@
-// Test dell'interfaccia (P1.7): undici casi che coprono quello che l'utente fa davvero.
+// Test dell'interfaccia (P1.7): tredici casi che coprono quello che l'utente fa davvero.
 //
 // Apre il sito in locale con Chromium (Playwright) e prova: pagina bianca, risposta con
-// scheda ufficio, risposta incerta, risposta vuota, GPS negato, telefono 390×844, tema
+// scheda ufficio, domanda con due richieste, risposta incerta, risposta vuota, GPS negato, telefono 390×844, tema
 // scuro, funzionamento senza rete, consenso accettato/rifiutato, feedback e dati
 // strutturati. Non usa @playwright/test: si lancia con `node tests/ui.spec.mjs` e
 // stampa un caso per riga.
@@ -117,6 +117,22 @@ const casi = {
     verifica(await pagina.locator('#risultati .uffici .ufficio').count() >= 1, 'nessuna scheda ufficio');
     verifica(await pagina.locator('#risultati .uffici a[href^="tel:"]').count() >= 1, 'nessun telefono cliccabile');
     verifica(await pagina.locator('.utile-azioni button').count() === 2, 'manca il feedback');
+  },
+
+  async 'domanda con due richieste: la seconda scheda sta sotto, con i suoi uffici'(pagina, base) {
+    await pagina.goto(base + '?q=' + encodeURIComponent('come ottengo il contrassegno disabili e come prenoto un campo di calcio'), { waitUntil: 'load' });
+    await attesa(1600);
+    const prima = await pagina.textContent('#risultati article.risposta h2');
+    verifica(/contrassegno/i.test(prima), `prima scheda: ${prima}`);
+    verifica(await pagina.locator('#risultati .anche').count() === 1, 'manca il riquadro «anche»');
+    const seconda = await pagina.textContent('#risultati .anche h4');
+    verifica(/campo|impianti|sport/i.test(seconda), `seconda scheda: ${seconda}`);
+    // i titoli scendono di un livello, senza saltarne uno
+    const livelli = await pagina.evaluate(() => [...document.querySelectorAll('#risultati .anche h3, #risultati .anche h4, #risultati .anche h5')].map(h => Number(h.tagName.slice(1))));
+    verifica(livelli[0] === 3 && livelli.includes(4) && !livelli.includes(6), `titoli del riquadro: ${livelli}`);
+    verifica(await pagina.locator('#risultati .anche .uffici .ufficio').count() >= 1, 'nessun ufficio nella seconda scheda');
+    // una sola domanda «ti è stato utile?»: quella della risposta principale
+    verifica(await pagina.locator('#risultati .utile').count() === 1, 'feedback duplicato');
   },
 
   async 'risposta incerta: lo dice e propone domande vicine'(pagina, base) {
