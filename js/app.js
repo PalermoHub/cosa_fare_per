@@ -607,6 +607,8 @@ async function avvia() {
     mostraSuggerimenti(suggerimenti(stato.voci, quanteDomande).slice(0, quanteDomande));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
+    // js/offline.js aspetta questo evento per scrivere la data nell'avviso «senza rete»
+    window.dispatchEvent(new Event('caricato'));
 
     const q = new URLSearchParams(location.search).get('q');
     if (q) chiedi(q, { daStorico: true });

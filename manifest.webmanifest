@@ -1,0 +1,33 @@
+{
+  "name": "Chiedilo a Pinuzza",
+  "short_name": "Pinuzza",
+  "description": "Come fare per… con il Comune di Palermo: la risposta e l'ufficio competente, con recapiti. Funziona anche senza rete.",
+  "lang": "it",
+  "start_url": "./?fonte=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0e5a54",
+  "background_color": "#fcfbf7",
+  "categories": ["government", "utilities"],
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
