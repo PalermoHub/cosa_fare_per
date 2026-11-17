@@ -994,12 +994,12 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   box-shadow: 0 14px 40px -16px rgba(var(--tinta-ombra), .45);
   padding: 1rem 1.15rem 1.05rem;
 }
-/* su schermo largo il banner non attraversa il campo di ricerca: sta in un angolo, come un
-   avviso di sistema, e lascia libera la pagina */
+/* su schermo largo il banner non attraversa il campo di ricerca e non copre il «torna in cima»,
+   che sta in basso a destra: si mette in un angolo a sinistra, come un avviso di sistema */
 @media (min-width: 40.01rem) {
   .consenso {
-    left: auto;
-    right: max(1.25rem, calc((100vw - 62rem) / 2));
+    left: max(1.25rem, calc((100vw - 62rem) / 2));
+    right: auto;
     transform: none;
     width: min(100% - 2rem, 23rem);
     bottom: calc(var(--piede-h, 4.2rem) + 1rem);
