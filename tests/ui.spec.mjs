@@ -135,28 +135,47 @@ const casi = {
     verifica(await pagina.locator('.utile-azioni button').count() === 2, 'manca il feedback');
   },
 
-  async 'azzera tutto: spariscono risposta, indirizzo e campo, torna la pagina bianca'(pagina, base) {
+  async 'azzera tutto: sta dopo «Chiedi», svuota risposta e campo e si resta nella pagina'(pagina, base) {
+    // a pagina bianca il comando non c'è: compare con la prima risposta
+    await pagina.goto(base, { waitUntil: 'load' });
+    await attesa(700);
+    verifica(await pagina.locator('#azzera').isHidden(), '«Azzera» compare già a pagina bianca');
+
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
     await attesa(1200);
-    const azzera = pagina.locator('#risultati .ricomincia-bottone');
-    verifica(await azzera.count() === 1, 'manca il comando «Azzera tutto» nella risposta');
-    await azzera.scrollIntoViewIfNeeded();
-    await azzera.click();
+    verifica(await pagina.locator('#azzera').isVisible(), 'manca il comando «Azzera» con una risposta');
+    // sta dopo il pulsante «Chiedi», sulla stessa riga
+    const posizioni = await pagina.evaluate(() => {
+      const chiedi = document.querySelector('#invia').getBoundingClientRect();
+      const azzera = document.querySelector('#azzera').getBoundingClientRect();
+      return { chiediDestra: chiedi.right, azzeraSinistra: azzera.left, chiediTop: chiedi.top, azzeraTop: azzera.top };
+    });
+    verifica(posizioni.azzeraSinistra >= posizioni.chiediDestra - 1, `«Azzera» non sta dopo «Chiedi»: ${JSON.stringify(posizioni)}`);
+    verifica(Math.abs(posizioni.azzeraTop - posizioni.chiediTop) < 2, '«Azzera» non sta sulla riga di «Chiedi»');
+
+    await pagina.click('#azzera');
     await attesa(500);
     const dopo = await pagina.evaluate(() => ({
-      risultati: document.querySelector('#risultati').textContent.trim(),
+      messaggio: document.querySelector('#risultati').textContent.trim(),
       campo: document.querySelector('#domanda').value,
       indirizzo: location.search,
       inRisposta: document.body.classList.contains('ha-risultati'),
-      suggerimenti: document.querySelectorAll('.riga-domande button').length,
+      azzeraVisibile: !document.querySelector('#azzera').hidden,
       focus: document.activeElement ? document.activeElement.id : '',
     }));
-    verifica(dopo.risultati === '', `risultati non azzerati: ${dopo.risultati.slice(0, 80)}`);
+    verifica(/Ho azzerato tutto/.test(dopo.messaggio), `manca il messaggio di pagina azzerata: ${dopo.messaggio.slice(0, 80)}`);
     verifica(dopo.campo === '', `campo non svuotato: ${dopo.campo}`);
     verifica(dopo.indirizzo === '', `indirizzo non ripulito: ${dopo.indirizzo}`);
-    verifica(dopo.inRisposta === false, 'la pagina resta in modalità risposta');
-    verifica(dopo.suggerimenti >= 6, `suggerimenti non tornati: ${dopo.suggerimenti}`);
+    verifica(dopo.inRisposta === true, 'azzerando si torna alla pagina bianca: si deve restare nella pagina');
+    verifica(dopo.azzeraVisibile === true, '«Azzera» sparisce, ma si resta nella pagina');
     verifica(dopo.focus === 'domanda', `il focus non torna al campo: ${dopo.focus}`);
+
+    // la pagina azzerata sparisce appena si chiede di nuovo
+    await pagina.fill('#domanda', 'come richiedo la carta d\'identità');
+    await pagina.press('#domanda', 'Enter');
+    await attesa(1200);
+    verifica(await pagina.locator('#risultati .azzerato').count() === 0, 'la pagina azzerata resta sotto la nuova risposta');
+    verifica(await pagina.locator('#risultati article.risposta h2').count() >= 1, 'la nuova domanda non ha prodotto una risposta');
   },
 
   async 'domanda con due richieste: la seconda scheda sta sotto, con i suoi uffici'(pagina, base) {

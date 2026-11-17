@@ -12,6 +12,7 @@ const campo = $('#domanda');
 const bottone = $('#invia');
 const contenitoreSuggerimenti = $('#suggerimenti');
 const bottoneNuova = $('#nuova');
+const bottoneAzzera = $('#azzera');
 const testata = $('#testata');
 const bottoneInCima = $('#inCima');
 
@@ -578,6 +579,7 @@ const annuncio = $('#annuncio');
 
 function aggiornaStatoPagina() {
   document.body.classList.add('ha-risultati');
+  bottoneAzzera.hidden = false;
 }
 
 // Il contenitore dei risultati non è più `aria-live` (avrebbe annunciato tutta la risposta,
@@ -611,8 +613,8 @@ async function chiedi(testo, { daStorico = false } = {}) {
   bottoneNuova.hidden = false;
   bottone.disabled = true;
 
-  // un solo comando «azzera tutto» per pagina: quello della risposta più recente
-  risultati.querySelectorAll('.ricomincia').forEach(nodo => nodo.remove());
+  // la pagina azzerata sparisce appena arriva una nuova domanda
+  risultati.querySelector('.azzerato')?.remove();
 
   const scambio = el('section', 'scambio');
   scambio.append(el('h2', 'domanda-fatta', domanda));
@@ -659,7 +661,6 @@ async function chiedi(testo, { daStorico = false } = {}) {
     contenuto.append(avviso);
     console.error(errore);
   } finally {
-    contenuto.append(rigaRicomincia());
     bottone.disabled = false;
     if (!daStorico) {
       const url = new URL(window.location.href);
@@ -669,22 +670,30 @@ async function chiedi(testo, { daStorico = false } = {}) {
   }
 }
 
-// In fondo a ogni risposta, un comando esplicito: azzera la conversazione, il campo di
-// ricerca, l'indirizzo, lo scorrimento e le alternative rimaste in sospeso.
-function rigaRicomincia() {
-  const riga = el('div', 'ricomincia');
-  const testo = el('p', 'ricomincia-testo', 'Vuoi ricominciare da capo?');
-  const azzera = el('button', 'ricomincia-bottone', 'Azzera tutto');
-  azzera.type = 'button';
-  azzera.addEventListener('click', () => tornaAllInizio());
-  riga.append(testo, azzera);
-  return riga;
+// «Azzera» sta accanto a «Chiedi»: svuota risposta e campo ma non riporta alla home,
+// la pagina resta questa (testata compatta, comando a portata di mano).
+function azzeraRisultati() {
+  risultati.textContent = '';
+  campo.value = '';
+  ultimeAlternative = [];
+  bottoneInCima.hidden = true;
+  // il ?q= non deve far ricomparire la risposta al ricaricamento; replaceState non
+  // aggiunge una tappa alla cronologia, quindi «indietro» resta il passo di prima
+  if (window.location.search) history.replaceState({}, '', window.location.pathname);
+  const vuoto = el('div', 'vuoto azzerato');
+  vuoto.append(el('h2', null, 'Ho azzerato tutto'));
+  vuoto.append(el('p', null, 'Puoi scrivere una nuova domanda qui sopra: resto in questa pagina.'));
+  risultati.append(vuoto);
+  annuncia('Ho azzerato tutto: puoi scrivere una nuova domanda.');
+  risultati.scrollTo({ top: 0 });
+  campo.focus({ preventScroll: true });
 }
 
 function tornaAllInizio({ daStorico = false } = {}) {
   risultati.textContent = '';
   document.body.classList.remove('ha-risultati');
   bottoneNuova.hidden = true;
+  bottoneAzzera.hidden = true;
   bottoneInCima.hidden = true;
   campo.value = '';
   ultimeAlternative = [];
@@ -763,6 +772,7 @@ async function avvia() {
   });
 
   bottoneNuova.addEventListener('click', () => tornaAllInizio());
+  bottoneAzzera.addEventListener('click', azzeraRisultati);
 
   risultati.addEventListener('scroll', () => {
     testata.classList.toggle('scrollata', risultati.scrollTop > 6);

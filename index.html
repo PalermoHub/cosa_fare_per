@@ -237,7 +237,11 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
         <input id="domanda" name="q" type="search" enterkeyhint="search"
                placeholder="Es. come cambio residenza"
                aria-describedby="aiuto-campo">
-        <button type="submit" id="invia">Chiedi</button>
+        <div class="campo-azioni">
+          <button type="submit" id="invia">Chiedi</button>
+          <button type="button" class="azzera" id="azzera" hidden
+                  aria-label="Azzera tutto: svuota la risposta e il campo">Azzera</button>
+        </div>
       </div>
       <p class="aiuto" id="aiuto-campo">Nessuna registrazione. Le risposte arrivano dai servizi e dagli uffici pubblicati dal Comune di Palermo.</p>
     </form>

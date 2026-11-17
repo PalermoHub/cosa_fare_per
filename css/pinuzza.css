@@ -227,6 +227,27 @@ a:hover { color: var(--caldo); }
 .campo button:hover { background: var(--accento-fondo-hover); }
 .campo button:disabled { opacity: .55; cursor: progress; }
 
+/* i comandi stanno insieme, dopo il campo: su schermo largo di fianco a «Chiedi»,
+   sul telefono in una riga loro sotto il campo */
+.campo-azioni {
+  display: flex;
+  align-items: stretch;
+  gap: .35rem;
+  flex: 0 0 auto;
+}
+.campo .azzera {
+  border: 1px solid var(--linea-forte);
+  background: transparent;
+  color: var(--inchiostro-tenue);
+  padding-inline: .9rem;
+}
+.campo .azzera:hover {
+  border-color: var(--caldo-fondo);
+  color: var(--caldo-fondo);
+  background: transparent;
+}
+.campo .azzera[hidden] { display: none; }
+
 .aiuto {
   margin: .7rem 0 0;
   color: var(--inchiostro-fio);
@@ -639,37 +660,6 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .utile-esito a { color: var(--accento); }
 .utile-nota { margin: .3rem 0 0; font-size: .84rem; color: var(--inchiostro-fio); }
 
-/* ---------- «azzera tutto» (js/app.js) ---------- */
-.ricomincia {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: .5rem .9rem;
-  margin: 1.3rem 0 .2rem;
-  padding: .9rem 0 0;
-  border-top: 1px solid var(--linea);
-}
-.ricomincia-testo {
-  margin: 0;
-  font-size: .9rem;
-  color: var(--inchiostro-fio);
-}
-.ricomincia-bottone {
-  min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
-  padding: .5rem .95rem;
-  border: 1px solid var(--linea-forte);
-  border-radius: 999px;
-  background: var(--carta-alt);
-  color: var(--inchiostro-tenue);
-  font: 600 .86rem/1.2 var(--sans);
-  cursor: pointer;
-  transition: border-color .18s ease, color .18s ease, background .18s ease;
-}
-.ricomincia-bottone:hover {
-  border-color: var(--accento);
-  color: var(--accento);
-  background: var(--accento-chiaro);
-}
 
 /* ---------- piede ---------- */
 
@@ -864,6 +854,12 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .campo { flex-wrap: wrap; padding: .5rem .5rem .5rem .85rem; }
   .campo input { flex-basis: 100%; }
   .campo button { width: 100%; }
+  /* «Chiedi» e «Azzera» sulla stessa riga, sotto il campo: il primo prende lo spazio,
+     il secondo resta della sua misura */
+  .campo-azioni { flex: 1 1 100%; }
+  .campo-azioni button { width: auto; }
+  .campo-azioni #invia { flex: 1 1 auto; }
+  .campo-azioni .azzera { flex: 0 0 auto; }
   .ufficio dl { grid-template-columns: 1fr; gap: .1rem; }
   .ufficio dt { margin-top: .45rem; }
 }
