@@ -292,47 +292,44 @@ body.ha-risultati .campo input { padding: .55rem 0; font-size: .98rem; }
 body.ha-risultati .campo button { padding: .55rem .9rem; }
 body.ha-risultati .suggerimenti { display: none; }
 
-/* Cambio tema su schermo largo: un badge dopo le domande suggerite. Sta fuori da
-   `#suggerimenti` (che sparisce quando c'è una risposta) così resta raggiungibile anche
-   mentre si legge. Sul telefono il comando è la voce della barra in basso: qui si nasconde. */
-.tema-badge-riga {
+/* Cambio tema: un pulsante tondo sotto il logo di OpenDataSicilia, nel piede.
+   È sempre visibile, in tutte le pagine e anche con una risposta aperta. */
+.piede-marchio {
+  flex: 0 0 auto;
   display: flex;
-  justify-content: center;
-  margin: .9rem auto 0;
+  flex-direction: column;
+  align-items: center;
+  gap: .35rem;
 }
-.badge-tema {
+.tema-piede {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 1.85rem;
+  height: 1.85rem;
   padding: 0;
-  border: 1px solid var(--linea);
-  border-radius: 999px;
-  background: var(--carta-alt);
+  border: 1px solid var(--linea-forte);
+  border-radius: 50%;
+  background: var(--superficie);
   color: var(--inchiostro-tenue);
-  font: 600 .8rem/1 var(--sans);
   cursor: pointer;
   transition: border-color .18s ease, color .18s ease, background .18s ease;
 }
-.badge-tema:hover { border-color: var(--accento); color: var(--accento); background: var(--accento-chiaro); }
-/* in testata: «Torna all'inizio» e il cambio tema sono un gruppo solo, a destra */
-.testata-azioni { display: flex; align-items: center; gap: .5rem; }
-.tema-badge-riga.in-testata { margin: 0; align-self: center; }
-body.ha-risultati .tema-badge-riga.in-testata .badge-tema { width: 2.25rem; height: 2.25rem; }
-.badge-tema svg {
-  width: 1.15rem;
-  height: 1.15rem;
+.tema-piede:hover { border-color: var(--accento); color: var(--accento); }
+.tema-piede svg {
+  width: 1rem;
+  height: 1rem;
   flex: 0 0 auto;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.7;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.badge-tema .icona-sole { display: none; }
-[data-theme="scuro"] .badge-tema .icona-luna { display: none; }
-[data-theme="scuro"] .badge-tema .icona-sole { display: block; }
+.tema-piede .icona-sole { display: none; }
+[data-theme="scuro"] .tema-piede .icona-luna { display: none; }
+[data-theme="scuro"] .tema-piede .icona-sole { display: block; }
+
 body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 /* ---------- risultati ---------- */
@@ -681,7 +678,6 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
     scrollbar-width: none; /* niente barra: si passa alla colonna dopo scorrendo */
   }
   .riga-domande::-webkit-scrollbar { display: none; }
-  .tema-badge-riga { display: none; }
   .riga-domande button {
     display: flex;
     align-items: center;
@@ -716,6 +712,9 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
      anche il cambio tema sta lì */
   .piede-dettaglio,
   .piede-legale { display: none; }
+  /* sul telefono il cambio tema è la voce della barra in basso: qui non serve e il piede
+     deve restare basso */
+  .tema-piede { display: none; }
 
   /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
   body { padding-bottom: var(--barra-h); }

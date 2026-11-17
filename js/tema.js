@@ -71,23 +71,10 @@ function cambia() {
   applica(nuovo);
 }
 
-// Il comando su schermo largo è un badge subito dopo le domande suggerite: sta fuori dal
-// blocco `#suggerimenti`, che sparisce quando compare una risposta, così resta visibile
-// anche mentre si legge. Sul telefono la stessa cosa si fa dalla barra in basso.
-function inserisciBadge() {
-  if (document.getElementById('tema')) return;
-  const suggerimenti = document.getElementById('suggerimenti');
-  const riferimento = suggerimenti || document.querySelector('.campo')?.closest('form');
-
-  const riga = document.createElement('div');
-  riga.className = 'tema-badge-riga';
-
-  const pulsante = document.createElement('button');
-  pulsante.type = 'button';
-  pulsante.id = 'tema';
-  pulsante.className = 'badge-tema';
-  pulsante.addEventListener('click', cambia);
-
+// Il comando sta nel piede, sotto il logo di OpenDataSicilia: è sempre visibile, in tutte le
+// pagine e in tutti gli stati (con la risposta aperta il resto dell'intestazione si stringe).
+// Sul telefono resta anche la voce nella barra in basso, più comoda per il pollice.
+function icone() {
   const iconaLuna = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   iconaLuna.setAttribute('viewBox', '0 0 24 24');
   iconaLuna.setAttribute('class', 'icona-luna');
@@ -116,55 +103,36 @@ function inserisciBadge() {
     linea.setAttribute('y2', y2);
     iconaSole.append(linea);
   }
+  return [iconaLuna, iconaSole];
+}
+
+function inserisciNelPiede() {
+  if (document.getElementById('tema')) return;
+  const logo = document.querySelector('.piede-riga img');
+  if (!logo) return;
+
+  const pulsante = document.createElement('button');
+  pulsante.type = 'button';
+  pulsante.id = 'tema';
+  pulsante.className = 'tema-piede';
+  pulsante.addEventListener('click', cambia);
 
   // il nome resta scritto (per i lettori di schermo), ma a video si vede solo l'icona
   const parola = document.createElement('span');
   parola.className = 'nascosto';
-  pulsante.append(iconaLuna, iconaSole, parola);
-  riga.append(pulsante);
+  pulsante.append(...icone(), parola);
 
-  if (riferimento && riferimento.parentElement) riferimento.after(riga);
-  else document.querySelector('header.testata')?.append(riga);
+  // il logo e il pulsante stanno in colonna: il pulsante finisce sotto il logo
+  const marchio = document.createElement('div');
+  marchio.className = 'piede-marchio';
+  logo.before(marchio);
+  marchio.append(logo, pulsante);
   aggiornaPulsante();
 }
 
-// Con una risposta aperta il badge va in testata, attaccato a «Torna all'inizio»: sono i due
-// comandi che servono mentre si legge (uscire, cambiare tema), quindi stanno insieme a destra.
-function gruppoAzioni() {
-  const titolo = document.querySelector('.riga-titolo');
-  if (!titolo) return null;
-  let gruppo = titolo.querySelector('.testata-azioni');
-  if (!gruppo) {
-    gruppo = document.createElement('div');
-    gruppo.className = 'testata-azioni';
-    titolo.append(gruppo);
-  }
-  // «Torna all'inizio» entra nel gruppo: così non resta al centro da solo
-  const nuova = document.getElementById('nuova');
-  if (nuova && nuova.parentElement !== gruppo) gruppo.prepend(nuova);
-  return gruppo;
-}
-
-function posizionaBadge() {
-  const riga = document.querySelector('.tema-badge-riga');
-  if (!riga) return;
-  const suggerimenti = document.getElementById('suggerimenti');
-  const gruppo = gruppoAzioni();
-  if (document.body.classList.contains('ha-risultati') && gruppo) {
-    gruppo.append(riga);
-    riga.classList.add('in-testata');
-  } else if (suggerimenti) {
-    suggerimenti.after(riga);
-    riga.classList.remove('in-testata');
-  }
-}
-
-// la voce della barra in basso fa lo stesso del badge
+// la voce della barra in basso fa lo stesso del pulsante nel piede
 const voceTema = document.getElementById('tema-barra');
 if (voceTema) voceTema.addEventListener('click', cambia);
 
-inserisciBadge();
-// `ha-risultati` sul <body> dice se c'è una risposta aperta: il badge cambia posto da solo
-new MutationObserver(posizionaBadge).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+inserisciNelPiede();
 applica(temaCorrente());
-posizionaBadge();
