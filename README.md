@@ -67,4 +67,4 @@ I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-ammini
 
 **Chiedilo a Pinuzza** è un progetto di [OpenDataSicilia](https://opendatasicilia.it/).
 I dati sono pubblicati dal Comune di Palermo con licenza CC BY 4.0; il codice è rilasciato con
-licenza MIT. Vedi `LICENZE.md`.
+licenza MIT (testo in [`LICENSE`](LICENSE), © 2026 OpenDataSicilia). Vedi anche `LICENZE.md`.

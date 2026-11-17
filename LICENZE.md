@@ -2,7 +2,8 @@
 
 ## Codice
 
-Il codice di **Chiedilo a Pinuzza** (HTML, CSS, JavaScript) è rilasciato con licenza **MIT**.
+Il codice di **Chiedilo a Pinuzza** (HTML, CSS, JavaScript) è rilasciato con licenza **MIT**:
+© 2026 **OpenDataSicilia**. Il testo della licenza è nel file [`LICENSE`](LICENSE).
 
 ## Dati
 
