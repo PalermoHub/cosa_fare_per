@@ -14,7 +14,6 @@ const contenitoreSuggerimenti = $('#suggerimenti');
 const bottoneNuova = $('#nuova');
 const testata = $('#testata');
 const bottoneInCima = $('#inCima');
-const piede = document.querySelector('.piede');
 
 let indice = [];
 let ultimeAlternative = [];
@@ -507,11 +506,6 @@ async function avvia() {
     campo.focus({ preventScroll: true });
   });
 
-  // l'altezza del piede cambia con la larghezza: il pulsante «torna in cima» ci si appoggia sopra
-  const misuraPiede = () => document.documentElement.style.setProperty('--piede-h', `${piede.offsetHeight}px`);
-  misuraPiede();
-  if ('ResizeObserver' in window) new ResizeObserver(misuraPiede).observe(piede);
-  else window.addEventListener('resize', misuraPiede);
 
   // Esc = torna alla pagina bianca, come il pulsante
   campo.addEventListener('keydown', evento => {
