@@ -75,9 +75,9 @@ function inserisciPulsante() {
   pulsante.className = 'link-bottone';
   pulsante.addEventListener('click', cambia);
 
-  // nel piede, dove stanno le impostazioni. Non dentro `.piede-legale`: sul telefono quella
-  // riga è nascosta e il pulsante deve restare raggiungibile (le testate delle tre pagine
-  // hanno forme diverse, quindi il piede è l'unico posto uguale per tutte).
+  // nel piede, dove stanno le impostazioni: è il posto del comando su schermo largo, uguale
+  // per tutte e tre le pagine. Sul telefono lo stesso comando è la voce della barra in basso,
+  // e il CSS nasconde quella del piede (`.piede-tema`).
   const nota = document.querySelector('.piede .piede-nota');
   const paragrafo = document.querySelector('.piede p');
   if (!paragrafo) return;

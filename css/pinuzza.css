@@ -669,9 +669,11 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .puntini span.attivo { width: .9rem; background: var(--accento); }
   .piede { font-size: .74rem; }
   .piede .piede-nota { display: none; } /* il piede deve restare basso: l'avvertenza estesa sta nel campo */
-  /* con la barra in basso il piede resta al credito: i collegamenti sono nelle voci */
+  /* con la barra in basso il piede resta al credito: i collegamenti sono nelle voci, e
+     anche il cambio tema sta lì */
   .piede-dettaglio,
-  .piede-legale { display: none; }
+  .piede-legale,
+  .piede-tema { display: none; }
 
   /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
   body { padding-bottom: var(--barra-h); }
@@ -799,7 +801,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 }
 .link-bottone:hover { color: var(--accento); }
 .piede-legale { white-space: nowrap; }
-/* il tema resta raggiungibile anche sul telefono, dove `.piede-legale` è nascosta */
+/* nome del tema nel piede: su schermo largo è l'unico comando, sul telefono c'è la voce
+   nella barra in basso e questo si nasconde (vedi il blocco mobile) */
 .piede-tema { white-space: nowrap; }
 /* il copyright non si spezza fra «©» e l'anno */
 .piede-copyright { white-space: nowrap; }
