@@ -502,6 +502,8 @@ function tornaAllInizio({ daStorico = false } = {}) {
   if (!daStorico) history.pushState({}, '', window.location.pathname);
   campo.focus({ preventScroll: true });
   risultati.scrollTo({ top: 0, behavior: 'smooth' });
+  // chi torna all'inizio ricomincia anche dalle prime domande, non dalla colonna lasciata a metà
+  contenitoreSuggerimenti.querySelector('.riga-domande')?.scrollTo({ left: 0, behavior: 'instant' });
 }
 
 // ---------- avvio ----------
@@ -517,6 +519,28 @@ function mostraSuggerimenti(elenco) {
     riga.append(b);
   }
   contenitoreSuggerimenti.append(etichetta, riga);
+  aggiungiPuntini(riga);
+}
+
+// su schermo stretto si vede una colonna da tre domande per volta: i puntini dicono quante colonne
+// ci sono e quale si sta guardando (decorativi: si naviga scorrendo o con Tab)
+function aggiungiPuntini(riga) {
+  const colonne = Math.ceil(riga.children.length / 3);
+  if (colonne < 2) return;
+  const puntini = el('div', 'puntini');
+  puntini.setAttribute('aria-hidden', 'true');
+  for (let i = 0; i < colonne; i++) puntini.append(el('span'));
+  const segna = () => {
+    // le colonne sono tutte uguali: la posizione si ricava dallo spazio scorribile
+    const passo = (riga.scrollWidth - riga.clientWidth) / (colonne - 1);
+    const attiva = passo > 0 ? Math.round(riga.scrollLeft / passo) : 0;
+    [...puntini.children].forEach((p, i) => p.classList.toggle('attivo', i === attiva));
+  };
+  riga.addEventListener('scroll', segna, { passive: true });
+  riga.parentElement.append(puntini);
+  segna();
+  // cambiando la larghezza cambia anche il passo dello scorrimento
+  window.addEventListener('resize', segna);
 }
 
 function dataItaliana(iso) {
