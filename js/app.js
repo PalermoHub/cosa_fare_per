@@ -574,7 +574,7 @@ async function avvia() {
     // gli uffici servono alla prima scheda: si scaricano mentre l'utente legge
     const scaricaUffici = () => caricaUffici()
       .then(uffici => {
-        // il badge della scorciatoia dice quanti uffici ci sono davvero, non un numero scritto a mano
+        // il badge degli uffici dice quanti ce ne sono davvero, non un numero scritto a mano
         const badge = $('#badge-uffici');
         if (badge) badge.textContent = `${Object.keys(uffici).length} uffici`;
       })

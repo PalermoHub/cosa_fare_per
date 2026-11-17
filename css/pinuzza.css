@@ -528,6 +528,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .campo { flex-wrap: wrap; padding: .5rem .5rem .5rem .85rem; }
   .campo input { flex-basis: 100%; }
   .campo button { width: 100%; }
+  /* i due rimandi in colonna: affiancati sfonderebbero la larghezza */
+  .scorciatoie { flex-direction: column; align-items: center; max-width: 100%; }
   .ufficio dl { grid-template-columns: 1fr; gap: .1rem; }
   .ufficio dt { margin-top: .45rem; }
 }
@@ -892,13 +894,17 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .riga-ufficio { grid-template-columns: 1fr; gap: .1rem; padding: .6rem 0; }
 }
 
-/* rimando alla pagina degli uffici, sotto le domande suggerite: un badge per farlo vedere */
-.scorciatoia {
+/* rimandi sotto le domande suggerite — pagina degli uffici e segnalazioni: un badge per farli vedere */
+.scorciatoie {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
   margin: 1.9rem auto 0;
-  max-width: 36rem;
+  max-width: 52rem;
   text-align: center;
 }
-.scorciatoia a {
+.pillola {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
@@ -914,12 +920,12 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   text-decoration: none;
   transition: border-color .2s ease, color .2s ease, transform .15s ease;
 }
-.scorciatoia a:hover {
+.pillola:hover {
   border-color: var(--accento);
   color: var(--accento);
   transform: translateY(-1px);
 }
-.scorciatoia .badge {
+.pillola .badge {
   display: inline-flex;
   align-items: center;
   padding: .32rem .55rem;
@@ -930,7 +936,14 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   letter-spacing: .03em;
   white-space: nowrap;
 }
-.scorciatoia a:hover .badge { background: var(--caldo); }
-.scorciatoia .freccia { color: var(--accento); font-weight: 400; }
-.scorciatoia a:hover .freccia { color: var(--caldo); }
-body.ha-risultati .scorciatoia { display: none; }
+.pillola:hover .badge { background: var(--caldo); }
+/* il badge dei suggerimenti resta leggero: non deve contendere l'occhio a quello degli uffici */
+.pillola .badge-issue {
+  background: var(--caldo-chiaro);
+  color: var(--caldo);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.pillola:hover .badge-issue { background: var(--caldo); color: #fff; box-shadow: none; }
+.pillola .freccia { color: var(--accento); font-weight: 400; }
+.pillola:hover .freccia { color: var(--caldo); }
+body.ha-risultati .scorciatoie { display: none; }
