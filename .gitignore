@@ -1,0 +1,20 @@
+# Cosa non va pubblicato: dati grezzi, script di raccolta, note di lavoro.
+dati/
+scripts/
+docs/
+package.json
+
+# cache e residui di esecuzione
+__pycache__/
+*.pyc
+*.cache
+.cache*/
+node_modules/
+
+# file scaricati da Windows (alternate data stream)
+*Zone.Identifier
+
+# editor e sistema
+.DS_Store
+.vscode/
+.idea/

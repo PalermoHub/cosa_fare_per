@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiedilo a Pinuzza — come fare per… con il Comune di Palermo</title>
+<meta name="description" content="Chiedi in italiano semplice come fare una pratica con il Comune di Palermo: Pinuzza ti risponde e ti dice l'ufficio competente, con sede, telefono, email e PEC.">
+<meta name="theme-color" content="#fcfbf7">
+<link rel="icon" href="img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="stylesheet" href="css/pinuzza.css">
+</head>
+<body>
+
+<a class="salta" href="#risultati">Salta al contenuto</a>
+
+<header class="testata" id="testata">
+  <div class="interno">
+    <div class="riga-titolo">
+      <h1 class="titolo">Chiedilo a <span class="nome">Pinuzza</span></h1>
+      <button type="button" class="nuova" id="nuova" hidden>Torna all'inizio</button>
+    </div>
+    <p class="presentazione" id="presentazione">
+      Sono Pinuzza: conosco gli uffici del Comune di Palermo, le loro competenze e i loro recapiti.
+      Scrivimi cosa devi fare, ti rispondo e ti dico a chi rivolgerti.
+    </p>
+
+    <form class="modulo" id="modulo" role="search" autocomplete="off">
+      <label class="nascosto" for="domanda">La tua domanda</label>
+      <div class="campo">
+        <input id="domanda" name="q" type="search" enterkeyhint="search"
+               placeholder="Es. come cambio residenza"
+               aria-describedby="aiuto-campo">
+        <button type="submit" id="invia">Chiedi</button>
+      </div>
+      <p class="aiuto" id="aiuto-campo">Nessuna registrazione. Le risposte arrivano dai servizi e dagli uffici pubblicati dal Comune di Palermo.</p>
+    </form>
+
+    <nav class="suggerimenti" id="suggerimenti" aria-label="Domande frequenti"></nav>
+  </div>
+</header>
+
+<main class="risultati" id="risultati" aria-live="polite" aria-label="Risposte di Pinuzza"></main>
+
+<footer class="piede">
+  <div class="interno piede-riga">
+    <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
+    <p>
+      <strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · risposte dalle schede
+      servizio e dagli uffici pubblicati da <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/" rel="noopener">Comune di Palermo</a>
+      e dal catalogo <a href="https://sites.google.com/comune.palermo.it/trova-servizi/" rel="noopener">Cerca servizi, competenze e uffici</a>
+      · dati aggiornati al <span id="aggiornato">—</span>.
+      <span class="piede-nota">Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</span>
+    </p>
+  </div>
+</footer>
+
+<noscript>
+  <p class="avviso-noscript">Per usare Chiedilo a Pinuzza serve JavaScript attivo.
+  Le schede degli uffici restano consultabili sul sito del <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/">Comune di Palermo</a>.</p>
+</noscript>
+
+<button type="button" class="in-cima" id="inCima" hidden
+        aria-label="Torna all'inizio dei risultati" title="Torna in cima">↑</button>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

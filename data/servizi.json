@@ -1,0 +1,2066 @@
+[
+ {
+  "url": "https://www.comune.palermo.it/servizio/autocertificazioni-anpr/",
+  "id": "autocertificazioni-anpr",
+  "titolo": "Autocertificazioni ANPR",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Richiedi online la consultazione dei dati anagrafici ed elettorali o le autocertificazioni sostitutive dei certificati.",
+  "sezioni": {
+   "a_chi": "Cittadini",
+   "descrizione": "Il servizio permette di accedere alla propria scheda anagrafica ANPR e scaricare in autonomia le autocertificazioni anagrafiche\nL'accesso ai servizi è consentito esclusivamente tramite SPID (Sistema Pubblico di identità digitale), CIE (Carta d'Identità Elettronica) o CNS (Carta Nazionale dei Servizi)\nOgni cittadino può accedere alla propria scheda anagrafica e scaricarsi in autonomia l'autocertificazione di:\n- nascita\n- cittadinanza\n- famiglia anagrafica\n- residenza\n- esistenza in vita\nIn calce ad ogni autocertificazione, a norma di legge, viene stampata la dicitura:\n\"La presente dichiarazione non necessita dell'autenticazione della firma e sostituisce a tutti gli effetti le normali certificazioni richieste o destinate ad una pubblica amministrazione nonché ai gestori di pubblici servizi e ai privati che vi consentono.\"",
+   "come_fare": "Accedi all'area riservata e seleziona il servizio per le autocertificazioni selezionando il pulsante “Stampa autocertificazione”.",
+   "cosa_serve": "Accesso con una delle seguenti identità digitali:\n- SPID\n- CIE\n- CNS\n- eIDAS",
+   "cosa_si_ottiene": "Tramite i servizi dell'ANPR, puoi chiedere la stampa di un'autocertificazione singola oppure in forma “contestuale”, cioè riunendo diverse tipologie di dati in un unico documento.",
+   "tempi": "Immediata",
+   "costo": "La consultazione e le autocertificazioni non prevedono costi.",
+   "presentare": "Richiedi online la consultazione dei dati anagrafici ed elettorali o le autocertificazioni sostitutive dei certificati.\nAccedi al Servizio ANPR\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/dichiarazione-di-cambio-indirizzo-o-abitazione/",
+  "id": "dichiarazione-di-cambio-indirizzo-o-abitazione",
+  "titolo": "Cambio di residenza cittadini italiani",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Invia online al tuo comune la dichiarazione di cambio di residenza per te e per la tua famiglia anagrafica.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "Le dichiarazioni anagrafiche di trasferimento di Residenza da un altro comune, dall'estero e ricomparsi da irreperibilità vanno effettuate nel termine di 20 giorni dalla data in cui si sono verificati i fatti (avvenuto trasferimento).\nLa dichiarazione di residenza per il trasferimento da altro Comune o dall'estero (per i cittadini italiani iscritti all'Aire) ad un qualsiasi Comune sul territorio nazionale può essere effettuata on-line accedendo con SPID (sistema pubblico di identità digitale), CNS (carta nazionale dei servizi- tessera sanitaria) oppure CIE (carta d'identità elettronica) oppure utilizzando la modulistica predisposta dal Ministero dell'Interno.",
+   "come_fare": "Puoi comunicare il cambio di residenza online, tramite il portale ANPR.",
+   "cosa_serve": "Per usufruire del servizio è necessario:\n- eventuale documentazione a supporto della richiesta",
+   "cosa_si_ottiene": "Al termine della procedura, si ottiene il cambio di residenza dei cittadini italiani.",
+   "tempi": "Al procedimento di accertamento dei requisiti si applica il silenzio - assenso di cui all'art. 20 della legge n. 241/1990, pertanto trascorsi 45 giorni dalla presentazione della dichiarazione, se l'interessato non riceve la comunicazione dei motivi ostativi al diritto all'iscrizione, l'istanza si intende confermata.",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Invia online al tuo comune la dichiarazione di cambio di residenza per te e per la tua famiglia anagrafica\nAccedi al Servizio ANPR\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "In seguito alla registrazione delle dichiarazioni, l'ufficio provvede all'accertamento dei requisiti previsti ed in caso di dichiarazioni non corrispondenti al vero si applicano gli art. 75 e 76 del D.P.R. n. 445/2000, i quali stabiliscono rispettivamente la decadenza dai benefici acquisiti per effetto della dichiarazione, nonché il rilievo penale della dichiarazione mendace (reato: falsa dichiarazione a pubblico ufficiale - art. 495 c. p.).",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-gestione-residenze",
+    "nome": "U.O. Gestione Residenze"
+   }
+  ],
+  "contatti": [
+   "cambioresidenza@comune.palermo.it",
+   "movimentoanagrafico@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917405221"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/pagare-canone-unico-patrimoniale/",
+  "id": "pagare-canone-unico-patrimoniale",
+  "titolo": "Pagare Canone Unico Patrimoniale",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Il servizio consente di effettuare il pagamento, attraverso PagoPA, dell'avviso di pagamento Canone Unico Patrimoniale (CUP) relativo alle Esposizioni Pubblicitarie, alle Concessioni Suolo Pubblico e ai Mercati Rionali.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini soggetti al pagamento annuale del CUP - Canone Unico Patrimoniale per le Occupazione Suolo temporanee o permanenti, le Esposizioni Pubblicitarie e i Mercati Rionali.",
+   "descrizione": "Il servizio, grazie all'integrazione con PagoPA, consente di effettuare il pagamento del Canone CUP secondo gli importi e le scadenze determinati annualmente dall'Ente in fase di bollettazione.",
+   "come_fare": "Accedere al servizio con identità digitale. Se sei il debitore di un avviso, cioè la persona intestataria del modello di pagamento, visualizzerai il bollettino di pagamento, e potrai effettuare il pagamento online (pagoPA).",
+   "cosa_serve": "Per effettuare il pagamento è necessario:\n- SPID o CIE\n- Carta di Credito, Conto Corrente o Carta Prepagata.\n- Un indirizzo email per ricevere la ricevuta di pagamento.",
+   "cosa_si_ottiene": "Se il pagamento è andato a buon fine verrà resa disponibile la Ricevuta Telematica (RT), cioè il documento che certifica l'incasso.",
+   "tempi": "Il pagamento viene effettuato in tempo reale. Il sistema, in fase di pagamento, effettua un controllo per verificare eventuali ritardi rispetto alle scadenze previste e, nel caso di pagamenti tardivi, effettua le necessarie operazioni di aggiornamento dell'importo dovuto per tenere conto delle eventuali maggiorazioni calcolate in regime di ravvedimento operoso.\nEntro 24 ore, il pagamento CUP verrà registrato sulla banca dati dei tributi e collegato in automatico alla posizione contributiva del soggetto.",
+   "costo": "L'importo da pagare viene calcolato sulla base delle tariffe vigenti e degli elementi impositivi presenti in banca dati al momento della bollettazione. Potrebbero essere addebitate eventuali spese aggiuntive, come quelle per il recupero della somma dovuta, in caso di ritardo nel pagamento, oppure costi per commissioni bancarie previsti secondo il canale bancario o di pagamento utilizzato.",
+   "presentare": "Per accedere al servizio è richiesta l'identificazione digitale, come SPID o CIE (Carta d'Identità Elettronica).\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-cup-ex-tosaptemporanea-e-permanente-e-icp",
+    "nome": "U.O. Cup (ex tosap/temporanea e permanente e icp)"
+   }
+  ],
+  "contatti": [
+   "settoretributi@cert.comune.palermo.it",
+   "tosapicp@cert.comune.palermo.it",
+   "tosapicp@comune.palermo.it"
+  ],
+  "telefoni": [
+   "091-7404520",
+   "091-7404550",
+   "091-7404582",
+   "091-7404588"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/parcheggio-invalidi/",
+  "id": "parcheggio-invalidi",
+  "titolo": "Richiedere permesso per parcheggio invalidi",
+  "categorie": [
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio è rivolto ai disabili che necessitano di parcheggiare in aree riservate.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto ai titolari di contrassegno per disabili (qualora non se ne fosse in possesso si può richiedere il contrassegno contestualmente) che necessitano di parcheggiare in aree riservate, sia per i residenti che per i non residenti.",
+   "descrizione": "Il servizio consente di ottenere il diritto di parcheggiare gratuitamente nelle aree riservate ai veicoli dei disabili. I posti di parcheggio per invalidi sono contrassegnati da appositi segnali e possono essere utilizzati esclusivamente dai veicoli autorizzati con il contrassegno.",
+   "come_fare": "Per richiedere l'autorizzazione al parcheggio nei posti riservati, è necessario accedere al portale del Comune utilizzando l'identità digitale, e inserire i dati richiesti relativi al contrassegno per disabili.\nIn alternativa, è possibile presentare la richiesta presso gli uffici competenti.",
+   "cosa_serve": "Per richiedere l'autorizzazione è necessario:\n- SPID o CIE\n- Contrassegno per disabili valido",
+   "cosa_si_ottiene": "Una volta completata la procedura, il richiedente otterrà una ricevuta riportando gli estremi di protocollo della richiesta e dopo essersi presentato presso una delle postazioni abilitate, riceverà un'autorizzazione che consente di parcheggiare nelle aree riservate ai disabili.\nSe viene chiesto anche lo stallo verrà assegnata un'area esclusiva per il parcheggio.",
+   "tempi": "L'autorizzazione viene rilasciata al momento del completamento della richiesta presso una delle postazioni abilitate, la validità dell'autorizzazione corrisponde a quella del contrassegno disabili.",
+   "costo": "Il servizio è gratuito per i titolari di contrassegno per disabili.",
+   "presentare": "Il servizio consente ai titolari di contrassegno per disabili di ottenere il diritto di parcheggiare nelle aree riservate ai disabili, con validità in base al contrassegno.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "La richiesta andrà completata recandosi presso un ufficio di suo gradimento scelto tra quelli del seguente elenco, selezionando una delle postazioni, potrà visualizzare la pagina ad essa dedicata, per ottenere in contatti.\nCirc. I - Sportello Polifunzionale\nCirc. II - Sportello Polifunzionale\nCirc. III - Sportello Polifunzionale\nCirc. IV - Sportello Polifunzionale\nCirc. V - Sportello Polifunzionale\nCirc. VI - Sportello polifunzionale\nCirc. VII - Sportello Polifunzionale\nCirc. VIII - Sportello Polifunzionale",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "sportelli-polifunzionali",
+    "nome": "Sportelli polifunzionali"
+   }
+  ],
+  "contatti": [
+   "sportellopolifunzionaleottavacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleprimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequartacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequintacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesecondacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesestacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesettimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleterzacircoscrizione@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401111",
+   "0917403830"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/sportello-unico-attivita-produttive/",
+  "id": "sportello-unico-attivita-produttive",
+  "titolo": "Sportello Unico Attivita Produttive",
+  "categorie": [
+   "Imprese e commercio"
+  ],
+  "sommario": "Il punto di contatto unico fra imprese e istituzioni per tutte le pratiche relative all'apertura e alla gestione aziendale",
+  "sezioni": {
+   "a_chi": "- Imprese, ditte, società e associazioni che svolgono attività produttive e prestazione dei servizi sul territorio comunale.\n- Proprietari di fabbricati o di impianti che vengono o verranno usati per attività produttive",
+   "descrizione": "Lo Sportello Unico Attività Produttive (SUAP) è il punto di contatto unico fra imprese e istituzioni pubbliche per tutte le informazioni e le pratiche relative all'apertura e alla gestione aziendale.\nLe imprese possono rivolgersi al SUAP per tutte le pratiche da sbrigare, che inoltrerà poi i documenti ai vari Enti e uffici interessati.\nÈ possibile consultare tutte le informazioni e svolgere le pratiche relative a:\n- avvio, gestione e cessazione dell'attività;\n- localizzazione, trasformazione, trasferimento e riconversione;\n- interventi edilizi e adeguamenti antisismici;\n- gestione dei rifiuti, scarichi ed emissioni in atmosfera;\n- occupazione di suolo pubblico e aree demaniali;\n- pubblicità.",
+   "come_fare": "È possibile svolgere le pratiche online, tramite il portale impresainungiorno.gov.it e allo sportello, presso l'Ufficio Attività Produttive.",
+   "cosa_serve": "Sul portale impresainungiorno.gov.it e a sportello, puoi verificare tutta la documentazione necessaria per svolgere una pratica specifica.\nPer accedere ai servizi del SUAP, assicurati di avere:\n- identità digitale\n- firma digitale e la posta elettronica certificata (PEC)",
+   "cosa_si_ottiene": "Tramite il SUAP puoi consultare informazioni e norme, scaricare modulistica, svolgere pratiche amministrative, richiedere autorizzazioni ed effettuare pagamenti.",
+   "tempi": "Puoi verificare i tempi e le scadenze di ogni pratica impresainungiorno.gov.it o contattare l'Ufficio Attività Produttive. Nel caso in cui altri Enti coinvolti in una pratica non abbiano pubblicato le proprie tempistiche sul portale impresainungiorno.gov.it, contatta direttamente l'Ente interessato.",
+   "costo": "Puoi verificare costi di ogni pratica sul portale impresainungiorno.gov.it e procedere al pagamento direttamente online. Per consultare il listino dei costi, puoi sempre contattare l'Ufficio Attività Produttive.\nNel caso in cui altri enti coinvolti in una pratica non abbiano pubblicato il loro tariffario sul portale impresainungiorno.gov.it, contatta l'ente interessato per verificare eventuali costi da sostenere.",
+   "presentare": "Il punto di contatto unico fra imprese e istituzioni per tutte le pratiche relative all'apertura e alla gestione aziendale\nAccedi al Servizio SUAP\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-suap-sviluppo-economico-mercati-e-lavoro",
+    "nome": "Area SUAP, Sviluppo Economico, Mercati e Lavoro"
+   }
+  ],
+  "contatti": [
+   "sviluppoeconomico@cert.comune.palermo.it",
+   "sviluppoeconomico@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917404643"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/certificati-anagrafici/",
+  "id": "certificati-anagrafici",
+  "titolo": "Rilascio certificazioni anagrafiche e di stato civile",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Come richiedere al tuo Comune 15 tipologie di certificati anagrafici e di stato civile",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini.",
+   "descrizione": "I certificati anagrafici e di stato civile attestano le fasi più importanti della vita di un cittadino, dalla nascita alla morte. Per richiedere i certificati presentarsi all'Anagrafe muniti di documento d'identità valido.\nLe tipologie dei certificati attestano:\n- Residenza: l'iscrizione nel registro della popolazione residente e il requisito della dimora abituale;\n- Residenza storico: le variazioni di abitazione, iscrizioni e cancellazioni a decorre dal 01.06.1993;\n- Residenza AIRE: l'iscrizione presso lo schedario AIRE (Anagrafe Italiani Residenti Estero);\n- Stato di famiglia: la composizione della famiglia anagrafica: \"\"un insieme di persone legate da vincoli di matrimonio, parentela, affinità, adozione, tutela o da vincoli affettivi, abitualmente coabitanti, anche se nel certificato non vengono indicati i vincoli di parentela. Compariranno pertanto in un unico stato di famiglia tutte le persone risultanti a uno stesso indirizzo e unità immobiliare;\n- Stato di famiglia AIRE: la composizione della famiglia anagrafica AIRE;\n- Cittadinanza: il possesso della cittadinanza italiana e viene pertanto rilasciato soltanto ai cittadini italiani;\n- Stato libero: la libertà di stato di una persona (cel/nub, vedovo/a, già coniugato/a);\n- Esistenza in vita: che il Comune non ha ricevuto, alla data del rilascio, notizia del decesso;\n- Convivenza: l'iscrizione presso una comunità civile, religiosa o militare;\n- Certificato ed estratto di nascita: riportano le notizie ricavate dall'atto di nascita del registro di stato civile. L'estratto è completo perché comprende le annotazioni marginali (es. matrimonio, decesso);\n- Certificato ed estratto di matrimonio: riportano le notizie ricavate dall'atto di matrimonio. L'estratto è più completo perché riporta anche le annotazioni marginali (es. separazione patrimoniale fra i coniugi, sentenza di cessazione degli effetti civili, ecc.);\n- Certificato ed estratto di morte: riportano le notizie ricavate dall'atto di morte. L'estratto è più completo del certificato perché è indicata l'ora del decesso;\n- Certificati contestuali: in un unico atto sono raggruppati diversi certificati;\n- Costituzione convivenza di fatto o unione civile: certificato di convivenza di fatto o unione civile.",
+   "come_fare": "Attraverso il portale dell' ANPR i cittadini italiani potranno scaricare i certificati anagrafici online, in maniera autonoma, sia per proprio conto che per un componente della propria famiglia anagrafica, senza bisogno di recarsi personalmente negli uffici anagrafici comunali.\nSi fa presente che i certificati anagrafici sono rilasciati in bollo (D.P.R. 642/72) fatta eccezione per i casi in cui la normativa prevede espressamente l'esenzione dal bollo (Tabella B).\nI certificati potranno essere scaricati on line, anche in forma contestuale (es. residenza e stato di famiglia, residenza e cittadinanza etc.)\nAl portale si accede con la propria identità digitale (SPID, CIE, CNS).\nInoltre, sarà possibile verificare la correttezza dei dati registrati in ANPR ed eventualmente richiederne la rettifica.\nCertificati disponibili online:\n- Anagrafico di nascita\n- Anagrafico di matrimonio\n- di Cittadinanza\n- di Esistenza in vita\n- di Residenza\n- di Residenza AIRE\n- di Stato Civile\n- di Stato di Famiglia\n- di Stato di Famiglia e di Stato Civile\n- di Residenza in Convivenza\n- di Stato di Famiglia AIRE\n- di Stato di Famiglia con rapporti di parentela\n- di Stato Libero\n- Anagrafico di Unione Civile\n- di Contratto di Convivenza",
+   "cosa_serve": "Le certificazioni anagrafiche di Residenza e Stato di Famiglia vengono rilasciate al diretto interessato o ad altra persona previa compilazione di un apposito modulo. Tutti gli altri certificati anagrafici si possono rilasciare solo al diretto interessato o tramite terze persone in possesso di delega in carta semplice sottoscritta dall'interessato con allegata fotocopia del documento d'identità.\nI certificati di Stato Civile semplici compreso l'estratto di matrimonio e l'estratto di morte senza paternità e maternità, sono rilasciabili ai diretti interessati, mentre la richiesta fatta da terzi dovrà essere scritta e motivata. Per quanto concerne il rilascio degli estratti per riassunto degli atti di stato civile contenenti le generalità dei genitori è consentito esclusivamente:\n- su istanza dell'interessato\n- o, nel caso di minore, su istanza dei genitori(art.3 DPR 2 maggio 1957 n.432)",
+   "cosa_si_ottiene": "Al termine, si ottiene il rilascio di certificazioni anagrafiche e di stato civile",
+   "tempi": "L'emissione del certificato anagrafico è immediata.",
+   "costo": "I certificati anagrafici sono rilasciati in bollo (D.P.R. 642/72) fatta eccezione per i casi in cui la normativa prevede espressamente l'esenzione dal bollo.\nPagamento allo sportello:\n- Costo dei certificati anagrafici soggetti ad imposta di bollo è a euro 16,70 (non occorre portare la marca da bollo);\n- Costo dei certificati anagrafici NON soggetti ad imposta di bollo è pari a euro 0,30;\n- Costo dei certificati di Stato Civile: nessun costo.\nIl pagamento dei certificati richiesti tramite ANPR viene effettuato con PAGOPA.",
+   "presentare": "Come richiedere al tuo Comune 15 tipologie di certificati anagrafici\nAccedi al Servizio ANPR\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "I certificati sono rilasciabili unicamente se richiesti da soggetti diversi da: Pubblica Amministrazione, Gestori di Pubblici Servizi o se richiesti per documenti da presentare all'estero. Infatti con l'entrata in vigore della legge 183/2011, nei rapporti con gli organi della P.A. e con i G.P.S., i certificati sono sempre sostituiti dalla dichiarazione sostitutiva.\nIl certificato di morte è sostituito con un'autocertificazione resa dal coniuge, dal genitore, dal figlio, ecc.\nSu ANPR è attivo il servizio di Autocertificazioni Anagrafiche che permette di accedere alla propria scheda anagrafica ANPR e scaricare in autonomia le autocertificazioni anagrafiche.\nL'accesso ai servizi è consentito esclusivamente tramite SPID (Sistema Pubblico di identità digitale), CIE (Carta d'Identità Elettronica) o CNS (Carta Nazionale dei Servizi).\nOgni cittadino può accedere alla propria scheda anagrafica e scaricarsi in autonomia l'autocertificazione di:\n- nascita\n- cittadinanza\n- famiglia anagrafica\n- residenza\n- esistenza in vita\nIn calce ad ogni autocertificazione, a norma di legge, viene stampata la dicitura:\n\"La presente dichiarazione non necessita dell'autenticazione della firma e sostituisce a tutti gli effetti le normali certificazioni richieste o destinate ad una pubblica amministrazione nonché ai gestori di pubblici servizi e ai privati che vi consentono\".",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-autonomo-circoscrizioni-e-postazioni-decentrate",
+    "nome": "Ufficio autonomo circoscrizioni e postazioni decentrate"
+   }
+  ],
+  "contatti": [
+   "coordinamentocircoscrizioni@cert.comune.palermo.it",
+   "ufficioautonomocircoscrizioni@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401111",
+   "0917403830"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/certificato-di-nascita-per-cittadini-europei/",
+  "id": "certificato-di-nascita-per-cittadini-europei",
+  "titolo": "Certificato di nascita per Cittadini Europei",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Come richiedere il certificato di nascita per i cittadini europei nati in Italia",
+  "sezioni": {
+   "a_chi": "Cittadini europei nati in Italia, in possesso del proprio Codice Fiscale Italiano ma non più iscritti in Anagrafe.",
+   "descrizione": "Il certificato di nascita è il documento che attesta la nascita di una persona e ne specifica nome, cognome, data e luogo di nascita, numero dell'atto di nascita. Attraverso il servizio per cittadini europei messo a disposizione dall'Anagrafe Nazionale, se sei nato in Italia ma non più iscritto in Anagrafe, puoi richiedere il certificato al Comune in cui hai risieduto direttamente online e senza che sia necessario iscriversi di nuovo all'Anagrafe Nazionale: è sufficiente che tu sia in possesso del tuo Codice Fiscale Italiano",
+   "come_fare": "Puoi richiedere il tuo certificato di nascita online, tramite il portale ANPR, o a sportello su appuntamento.\nPer la richiesta online, accedi ai servizi per cittadini europei sul portale ANPR e seleziona “Richiedi il certificato di nascita”. La procedura ti guiderà all'inserimento dei dati necessari alla richiesta e, una volta completata, potrai scaricare il certificato sul tuo dispositivo",
+   "cosa_serve": "Per richiedere il certificato di nascita, assicurati di avere una delle seguenti identità digitali:\n- SPID\n- CIE\n- CNS\n- eIDAS",
+   "cosa_si_ottiene": "Ogni certificato viene prodotto in formato PDF non modificabile. Riporta il logo del Ministero dell'Interno e la dicitura “Anagrafe Nazionale della Popolazione Residente”. Inoltre, contiene il QR code e il sigillo elettronico qualificato del Ministero dell'Interno, non visibile a occhio nudo, che ne garantiscono l'autenticità, l'integrità e l'accettazione.",
+   "tempi": "L'emissione del certificato è immediata: una volta visualizzata l'anteprima, puoi scaricarlo o riceverlo via email. Il certificato sarà valido 3 mesi dalla data di emissione.",
+   "costo": "L'emissione del certificato è gratuita se l'uso per cui lo richiedi rientra tra i motivi di esenzione previsti dalla legge. In tutti gli altri casi, è previsto il pagamento di un'imposta di bollo di 16,00€. Puoi pagare direttamente online, al momento della richiesta, tramite pagoPA.",
+   "presentare": "Il servizio consente di richiedere il certificato di nascita per i cittadini europei nati in Italia\nAccedi al Servizio ANPR\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/iscrizione-anagrafica-per-cittadini-europei/",
+  "id": "iscrizione-anagrafica-per-cittadini-europei",
+  "titolo": "Iscrizione Anagrafica per Cittadini Europei",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Richiedi un'iscrizione all'Anagrafe Nazionale come cittadini Europei per poter usufruire dei servizi Anagrafici Comunali",
+  "sezioni": {
+   "a_chi": "- Cittadini europei che desiderino soggiornare nel Comune per un periodo superiore a 3 mesi.\n- Cittadini extra-europei familiari di cittadini europei già residenti nel Comune.",
+   "descrizione": "L'iscrizione anagrafica ti consente di utilizzare i servizi dell'Anagrafe nazionale. Per ottenerla, devi trasferirti in un Comune italiano e presentare una dichiarazione di residenza.",
+   "come_fare": "L'iscrizione all'Anagrafe nazionale per i cittadini europei avviene online, tramite il portale ANPR, o a sportello, tramite la prenotazione di un appuntamento. Per la richiesta online, accedendo ai servizi per cittadini europei sul portale ANPR e seleziona l'opzione “Voglio iniziare ora una dichiarazione di trasferimento”. La procedura ti guiderà all'inserimento dei tuoi dati anagrafici e di contatto, alla compilazione dei dati delle persone che si traferiscono insieme a te e al caricamento dei documenti necessari per poter procedere con la richiesta.",
+   "cosa_serve": "Per accedere al servizio, assicurati di avere:\n- carta d'identità, passaporto o documento valido per l'espatrio\n- codice fiscale italiano, se lo possiedi\n- dati anagrafici e codice fiscale di una persona della famiglia presso cui ti trasferisci\n- estremi catastali dell'immobile dove abiterai se sei il proprietario, estremi del contratto di locazione e carta d'identità del proprietario dell'immobile se non sei tu.\nDocumenti che possono essere necessari in base ai casi specifici.\nSe ti trasferisci per lavoro:\n- documentazione che dimostri la tua qualità di lavoratore subordinato o autonomo.\nSe ti trasferisci per studio e non sei lavoratore:\n- documentazione che attesti la tua iscrizione presso un istituto di formazione\n- autodichiarazione del possesso di risorse economiche sufficienti per non ricorrere all'assistenza sociale dello Stato\n- copia di un'assicurazione sanitaria che copra i rischi sul territorio nazionale e valida per almeno un anno o per la durata del corso di studi (non è valida la Tessera europea di assicurazione malattia).\nSe ti trasferisci senza essere lavoratore o studente:\n- autodichiarazione del possesso di risorse economiche sufficienti per non ricorrere all'assistenza sociale dello Stato\n- copia di un'assicurazione sanitaria che copra i rischi sul territorio nazionale e valida per almeno un anno o per la durata del corso di studi (non è valida la Tessera europea di assicurazione malattia)\nSe ti stai ricongiungendo con un familiare:﻿\n- certificato di matrimonio, se il ricongiungimento avviene tra coniugi;\n- certificato di nascita con l'indicazione di paternità e maternità, se il ricongiungimento avviene tra figlio e genitore.",
+   "cosa_si_ottiene": "Al termine della procedura, otterrai l'iscrizione all'Anagrafe nazionale per te e tutte le persone che si traferiscono insieme a te. Una volta inviata la tua dichiarazione, puoi verificarne in ogni momento lo stato di avanzamento accedendo di nuovo al servizio e selezionando l'opzione “Ho una dichiarazione di trasferimento in corso”. Quando il comune a cui hai inviato la dichiarazione di trasferimento l'avrà accolta, riceverai una notifica via email.",
+   "tempi": "Non c'è un termine ultimo per l'iscrizione anagrafica e il Comune si impegna a gestire la richiesta entro 30 giorni dalla ricezione.\nPuoi verificare in ogni momento lo stato di avanzamento della richiesta accedendo di nuovo al servizio sul portale ANPR e selezionando l'opzione “Ho una dichiarazione di trasferimento in corso”. Quando il Comune avrà accolto la richiesta, riceverai una notifica via email.",
+   "costo": "L'iscrizione Anagrafica in un Comune Italiano e la registrazione nell'Anagrafe Nazionale è gratuita.",
+   "presentare": "Il servizio consente di chiedere l'iscrizione all'Anagrafe Nazionale come Cittadini Europei\nAccedi al Servizio ANPR\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/anagrafe-della-popolazione/",
+  "id": "anagrafe-della-popolazione",
+  "titolo": "Anagrafe della popolazione",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "In questa sezione trovi informazioni puntali sui servizi anagrafici del Comune di Palermo. Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini.",
+   "descrizione": "Assicura tutte le funzioni a carattere demografico quali la tenuta ed aggiornamento del registro della popolazione residente nel Comune ed all'estero, rilascio certificati, autentiche, documenti d'identità, passaporto, trasferimenti residenza, etc. e cura tutti gli adempimenti a carattere statistico relativi alla popolazione previsti dalla legge (rilevazioni mensili, annuali, censimenti). Si possono richiedere certificati rilasciati in carta semplice o in bollo secondo gli usi cui il certificato è destinato.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire dei servizi anagrafici occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "L'Anagrafe Nazionale della Popolazione Residente è la banca dati nazionale che semplifica i servizi demografici per favorire la digitalizzazione e il miglioramento dei servizi a Cittadini, Imprese ed Enti.\nA partire dal 01 gennaio 2022 è stata attivata la possibilità di scaricare i certificati anagrafici online in maniera autonoma e gratuita, per proprio conto o per un componente della propria famiglia, senza bisogno di recarsi allo sportello.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/elettorato/",
+  "id": "elettorato",
+  "titolo": "Elettorato",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "In questa sezione trovi informazioni puntuali sui servizi dell'Elettorato del Comune di Palermo. Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini.",
+   "descrizione": "Si occupa di garantire il diritto dei cittadini di partecipare alla vita democratica del Paese, attraverso consultazioni elettorali.\nIn particolare, si occupa di:\n- Tenuta, aggiornamento e revisione delle liste elettorali;\n- Rilascio dei certificati di iscrizione nelle liste elettorali;\n- Rilascio, ritiro e variazioni delle tessere elettorali;\n- Preparazione ed organizzazione delle consultazioni elettorali con la verifica dei requisiti e delle procedure destinate ad assicurare l'esercizio del diritto elettorale;\n- Raccolta e autenticazione di firme per proposte di legge e referendum nazionali, regionali e comunali;\n- Formazione ed aggiornamento dei seguenti albi: albo scrutatori, albo presidenti di seggio, albo giudici popolari.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire dei servizi elettorali occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Il servizio elettorale è una funzione di competenza dello Stato demandata agli uffici elettorali dei comuni il cui compito basilare è mantenere aggiornate costantemente le liste elettorali mediante revisioni semestrali, dinamiche e straordinarie, cancellando o iscrivendo elettori che: emigrano, immigrano, perdono il diritto elettorale, riacquistano la capacità elettorale, acquisiscono la cittadinanza Italiana, cambiano l'indirizzo, acquistano la capacità elettorale.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/polizia-municipale/",
+  "id": "polizia-municipale",
+  "titolo": "Polizia Municipale",
+  "categorie": [
+   "Giustizia e sicurezza pubblica"
+  ],
+  "sommario": "La Polizia Municipale garantisce sicurezza, ordine pubblico e rispetto delle normative locali, offrendo assistenza ai cittadini e vigilanza sul territorio.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "La Polizia Municipale si occupa di garantire la sicurezza urbana, il rispetto delle leggi e dei regolamenti comunali, e la tutela dell'ambiente. Offre servizi di assistenza ai cittadini, gestione del traffico, controllo delle attività commerciali e prevenzione di situazioni di rischio, promuovendo il benessere della comunità.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire dei servizi occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "La Polizia Municipale è il biglietto da visita dell'Amministrazione Cittadina e quindi, per competenza e specializzazione, raggruppa una serie di compiti di alto livello professionale al servizio del Cittadino.\nEssa ha il principale obiettivo istituzionale di garantire il rispetto delle Leggi dello Stato nel territorio cittadino, dal Codice della Strada al Codice Civile e Penale, oltre alle norme in materia di pubblici esercizi, edilizia, pubblicità e suolo pubblico.\nInoltre, nella specifica funzione di Agenti di Pubblica Sicurezza, la Polizia Municipale espleta una serie di controlli del territorio a salvaguardia della sicurezza e della salute dei Cittadini.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-della-polizia-municipale",
+    "nome": "Area della Polizia municipale"
+   }
+  ],
+  "contatti": [
+   "comandopoliziamunicipale@cert.comune.palermo.it",
+   "comandopoliziamunicipale@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916954111"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/servizi-a-domanda-individuale/",
+  "id": "servizi-a-domanda-individuale",
+  "titolo": "Servizi a domanda individuale",
+  "categorie": [
+   "Salute, benessere e assistenza"
+  ],
+  "sommario": "Questa sezione costituisce il punto di accesso unico ai servizi a domanda individuale erogati dal Comune. I servizi a domanda individuale raggruppano quelle attività gestite dal comune che vengono utilizzate a richiesta dell'utente.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "I servizi a domanda individuale sono quelli erogati ai cittadini previo pagamento di un corrispettivo.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire dei servizi anagrafici occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Il costo varia in base al servizio richiesto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Con servizi pubblici a domanda individuale si intendono tutte quelle attività gestite direttamente dal Comune di cui non vi è un obbligo istituzionale, che vengono utilizzate a richiesta dell'utente e che non sono state dichiarate gratuite per legge nazionale o regionale.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-autonomo-gestione-verde-urbano-agricoltura-urbana-e-rapporti-con-reset-2",
+    "nome": "Ufficio autonomo gestione verde urbano, agricoltura urbana e rapporti con RESET"
+   }
+  ],
+  "contatti": [
+   "settoreverdeterritorio@cert.comune.palermo.it",
+   "verdeurbano@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917409323",
+   "0917409325"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/servizi-di-cittadinanza-sociale/",
+  "id": "servizi-di-cittadinanza-sociale",
+  "titolo": "Servizi di cittadinanza sociale",
+  "categorie": [
+   "Salute, benessere e assistenza"
+  ],
+  "sommario": "I Servizi di Cittadinanza Sociale promuovono inclusione e sostegno per cittadini in difficoltà, offrendo assistenza e contributi mirati.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "I Servizi di Cittadinanza Sociale offrono supporto a cittadini in situazioni di disagio o vulnerabilità, garantendo accesso a risorse e opportunità per migliorare la qualità della vita. Si occupano di assistenza economica, integrazione sociale, sostegno a famiglie, anziani, persone con disabilità e a chi vive in condizioni di fragilità, promuovendo l'inclusione e il benessere della comunità.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire dei servizi anagrafici occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "I contribuenti in possesso dei requisiti previsti possono richiedere il contributo mediante la presentazione di una specifica istanza.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-autonomo-gestione-verde-urbano-agricoltura-urbana-e-rapporti-con-reset-2",
+    "nome": "Ufficio autonomo gestione verde urbano, agricoltura urbana e rapporti con RESET"
+   }
+  ],
+  "contatti": [
+   "settoreverdeterritorio@cert.comune.palermo.it",
+   "verdeurbano@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917409323",
+   "0917409325"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/tributi-locali/",
+  "id": "tributi-locali",
+  "titolo": "Tributi Locali",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "In questa sezione trovi informazioni puntali sui tributi locali del Comune di Palermo. Accedendo al tributo puoi conoscere il come, quando e quanto pagare e tutti gli approfondimenti relativi.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "I tributi locali sono lo strumento di entrata che finanzia i servizi che vengono erogati dagli enti locali.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire del servizio occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Il costo varia in base al servizio scelto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "La legge di bilancio 2020 (articolo 1, commi da 738 a 783 della legge n. 160 del 2019) ha riformato l'assetto dell'imposizione reale immobiliare, unificando le due previgenti forme di prelievo – IMU e TASI – e facendo confluire la relativa normativa in un unico testo, relativo all'Imposta Municipale Propria (IMU).\nLa tassa sui rifiuti (TARI) è il tributo destinato a finanziare – mediante copertura integrale dei costi – il servizio di raccolta e smaltimento dei rifiuti ed è dovuta da chiunque possieda o detenga a qualsiasi titolo locali o aree scoperte suscettibili di produrre i rifiuti medesimi. In via transitoria, la superficie delle unità immobiliari assoggettabile alla TARI è costituita da quella calpestabile dei locali e delle aree suscettibili di produrre rifiuti urbani e assimilati.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-delle-entrate-e-dei-tributi-comunali",
+    "nome": "Area delle Entrate e dei Tributi Comunali"
+   }
+  ],
+  "contatti": [
+   "imupici@comune.palermo.it",
+   "settoretributi@cert.comune.palermo.it",
+   "settoretributi@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917404501"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/stato-civile/",
+  "id": "stato-civile",
+  "titolo": "Stato Civile",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "In questa sezione trovi informazioni puntuali sui servizi di Stato Civile del Comune di Palermo. Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "Il servizio di Stato Civile si occupa della registrazione, conservazione e aggiornamento degli atti relativi a nascita, matrimonio, unioni civili, cittadinanza e decesso. Fornisce certificati, autorizzazioni e supporto per pratiche amministrative, garantendo precisione e trasparenza nei dati ufficiali.",
+   "come_fare": "E' necessario accedere e selezionare il servizio specifico",
+   "cosa_serve": "Per usufruire dei servizi occorre:\n- essere in possesso dei documenti richiesti dal servizio specifico",
+   "cosa_si_ottiene": "Al termine, si ottiene il documento richiesto",
+   "tempi": "I tempi e le scadenze variano in base al servizio scelto. Ad ogni modo, la richiesta sarà evasa in un tempo massimo di 15 giorni.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accedendo al servizio puoi conoscere le informazioni e tutti gli approfondimenti relativi.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Si occupa di registrare tutti gli eventi che costituiscono, modificano o estinguono situazioni personali, mediante appositi atti di stato civile.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/sportello-unico-per-edilizia/",
+  "id": "sportello-unico-per-edilizia",
+  "titolo": "Sportello Unico per Edilizia",
+  "categorie": [
+   "Catasto e urbanistica"
+  ],
+  "sommario": "Unico punto di accesso dei professionisti e dei cittadini per inviare pratiche riguardanti titoli abilitativi e interventi edilizi",
+  "sezioni": {
+   "a_chi": "I soggetti che hanno facoltà di presentare le pratiche edilizie sono:\n- Imprese: imprese individuali o collettive iscritte alla Camera di Commercio, nella persona del legale rappresentante\n- Privati: l'inoltro di pratiche relative ad interventi per i quali la normativa non richiede il coinvolgimento di un tecnico abilitato, può essere eseguito direttamente dall'avente titolo, munito di SPID o CIE, firma digitale e casella di posta elettronica certificata PEC",
+   "descrizione": "Lo Sportello unico per l'edilizia cura tutti i rapporti fra il privato, l'amministrazione e, ove occorra, le altre amministrazioni tenute a pronunciarsi in ordine all'intervento edilizio oggetto della richiesta di permesso o di segnalazione certificata di inizio attività; costituisce l'unico punto di accesso per il privato interessato in relazione a tutte le vicende amministrative riguardanti il titolo abilitativo e l'intervento edilizio oggetto dello stesso, che fornisce una risposta tempestiva in luogo di tutte le pubbliche amministrazioni, comunque coinvolte. Acquisisce altresì presso le amministrazioni competenti, anche mediante conferenza di servizi, gli atti di assenso, comunque denominati, delle amministrazioni preposte alla tutela ambientale, paesaggistico-territoriale, del patrimonio storico-artistico, dell'assetto idrogeologico o alla tutela della salute e della pubblica incolumità.",
+   "come_fare": "E' necessario accedere tramite la propria identità digitale per poter consultare le guide dei procedimenti e accedere al servizio di presentazione telematica di una nuova pratica edilizia.",
+   "cosa_serve": "Per accedere al servizio è necessario\n- SPID o CIE\n- La firma digitale e la posta elettronica certificata (PEC)",
+   "cosa_si_ottiene": "Si rilasciano autorizzazioni in base alla tipologia di istanza richiesta",
+   "tempi": "I tempi variano a seconda del procedimento scelto",
+   "costo": "I costi variano a seconda del procedimento scelto",
+   "presentare": "Unico punto di accesso dei professionisti e dei cittadini per inviare pratiche riguardanti titoli abilitativi e interventi edilizi\nAccedi al Servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-autonomo-sace",
+    "nome": "Ufficio autonomo SACE"
+   }
+  ],
+  "contatti": [
+   "ediliziaprivata@cert.comune.palermo.it",
+   "sace@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401248",
+   "0917401316",
+   "0917401491"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-permesso-di-accesso-ad-area-ztl-31/",
+  "id": "richiedere-permesso-di-accesso-ad-area-ztl-31",
+  "titolo": "Richiedere permesso di accesso ad area ZTL",
+  "categorie": [
+   "Autorizzazioni",
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio è deputato al rilascio di autorizzazioni giornaliere per l'accesso alle zone a traffico limitato",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti coloro che vogliono effettuare un acceso giornaliero in area ZTL nel rispetto del regolamento e delle normi vigenti.",
+   "descrizione": "Dopo avere effettuato l'accesso al servizio mediante SPID/CIE, l'utente dovrà inserire i dati necessari che caratterizzano la tipologia del veicolo col quale desidera transitare in ZTL.\nQuindi per proseguire occorrerà procedere con il pagamento del pass;\nA seguito di tale pagamento, l'utente riceverà il ticket digitale per effettuare il consumo attraverso i seguenti servizi:\n- attraverso il servizio Consumo pass giornaliero elettronico;\n- con l'app mobile PalerMobilità nella sezione ZTL troverà l'elenco dei \"Pass disponibili\" (scaricabile dagli store Google Pla y e App Store );\n- con il Portale Mobilità Servizi online nella sezione ZTL - Comunicazione utilizzo Pass giornaliero, accedendo potrà effettuare il consumo del pass.",
+   "come_fare": "Per ottenere il permesso giornaliero, è necessario inserire idati richiesti e effettuare il pagamento del costo di emissione.",
+   "cosa_serve": "Carta di credito o qualsiasi altra forma di pagamento online.\n- SPID o CIE\n- Carta di Credito o altra forma di pagamento online in tempo reale",
+   "cosa_si_ottiene": "Si ottiene un pass digitale da utilizzare nel giorno di ingresso in area ZTL.",
+   "tempi": "L'emissione del pass avviene dopo avere effettuato il pagamento online, ed è immediata.\nIl pass elettronico giornaliero non ha scadenze ma va consumato osservando le seguenti indicazioni:\n- per l'accesso all'AREA ZTL DIURNA il consumo del pass deve essere effettuato entro e non oltre le ore 24:00 dello stesso giorno in cui è stato effettuato l'accesso;\n- per quanto concerne invece l'accesso all'AREA ZTL NOTTURNA devono essere consumati entro le ore 6.00 del mattino successivo (per ogni ulteriore informazione potrà fare riferimento al \"Disciplinare\";\n- nel periodo dal 1 maggio al 31 ottobre la ZTL NOTTURNA è attiva il venerdì nelle fascia oraria dalle 20:00 alle 24:00, il sabato dalle ore 00:00 alle ore 06:00 e dalle ore 20:00 alle 24:00, la domenica dalle ore 00:00 alle ore 06:00;\n- nel periodo dal 1 novembre al 30 aprile la ZTL NOTTURNA è attiva il venerdì nelle fascia oraria dalle 23:00 alle 24:00, il sabato dalle ore 00:00 alle ore 06:00 e dalle ore 23:00 alle 24:00, la domenica dalle ore 00:00 alle ore 06:00;\n- non è possibile consumare un pass a posteriori rispetto alla data di accesso alla ZTL;",
+   "costo": "Il tariffario previsto da regolamento è il seguente:\n- con vetture a benzina (da Euro 3 a Euro 6) e a diesel (da Euro 4 a Euro 6) – 5 euro\n- con vetture ibride benzina/elettrico, benzina/metano e benzina/gpl – 2,50 euro",
+   "presentare": "Richiedere permesso di accesso ad area ZTL\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "L'ingresso in ZTL è gratuito per auto elettriche e per i cittadini con limitata o impedita capacità.\nPer informazioni aggiuntive puoi consultare il sito web https://ztl.comune.palermo.it/ztl/jsp/home.do?sportello=ztl",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-traffico-e-mobilit-urbana",
+    "nome": "Ufficio Traffico e Mobilità Urbana"
+   }
+  ],
+  "contatti": [
+   "mobilitaurbana@cert.comune.palermo.it",
+   "mobilitaurbana@comune.palermo.it",
+   "sportellopolifunzionaleottavacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleprimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequartacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequintacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesecondacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesestacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesettimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleterzacircoscrizione@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401362"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/consumo-pass-giornaliero-elettronico/",
+  "id": "consumo-pass-giornaliero-elettronico",
+  "titolo": "Consumo Pass Giornaliero elettronico",
+  "categorie": [
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio consente di effettuare la comunicazione del pass giornaliero elettronico necessario ai fini del transito in ZTL",
+  "sezioni": {
+   "a_chi": "A tutti coloro che avendo acquistato un pass giornaliero elettronico devono regolarizzare l'accesso",
+   "come_fare": "Dopo avere effettuato l'accesso al servizio mediante SPID/CIE, il servizio potrà essere utiizzato comunicando la Targa del veicolo",
+   "cosa_serve": "Per ususfruire del servizio è necessario:\n- SPID o CIE\n- Pass giornalero elettronico acquistato precedentemente",
+   "cosa_si_ottiene": "Si ottiene l'autorizzazione all'accesso in ZTL",
+   "tempi": "Il pass elettronico giornaliero non ha scadenze ma va consumato osservando le seguenti indicazioni:\n- per l'accesso all'Area ZTL diurna il consumo del pass deve essere effettuato entro e non oltre le ore 24:00 dello stesso giorno in cui è stato effettuato l'accesso;\n- per quanto concerne invece l'accesso all'Area ZTL notturna devono essere consumati entro le ore 6.00 del mattino successivo (per ogni ulteriore informazione potrà fare riferimento al \"Disciplinare\";\n- nel periodo dal 1 maggio al 31 ottobre la ZTL notturna è attiva il venerdì nelle fascia oraria dalle 20:00 alle 24:00, il sabato dalle ore 00:00 alle ore 06:00 e dalle ore 20:00 alle 24:00, la domenica dalle ore 00:00 alle ore 06:00;\n- nel periodo dal 1 novembre al 30 aprile la ZTL notturna è attiva il venerdì nelle fascia oraria dalle 23:00 alle 24:00, il sabato dalle ore 00:00 alle ore 06:00 e dalle ore 23:00 alle 24:00, la domenica dalle ore 00:00 alle ore 06:00;\n- non è possibile consumare un pass a posteriori rispetto alla data di accesso alla ZTL.",
+   "costo": "Il servizio di consumo non prevede costi",
+   "presentare": "Il servizio consente di effettuare la comunicazione del pass giornaliero elettronico necessario ai fini del transito in ZTL\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-traffico-e-mobilit-urbana",
+    "nome": "Ufficio Traffico e Mobilità Urbana"
+   }
+  ],
+  "contatti": [
+   "mobilitaurbana@cert.comune.palermo.it",
+   "mobilitaurbana@comune.palermo.it",
+   "sportellopolifunzionaleottavacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleprimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequartacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequintacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesecondacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesestacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesettimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleterzacircoscrizione@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401362"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/comunicazione-sostituzione-temporanea-targa/",
+  "id": "comunicazione-sostituzione-temporanea-targa",
+  "titolo": "Comunicazione sostituzione temporanea targa",
+  "categorie": [
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio consente di effettuare una comunicazione della sostituzione temporanea della targa",
+  "sezioni": {
+   "a_chi": "A tuti coloro che sono titolari di un pass ZTL (esclusi i pass giornalieri)",
+   "come_fare": "Dopo avere effettuato l'accesso al servizio mediante SPID/CIE, il servizio potrà essere utiizzato comunicando:\n- il pass oggetto della sostituzione e la motivazione\n- il periodo della sostituzione\n- la Targa in sostituzione a quella associata ad un pass esistente\n- le caratteristiche del veicolo che sostituisce (tipo,alimentazione,classe del veicolo)",
+   "cosa_serve": "Per usufruire del servizio è necessario:\n- SPID o CIE\n- Pass ZTL (esclusi quelli giornalieri)",
+   "cosa_si_ottiene": "Si ottiene l'autorizzazione all'accesso in ZTL con la nuova targa",
+   "tempi": "Il periodo di validità della sostituzione dipende dal periodo di validità indicato in fase di sostituzione della targa",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Il servizio consente di effettuare una comunicazione della sostituzione temporanea della targa\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-traffico-e-mobilit-urbana",
+    "nome": "Ufficio Traffico e Mobilità Urbana"
+   }
+  ],
+  "contatti": [
+   "mobilitaurbana@cert.comune.palermo.it",
+   "mobilitaurbana@comune.palermo.it",
+   "sportellopolifunzionaleottavacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleprimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequartacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequintacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesecondacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesestacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesettimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleterzacircoscrizione@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401362"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/comunicazione-sostituzione-temporanea-targa-per-titolari-di-contrassegno-h/",
+  "id": "comunicazione-sostituzione-temporanea-targa-per-titolari-di-contrassegno-h",
+  "titolo": "Comunicazione sostituzione temporanea targa per titolari di contrassegno H",
+  "categorie": [
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio consente di effettuare una comunicazione della sostituzione temporanea della targa per titolari di contrassegno \"H\"",
+  "sezioni": {
+   "a_chi": "A tutti coloro che sono possessori di un pass ZTL per titolari di contrassegno \"H\"",
+   "come_fare": "Dopo avere effettuato l'accesso al servizio mediante SPID/CIE, il servizio potrà essere utiizzato comunicando:\n- il pass oggetto della sostituzione e la motivazione\n- la data a partire dalla quale inizia la sostituzione\n- la Targa in sostituzione a quella associata ad un pass esistente\n- il tipo veicolo",
+   "cosa_serve": "Per usufruire del servizio è necessario:\n- SPID o CIE\n- Pass ZTL per titolari di contrassegno \"H\"",
+   "cosa_si_ottiene": "Si ottiene l'autorizzazione all'accesso in ZTL con la nuova targa",
+   "tempi": "Il periodo di validità della sostituzione dipende dal periodo di validità indicato in fase di sostituzione della targa",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Il servizio consente di effettuare una comunicazione della sostituzione temporanea della targa per titolari di contrassegno \"H\"\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-traffico-e-mobilit-urbana",
+    "nome": "Ufficio Traffico e Mobilità Urbana"
+   }
+  ],
+  "contatti": [
+   "mobilitaurbana@cert.comune.palermo.it",
+   "mobilitaurbana@comune.palermo.it",
+   "sportellopolifunzionaleottavacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleprimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequartacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalequintacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesecondacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesestacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionalesettimacircoscrizione@comune.palermo.it",
+   "sportellopolifunzionaleterzacircoscrizione@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401362"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/agevolazione-riduzione-esenzione-tari/",
+  "id": "agevolazione-riduzione-esenzione-tari",
+  "titolo": "Richiedere agevolazione TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Il servizio consente di beneficiare di una Agevolazione/Riduzione/Esenzione/Esclusione TARI",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "descrizione": "In base a determinati requisiti, consultabili sul regolamento Comunale, è possibile godere di Agevolazione, Esenzione, Riduzione, Esclusione",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "E' necessario consultare il Regolamento Comunale.\nIn base alla richiesta occorre:\n- SPID o CIE\n- documentazione idonea",
+   "cosa_si_ottiene": "Si ottiene l'Agevolazione, l'Esenzione, la Riduzione, l'Esclusione della TARI",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi.",
+   "presentare": "E' possibile presentare istanza di agevolazione tramite il cassetto tributi accedendo con la propria identità digitale, tramite il servizio di front-office o inoltrando l'apposito modulo, reperibile sul sito istituzionale, tramite PEC.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-tarsutarestari",
+    "nome": "Ufficio TARSU/TARES/TARI"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/variazione-tari/",
+  "id": "variazione-tari",
+  "titolo": "Richiedere variazione TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Comunica variazioni relative alla TARI, come cambi di residenza o modifica della superficie dell'immobile.",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "descrizione": "La variazione decorre dal primo giorno del bimestre solare successivo a quello in cui si verifica la relativa circostanza.\nE' possibile richiedere la Variazione nei seguenti casi:\n- Superficie\n- Destinazione d'uso\n- Componenti nucleo familiare",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "Per accedere al servizio serve:\n- SPID o CIE\n- Visura catastale aggiornata o una relazione tecnica",
+   "cosa_si_ottiene": "Al termine, si ottiene la Variazione TARI",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Comunica variazioni relative alla TARI, come cambi di residenza o modifica della superficie dell'immobile.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-tarsu-tares-tari",
+    "nome": "U.O. Tarsu - Tares - Tari"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "settoretributi@cert.comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-iscrizione-tari/",
+  "id": "richiedere-iscrizione-tari",
+  "titolo": "Richiedere iscrizione TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Richiedi l'iscrizione alla TARI per l'attivazione della tassa sui rifiuti, necessaria per il corretto smaltimento e gestione dei rifiuti urbani.",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "descrizione": "La TARI è la tassa rifiuti per i servizi di raccolta, trasporto e smaltimento o recupero dei rifiuti urbani. Istituita dall'art. 1, comma 639, della Legge 27 dicembre 2013, n. 147, la TARI è destinata a finanziare i costi del servizio di raccolta e smaltimento dei rifiuti, a carico dell'utilizzatore. Dunque, è necessario dichiarare l'immobile in possesso ai fini Tari",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "Per accedere al servizio serve:\n- Contratto di locazione o atto di acquisto\n- Possesso o detenzione dell'immobile\n- SPID o CIE",
+   "cosa_si_ottiene": "Iscrizione a ruolo dell'immobile richiesto",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Richiedi l'iscrizione alla TARI per l'attivazione della tassa sui rifiuti, necessaria per il corretto smaltimento e gestione dei rifiuti urbani.\nAccedi al Servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-tarsu-tares-tari",
+    "nome": "U.O. Tarsu - Tares - Tari"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "settoretributi@cert.comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-cessazione-tari/",
+  "id": "richiedere-cessazione-tari",
+  "titolo": "Richiedere cessazione TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Richiedi la cessazione della tassa sui rifiuti in caso di trasferimento o dismissione dell'immobile.",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "descrizione": "A seguito di richiesta da parte del contribuente è possibile cessare il tributo",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "Per accedere al servizio serve:\n- Contratto locazione o atto di vendita\n- Data decorrenza variazione\n- Ubicazione dell'unità immobiliare\n- Dati catastali\n- SPID o CIE",
+   "cosa_si_ottiene": "Cancellazione ai fini Tari",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi.",
+   "presentare": "Richiedi la cessazione della TARI in caso di trasferimento o chiusura dell'utenza per interrompere l'obbligo di pagamento.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-tarsu-tares-tari",
+    "nome": "U.O. Tarsu - Tares - Tari"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "settoretributi@cert.comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-rimborso-tari/",
+  "id": "richiedere-rimborso-tari",
+  "titolo": "Richiedere Rimborso o Riversamento TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Richiedi il Rimborso, il Riversamento o la Compensazione della TARI in caso di pagamenti non dovuti o errori nell'applicazione della tassa.",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "descrizione": "Richiedi il Rimborso, il Riversamento o la Compensazione TARI per correggere importi errati o per versamenti duplicati.",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "Per accedere al servizio serve:\n- SPID o CIE\n- Copia ricevute di pagamento",
+   "cosa_si_ottiene": "Il Rimborso, il Riversamento, la Compensazione TARI",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Richiedi rimborso, riversamento o compensazione TARI per correggere importi errati o per versamenti duplicati.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-tarsutarestari",
+    "nome": "Ufficio TARSU/TARES/TARI"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-annullamento-o-rettifica-avviso-di-accertamento-tari/",
+  "id": "richiedere-annullamento-o-rettifica-avviso-di-accertamento-tari",
+  "titolo": "Richiedere annullamento o rettifica avviso di accertamento TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Richiedi l'annullamento o la rettifica dell'avviso di accertamento TARI in caso di errori nei calcoli o nelle informazioni riportate.",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "Per accedere al servizio serve:\n- SPID o CIE\n- Copia avviso accertamento",
+   "cosa_si_ottiene": "L'Annullamento, la Rettifica o la Riforma dell'avviso di accertamento",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi.",
+   "presentare": "Richiedi l'annullamento o la rettifica dell'avviso di accertamento TARI in caso di errori nei calcoli o nelle informazioni riportate.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-tarsutarestari",
+    "nome": "Ufficio TARSU/TARES/TARI"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedi-rateizzazione-avviso-di-accertamento-tari/",
+  "id": "richiedi-rateizzazione-avviso-di-accertamento-tari",
+  "titolo": "Rateizzazione avviso di accertamento TARI",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Richiedi la rateizzazione dell'avviso di accertamento TARI per suddividere l'importo dovuto in più pagamenti.",
+  "sezioni": {
+   "a_chi": "A chiunque possieda, occupi o detenga, a qualsiasi titolo, locali o aree scoperte a qualsiasi uso adibite, suscettibili di produrre rifiuti solidi urbani, che insistono interamente o prevalentemente sul territorio comunale.",
+   "descrizione": "La Rateizzazione è relativa ad avvisi di accertamento con importo superiore a 300 euro",
+   "come_fare": "E' possibile presentare la dichiarazione TARI accedendo al servizio.\nAl termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.",
+   "cosa_serve": "Per accedere al servizio serve:\n- SPID o CIE\n- Avviso di accertamento notificato con importo superiore a 300 euro",
+   "cosa_si_ottiene": "La Rateizzazione dell'avviso di accertamento",
+   "tempi": "90 giorni",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Richiedi la rateizzazione dell'avviso di accertamento TARI per suddividere l'importo dovuto in più pagamenti.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-tarsutarestari",
+    "nome": "Ufficio TARSU/TARES/TARI"
+   }
+  ],
+  "contatti": [
+   "infotari@comune.palermo.it",
+   "tarsutarestari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916168139"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/visualizzazione-immagini-violazioni-autovelox-street-control-e-ztl/",
+  "id": "visualizzazione-immagini-violazioni-autovelox-street-control-e-ztl",
+  "titolo": "Visualizzazione Immagini violazioni Autovelox Street Control e ZTL",
+  "categorie": [
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Permette di prendere visione delle foto acquisite con i dispositivi elettronici di tipo \"Autovelox\", \"Street-Control\" e \"Telecamere ZTL\"",
+  "sezioni": {
+   "a_chi": "A tutti gli utenti che ricevono la notifica dei verbale per le seguenti tipologie di violazioni:\n- Autovelox\n- Street Control\n- ZTL",
+   "come_fare": "Inserendo i dati richiesti dal servizio presenti nella notifica del verbale di contestazione",
+   "cosa_serve": "Per usufruire del servizio è necessario:\n- essere in possesso del verbale di contestazione notificato della violazione",
+   "cosa_si_ottiene": "La visualizzazione delle immagini a corredo della violazione",
+   "tempi": "Immediata",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Nessuna autenticazione è necessaria per accedere al servizio\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-front-office-e-conservazione-oggetti-rinvenuti",
+    "nome": "U.O. Front Office e Conservazione Oggetti Rinvenuti"
+   }
+  ],
+  "contatti": [
+   "affarigeneralipm@cert.comune.palermo.it",
+   "urppoliziamunicipale@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916954336"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/comunicazione-dati-conducente/",
+  "id": "comunicazione-dati-conducente",
+  "titolo": "Comunicazione dati Conducente",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Permette di comunicare i dati relativi all'effettivo Responsabile della Violazione nei casi in cui l'infrazione lo prevede",
+  "sezioni": {
+   "a_chi": "Agli utenti a cui è notificata una violazione al C.d.S. con Decurtazione Punti",
+   "come_fare": "Inserendo i dati richiesti dal servizio presenti nella notifica del verbale di contestazione",
+   "cosa_serve": "Per usufruire del servizio è necessario:\n- essere in possesso del verbale di contestazione notificato della violazione",
+   "cosa_si_ottiene": "Si comunicano i dati dell'effettivo trasgressore che ha commesso la violazione per la decurtazione dei punti previsti dal C.d.S., evitando la sanzione per omessa comunicazione ai sensi dell'Art. 126 bis C.d.S.",
+   "tempi": "Immediata",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Nessuna autenticazione è necessaria per accedere al servizio\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-decurtazione-punti",
+    "nome": "U.O. Decurtazione Punti"
+   }
+  ],
+  "contatti": [
+   "affarigeneralipm@cert.comune.palermo.it",
+   "decurpunti@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916954511",
+   "0916954518"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-rimborso-o-riversamento-imu/",
+  "id": "richiedere-rimborso-o-riversamento-imu",
+  "titolo": "Richiedere Rimborso o Riversamento IMU",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Rimborso o riversamento dell'Imposta IMU pagata e non dovuta",
+  "sezioni": {
+   "a_chi": "Persone Fisiche e Persone Giuridiche",
+   "come_fare": "Inserendo i dati richiesti dal servizio in tutte le sezioni previste, al termine si potrà esaminare un'anteprima del'istanza per poi procedere con l'invio",
+   "cosa_serve": "Per usufruire del servizio sono necessari:\n- gli allegati previsti dal regolamento e dalle norme vigenti",
+   "cosa_si_ottiene": "Il rimborso IMU o il riversamento al comune competente nel caso di errata indicazione del codice comune in sede di versamento dell'imposta",
+   "tempi": "Il termine previsto è di 180 gironi, salvo interruzioni per richiesta integrazione documentale, e il pagamento è vincolato alle risorse finanziarie disponibili",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Si accede tramite autenticazione con SPID o CIE\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile effettuare la richiesta attraverso una PEC all'indirizzo: imupicitasi@cert.comune.palermo.it o recandosi presso l'Ufficio previo appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-iciimutasi",
+    "nome": "U.O. ICI/IMU/TASI"
+   }
+  ],
+  "contatti": [
+   "icimuptasi@cert.comune.palermo.it",
+   "imupici@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917404512",
+   "0917404538",
+   "0917404591"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/rettifiche-dati-da-portale-anpr/",
+  "id": "rettifiche-dati-da-portale-anpr",
+  "titolo": "Rettifiche dati da portale ANPR",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Il servizio consente di rettificare i propri dati anagrafici inesatti",
+  "sezioni": {
+   "a_chi": "A tutti i cittadini",
+   "descrizione": "Il servizio consente di accedere al portale Anpr per effettuare:\n- Aggiornamenti dati anagrafici provenienti dallo Stato Civile (nascite, matrimoni, divorzi, decessi, cittadinanze, adozioni)\n- Rettifiche dati personali e rettifiche dati anagrafici",
+   "come_fare": "E' attivo il servizio \"Rettifica dati\", disponibile nel nuovo Portale ANPR (Anagrafe nazionale popolazione residente), con il quale i cittadini registrati in ANPR possono chiedere \"on line\" al Comune di iscrizione anagrafica la rettifica dei propri dati personali \"inesatti\", allegando eventuale documentazione a supporto della richiesta (dell'art.16 del Reg. UE 679/2016).\nGrazie al servizio il cittadino può segnalare la presenza nella banca dati comunale di errori anagrafici (materiali) o discordanza rispetto ai dati dei documenti in suo possesso, senza doversi recare presso l'Anagrafe.\nL'operazione riguarda esclusivamente i dati personali del richiedente; non è possibile richiederlo per familiari o altri componenti il nucleo familiare.\nPer accedere bisogna autenticarsi con SPID (sistema pubblico di identità digitale), CNS (carta nazionale dei servizi- tessera sanitaria) oppure CIE (carta d'identità elettronica) all'apposito link\nSe non si possiede SPID, CNS o CIE il cittadino italiano può chiedere informazioni telefoniche al numero 091 7405216, oppure, inviando istanza per PEC a anagrafe@cert.comune.palermo.it con allegata idonea documentazione, può presentare in qualsiasi momento richiesta di:\n- variazione della professione e del titolo di studio;\n- correzione o rettifica dei dati anagrafici e di stato civile;\n- rettifica del codice fiscale.",
+   "cosa_serve": "Per usufruire del servizio occorre:\n- eventuale documentazione a supporto della richiesta",
+   "cosa_si_ottiene": "Aggiornamento e rettifica dati anagrafici",
+   "tempi": "Entro 30 gg dalla richiesta",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Si accede tramite autenticazione con SPID o CIE\nAccedi al Servizio ANPR\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-direzione-anagrafe",
+    "nome": "U.O. Direzione Anagrafe"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917405227"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/rinnovo-della-dichiarazione-di-dimora-abituale/",
+  "id": "rinnovo-della-dichiarazione-di-dimora-abituale",
+  "titolo": "Rinnovo della dichiarazione di dimora abituale",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Il servizio consente ai cittadini extra UE residenti nel Comune di rinnovare la propria dimora abituale",
+  "sezioni": {
+   "a_chi": "A tutti i cittadini extra UE residenti",
+   "descrizione": "I cittadini extra UE iscritti nell'anagrafe della popolazione residente hanno l'obbligo di rinnovare la dichiarazione di dimora abituale nel Comune entro 60 giorni dal rinnovo del permesso di soggiorno.\nLa dichiarazione potrà essere effettuata dal titolare del permesso anche per i figli minorenni.",
+   "come_fare": "Inserendo i dati richiesti dal servizio in tutte le sezioni previste, al termine si potrà esaminare un'anteprima del'istanza per poi procedere con l'invio.",
+   "cosa_serve": "Per usufruire del servizio occorre:\n- Permesso o carta di soggiorno\n- eventuale documentazione a supporto della richiesta",
+   "cosa_si_ottiene": "Aggiornamento anagrafico del permesso di soggiorno e rinnovo dimora abituale",
+   "tempi": "Ai sensi della Legge 94/2009, trascorsi 6 mesi dalla scadenza del permesso di soggiorno, gli uffici competenti provvederanno alla cancellazione anagrafica per Permesso di Soggiorno scaduto.",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Si accede tramite autenticazione con SPID o CIE\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "La dichiarazione può essere effettuata anche allo sportello anagrafico, consegnando l'apposito modulo compilato e la copia del permesso/carta di soggiorno.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-stranieri-e-rettifiche-anagrafiche",
+    "nome": "U.O. Stranieri e rettifiche anagrafiche"
+   }
+  ],
+  "contatti": [
+   "stranieri@cert.comune.palermo.it",
+   "ufficiostranieri@comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7405279"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-agevolazioni-scolastiche-4/",
+  "id": "richiedere-agevolazioni-scolastiche-4",
+  "titolo": "Richiedere agevolazioni scolastiche",
+  "categorie": [
+   "Educazione e formazione",
+   "Salute, benessere e assistenza"
+  ],
+  "sommario": "Il servizio, che sarà attivo a seguito della pubblicazione del bando della Regione Siciliana, consente di ottenere un contributo per le spese sostenute per l'acquisto dei libri di testo.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto agli studenti delle scuole statali e paritarie di primo e secondo grado, residenti nel Comune di Palermo, che versano in condizioni di maggiore svantaggio economico, il cui Indicatore della situazione economica equivalente (ISEE) in corso di validità sia pari o inferiore ad € 15.000,00",
+   "descrizione": "Con riferimento alla L. 448/98 - Contributi per la fornitura gratuita libri di testo, il contributo permette alle famiglie economicamente più svantaggiate di assicurare tale diritto allo studio ai propri figli a sostegno della spesa per l'istruzione.\nLe procedure per l'erogazione dei contributi relativi alla Fornitura di libri di testo sono stabilite dalla Regione Siciliana – Dipartimento dell'Istruzione e della Formazione Professionale che provvede ad emanare una circolare contenente i requisiti per l'anno scolastico in corso.",
+   "come_fare": "La presentazione dell'istanza, per accedere al beneficio, può avvenire:\n- tramite la compilazione on line selezionando il pulsante \"Accedi al Servizio\", l'accesso è consentito tramite la propria identità digitale (Spid, Cie o Cns);\n- tramite la consegna dell'istanza presso le segreterie delle Istituzioni scolastiche;",
+   "cosa_serve": "In caso di presentazione presso le Istituzioni scolastiche, la richiesta al contributo dovrà essere compilata in ogni sua parte ed essere corredata dai seguenti documenti:\n- fotocopia del documento di riconoscimento del soggetto richiedente il beneficio (padre, madre o tutore) in corso di validità.\n-codice Fiscale del soggetto richiedente\n- fotocopia dell'attestazione della Situazione Economica Equivalente (l.S.E.E.) in corso di validità.\nIn caso di presentazione on line l'accesso è consentito tramite la propria identità digitale (Spid, Cie o Cns) ed essere in possesso dell'ISEE in corso di validità pari o inferiore ad € 15.000,00.\nPer usufruire del servizio online è necessario compilare l'istanza, allegando:\n- Modello ISEE in corso di validità\n- documentazione a supporto delle eventuali dichiarazioni fornite (ad es. L. 104)",
+   "cosa_si_ottiene": "Rimborso delle spese sostenute per l'acquisto dei libri di testo con erogazione a favore dei beneficiari con accredito diretto su iban intestato al richiedente.",
+   "tempi": "Le procedure per l'erogazione dei contributi relativi alla Fornitura di libri di testo sono stabilite dalla Regione Siciliana – Dipartimento dell'Istruzione e della Formazione Professionale che provvede ad emanare una circolare contenente i tempi e scadenze per l'anno scolastico in corso\n30\ngiorni\nTempi per la lavorazione della pratica\nTempi massimi per la lavorazione della pratica",
+   "costo": "Il servizio è gratuito",
+   "presentare": "Si accede tramite SPID o carta di identità digitale\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Per accedere al contributo bisogna:\n- produrre l'ISEE in corso di validità senza alcuna annotazione (omissione/difformità) pena esclusione;\n- compilare la domanda in ogni sua parte e qualsiasi irregolarità e/o incompletezza comporterà l'esclusione dal beneficio;\n- presentare l'istanza entro i termini stabiliti dalla Regione Siciliana – Dipartimento dell'Istruzione e della Formazione Professionale\n- essere in possesso della documentazione, in originale, attestante le spese sostenute che dovranno essere esibite su richiesta dell'Amministrazione pena esclusione\nIl servizio sarà attivo a seguito della pubblicazione del bando della Regione Siciliana.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-contributi-per-diritto-allo-studio",
+    "nome": "U.O. Contributi per diritto allo studio"
+   }
+  ],
+  "contatti": [
+   "contributidirittoallostudio@comune.palermo.it;",
+   "serviziscuole@cert.comune.palermo.it",
+   "serviziscuole@comune.palermo.it;\t\t\t\t\t\t\t\t\t\t\t"
+  ],
+  "telefoni": [
+   "091/7404398",
+   "0917404312"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-permesso-per-passo-carrabile-2/",
+  "id": "richiedere-permesso-per-passo-carrabile-2",
+  "titolo": "Richiedere permesso per nuovo passo o accesso carrabile",
+  "categorie": [
+   "Autorizzazioni",
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio consente l'autorizzazione da parte del Comune all'apertura di un nuovo passo/accesso carrabile per facilitare l'accesso dei veicoli alla proprietà privata",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i titolari di aree all'interno del territorio del Comune di Palermo che intendono richiedere l'autorizzazione per un nuovo Passo e/o Accesso Carrabile",
+   "descrizione": "Il Passo/Accesso Carrabile è uno sbocco di un'area privata a un'area pubblica, il primo con marciapiede da sagomare, il secondo senza marciapiede da sagomare, e deve consentire il transito di veicoli e necessita il rilascio dell'autorizzazione da parte dell'Ente proprietario della strada",
+   "come_fare": "Pe richiedere il permesso per un nuovo Passo e/o Accesso Carrabile è necessario accedere al servizio con la propria identità digitale (SPID o CIE) e compilare la domanda.\nSuccessivamente all'accoglimento della richiesta di Permesso per Passo Carrabile, nel caso in cui siano previsti lavori di sagomatura (da realizzare a proprie spese), sarà necessario presentare anche una richiesta di Occupazione Temporanea Suolo Pubblico per l'Area di Cantiere secondo le modalità che l'ufficio fornirà.\nLe restanti richieste (Voltura, Regolarizzazione e mantenimento, Disdetta e chiusura amministrativa, Rinnovo e sostituzione cartello) dovranno essere presentate in formato cartaceo tramite PEC all'indirizzo di posta certificata \" mobilitaurbana@cert.comune.palermo.it \" e si potrà utilizzare la modulistica presente all'interno del sito istituzionale del comune di Palermo sotto la voce \"Modulistica\".",
+   "cosa_serve": "Per effettuare il pagamento dei diritti istruttoria e sopralluogo, durante la compilazione della domanda, sarà necessario disporre di:\n- Carta di Credito, Conto Corrente o Carta Prepagata.\n- Un indirizzo email per ricevere la ricevuta di pagamento.\nPer compilare la richiesta è necessaria la seguente documentazione:\n- estremi del codice identificativo della marca da bollo (€16,00) e scansione della stessa, annullata mediante la data, ovvero altre modalità di assolvimento, anche virtuale, dell'imposta di bollo;\n- il modello di pagamento PagoPa dei diritti istruttoria e sopralluogo nella misura di €90,00 (Del. C.C. n. 648 del 31/12/2022), verrà emesso in fase di compilazione della richiesta. Solo a seguito del pagamento sarà possibile completare la trasmissione della richiesta;\n- copia autenticata del titolo di proprietà o di legittimazione e relativa nota di trascrizione del richiedente. In alternativa fotocopia integrale del titolo di proprietà autocertificata accompagnata da fotocopia documento di riconoscimento;\n- copia del documento di identità del/i titolare/i del tecnico e \"soggetti coinvolti\";\n- n. 1 copia relazione asseverata a firma di un professionista abilitato e regolarmente iscritto all'albo attestante le circostanze ricorrenti;\n- elaborato planimetrico PDF (formato minimo A/4) scala 1:2000 della zona oggetto dell'intervento (estratto del foglio di mappa, stralcio prg., corografia) per la realizzazione dell'accesso in cui sia accertabile la conformazione stradale della zona e sia chiaramente individuabile il luogo ove verrà realizzato l'accesso/passo carrabile;\n- elaborato planimetrico PDF (formato minimo A/4) scala 1:200 dello \"stato di fatto\" e sezione in cui siano evidenziate dimensioni delle strade interessate e relative pertinenze e segnaletiche, ivi comprese i marciapiedi, le fermate bus, parcheggi, gli alberi, i pali segnaletici e illuminazione, gli ostacoli vari, etc.;\n- elaborato planimetrico PDF (formato minimo A/4) scala 1:200 dello stato di progetto e sezione in cui siano evidenziati dimensioni del passo carrabile da realizzare, con le relative quote (larghezza su strada, larghezza del varco, larghezza del marciapiede) e le relative distanze dalle intersezioni stradali più vicine al lato del varco;\n- documentazione fotografica del sito interessato, corredata da planimetria con indicati i punti di ripresa;\n- DURC dell'impresa esecutrice dei lavori, in corso di validità (solo se sono previsti lavori per sagomatura del marciapiede);\n- visura camerale alla CCIAA dell'impresa esecutrice dei lavori atto ad identificare il legale rappresentante (solo se sono previsti lavori per sagomatura del marciapiede);\n- attribuzione numero civico da parte dell'ufficio toponomastica relativo al varco oggetto di richiesta (solo se il varco è di nuova realizzazione).\n- Potrebbe essere richiesta eventuale ulteriore documentazione necessaria per l'istruttoria della pratica.",
+   "cosa_si_ottiene": "Il servizio consente di ottenere l'autorizzazione da parte del Comune di Palermo per l'apertura di un passo carrabile per consentire il transito di veicoli fra una sede stradale pubblica e uno spazio privato idoneo al transito e allo stazionamento dei veicoli.",
+   "tempi": "L'ufficio provvederà al rilascio dell'autorizzazione entro 90 giorni\n90\ngiorni\nEvasione richiesta\nTempi massimi per il rilascio dell'autorizzazione",
+   "costo": "La richiesta del Permesso per Passo Carrabile prevede i seguenti costi:\n- n. 1 marca da bollo di 16 euro da allegare in fase di presentazione della richiesta;\n- versamento di 90 euro (diritti istruttoria), da effettuare tramite il sistema PagoPA, durante la fase di compilazione della domanda.\nPer il ritiro dell'autorizzazione, presso gli uffici dell'amministrazione, verranno richiesti, successivamente, i seguenti pagamenti:\n- n. 1 marca da bollo di 16 euro;\n- Costo del cartello Passo Carrabile: 5,63 euro.",
+   "presentare": "Si accede al servizio tramite autenticazione con SPID o Carta Identità Elettronica sul sito istituzionale del Comune di Palermo.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-passi-carrabili-e-rilascio-pass",
+    "nome": "U.O. Passi Carrabili e Rilascio Pass"
+   }
+  ],
+  "contatti": [
+   "mobilitaurbana@cert.comune.palermo.it",
+   "mobilitaurbana@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401208",
+   "0917402694"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/vendita-alloggi-erp/",
+  "id": "vendita-alloggi-erp",
+  "titolo": "Vendita alloggi ERP",
+  "categorie": [
+   "Salute, benessere e assistenza"
+  ],
+  "sommario": "Istruttoria finalizzata alla alienazione degli alloggi di edilizia residenziale",
+  "sezioni": {
+   "a_chi": "Agli assegnatari alloggi ERP",
+   "descrizione": "Il servizio accoglie l'istanza e prosegue con l'istruttoria finalizzata alla alienazione degli alloggi di edilizia residenziale pubblica.il servizio viene effettuato in sinergia con altri rami dell'amministrazione quali il corpo di polizia municipale, il servizio sociale ed edilizia pubblica.",
+   "come_fare": "Attraverso la selezione del pulsante \"Accedi al Servizio\"",
+   "cosa_serve": "Elenco della documentazione necessaria:\n- Contratto di assegnazione/locazione\n- Documento di riconoscimento\n- Codice fiscale",
+   "cosa_si_ottiene": "Acquisto alloggio assegnato",
+   "tempi": "Entro il 31 gennaio di ogni anno l'ufficio predispone apposito avviso pubblico per l'acquisizione delle istanze dei cittadini che intendono acquistare l'alloggio di cui risultano assegnatari.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Istruttoria finalizzata alla alienazione degli alloggi di edilizia residenziale\nAccedi al Servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Avviso pubblico per la presentazione istanze per acquisto allogg ERP.\nSi comunica che i cittadini regolari assegnatari di alloggi ERP potranno presentare istanza di acquisto ai sensi della L.560/93.\nLa presentazione delle istanze potrà essere effettuata esclusivamente on line selezionando \"Accedi al Servizio\".\nPer la presentazione dell'istanza on line i cittadini potranno avvalersi dell'ausilio di persone fisiche, Associazioni, sindacati, patronati, etc., appositamente delegati.\nPer la presentazione delle istanze si accede al servizio che accetta soltanto le istanze di acquisto predisposte da soggetti assegnatari inseriti in un apposito data base.\nEventuali informazioni sul servizio potranno ottenersi attraverso il ricevimento pubblico, nei giorni di martedì dalle ore 9.00 alle ore 12.00 e il mercoledì dalle ore 15.00 alle ore 17.00, oppure inviando una mail all'indirizzo di posta elettronica areapatrimonio@comune.palermo.it.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-fitti-passivi-patrimonio",
+    "nome": "U.O. Fitti passivi - Patrimonio"
+   }
+  ],
+  "contatti": [
+   "areapatrimonio@comune.palermo.it",
+   "settoredellerisorseimmobiliari@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091-7406426",
+   "091-7406443",
+   "091-7406475"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/annullamento-o-riforma-cartella-avviso-emessa-dalla-agenzia-delle-entrate-riscossione-imu/",
+  "id": "annullamento-o-riforma-cartella-avviso-emessa-dalla-agenzia-delle-entrate-riscossione-imu",
+  "titolo": "Annullamento o riforma Cartella o Avviso emessa dalla Agenzia delle Entrate Riscossione IMU",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Richiesta di sgravio della cartella esattoriale per accertamento precedentemente notificato e non pagato.",
+  "sezioni": {
+   "a_chi": "Persone fisiche e Persone Giuridiche",
+   "descrizione": "Richiesta di sgravio della cartella esattoriale per accertamento precedentemente notificato e non pagato.",
+   "come_fare": "Accedere al Cassetto tributi, inviare una PEC, presentando un'istanza presso l'Ufficio IMU",
+   "cosa_serve": "Documenti a supporto della richiesta:\n- atto di compravendita di immobile\n- contratto di comodato\n- attestazione toponomastica dell'ubicazione dell'immobile",
+   "cosa_si_ottiene": "Sgravio totale o parziale della cartella esattoriale",
+   "tempi": "30 giorni",
+   "costo": "Il servizio non prevede costi",
+   "presentare": "Richiesta di sgravio della cartella esattoriale per accertamento precedentemente notificato e non pagato.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "E' possibile effettuare la richiesta attraverso una PEC all'indirizzo: imupicitasi@cert.comune.palermo.it o recandosi presso l'Ufficio previo appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-iciimutasi",
+    "nome": "U.O. ICI/IMU/TASI"
+   }
+  ],
+  "contatti": [
+   "icimuptasi@cert.comune.palermo.it",
+   "imupici@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917404512",
+   "0917404538",
+   "0917404591"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/completa-dichiarazione-di-dimora-abituale-compilata/",
+  "id": "completa-dichiarazione-di-dimora-abituale-compilata",
+  "titolo": "Completa dichiarazione di dimora abituale compilata",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Completamento della dichiarazione di dimora abituale già compilata",
+  "sezioni": {
+   "a_chi": "A tutti i cittadini extra UE residenti",
+   "descrizione": "Chi ha iniziato la compilazione della dichiarazione di dimora abituale può completarla",
+   "come_fare": "Selezionare la pratica di Rinnovo della dichiarazione di dimora abituale ed allegare la dichiarazione compilata e firmata in tutte le sue parti,",
+   "cosa_serve": "Allegare la seguente documentazione:\n- Scansione del modello di dichiarazione compilato e firmato in tutte le sue parti\n- Copia del documento d'identità valido per ciascun soggetto interessato con esclusione del dichiarante\n- Copia del permesso di soggiorno rinnovato (o carta di soggiorno)",
+   "cosa_si_ottiene": "Rinnovo dimora abituale ed aggiornamento permesso di soggiorno",
+   "tempi": "Il rinnovo della dichiarazione di dimora abituale è immediato",
+   "costo": "Non sono previsti pagamenti",
+   "presentare": "Completamento della dichiarazione di dimora abituale già compilata\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-stranieri-e-rettifiche-anagrafiche",
+    "nome": "U.O. Stranieri e rettifiche anagrafiche"
+   }
+  ],
+  "contatti": [
+   "stranieri@cert.comune.palermo.it",
+   "ufficiostranieri@comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7405279"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/iscrizione-albo-dei-presidenti-di-seggio/",
+  "id": "iscrizione-albo-dei-presidenti-di-seggio",
+  "titolo": "Iscrizione Albo dei Presidenti di Seggio",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Accedendo al servizio è possibile effettuare la richiesta di iscrizione all'Albo dei Presidenti di seggio.",
+  "sezioni": {
+   "a_chi": "I cittadini che desiderano far parte dell'albo dei presidenti di seggio che posseggono i requisiti richiesti.",
+   "descrizione": "Le domande si presentano entro il 31 ottobre di ciascun anno, online accedendo al servizio.\nPer le domande pervenute nei termini, l'ufficio elettorale, verifica il possesso dei requisiti e cura la trasmissione degli atti alla Corte d'Appello per l'eventuale nomina dall'anno successivo.\nChi è già iscritto non deve ripresentare la domanda.\nI requisiti per l'iscrizione sono i seguenti:\niscrizione nelle liste elettorali del Comune di Palermo;\npossesso del titolo di studio diploma di istruzione di secondo grado.\nSono esclusi dalle funzioni di Presidente di seggio elettorale:\n- coloro che, alla data delle consultazioni elettorali, abbiano superato il settantesimo anno di età;\n- i dipendenti del Ministero dell'Interno o dei Trasporti;\n- gli appartenenti alle Forze Armate in servizio;\n- i segretari comunali ed i dipendenti dei Comuni addetti o comandati a prestare servizio presso gli uffici elettorali Comunali;\n- i candidati alle elezioni oggetto della votazione.",
+   "come_fare": "Dopo aver effettuato l'accesso al servizio, compilare il modulo ed effettuare l'invio della richiesta.",
+   "cosa_serve": "Requisiti per l'iscrizione sono i seguenti:\n- SPID\n- CIE\n- iscrizione nelle liste elettorali del Comune di Palermo\n- possesso del titolo di studio diploma di istruzione di secondo grado",
+   "cosa_si_ottiene": "L'iscrizione all'Albo dei Presidenti di seggio elettorale",
+   "tempi": "L'iscrizione è possibile tra il 1 ottobre e 31 ottobre di ciscun anno.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accedendo al servizio è possibile effettuare la richiesta di iscrizione all'Albo dei Presidenti di seggio.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-elettorato-gestione-amministrativa-aggiornamento-albi-presidenti-e-scrutatori-liste-aggiunte-cecir",
+    "nome": "U.O. Elettorato - Gestione Amministrativa- Aggiornamento Albi Presidenti e Scrutatori - Liste Aggiunte - CECIR."
+   }
+  ],
+  "contatti": [
+   "elettorato@cert.comune.palermo.it",
+   "elettoratocecir@cert.comune.palermo.it",
+   "presidentiscrutatori@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917403707",
+   "0917403797"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/iscrizione-albo-scrutatori-di-seggio/",
+  "id": "iscrizione-albo-scrutatori-di-seggio",
+  "titolo": "Iscrizione Albo Scrutatori di Seggio",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Permette di fare richiesta di iscrizione all'albo degli scrutatori di seggio, valevole per elezioni politiche, europee e per le consultazioni referendarie a carattere nazionale.",
+  "sezioni": {
+   "a_chi": "Il servizio si rivolge ai cittadini che desiderano far parte dell'albo degli scrutatori di seggio.",
+   "descrizione": "L'iscrizione viene fatta a domanda dell'interessato e rimane valida finché non vengano meno i requisiti o non si chieda espressamente la cancellazione dall'Albo.\nLa Commissione elettorale comunale, per ciascuna consultazione elettorale, procede alla nomina degli scrutatori per ogni seggio, attingendo tra gli iscritti all'Albo.\nI requisiti per l'iscrizione sono i seguenti:\n- iscrizione nelle liste elettorali del Comune di Palermo;\n- assolvimento degli obblighi scolastici.\nSono esclusi dalle funzioni di Scrutatore di seggio elettorale:\n- i dipendenti del Ministero dell'Interno o dei trasporti;\n- gli appartenenti alle Forze armate in servizio;\n- i medici provinciali e gli ufficiali sanitari;\n- i segretari comunali ed i dipendenti dei comuni addetti o comandati a prestare servizio presso gli uffici elettorali comunali;\n- i candidati alle elezioni per le quali si svolge la votazione oggetto.",
+   "come_fare": "Dopo aver effettuato l'accesso al servizio, compilare il modulo ed effettuare l'invio della richiesta.",
+   "cosa_serve": "I requisiti per l'iscrizione sono i seguenti:\n- SPID\n- CIE\n- iscrizione nelle liste elettorali del Comune di Palermo\n- assolvimento degli obblighi scolastici",
+   "cosa_si_ottiene": "l'iscrizione all'albo degli scrutatori si seggio",
+   "tempi": "L'iscrizione è possibile tra il 1 novembre e il 30 novembre di ciascun anno.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Permette di fare richiesta di iscrizione all'albo degli scrutatori di seggio, valevole per elezioni politiche, europee e per le consultazioni referendarie a carattere nazionale.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-elettorato-gestione-amministrativa-aggiornamento-albi-presidenti-e-scrutatori-liste-aggiunte-cecir",
+    "nome": "U.O. Elettorato - Gestione Amministrativa- Aggiornamento Albi Presidenti e Scrutatori - Liste Aggiunte - CECIR."
+   }
+  ],
+  "contatti": [
+   "elettorato@cert.comune.palermo.it",
+   "elettoratocecir@cert.comune.palermo.it",
+   "presidentiscrutatori@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917403707",
+   "0917403797"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/cancellazione-iscrizione-degli-scrutatori-di-seggio/",
+  "id": "cancellazione-iscrizione-degli-scrutatori-di-seggio",
+  "titolo": "Cancellazione Iscrizione degli Scrutatori di Seggio",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Permette di effettuare la cancellazione della richiesta di iscrizione all'albo degli scrutatori di seggio.",
+  "sezioni": {
+   "a_chi": "Gli iscritti all'albo che intendono cancellarsi per motivi di lavoro, familiari, salute, studio o altro possono inoltrare richiesta all'Ufficio Elettorale del Comune di Palermo.",
+   "descrizione": "La richiesta può essere inoltrata online accedendo al servizio per i possessori di SPID o CIE o inviando una mail alla casella di posta elettronica dedicata.\nIl Servizio è attivo dal giorno 01 Novembre al giorno 31 Dicembre di ogni anno.",
+   "come_fare": "Effettuare l'accesso mediante SPID o CIE, compilare i dati del modulo ed inviare la richiesta.",
+   "cosa_serve": "Per utilizzare il servizio occorre:\n- SPID\n- CIE\n- Documentazione a supporto a secondo della tipologia di cancellazione.",
+   "cosa_si_ottiene": "La cancellazione definitiva dall'Albo",
+   "tempi": "Il Servizio è attivo dal giorno 01 Novembre al giorno 31 Dicembre di ogni anno.",
+   "costo": "Nessun costo previsto",
+   "presentare": "Permette di effettuare la cancellazione della richiesta di iscrizione all'albo degli scrutatori di seggio.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-elettorato-gestione-amministrativa-aggiornamento-albi-presidenti-e-scrutatori-liste-aggiunte-cecir",
+    "nome": "U.O. Elettorato - Gestione Amministrativa- Aggiornamento Albi Presidenti e Scrutatori - Liste Aggiunte - CECIR."
+   }
+  ],
+  "contatti": [
+   "elettorato@cert.comune.palermo.it",
+   "elettoratocecir@cert.comune.palermo.it",
+   "presidentiscrutatori@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917403707",
+   "0917403797"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/iscrizione-agli-albi-dei-giudici-di-corte-di-assise-e-di-corte-di-assise-di-appello/",
+  "id": "iscrizione-agli-albi-dei-giudici-di-corte-di-assise-e-di-corte-di-assise-di-appello",
+  "titolo": "Iscrizione agli albi dei Giudici di Corte di Assise e di Corte di Assise di Appello",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Accedendo al servizio è possibile effettuare la richiesta di iscrizione all'Albo dei Giudici Popolari.",
+  "sezioni": {
+   "a_chi": "Ai cittadini che desiderano far parte dell'albo di Giudice popolare che posseggono i requisiti richiesti.",
+   "descrizione": "L'albo dei giudici popolari di Corte di assise e di Corte di assise di appello contiene l'elenco delle persone idonee a svolgere la funzione di Giudice popolare. È costituito da due distinti elenchi formati da cittadini che possono essere chiamati ad affiancare i giudici togati nella composizione della Corte d'assise e della Corte d'assise di appello in occasione dei processi.\nLe operazioni di aggiornamento si svolgono ogni due anni dal mese di aprile al mese di luglio.\nI requisiti per l'iscrizione sono i seguenti:\n- cittadinanza italiana e godimento dei diritti civili e politici;\n- buona condotta morale (requisito non più certificabile, ma desumibile dal certificato del Casellario Giudiziale);\n- età non inferiore a 30 e non superiore a 65 anni;\n- possesso del titolo di studio di scuola media inferiore per le Corti d'assise e di scuola media superiore per le Corti d'assise di appello;\n- non trovarsi in alcuna delle condizioni previste dall'articolo 12 della Legge n. 287 del 10 aprile 1951: i magistrati e, in generale, i funzionari in attività di servizio appartenenti o addetti all'ordine giudiziario; gli appartenenti alle forze armate dello Stato ed a qualsiasi organo di polizia, anche, se non dipende dallo Stato in attività di servizio; ministri di qualsiasi culto e i religiosi di ogni ordine e congregazione",
+   "come_fare": "L'iscrizione avviene a domanda dell'interessato o d'ufficio, da parte del Sindaco, e rimane valida finché non vengono meno i requisiti.\nGli Organi giudiziari sorteggiano dall'Albo gli iscritti che dovranno formare le giurie popolari nei processi.\nLe domande si presentano, entro il 31 luglio degli anni dispari, secondo le seguenti modalità:\n- online accedendo al servizio;\n- e-mail all'indirizzo di posta elettronica: elettorato@cert.comune.palermo.it;\n- per posta, tramite raccomandata con avviso di ricevimento, entro il termine sopra indicato (farà fede il timbro postale dell'ufficio accettante);\n- consegna diretta presso l'ufficio elettorale di Piazza Giulio Cesare 52, piano IV.\nNel caso dell'accesso al servizio online, compilare il modulo ed effettuare l'invio della richiesta.",
+   "cosa_serve": "Per l'invio della richiesta necessita:\n- SPID\n- CIE\n- modulo di iscrizione\n- documento di identità(non richiesto se il modulo viene firmato digitalmente)",
+   "cosa_si_ottiene": "L'iscrizione all'Albo",
+   "tempi": "Le domande si presentano entro il 31 luglio degli anni dispari.",
+   "costo": "Nessun costo previsto.",
+   "presentare": "Accedendo al servizio è possibile effettuare la richiesta di iscrizione all'Albo dei Giudici Popolari.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-elettorato-territorio-e-tessere-elettorali-aggiornamento-albo-giudici-popolari",
+    "nome": "U.O. Elettorato - Territorio e Tessere Elettorali - Aggiornamento Albo Giudici Popolari"
+   }
+  ],
+  "contatti": [
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917403770",
+   "0917403804",
+   "0917403826",
+   "0917403832",
+   "0917403842"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/visura-albi/",
+  "id": "visura-albi",
+  "titolo": "Visura Albi",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Accedendo al servizio è possibile effettuare la visura, della propria posizione, agli albi degli scrutatori e dei giudici popolari",
+  "sezioni": {
+   "a_chi": "Ai cittadini iscritti negli albi di scrutatori, presidenti di seggio e giudici popolari.",
+   "descrizione": "Il servizio consente agli iscritti di verificare la propria iscrizione /cancellazione",
+   "come_fare": "Accedendo al servizio mediante SPID o CIE.",
+   "cosa_serve": "Per accedere al servizio è necessario:\n- SPID\n- CIE",
+   "cosa_si_ottiene": "Verifica della propria iscrizione / cancellazione",
+   "tempi": "L'esito del servizio è imediato.",
+   "costo": "Nessun costo previsto.",
+   "presentare": "Accedendo al servizio è possibile effettuare la visura, della propria posizione, agli albi degli scrutatori e dei giudici popolari\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/pubblicazione-di-matrimonio-2/",
+  "id": "pubblicazione-di-matrimonio-2",
+  "titolo": "Pubblicazione di Matrimonio",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "La pubblicazione di matrimonio serve a verificare che non ci siano impedimenti alla celebrazione del matrimonio e a far conoscere l'intenzione degli sposi ad altre persone.",
+  "sezioni": {
+   "a_chi": "La richiesta di pubblicazione di matrimonio viene effettuata dagli sposi, almeno uno dei quali residente nel Comune, o da un loro rappresentante munito di delega.\nLe condizioni necessarie per contrarre matrimonio sono le seguenti:\n- gli sposi devono aver compiuto 18 anni al momento della richiesta di pubblicazione. Possono essere ammessi al matrimonio anche coloro che hanno compiuto i 16 anni previa autorizzazione del Tribunale dei Minorenni\n- non deve sussistere interdizione per infermità mentale\n- i richiedenti non devono essere vincolati da un precedente matrimonio valido agli effetti civili (bisogna essere Celibe/Nubile, Divorziato/a, Vedovo/a)\n- non devono sussistere rapporti di parentela, affinità, adozione e affiliazione\n- non deve esserci condanna per omicidio, anche solo tentato, sul coniuge dell'altra persona\n- non può contrarre matrimonio la donna se non dopo 300 giorni dallo scioglimento, dall'annullamento o dalla cessazione degli effetti civili del precedente matrimonio",
+   "descrizione": "La celebrazione del matrimonio dev`essere preceduta dalla pubblicazione fatta a cura dell`ufficiale dello stato civile del Comune di residenza degli sposi. La pubblicazione di matrimonio è la fase del procedimento con la quale si accerta che non esistano impedimenti alla celebrazione del matrimonio, sia civile che religioso, rendendo pubblica l'intenzione degli sposi tramite l'esposizione all'albo pretorio online del Comune. Se si intende celebrare il matrimonio in un Comune diverso occorrerà indicarlo sul modulo di richiesta della pubblicazione. Coloro che intendono sposarsi presso questo Comune, pur non essendo residenti, devono richiedere le pubblicazioni nel Comune di residenza di uno degli sposi, che provvederà al rilascio della delega al matrimonio presso questo Comune.",
+   "come_fare": "La domanda va presentata online utilizzando la propria identità digitale, attraverso l'utilizzo del pulsante \"Accedi al Servizio\".",
+   "cosa_serve": "Per accedere al servizio è necessario:\n- Nel caso di rito religioso bisogna presentare all'ufficiale di stato civile la richiesta di pubblicazione rilasciata dal Parroco\n- N. 1 marca da bollo da € 16,00 da presentare al momento della sottoscrizione del processo verbale se i nubendi sono entrambi residenti nello stesso Comune\n- N. 2 marche da bollo da € 16,00 da presentare al momento della sottoscrizione del processo verbale se i nubendi sono residenti in comuni differenti",
+   "cosa_si_ottiene": "Al termine del procedimento si ottiene la pubblicazione visibile sull'albo pretorio online.",
+   "tempi": "A seguito dell'accoglimento della richiesta, i nubendi saranno convocati per la sottoscrizione del processo verbale. Il conseguente atto sarà pubblicato per almeno 8 giorni all'albo pretorio dei Comuni di residenza di entrambi gli sposi, al termine dei quali verrà rilasciato il nulla osta al matrimonio (da consegnare al parroco in caso di matrimonio religioso). Il matrimonio dovrà essere celebrato entro i 180 giorni successivi alla pubblicazione, trascorsi i quali non è più possibile celebrarlo.\n20\ngiorni\nAccoglimento della richiesta\nI nubendi saranno convocati per la sottoscrizione del processo verbale\n28\ngiorni\nRilascio nulla osta\nIl rilascio del nulla osta avviene al termine del periodo di 8 giorni previsto per la pubblicazione all'albo pretorio\n208\ngiorni\nCelebrazione del matrimonio\nTempi massimi per la celebrazione del matrimonio",
+   "costo": "Non sono previsti costi per la sottomissione dell'istanza. Successivamente:\n- N. 1 marca da bollo da € 16,00 da presentare al momento della sottoscrizione del processo verbale se i nubendi sono entrambi residenti nello stesso Comune;\n- N. 2 marche da bollo da € 16,00 da presentare al momento della sottoscrizione del processo verbale se i nubendi sono residenti in comuni differenti.",
+   "presentare": "La pubblicazione di matrimonio serve a verificare che non ci siano impedimenti alla celebrazione del matrimonio e far conoscere l'intenzione degli sposi ad altre persone.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "capo-area-responsabile-anagrafe-stato-civile-ed-elettorato",
+    "nome": "Capo Area responsabile anagrafe, stato civile ed elettorato"
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "anagrafe@comune.palermo.it",
+   "elettorato@cert.comune.palermo.it",
+   "servizioelettorato@comune.palermo.it",
+   "statocivile@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "091 7403779"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/calcolo-canone-unico-patrimoniale-cup/",
+  "id": "calcolo-canone-unico-patrimoniale-cup",
+  "titolo": "Calcolo Canone Unico Patrimoniale CUP",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Nell'ambito dei processi di semplificazione amministrativa previsti dal Comune di Palermo, è possibile autoliquidare l'importo dovuto per il pagamento del Canone Unico Patrimoniale",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini soggetti al pagamento annuale del CUP - Canone Unico Patrimoniale per le Occupazione Suolo temporanee o permanenti, le Esposizioni Pubblicitarie e i Mercati Rionali.",
+   "descrizione": "Nell'ambito dei processi di semplificazione amministrativa previsti dal Comune di Palermo, è possibile autoliquidare l'importo dovuto per il pagamento del Canone Unico Patrimoniale.\nIl servizio \"Calcolatore CUP\" consente di effettuare il calcolo del dovuto sulla base degli elementi dichiarati e delle tariffe approvate (Deliberazioni di CC n. 243/2021 e n. 244/2021).\nIl servizio consente, inoltre, di stampare il report riepilogativo degli elementi dichiarati. Tale report potrà essere allegato alla richiesta semplificata di autorizzazione da presentare solo dopo avere effettuato il pagamento.\nEventuali difformità, che potranno essere riscontrate dagli Uffici durante la fase istruttoria successiva alla presentazione dell'istanza, saranno regolate secondo le modalità che sarà cura dell'Amministrazione comunicare agli interessati.\nPer le occupazioni/esposizioni permanenti, il calcolo indicato come \"TOTALE CANONE\" è relativo al solo anno da lei indicato in \"Data Inizio\".",
+   "come_fare": "Digitare i dati richiesti sul form per eseguire il calcolo",
+   "cosa_serve": "E' necessario disporre:\n- Dati necessari a compilare il form per il calcolo",
+   "cosa_si_ottiene": "Il calcolo del dovuto sulla base degli elementi dichiarati e delle tariffe approvate.",
+   "tempi": "Il calcolo viene effettuato in tempo reale.\nPer le occupazioni/esposizioni permanenti, il calcolo indicato come \"TOTALE CANONE\" è relativo al solo anno da lei indicato in \"Data Inizio\".",
+   "costo": "Nessun costo previsto",
+   "presentare": "Consente di effettuare il calcolo del canone unico patrimoniale\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Per le occupazioni/esposizioni permanenti, il TOTALE CANONE si riferisce al solo anno indicato come \"Inizio occupazione\".",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-cup-ex-tosaptemporanea-e-permanente-e-icp",
+    "nome": "U.O. Cup (ex tosap/temporanea e permanente e icp)"
+   }
+  ],
+  "contatti": [
+   "settoretributi@cert.comune.palermo.it",
+   "tosapicp@cert.comune.palermo.it",
+   "tosapicp@comune.palermo.it"
+  ],
+  "telefoni": [
+   "091-7404520",
+   "091-7404550",
+   "091-7404582",
+   "091-7404588"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/accesso-agli-atti-civico-semplice-e-generalizzato/",
+  "id": "accesso-agli-atti-civico-semplice-e-generalizzato",
+  "titolo": "Accesso agli atti civico semplice e generalizzato",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Il servizio consente di effettuare l'accesso civico semplice o generalizzato secondo quanto previsto dalle norme vigenti.",
+  "sezioni": {
+   "a_chi": "L'accesso civico – semplice o generalizzato – può essere richiesto da chiunque indipendentemente dall'essere cittadino italiano o residente nel territorio dello Stato.",
+   "descrizione": "- Accesso civico semplice: l'articolo 5 comma 1 del decreto legislativo 33/2013, riconosce il diritto di accesso alle informazioni e dati per i quali non risultino adempiuti gli obblighi di pubblicazione previsti dalla legge. L'accesso civico semplice non è sottoposto ad alcuna limitazione quanto alla legittimazione soggettiva del richiedente, per cui chiunque può esercitarlo anche indipendentemente dall'essere cittadino italiano o residente nel territorio dello Stato.\n- Accesso civico generalizzato: con l'accesso civico generalizzato, chiunque ha il diritto di accedere ai dati e ai documenti detenuti dalle pubbliche amministrazioni, ulteriori rispetto a quelli oggetto di pubblicazione ai sensi dell' (articolo 5, comma 2 del decreto legislativo 33/2013), nel rispetto dei limiti relativi alla tutela di interessi giuridicamente rilevanti secondo quanto previsto dall'articolo 5-bis dello stesso decreto.",
+   "come_fare": "Per l'accesso civico semplice o generalizzato, la richiesta non necessita di motivazione, è gratuita e va inviata preferibilmente on-line, ma anche a mezzo mail o PEC all'indirizzo di posta elettronica semplice o certificata dell'ufficio dell'Amministrazione che detiene i dati, le informazioni o i documenti o, qualora non si conosca quale sia l'Ufficio competente, all'URP. La richiesta può anche essere consegnata a mano o trasmessa a mezzo raccomandata A.R.\nOve l'istanza abbia ad oggetto dati, informazioni o documenti oggetto di pubblicazione obbligatoria, la stessa può anche essere trasmessa al Responsabile della prevenzione della corruzione e della trasparenza.",
+   "cosa_serve": "Per accedere al servizio on-line è necessario:\n- SPID o CIE",
+   "cosa_si_ottiene": "- Accesso civico semplice: la pubblicazione di un documento nella sezione Amministrazione trasparente del portale istituzionale, nonchè comunicazione dell'avvenuta pubblicazione al richiedente indicando il relativo collegamento ipertestuale. Se quanto richiesto risulta già pubblicato sul Portale, sarà indicato al richiedente solo il collegamento ipertestuale.\n- Accesso civico generalizzato: il procedimento di accesso civico si conclude con provvedimento espresso e motivato e con la comunicazione del relativo esito al richiedente e agli eventuali controinteressati, dai quali deve essere preventivamente acquisito il consenso.\nLaddove vi sia stato l'accoglimento della richiesta di accesso civico nonostante l'opposizione del controinteressato, il Comune è tenuto a darne comunicazione a quest'ultimo. I dati o i documenti richiesti possono essere trasmessi al richiedente non prima di 15 giorni dalla ricezione della stessa comunicazione da parte del controinteressato.\nL'ufficio titolare del dato, destinatario dell'istanza di accesso civico è tenuto a motivare l'eventuale rifiuto, differimento o la limitazione dell'accesso con riferimento ai soli casi e limiti relativi alla tutela di interessi pubblici e privati giuridicamente rilevanti, stabiliti dall'articolo 5-bis, commi 1, 2 e 3 del D.Lgs. n. 33/2013.",
+   "tempi": "- Accesso civico semplice: 30 giorni dalla presentazione dell'istanza\n- Accesso civico generalizzato: il procedimento deve concludersi con provvedimento espresso e motivato nel termine di 30 giorni dalla presentazione dell'istanza.\nTali termini sono sospesi nel caso di comunicazione dell'istanza al controinteressato durante il tempo stabilito dalla norma per consentire allo stesso di presentare eventuale opposizione (10 giorni dalla ricezione della comunicazione).\n30\ngiorni\nTempi lavorazione e comunicazione esito\nTempi massimi per la lavorazione della pratica e la comunicazione dell'esito al cittadino",
+   "costo": "L'esame dei documenti nonché l'invio telematico sono gratuiti.\nIl rilascio di copia cartacea, invece, è subordinato soltanto al rimborso del costo di riproduzione (€ 0,10 a foglio), salve le disposizioni vigenti in materia di bollo, nonché i diritti di ricerca (€ 0,52).\nIl pagamento degli importi di cui sopra verrà effettuato all'atto del ritiro mediante POS.",
+   "presentare": "Nessuna autenticazione è necessaria per accedere al servizio\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-ufficio-relazioni-con-il-pubblico-urp",
+    "nome": "U.O. Ufficio Relazioni con il Pubblico (URP)"
+   }
+  ],
+  "contatti": [
+   "urp@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917409061",
+   "0917409062",
+   "0917409063",
+   "0917409064"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiesta-assegnazione-alloggio-3/",
+  "id": "richiesta-assegnazione-alloggio-3",
+  "titolo": "Richiesta assegnazione alloggio",
+  "categorie": [
+   "Salute, benessere e assistenza"
+  ],
+  "sommario": "Il servizio predispone e gestisce la Graduatoria dell'Emergenza Abitativa, finalizzata all'assegnazione di alloggi di edilizia Residenziale Pubblica (ERP o IACP) e Beni Confiscati ai cittadini aventi diritto.",
+  "sezioni": {
+   "a_chi": "Ai cittadini che si trovano in grave disagio abitativo, come definito dall'art. 27 del vigente Regolamento Interventi Abitativi",
+   "descrizione": "Il servizio predispone e gestisce la Graduatoria dell'Emergenza Abitativa (accoglienza istanze, istruttoria e monitoraggio della Graduatoria medesima), finalizzata all'assegnazione di alloggi di edilizia Residenziale Pubblica (ERP o IACP) e Beni Confiscati ai cittadini aventi diritto.\nIl servizio, inoltre, effettua controlli sulla disponibilità degli immobili ERP per il contrasto all'occupazione abusiva, in sinergia con il Corpo di Polizia Municipale e, laddove necessario, con l'ausilio del Servizio Sociale in riscontrate condizioni di fragilità e vulnerabilità all'interno dei soggetti occupanti senza titolo.\nIl servizio provvede alla valutazione sociale dei soggetti occupanti senza titolo di immobili di proprietà comunale oggetto di ordinanze di sgombero da parte delle autorità competenti.",
+   "come_fare": "Accedi con identità digitale.",
+   "cosa_serve": "Documentazione necessaria per accedere al servizio:\n- ISEE in corso di validità\n- Documentazione attestante il grave disagio alloggiativo, come definito dall'art. 27 del vigente Regolamento Interventi Abitativi\n- Documentazione attestante le dichiarazioni rese (utilizzo alloggio improprio, sfratto, ordinanza di sgombero, eventuali disabilità, etc.)",
+   "cosa_si_ottiene": "Inserimento nella graduatoria annuale, finalizzata all'assegnazione di un alloggio di Edilizia Residenziale Pubblica, o confiscato alla mafia",
+   "tempi": "Entro il 31 gennaio di ogni anno l'Ufficio predispone apposito Avviso pubblico per l'acquisizione delle istanze dei cittadini che si trovano in condizione di grave disagio abitativo.\nLe istanze possono essere presentate entro il giorno 25 del mese antecedente alla scadenza della graduatoria, che ha validità annuale, con decorrenza dall'anno successivo all'anno della presentazione delle istanze.\nL'assegnazione dell'alloggio potrà avvenire solo in caso di concreta disponibilità e di raggiungimento della posizione utile in graduatoria.\nItempi di istruttoria della pratica presentata sono di 30gg; al termine dell'istruttoria l'ufficio provvederà ad inserire la pratica nella graduatoria annuale.\n30\ngiorni\nTempi di lavorazione\nTempi massimi per la lavorazione della pratica",
+   "costo": "Non sono previsti costi.",
+   "presentare": "Richiesta assegnazione alloggio\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Avviso pubblico graduatoria emergenza abitativa\nAggiornamento e presentazione nuove istanze anno 2025\nSi comunica a tutti i cittadini che si trovano in condizioni di EMERGENZA ABITATIVA, ai sensi della normativa vigente, che è possibile presentare istanza per l'inserimento nell'apposita graduatoria per l'anno 2025, per l'assegnazione di immobili di edilizia popolare o confiscati che si renderanno disponibili.\ndisponibile nella sezione Portale dei Servizi Online - Emergenza Abitativa sul predetto sito istituzionale.\nPer la presentazione dell'istanza on line i cittadini potranno avvalersi dell'ausilio di persone fisiche, Associazioni, sindacati, patronati, etc., appositamente delegati.\nIl termine ultimo di presentazione delle istanze è fissato alle ore 12,00 del giorno 25/11/2025.\nI cittadini che hanno già presentato istanza e risultano ammessi in graduatoria definitiva 2024, devono aggiornare obbligatoriamente la propria posizione, inserendo l'ISEE in corso di validità, e/o la documentazione attestante sopraggiunte variazioni, come ad esempio i componenti il nucleo familiare, o le condizioni dell'emergenza abitativa, etc., pena l'esclusione dalla graduatoria 2025.\nInoltre: per la valutazione sociale delle condizioni di disagio alloggiativo si accede al servizio attraverso il ricevimento pubblico, nei giorni di martedì dalle ore 9.00 alle ore 12.00 e il mercoledì dalle ore 15.00 alle ore 17.00, oppure inviando una mail all'indirizzo di posta elettronica abitaresociale@comune.palermo.it",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "abitare-sociale",
+    "nome": "U.O. Abitare Sociale"
+   }
+  ],
+  "contatti": [
+   "a.losicco@comune.palermo.it",
+   "abitaresociale@comune.palermo.it",
+   "sostegnoaffitto@cert.comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917407358",
+   "0917407365"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiedere-permesso-di-parcheggio-per-residenti/",
+  "id": "richiedere-permesso-di-parcheggio-per-residenti",
+  "titolo": "Richiedere permesso di parcheggio per residenti",
+  "categorie": [
+   "Autorizzazioni",
+   "Mobilità e trasporti"
+  ],
+  "sommario": "Il servizio è deputato al rilascio di un pass per la sosta negli spazi riservati ai residenti (Zone Blu)",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto ai cittadini residenti all'interno delle aree A, B, C, D, e G indipendentemente dal colore delle strisce davanti alla propria residenza/domicilio.\nDi seguito si riportano i perimetri che delimitano le suddette aree:\n- ZONA “A”: via Duca della Verdura, via E. Notarbartolo, via Sciuti, viale Lazio, piazza Don Bosco, via Marchese di Roccaforte, via Marchese di Villabianca\n- ZONA “B”: via Enrico Albanese, via Catania, via Giacomo Cusmano, piazza Diodoro Siculo, via Generale Cantore Antonino, via Generale Eugenio Di Maria, via E. Notarbartolo, via Duca della Verdura, via Pasquale Calvi.\n- ZONA “C”: via Cavour, via Ruggero Settimo, piazza Castelnuovo, via Dante Alighieri, piazza Stazione Lolli, via Guglielmo Marconi, via Malaspina, via Catania, via Enrico Albanese, via Pasquale Calvi, via Isidoro Carini, piazza Francesco Nascè, piazza Don Luigi Sturzo, via Roma, via Mariano Stabile.\ne le strade che ricadono nelle seguenti zone:\n- ZONA \"D\" (Mondello): Via Venere, Via Cerere, Via Danae, Via Principessa Maria, Viale Cola Pesce, Viale Principessa Giovanna, Viale Regina Elena, Piazza Valdesi, Viale Regina Elena, Via Torre di Mondello, Piazza Mondello, Via Piano di Gallo, Via Gallo, Piazza Mondello, Via Mondello, Via Calpurnio, Via Pindaro, Via Stesicoro, Via Mondello, Via Principe di Scalea, Via Circe, Via Palinuro, Via Ascanio, Via Miseno, Viale Galatea, Viale Principe di Scalea, Piazza Valdesi, Viale Margherita di Savoia, Via Mater Dei, Viale Italia, Via del Garofalo, Via Marinai Alliata, Via Saline\n- ZONA \"E\" (Sferracavallo): Via Barcarello, Via Tritone, Via Virgilio, Via Dammuso, Via Tritone (al parcheggio Schillaci), Piazza Marina di Sferracavallo, Via Catullo, Via Torretta, Via Plauto.\n- ZONA \"G\" Via Emanuele Notarbartolo, Piazza Ziino Ottavio, Via Principe di Palagonia, Via Franz Liszt, Via Giovanni Zappalà, Via Aquileia, Via Sardegna, Via Restivo Empedocle, Via Giuseppe Sciuti, Via Antonino Pecoraro.\nSaranno attive e gestite sempre da AMAT le aree di parcheggio denominate Largo Cavalieri del Lavoro (Belgio) e piazza Giovanni Paolo II (De Gasperi).",
+   "descrizione": "Il servizio si propone di garantire ai cittadini che vivono in determinate zone la possibilità poter posteggiare il veicolo senza esporre il ticket per il pagamento del parcheggio a ore.\nSi precisa che il pass fisico, che dovrà essere esposto nel veicolo, deve essere prelevato presso la circoscrizione di appartenenza, previa esibizione di eventuale documentazione che ne attesti la residenza.",
+   "come_fare": "E' necessario accedere con la propria identità digitale attraverso l'utilizzo del pulsante \"Accedi al Servizio\" e compilare le informazioni richieste.",
+   "cosa_serve": "Per richiedere il permesso di parcheggio è necessario:\n- SPID o CIE",
+   "cosa_si_ottiene": "Dopo essersi presentati presso una delle postazioni abilitate, si potrà ritirare il pass cartaceo che consente il parcheggio nelle aree dedicate.",
+   "tempi": "Si informa che la pratica sarà evasa in un tempo massimo di 30 giorni dalla ricezione della stessa.",
+   "costo": "La sottomissione della domanda non prevede costi.\nAl ritiro del pass cartaceo sono previsti i seguenti costi:\n- € 10,00 per periodicità annuale\n- € 20,00 per periodicità biennale\nIl pagamento avverrà presso gli uffici attraverso POS.",
+   "presentare": "Il servizio è deputato al rilascio di un pass per la sosta negli spazi riservati ai residenti\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "La pratica andrà completata ritirando il pass cartaceo, recandosi presso un ufficio di suo gradimento scelto tra quelli del seguente elenco:\n- POSTAZIONE MEZZOMONREALE VILL. - Viale Regione Siciliana, 75\n- POSTAZIONE BOCCADIFALCO - Piazza Pietro Micca, 26\n- POSTAZIONE BORGO NUOVO - Largo Pozzillo, 7\n- POSTAZIONE RESUTTANA S. LORENZO - Via Monte S.Calogero, 28\n- POSTAZIONE PALLAVICINO - Via E. Duse, 31\n- POSTAZIONE MONTEPELLEGRINO - Via Fileti, 19\n- POSTAZIONE PIAZZA MARINA - Piazza Marina, 44\n- POSTAZIONE VIA TRICOMI - Via Tricomi, 14 A\n- POSTAZIONE NOCE MALASPINA - Via Bevignani, 74\n- POSTAZIONE BRANCACCIO - Via San Ciro, 1593\n- AMAT - Via Giusti, 7 (al momento non operativa)\n- AMAT - Via Borrelli 16\n- AMAT - Via Notarbartolo (Stazione Notarbartolo)",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "ufficio-autonomo-circoscrizioni-e-postazioni-decentrate",
+    "nome": "Ufficio autonomo circoscrizioni e postazioni decentrate"
+   }
+  ],
+  "contatti": [
+   "coordinamentocircoscrizioni@cert.comune.palermo.it",
+   "ufficioautonomocircoscrizioni@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917401111",
+   "0917403830"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/pagare-contravvenzioni-2/",
+  "id": "pagare-contravvenzioni-2",
+  "titolo": "Pagare contravvenzioni",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Il servizio consente di pagare le contravvenzioni stradali tramite il portale online del Comune, utilizzando la propria identità digitale e pagamento con pagoPa.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i destinatari di contravvenzioni per violazioni del Codice della Strada e amministrative che desiderano effettuare il pagamento delle stesse in modalità elettronica mediante pagoPa.",
+   "descrizione": "Pagamento multe per il Codice della Strada e Verbali amministrativi, tramite i canali PagoPA.",
+   "come_fare": "Accedere al servizio con identità digitale.\nSe sei il debitore di un avviso, cioè la persona a cui la contravvenzione è stata notificata, visualizzerai il bollettino di pagamento, e potrai effettuare il pagamento online (pagoPA).",
+   "cosa_serve": "Per effettuare il pagamento è necessario avere:\n- SPID/CIE\n- un metodo di pagamento valido (carta di credito, conto corrente...)\n- un indirizzo email per ricevere la ricevuta di pagamento",
+   "cosa_si_ottiene": "Se il pagamento è andato a buon fine verrà resa disponibile la Ricevuta Telematica (RT), cioè il documento che certifica l'incasso.",
+   "tempi": "Il pagamento deve avvenire entro il termine indicato nel verbale di contravvenzione.\nLa contravvenzione risulterà regolarmente saldata e il pagamento verrà registrato nel sistema entro le 24 ore.",
+   "costo": "Il pagamento dell'importo indicato nel verbale è il costo della contravvenzione. Potrebbero essere addebitate eventuali spese aggiuntive, come quelle per il recupero della somma dovuta, in caso di ritardo nel pagamento, oppure costi previsti secondo il canale bancario o di pagamento utilizzato.",
+   "presentare": "Per accedere al servizio è richiesta l'identificazione digitale, come SPID o CIE (Carta d'Identità Elettronica).\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-della-polizia-municipale",
+    "nome": "Area della Polizia municipale"
+   }
+  ],
+  "contatti": [
+   "comandopoliziamunicipale@cert.comune.palermo.it",
+   "comandopoliziamunicipale@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916954111"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/archivio-istanze-tributi/",
+  "id": "archivio-istanze-tributi",
+  "titolo": "Archivio istanze tributi",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Consente di consultare tutte le istanze presentate per i tributi",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i cittadini",
+   "descrizione": "Attraverso il servizio è possibile accedere a tutte le istanze presentate nell'ambito dei tributi locali, consente l'accesso ai documenti ivi presenti e alle ricevute di protocollazione.",
+   "come_fare": "Per usufruire del servizio occorre autenticarsi attraverso l'identità digitale.",
+   "cosa_serve": "E' necessario disporre di:\n- SPID o CIE",
+   "cosa_si_ottiene": "Accesso alle proprie istanze",
+   "tempi": "Nessuna scadenza",
+   "costo": "Nessun costo previsto",
+   "presentare": "Accesso alle istanze dei tributi\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-delle-entrate-e-dei-tributi-comunali",
+    "nome": "Area delle Entrate e dei Tributi Comunali"
+   }
+  ],
+  "contatti": [
+   "imupici@comune.palermo.it",
+   "settoretributi@cert.comune.palermo.it",
+   "settoretributi@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917404501"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/verifica-sanzioni-codice-della-strada/",
+  "id": "verifica-sanzioni-codice-della-strada",
+  "titolo": "Verifica sanzioni Codice della Strada",
+  "categorie": [
+   "Tributi, finanze e contravvenzioni"
+  ],
+  "sommario": "Permette di visualizzare gli ultimi verbali attinenti ad un numero di targa.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti i destinatari di contravvenzioni per violazioni del Codice della Strada che desiderano avere informazioni di eventuali multe su un veicolo identificato dalla targa.",
+   "descrizione": "Il servizio consente di effettuare una ricerca attraverso una targa di un veicolo, per ottenere l'elenco degli eventuali verbali,.\nPermette di:\n- effettuare il pagamento, se dovuto;\n- prendere visione delle foto acquisite con i dispositivi elettronici di tipo \"Autovelox\", \"Street-Control\" e \"Telecamere ZTL\", se previsto;\n- comunicare i dati relativi all'effettivo Responsabile della Violazione nei casi in cui l'infrazione lo prevede.",
+   "come_fare": "Accedere al servizio con identità digitale.\nDigitare il numero di targa del veicolo ed effettuare le ricerca.",
+   "cosa_serve": "Per utilizzare il servizio è necessario disporre:\n- SPID/CIE\n- Targa del veicolo",
+   "cosa_si_ottiene": "Visualizzazione dell'elenco dei verbali emessi per il numero di targa indicato.",
+   "tempi": "Verbali degli ultimi 3 mesi.",
+   "costo": "Nessun costo",
+   "presentare": "Permette di visualizzare gli ultimi verbali attinenti ad un numero di targa.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-della-polizia-municipale",
+    "nome": "Area della Polizia municipale"
+   }
+  ],
+  "contatti": [
+   "comandopoliziamunicipale@cert.comune.palermo.it",
+   "comandopoliziamunicipale@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0916954111"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/istanze-servizi-e-trasporto/",
+  "id": "istanze-servizi-e-trasporto",
+  "titolo": "Istanze servizi e trasporto",
+  "categorie": [
+   "Autorizzazioni"
+  ],
+  "sommario": "Il servizio consente di presentare un'istanza per richiedere il trasporto di un'urna cineraria o di una cassetta ossario e/o un servizio cimiteriale.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti coloro che intendano richiedere il trasporto di un'urna cineraria (da abitazione ad altra abitazione, al cimitero, al luogo di dispersione o da cimitero a cimitero) o di una cassetta ossario del congiunto (da cimitero ad altro cimitero). Inoltre, consente la presentazione di istanze per varie operazioni cimiteriali, come: la cremazione gratuita di defunti provenienti da campi di inumazione; la cremazione di resti ossei; la tumulazione di un'urna o di una cassetta ossario in sepoltura ovvero la loro estumulazione per traslarle altrove; la richiesta per riservare la Sala del Commiato presso il cimitero dei Rotoli.",
+   "descrizione": "Dopo avere effettuato l'accesso al servizio mediante SPID/CIE, l'utente dovrà inserire i dati identificativi del defunto, la tipologia del servizio cimiteriale che si desidera, ed ogni dato utile al rilascio del relativo provvedimento, corredando la richiesta del necessario consenso dei congiunti.\nAd eccezione della cremazione gratuita, tutte le operazioni sono soggette al pagamento della tariffa comunale, che potrà essere effettuato tramite bollettino Pagopa fornito dal servizio. Sono altresì soggette alla duplice imposta di bollo tutte le procedure amministrative sopra citate. Ad avvenuto pagamento, l'utente riceverà il provvedimento richiesto.",
+   "come_fare": "Per ottenere l'autorizzazione è necessario inserire i dati e le autodichiarazioni richiesti ed effettuare il pagamento della tariffa comunale, ove richiesta.",
+   "cosa_serve": "Per accedere al servizio on-line è necessario:\n- SPID o CIE\n- Carta di Credito o altra forma di pagamento online in tempo reale",
+   "cosa_si_ottiene": "Si ottiene l'autorizzazione al trasporto urna/cassetta ovvero all'effettuazione dell'operazione cimiteriale richiesta.",
+   "tempi": "Il rilascio dell'autorizzazione avviene dopo avere effettuato il pagamento online ed è soggetta alle verifiche anagrafiche sui soggetti titolati ad esprimere il consenso; di norma avviene in giornata.\nIl trasporto dell'urna cineraria o della cassetta ossario deve avvenire nel giorno richiesto. Le altre autorizzazioni non hanno scadenza; la materiale esecuzione dell'operazione presso il cimitero avviene tramite preventivi accordi con gli Uffici Cimiteriali, in ragione della programmazione dei lavori degli impianti, condizionati talvolta anche dalle condizioni climatiche. Le cremazioni presso il tempio crematorio di S. Maria dei Rotoli seguono un turno legato alla data di presentazione della domanda, e di norma si svolgono nell'arco di alcuni giorni, salvo particolari esigenze logistiche che potranno determinare un posticipo ovvero un anticipo del turno.",
+   "costo": "Il tariffario vigente è consultabile all'indirizzo:\nTariffario",
+   "presentare": "Il servizio consente di presentare un'istanza per richiedere il trasporto di un'urna cineraria o di una cassetta ossario e/o un servizio cimiteriale.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Per informazioni aggiuntive si può consultare il sito web\nGestione servizi cimiteriali",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-dei-servizi-cimiteriali-protezione-civile-e-sicurezza",
+    "nome": "Area dei servizi cimiteriali Protezione Civile e Sicurezza"
+   }
+  ],
+  "contatti": [
+   "impianticimiteriali@cert.comune.palermo.it",
+   "provvedimenticimiteriali@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917403475",
+   "0917403480"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/istanze-di-concessione-cimiteriale/",
+  "id": "istanze-di-concessione-cimiteriale",
+  "titolo": "Istanze di concessione cimiteriale",
+  "categorie": [
+   "Autorizzazioni"
+  ],
+  "sommario": "Il servizio consente di presentare un'istanza per richiedere una concessione per celletta cineraria o per celletta ossario.",
+  "sezioni": {
+   "a_chi": "Il servizio è rivolto a tutti coloro che intendano richiedere la concessione di una celletta per la tumulazione di un'urna cineraria o di una cassetta ossario.",
+   "descrizione": "Dopo avere effettuato l'accesso al servizio mediante SPID/CIE, l'utente dovrà inserire i dati identificativi del defunto, la tipologia del manufatto cimiteriale che si desidera, ed ogni dato utile al rilascio del relativo provvedimento.\nTutte le concessioni sono soggette al pagamento della tariffa comunale, che potrà essere effettuato tramite bollettino Pagopa fornito dal servizio. Sono altresì soggette alla duplice imposta di bollo tutte le procedure amministrative sopra citate. Ad avvenuto pagamento, l'utente riceverà il provvedimento richiesto.\nLa concessione del manufatto è riservata ai defunti aventi Palermo come ultima residenza, ad eccezione di salme già accolte presso i cimiteri comunali (di questi non fa parte il cimitero privato Sant'Orsola).",
+   "come_fare": "Per ottenere l'autorizzazione è necessario inserire i dati e le autodichiarazioni richiesti e effettuare il pagamento della tariffa comunale.",
+   "cosa_serve": "Per accedere al servizio è necessario:\n- SPID o CIE\n- Carta di Credito o altra forma di pagamento online in tempo reale",
+   "cosa_si_ottiene": "Si ottiene la concessione cimiteriale per celletta ossario o cineraria.",
+   "tempi": "Il rilascio della concessione avviene dopo avere effettuato il pagamento online ed è soggetta alle verifiche anagrafiche sul defunto; di norma avviene in giornata.\nLe concessioni cimiteriali individuali hanno la durata di 25 anni; la materiale esecuzione dell'operazione presso il cimitero avviene tramite preventivi accordi con gli Uffici Cimiteriali in ragione della relativa programmazione dei lavori, condizionati talvolta anche dalle condizioni climatiche.",
+   "costo": "Il tariffario vigente è consultabile all'indirizzo: Tariffario",
+   "presentare": "Il servizio consente di presentare un'istanza per richiedere una concessione per celletta cineraria o per celletta ossario.\nAccedi al servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Per informazioni aggiuntive si può consultare il sito web Servizi cimiteriali",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "area-dei-servizi-cimiteriali-protezione-civile-e-sicurezza",
+    "nome": "Area dei servizi cimiteriali Protezione Civile e Sicurezza"
+   }
+  ],
+  "contatti": [
+   "impianticimiteriali@cert.comune.palermo.it",
+   "provvedimenticimiteriali@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917403475",
+   "0917403480"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/servizio/richiesta-carta-di-identit-a-distanza/",
+  "id": "richiesta-carta-di-identit-a-distanza",
+  "titolo": "Richiesta Carta di identità a distanza",
+  "categorie": [
+   "Anagrafe e stato civile"
+  ],
+  "sommario": "Consente il rilascio della Carta di Identità Elettronica (CIE) a distanza per soggetti impossibilitati a deambulare e non trasportabili con i comuni mezzi che non possono recarsi fisicamente presso gli Uffici comunali.",
+  "sezioni": {
+   "a_chi": "Cittadini residenti o domiciliati presso il Comune di Palermo impossibilitati a deambulare e non trasportabili con i comuni mezzi che non possono recarsi fisicamente presso gli Uffici comunali",
+   "descrizione": "Il servizio di rilascio della Carta di Identità Elettronica (CIE) a distanza è una procedura prevista per tutti i cittadini residenti o domiciliati presso il Comune di Palermo impossibilitati a deambulare e non trasportabili con i comuni mezzi che non possono recarsi fisicamente presso gli Uffici comunali.\nSi tratta di un servizio essenziale per garantire il diritto alla identità a persone temporaneamente impedite, allettate o ricoverate presso strutture ospedaliere o case di cura.",
+   "come_fare": "Per richiedere la CIE a distanza è necessario presentare apposita istanza attraverso il portale on line allegando apposita documentazione sanitaria che attesti l'impedimento.\nL'istanza può essere presentata direttamente dal cittadino impossibilitato a deambulare o da un suo delegato.\nLa protocollazione della richiesta avviene in modalità automatica.\nA seguito del completamento dell'istruttoria sarà inviata, per il tramite del portale on line, la comunicazione dell'appuntamento e della modalità di riconoscimento del cittadino non deambulante. Un familiare o altra persona delegata, dovrà presentarsi presso i nostri uffici alla data e all'ora indicata.\nIl riconoscimento del cittadino impossibilitato a deambulare avverrà a distanza attraverso unavideochiamata.",
+   "cosa_serve": "Al momento della presentazione dell'istanza:\n- documentazione sanitaria che attesti l'impedimento\nAl momento del rilascio:\n- carta di identità scaduta o in scadenza del cittadino impossibilitato a deambulare\n- denuncia di smarrimento presentata alle Autorità di Pubblica Sicurezza (in caso di furto o smarrimento)\n- tessera sanitaria in originale\n- fototessera recente di almeno 6 mesi, su sfondo bianco, senza riportare altri oggetti o soggetti, in formato cartaceo o su supporto digitale USB rispettando le seguenti caratteristiche: Definizione immagine: almeno 400 dpi; Dimensione del file: massimo 500kb",
+   "cosa_si_ottiene": "Carta di identità elettronica (C.I.E.)",
+   "tempi": "Il documento può essere rinnovato a partire da 180 giorni (6 mesi) prima della data indicata.\nLa durata varia in base all'età del titolare al momento del rilascio. A titolo esemplificativo e non esaustivo:\n- Minori di 3 anni: Validità di 3 anni;\n- Tra 3 e 18 anni: Validità di 5 anni;\n- Maggiorenni: Validità di 10 anni;\n- Ultrasettantenni già in possesso di precedente Carta di identità Elettronica: validità\nillimitata.",
+   "costo": "Delibera di Giunta Municipale n. 9 del 24/1/2019\n- In caso di rinnovo, come individuato nella, il costo della CIE è pari ad euro 22,20;\n- In caso di furto, deterioramento o smarrimento della carta di identità precedente il costo previsto è euro 27,35.",
+   "presentare": "Consente il rilascio della Carta di Identità Elettronica (CIE) a distanza per soggetti impossibilitati a deambulare e non trasportabili con i comuni mezzi che non possono recarsi fisicamente presso gli Uffici comunali.\nAccedi al Servizio\nUffici che erogano il servizio\nPrenota appuntamento",
+   "altro": "Ogni CIE deve essere associata a un indirizzo email e a un cellulare e pertanto non è possibile utilizzare lo stesso indirizzo e numero di telefono per più CIE.",
+   "condizioni": "Per conoscere i dettagli di\nscadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.\nTermini e condizioni di servizio (PDF 83.28 kB)"
+  },
+  "uffici": [
+   {
+    "id": "uo-cie",
+    "nome": "U.O. C.I.E."
+   }
+  ],
+  "contatti": [
+   "anagrafe@cert.comune.palermo.it",
+   "ufficiocartedidentita@comune.palermo.it"
+  ],
+  "telefoni": [
+   "0917405231"
+  ],
+  "accedi": "",
+  "tipo": "servizio"
+ },
+ {
+  "url": "https://www.comune.palermo.it/domande-frequenti/cosa-il-suap/",
+  "id": "cosa-il-suap",
+  "titolo": "Cosa è il SUAP?",
+  "categorie": [],
+  "sommario": "",
+  "sezioni": {},
+  "uffici": [],
+  "contatti": [
+   "protocollo@cert.comune.palermo.it"
+  ],
+  "telefoni": [],
+  "accedi": "",
+  "tipo": "faq"
+ },
+ {
+  "url": "https://www.comune.palermo.it/domande-frequenti/quali-sono-i-tempi-e-le-scadenze-per-il-servizio-pubblicazione-di-matrimonio/",
+  "id": "quali-sono-i-tempi-e-le-scadenze-per-il-servizio-pubblicazione-di-matrimonio",
+  "titolo": "Quali sono i tempi e le scadenze per il servizio Pubblicazione di Matrimonio?",
+  "categorie": [],
+  "sommario": "",
+  "sezioni": {},
+  "uffici": [],
+  "contatti": [
+   "protocollo@cert.comune.palermo.it"
+  ],
+  "telefoni": [],
+  "accedi": "",
+  "tipo": "faq"
+ },
+ {
+  "url": "https://www.comune.palermo.it/domande-frequenti/cos-il-diritto-di-accesso-agli-atti/",
+  "id": "cos-il-diritto-di-accesso-agli-atti",
+  "titolo": "Cos'è il diritto di accesso agli atti?",
+  "categorie": [],
+  "sommario": "",
+  "sezioni": {},
+  "uffici": [],
+  "contatti": [
+   "protocollo@cert.comune.palermo.it"
+  ],
+  "telefoni": [],
+  "accedi": "",
+  "tipo": "faq"
+ },
+ {
+  "url": "https://www.comune.palermo.it/domande-frequenti/chi-pu-richiedere-il-permesso-di-parcheggio-per-residenti/",
+  "id": "chi-pu-richiedere-il-permesso-di-parcheggio-per-residenti",
+  "titolo": "Chi può richiedere il permesso di parcheggio per residenti?",
+  "categorie": [],
+  "sommario": "",
+  "sezioni": {},
+  "uffici": [],
+  "contatti": [
+   "protocollo@cert.comune.palermo.it"
+  ],
+  "telefoni": [],
+  "accedi": "",
+  "tipo": "faq"
+ },
+ {
+  "url": "https://www.comune.palermo.it/domande-frequenti/come-si-presenta-una-richiesta-di-permesso-di-occupazione-suolo-pubblico/",
+  "id": "come-si-presenta-una-richiesta-di-permesso-di-occupazione-suolo-pubblico",
+  "titolo": "Come si presenta una richiesta di permesso di occupazione suolo pubblico?",
+  "categorie": [],
+  "sommario": "",
+  "sezioni": {},
+  "uffici": [],
+  "contatti": [
+   "protocollo@cert.comune.palermo.it"
+  ],
+  "telefoni": [],
+  "accedi": "",
+  "tipo": "faq"
+ }
+]
