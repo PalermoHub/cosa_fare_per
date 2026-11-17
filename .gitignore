@@ -5,6 +5,8 @@ docs/
 package.json
 
 # cache e residui di esecuzione
+.playwright-mcp/
+rev-ok.png
 __pycache__/
 *.pyc
 *.cache
