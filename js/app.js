@@ -564,9 +564,9 @@ async function avvia() {
   try {
     await caricaBase();
     indice = stato.voci.map(v => indicizza(v, stato.servizi));
-    // su schermo stretto le domande scorrono in orizzontale: ce ne stanno di più senza allungare la testata
-    const quanteDomande = window.matchMedia('(max-width: 40rem)').matches ? 12 : 8;
-    mostraSuggerimenti(suggerimenti(stato.voci, quanteDomande));
+    // su schermo stretto le domande stanno in colonne da tre, una alla volta: nove, senza nastro da scorrere
+    const quanteDomande = window.matchMedia('(max-width: 40rem)').matches ? 9 : 8;
+    mostraSuggerimenti(suggerimenti(stato.voci, quanteDomande).slice(0, quanteDomande));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
 

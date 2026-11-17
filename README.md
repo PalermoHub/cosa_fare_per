@@ -31,8 +31,8 @@ Non ci sono dipendenze: è un sito statico (HTML, CSS, moduli JS, JSON) servito 
 ## Funzioni
 
 - In home le domande suggerite sono badge: le voci marcate `inEvidenza` compaiono sempre per prime,
-  le altre si scelgono a caso a ogni caricamento (otto su schermo largo, dodici su schermo stretto,
-  dove scorrono in un nastro orizzontale).
+  le altre si scelgono a caso a ogni caricamento (otto su schermo largo, nove su schermo stretto,
+  in colonne da tre che scorrono in orizzontale, una alla volta).
 - Due rimandi sotto le domande: gli uffici (`uffici.html`) e le segnalazioni, che aprono le
   [issue del repository](https://github.com/PalermoHub/cosa_fare_per/issues) su GitHub.
 - Risposta in tre livelli: sicura, «non sono sicura di aver capito» (con alternative), «non ho una
