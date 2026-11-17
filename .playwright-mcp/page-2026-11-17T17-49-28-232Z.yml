@@ -1,0 +1,110 @@
+- generic [active] [ref=f8e1]:
+  - link "Salta al contenuto" [ref=f8e2] [cursor=pointer]:
+    - /url: "#risultati"
+  - banner [ref=f8e3]:
+    - generic [ref=f8e4]:
+      - generic [ref=f8e5]:
+        - heading "Chiedilo a Pinuzza" [level=1] [ref=f8e6]
+        - button "← Torna all'inizio" [ref=f8e7] [cursor=pointer]
+      - search [ref=f8e8]:
+        - generic [ref=f8e9]: La tua domanda
+        - generic [ref=f8e10]:
+          - searchbox "La tua domanda" [ref=f8e11]: come chiudo la tari se lascio la casa
+          - button "Chiedi" [ref=f8e12] [cursor=pointer]
+      - text: Prova con
+  - main "Risposte di Pinuzza" [ref=f8e13]:
+    - generic [ref=f8e14]:
+      - heading "Tu come chiudo la tari se lascio la casa" [level=2] [ref=f8e15]
+      - generic [ref=f8e16]:
+        - article [ref=f8e17]:
+          - paragraph [ref=f8e18]: Tributi
+          - heading "Chiudere la TARI (cessazione)" [level=2] [ref=f8e19]
+          - paragraph [ref=f8e20]: Richiedi la cessazione della tassa sui rifiuti in caso di trasferimento o dismissione dell'immobile.
+          - generic [ref=f8e21]:
+            - heading "Come fare" [level=3] [ref=f8e22]
+            - paragraph [ref=f8e23]: E' possibile presentare la dichiarazione TARI accedendo al servizio.
+            - paragraph [ref=f8e24]: Al termine della compilazione della dichiarazione, l'istanza verrà protocollata ed inoltrata all'ufficio competente per la lavorazione della pratica.
+          - generic [ref=f8e25]:
+            - heading "Cosa serve" [level=3] [ref=f8e26]
+            - paragraph [ref=f8e27]: "Per accedere al servizio serve:"
+            - list [ref=f8e28]:
+              - listitem [ref=f8e29]: Contratto locazione o atto di vendita
+              - listitem [ref=f8e30]: Data decorrenza variazione
+              - listitem [ref=f8e31]: Ubicazione dell'unità immobiliare
+              - listitem [ref=f8e32]: Dati catastali
+              - listitem [ref=f8e33]: SPID o CIE
+          - generic [ref=f8e34]:
+            - heading "Cosa si ottiene" [level=3] [ref=f8e35]
+            - paragraph [ref=f8e36]: Cancellazione ai fini Tari
+          - generic [ref=f8e37]:
+            - heading "Tempi e scadenze" [level=3] [ref=f8e38]
+            - paragraph [ref=f8e39]: 90 giorni
+          - generic [ref=f8e40]:
+            - heading "Quanto costa" [level=3] [ref=f8e41]
+            - paragraph [ref=f8e42]: Il servizio non prevede costi.
+          - generic [ref=f8e43]:
+            - heading "Come presentare la richiesta" [level=3] [ref=f8e44]
+            - paragraph [ref=f8e45]: Richiedi la cessazione della TARI in caso di trasferimento o chiusura dell'utenza per interrompere l'obbligo di pagamento.
+            - paragraph [ref=f8e46]: Accedi al servizio
+            - paragraph [ref=f8e47]: Uffici che erogano il servizio
+            - paragraph [ref=f8e48]: Prenota appuntamento
+          - generic [ref=f8e49]:
+            - heading "Ulteriori informazioni" [level=3] [ref=f8e50]
+            - paragraph [ref=f8e51]: E' possibile richiedere informazioni/presentare istanze inviando una mail/Pec all'indirizzo infotari@comune.palermo.it o tarsutarestari@cert.comune.palermo.it
+          - generic [ref=f8e52]:
+            - heading "Condizioni di servizio" [level=3] [ref=f8e53]
+            - paragraph [ref=f8e54]: Per conoscere i dettagli di
+            - paragraph [ref=f8e55]: scadenze, requisiti e altre informazioni importanti, leggi i termini e le condizioni di servizio.
+            - paragraph [ref=f8e56]: Termini e condizioni di servizio (PDF 83.28 kB)
+          - paragraph [ref=f8e57]:
+            - strong [ref=f8e58]: Fonte.
+            - text: Questa risposta riporta il testo della scheda servizio pubblicata dal Comune di Palermo.
+          - link "Scheda ufficiale del servizio ↗" [ref=f8e60] [cursor=pointer]:
+            - /url: https://www.comune.palermo.it/servizio/richiedere-cessazione-tari/
+        - heading "A chi rivolgerti" [level=3] [ref=f8e62]
+        - article [ref=f8e64]:
+          - paragraph [ref=f8e65]: Area delle Entrate e dei Tributi Comunali › Ufficio TARSU/TARES/TARI
+          - heading "U.O. Tarsu – Tares – Tari" [level=3] [ref=f8e66]
+          - paragraph [ref=f8e67]: "Responsabile: Carla Mendola (Funzionario Contabile)"
+          - generic [ref=f8e68]:
+            - term [ref=f8e69]: Sede
+            - definition [ref=f8e70]: P.za Giulio Cesare, 6, 90123 Palermo PA, Italia
+            - term [ref=f8e71]: Telefono
+            - definition [ref=f8e72]:
+              - link "0916168139" [ref=f8e73] [cursor=pointer]:
+                - /url: tel:0916168139
+            - term [ref=f8e74]: Email
+            - definition [ref=f8e75]:
+              - link "infotari@comune.palermo.it" [ref=f8e76] [cursor=pointer]:
+                - /url: mailto:infotari@comune.palermo.it
+            - term [ref=f8e77]: PEC
+            - definition [ref=f8e78]:
+              - link "settoretributi@cert.comune.palermo.it" [ref=f8e79] [cursor=pointer]:
+                - /url: mailto:settoretributi@cert.comune.palermo.it
+          - generic [ref=f8e80]:
+            - iframe [ref=f8e81]
+            - link "Apri la mappa più grande ↗" [ref=f8e82] [cursor=pointer]:
+              - /url: https://www.openstreetmap.org/?mlat=38.1109609&mlon=13.3668765#map=17/38.1109609/13.3668765
+          - generic [ref=f8e83]:
+            - button "↗ Percorso" [ref=f8e84] [cursor=pointer]
+            - link "Scheda ufficiale" [ref=f8e85] [cursor=pointer]:
+              - /url: https://www.comune.palermo.it/amministrazione/unita_organizzativa/uo-tarsu-tares-tari/
+  - contentinfo [ref=f8e86]:
+    - generic [ref=f8e87]:
+      - img "OpenDataSicilia" [ref=f8e88]
+      - paragraph [ref=f8e89]:
+        - strong [ref=f8e90]: Chiedilo a Pinuzza
+        - text: è un progetto di OpenDataSicilia · risposte dalle schede servizio e dagli uffici pubblicati da
+        - link "Comune di Palermo" [ref=f8e91] [cursor=pointer]:
+          - /url: https://www.comune.palermo.it/amministrazione/aree-amministrative/
+        - text: e dal catalogo
+        - link "Cerca servizi, competenze e uffici" [ref=f8e92] [cursor=pointer]:
+          - /url: https://sites.google.com/comune.palermo.it/trova-servizi/
+        - text: · dati aggiornati al 17 novembre 2026.
+        - generic [ref=f8e93]:
+          - text: ·
+          - link "Privacy e cookie" [ref=f8e94] [cursor=pointer]:
+            - /url: privacy.html
+          - text: ·
+          - button "Preferenze cookie" [ref=f8e95] [cursor=pointer]
+        - text: "Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio."

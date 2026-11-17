@@ -262,12 +262,48 @@ function schedaUfficio(ufficio) {
 
 // ---------- risposta ----------
 
+// ---------- stato di revisione della risposta ----------
+// Le voci con risposta preparata restano «da-rivedere» finché una persona non le
+// controlla (docs/REVISIONE.md). L'avviso sta in cima, prima dei passi: chi legge
+// deve saperlo prima di usare l'informazione, non dopo.
+
+function dataIt(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+  return m ? `${m[3]}/${m[2]}/${m[1]}` : '';
+}
+
+function avvisoRevisione(voce) {
+  const rev = voce.revisione || {};
+  if (rev.stato === 'fonte-ufficiale') return null; // è il testo della scheda del Comune
+  if (rev.stato === 'ok') {
+    const quando = dataIt(rev.data);
+    const p = el(
+      'p',
+      'revisione-ok',
+      `Informazione rivista da una persona${rev.da ? ` (${rev.da})` : ''}${quando ? ` il ${quando}` : ''}.`,
+    );
+    return p;
+  }
+  // stato sconosciuto o assente: si tratta come non rivista, che è l'ipotesi sicura
+  const p = el('p', 'avviso avviso-revisione');
+  p.append(
+    el('strong', null, 'Informazione preparata. '),
+    document.createTextNode(
+      "Non è ancora stata verificata da una persona: confermala allo sportello o con l'ufficio competente prima di presentare la domanda.",
+    ),
+  );
+  return p;
+}
+
 function corpoRisposta(voce) {
   const scheda = voce.servizio ? stato.servizi[voce.servizio] : null;
   const articolo = el('article', 'risposta');
 
   articolo.append(el('p', 'etichetta', voce.categoria || scheda?.categorie?.[0] || 'Comune di Palermo'));
   articolo.append(el('h2', null, voce.titolo));
+
+  const revisione = avvisoRevisione(voce);
+  if (revisione) articolo.append(revisione);
 
   if (voce.risposta) {
     if (voce.risposta.sintesi) articolo.append(el('p', 'sintesi', voce.risposta.sintesi));

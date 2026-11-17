@@ -14,6 +14,7 @@
   --accento-chiaro: #e6efed;
   --caldo: #a4461b;
   --caldo-chiaro: #fbeee7;
+  --giallo: #f4b41a;
   --ombra: 0 1px 2px rgba(23, 21, 15, .06), 0 8px 24px -18px rgba(23, 21, 15, .35);
   --tondo: 10px;
   --testo: 1rem;
@@ -105,6 +106,35 @@ a:hover { color: var(--caldo); }
   text-align: center;
 }
 .titolo .nome { color: var(--accento); }
+
+/* ---------- marchio: Pinuzza, la spilla tonda con la faccia ---------- */
+
+.marchio {
+  width: .84em;
+  height: auto;
+  vertical-align: -.13em;
+  margin-right: .02em;
+  overflow: visible;
+  transform: rotate(-8deg);
+  transform-origin: 50% 55%;
+  transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+.titolo:hover .marchio { transform: rotate(0deg); }
+.titolo-pagina .marchio { width: .72em; vertical-align: -.1em; margin-right: .12em; }
+
+.marchio .spilla { fill: var(--accento); stroke: var(--inchiostro); stroke-width: 9; }
+.marchio .faccia { fill: var(--carta); stroke: var(--inchiostro); stroke-width: 8; }
+.marchio .occhio { fill: var(--inchiostro); }
+.marchio .luce { fill: #fff; }
+.marchio .occhiolino,
+.marchio .sorriso { fill: none; stroke: var(--inchiostro); stroke-width: 7; stroke-linecap: round; }
+.marchio .gota { fill: var(--caldo); opacity: .3; }
+.marchio .lucciola { fill: var(--giallo); stroke: var(--inchiostro); stroke-width: 4; stroke-linejoin: round; transform-box: fill-box; transform-origin: 50% 50%; animation: lucciola 3.6s ease-in-out infinite; }
+
+@keyframes lucciola {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: .5; transform: scale(.72) rotate(20deg); }
+}
 
 .presentazione {
   max-width: 34rem;
@@ -405,6 +435,15 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   color: #6b3417;
 }
 .avviso strong { color: #4d250f; }
+
+/* stato di revisione della risposta: in cima, prima dei passi */
+.avviso-revisione { margin: 0 0 1.2rem; }
+
+.revisione-ok {
+  margin: 0 0 1.2rem;
+  font: 500 .82rem/1.5 var(--sans);
+  color: var(--inchiostro-fio);
+}
 
 .vuoto { padding: 1rem 0 0; }
 .vuoto h2 { margin: 0 0 .5rem; font-family: var(--serif); font-weight: 500; font-size: 1.6rem; }
