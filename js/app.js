@@ -561,7 +561,9 @@ async function avvia() {
   try {
     await caricaBase();
     indice = stato.voci.map(v => indicizza(v, stato.servizi));
-    mostraSuggerimenti(suggerimenti(stato.voci, 6));
+    // su schermo stretto si tengono meno domande: due restano quelle in evidenza
+    const quanteDomande = window.matchMedia('(max-width: 40rem)').matches ? 6 : 8;
+    mostraSuggerimenti(suggerimenti(stato.voci, quanteDomande));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
 

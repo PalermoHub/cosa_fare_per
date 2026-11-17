@@ -20,7 +20,7 @@ js/dati.js            caricamento dei dati (gli uffici solo quando servono)
 js/app.js             risposte, schede ufficio con mappa, percorso con GPS, navigazione
 js/aree.js            raggruppamento per area, elenco alfabetico, filtro e suggerimenti (3 lettere)
 js/uffici.js          interfaccia della pagina degli uffici
-data/argomenti.json   102 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
+data/argomenti.json   104 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
 data/servizi.json     58 schede servizio ufficiali del Comune, estratte con le loro sezioni
 data/uffici.json      601 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
 img/                  icone e logo OpenDataSicilia
@@ -30,6 +30,8 @@ Non ci sono dipendenze: è un sito statico (HTML, CSS, moduli JS, JSON) servito 
 
 ## Funzioni
 
+- In home le domande suggerite sono badge: le voci marcate `inEvidenza` compaiono sempre per prime,
+  le altre si scelgono a caso a ogni caricamento (otto su schermo largo, sei su schermo stretto).
 - Risposta in tre livelli: sicura, «non sono sicura di aver capito» (con alternative), «non ho una
   risposta pronta» (con gli uffici competenti trovati nelle loro competenze).
 - Scheda ufficio con mini mappa OpenStreetMap (caricata solo quando entra nello schermo) e pulsante
@@ -47,6 +49,8 @@ Le risposte «ufficiali» restano legate alla loro scheda su `comune.palermo.it/
 Comune aggiorna una scheda, il testo della risposta si aggiorna rigenerando `data/servizi.json`.
 Le voci curate (`data/argomenti.json`) si modificano a mano: ogni voce ha `domande`, `keywords`,
 `uffici` e, se non esiste una scheda servizio, una risposta con `sintesi`, `passi`, `serve` e `nota`.
+Con `inEvidenza: true` la voce finisce sempre tra le domande suggerite in home, con la sua prima
+domanda.
 
 I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-amministrative/` e
 `/amministrazione/uffici/`; il catalogo dei servizi anche da

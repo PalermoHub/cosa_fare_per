@@ -221,15 +221,24 @@ export function cercaUffici(uffici, domanda, n = 3) {
   return scelti;
 }
 
-// domande suggerite: si parte da un punto "a caso" e si gira l'elenco (termina sempre,
-// anche se `caso` restituisce sempre lo stesso numero)
+// domande suggerite: le voci marcate `inEvidenza` aprono sempre la lista con la loro
+// prima domanda (sono quelle che devono stare in home); le altre si scelgono a caso,
+// partendo da un punto qualsiasi dell'elenco (termina sempre, anche se `caso`
+// restituisce sempre lo stesso numero)
 export function suggerimenti(voci, n = 6, caso = Math.random) {
   const pool = voci.filter(v => (v.domande || []).length);
   if (!pool.length) return [];
   const scelti = [];
-  const partenza = Math.floor(caso() * pool.length) || 0;
-  for (let k = 0; k < pool.length && scelti.length < n; k++) {
-    const v = pool[(partenza + k) % pool.length];
+  for (const v of pool) {
+    if (!v.inEvidenza) continue;
+    if (scelti.length >= n) return scelti;
+    scelti.push(v.domande[0]);
+  }
+  const girabili = pool.filter(v => !v.inEvidenza);
+  if (!girabili.length) return scelti;
+  const partenza = Math.floor(caso() * girabili.length) || 0;
+  for (let k = 0; k < girabili.length && scelti.length < n; k++) {
+    const v = girabili[(partenza + k) % girabili.length];
     const i = Math.floor(caso() * v.domande.length) || 0;
     scelti.push(v.domande[i % v.domande.length]);
   }

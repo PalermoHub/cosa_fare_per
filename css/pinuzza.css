@@ -195,38 +195,44 @@ a:hover { color: var(--caldo); }
 }
 
 .suggerimenti {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: .35rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .45rem;
   margin: 1.8rem auto 0;
-  max-width: 36rem;
-  justify-items: start;
-  text-align: left;
+  max-width: 40rem;
 }
 .suggerimenti::before {
   content: "Prova con";
+  flex: 0 0 100%;
   grid-column: 1 / -1;
-  justify-self: center;
+  text-align: center;
   font: 600 .68rem/1.6 var(--sans);
   letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--inchiostro-fio);
-  margin-bottom: .45rem;
+  margin-bottom: .2rem;
 }
+/* le domande sono badge: si leggono come scelte, non come link */
 .suggerimenti button {
-  border: 0;
-  background: none;
-  padding: .1rem 0;
-  text-align: left;
+  border: 1px solid var(--linea);
+  background: var(--carta-alt);
+  border-radius: 999px;
+  padding: .38rem .9rem;
+  text-align: center;
   font: inherit;
-  font-size: .92rem;
+  font-size: .88rem;
+  line-height: 1.3;
   color: var(--inchiostro-tenue);
   cursor: pointer;
-  text-decoration: underline;
-  text-decoration-color: var(--linea-forte);
-  text-underline-offset: 3px;
+  text-decoration: none;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
-.suggerimenti button:hover { color: var(--accento); text-decoration-color: var(--accento); }
+.suggerimenti button:hover {
+  color: var(--accento);
+  background: var(--accento-chiaro);
+  border-color: var(--accento);
+}
 
 /* testata compatta quando ci sono risultati */
 body.ha-risultati .testata { padding: .9rem 0 .8rem; border-bottom-color: var(--linea); }
@@ -508,7 +514,14 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 @media (max-width: 40rem) {
   :root { --testo: .98rem; }
-  .suggerimenti { grid-template-columns: 1fr; justify-items: center; }
+  /* due colonne strette: con otto badge in colonna la testata sfonderebbe lo schermo */
+  .suggerimenti {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+    gap: .4rem;
+  }
+  .suggerimenti button { padding: .34rem .55rem; font-size: .84rem; }
   .piede { font-size: .74rem; }
   .piede .piede-nota { display: none; } /* il piede deve restare basso: l'avvertenza estesa sta nel campo */
   .interno { width: min(100% - 1.6rem, 46rem); }
@@ -517,6 +530,13 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .campo button { width: 100%; }
   .ufficio dl { grid-template-columns: 1fr; gap: .1rem; }
   .ufficio dt { margin-top: .45rem; }
+}
+
+/* schermo basso: la home scorre con la pagina, così le domande e il piede restano
+   raggiungibili; con i risultati si torna alla testata fissa */
+@media (max-width: 40rem) and (max-height: 860px) {
+  body:not(.ha-risultati) { height: auto; min-height: 100dvh; overflow: visible; }
+  body:not(.ha-risultati) .risultati { flex: 0 0 auto; overflow: visible; }
 }
 
 @media (prefers-reduced-motion: reduce) {
