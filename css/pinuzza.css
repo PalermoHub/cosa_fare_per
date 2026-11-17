@@ -763,8 +763,6 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .campo { flex-wrap: wrap; padding: .5rem .5rem .5rem .85rem; }
   .campo input { flex-basis: 100%; }
   .campo button { width: 100%; }
-  /* i due rimandi in colonna: affiancati sfonderebbero la larghezza */
-  .scorciatoie { flex-direction: column; align-items: center; max-width: 100%; }
   .ufficio dl { grid-template-columns: 1fr; gap: .1rem; }
   .ufficio dt { margin-top: .45rem; }
 }
@@ -1198,3 +1196,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .pillola .freccia { color: var(--accento); font-weight: 400; }
 .pillola:hover .freccia { color: var(--caldo); }
 body.ha-risultati .scorciatoie { display: none; }
+/* sul telefono i due rimandi non servono: la barra in basso ha già «Uffici» e «Segnala»,
+   e i badge sarebbero solo un doppione di quelle voci */
+@media (max-width: 40rem) {
+  .scorciatoie { display: none; }
+}
