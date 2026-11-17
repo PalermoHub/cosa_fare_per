@@ -945,6 +945,12 @@ body.crediti-aperti .crediti {
   text-align: center;
 }
 .pagina-domande .categoria-domande { margin: 0 0 2rem; scroll-margin-top: 1.5rem; }
+/* una riga separa una categoria dalla successiva: si vede dove finisce un gruppo */
+.pagina-domande .categoria-domande + .categoria-domande {
+  margin-top: 2.4rem;
+  padding-top: 1.8rem;
+  border-top: 2px solid var(--linea-forte);
+}
 .pagina-domande .categoria-domande > h2 {
   display: inline-flex;
   align-items: center;
