@@ -109,6 +109,22 @@ const casi = {
     verifica(/\d{3} uffici/.test(badge), `badge uffici: ${badge}`);
   },
 
+  async 'telefono a pagina bianca: quindici domande di prova, cinque per colonna'(pagina, base) {
+    await pagina.setViewportSize({ width: 390, height: 844 });
+    await pagina.goto(base, { waitUntil: 'load' });
+    await attesa(900);
+    const domande = await pagina.locator('.riga-domande button').count();
+    verifica(domande === 15, `suggerimenti sul telefono: ${domande}`);
+    // una colonna da cinque: le altre due si raggiungono scorrendo, i puntini sono tre
+    const colonne = await pagina.evaluate(() => {
+      const riga = document.querySelector('.riga-domande');
+      const righe = new Set([...riga.children].map(b => Math.round(b.getBoundingClientRect().top))).size;
+      return { righe, puntini: document.querySelectorAll('.puntini span').length };
+    });
+    verifica(colonne.righe === 5, `domande per colonna: ${colonne.righe}`);
+    verifica(colonne.puntini === 3, `puntini: ${colonne.puntini}`);
+  },
+
   async 'risposta con scheda ufficio: titolo, recapiti, feedback'(pagina, base) {
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
     await attesa(1200);

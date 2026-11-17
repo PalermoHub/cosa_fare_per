@@ -277,6 +277,23 @@ test('le domande in evidenza stanno in testa ai suggerimenti', () => {
 
 // la home sul telefono mostra quindici domande di prova, cinque per volta: devono girare
 // (un altro punto di partenza, altre domande) e non essere tutte lo stesso tema
+test('le quindici domande di prova girano e restano su temi diversi', () => {
+  const tema = new Map(argomenti.flatMap(v => v.domande.map(d => [d, v.categoria || ''])));
+  const quindici = suggerimenti(argomenti, 15, () => 0.42);
+  assert.equal(quindici.length, 15);
+  assert.equal(new Set(quindici).size, 15, 'domande ripetute nei suggerimenti');
+  const conto = new Map();
+  for (const d of quindici) {
+    const t = tema.get(d);
+    conto.set(t, (conto.get(t) || 0) + 1);
+  }
+  const troppo = [...conto].filter(([, n]) => n > 2);
+  assert.deepEqual(troppo, [], 'troppe domande dello stesso tema in home');
+
+  const altroGiro = suggerimenti(argomenti, 15, () => 0.91);
+  assert.notDeepEqual(altroGiro, quindici, 'i suggerimenti non girano: stesso elenco a ogni avvio');
+});
+
 test('ogni voce ha domande e titolo', () => {
   for (const v of argomenti) {
     assert.ok(v.titolo && v.titolo.length > 3, `titolo mancante in ${v.id}`);
