@@ -128,16 +128,30 @@ function inserisciBadge() {
   aggiornaPulsante();
 }
 
-// Quando c'è una risposta il badge si sposta in testata, subito dopo «Torna all'inizio»:
-// in quel momento le domande suggerite spariscono e il badge sotto il campo resterebbe solo.
+// Con una risposta aperta il badge va in testata, attaccato a «Torna all'inizio»: sono i due
+// comandi che servono mentre si legge (uscire, cambiare tema), quindi stanno insieme a destra.
+function gruppoAzioni() {
+  const titolo = document.querySelector('.riga-titolo');
+  if (!titolo) return null;
+  let gruppo = titolo.querySelector('.testata-azioni');
+  if (!gruppo) {
+    gruppo = document.createElement('div');
+    gruppo.className = 'testata-azioni';
+    titolo.append(gruppo);
+  }
+  // «Torna all'inizio» entra nel gruppo: così non resta al centro da solo
+  const nuova = document.getElementById('nuova');
+  if (nuova && nuova.parentElement !== gruppo) gruppo.prepend(nuova);
+  return gruppo;
+}
+
 function posizionaBadge() {
   const riga = document.querySelector('.tema-badge-riga');
   if (!riga) return;
-  const nuova = document.getElementById('nuova');
-  const titolo = document.querySelector('.riga-titolo');
   const suggerimenti = document.getElementById('suggerimenti');
-  if (document.body.classList.contains('ha-risultati') && nuova && titolo) {
-    nuova.after(riga);
+  const gruppo = gruppoAzioni();
+  if (document.body.classList.contains('ha-risultati') && gruppo) {
+    gruppo.append(riga);
     riga.classList.add('in-testata');
   } else if (suggerimenti) {
     suggerimenti.after(riga);

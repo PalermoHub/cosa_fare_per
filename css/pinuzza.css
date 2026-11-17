@@ -316,7 +316,8 @@ body.ha-risultati .suggerimenti { display: none; }
   transition: border-color .18s ease, color .18s ease, background .18s ease;
 }
 .badge-tema:hover { border-color: var(--accento); color: var(--accento); background: var(--accento-chiaro); }
-/* dentro la riga del titolo, dopo «Torna all'inizio»: niente margine suo */
+/* in testata: «Torna all'inizio» e il cambio tema sono un gruppo solo, a destra */
+.testata-azioni { display: flex; align-items: center; gap: .5rem; }
 .tema-badge-riga.in-testata { margin: 0; align-self: center; }
 body.ha-risultati .tema-badge-riga.in-testata .badge-tema { width: 2.25rem; height: 2.25rem; }
 .badge-tema svg {
