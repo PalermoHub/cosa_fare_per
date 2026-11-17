@@ -24,9 +24,11 @@ data/argomenti.json   104 voci: domande tipiche, parole chiave, risposta prepara
 data/servizi.json     58 schede servizio ufficiali del Comune, estratte con le loro sezioni
 data/uffici.json      601 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
 img/                  icone e logo OpenDataSicilia
+tests/                i controlli automatici (motore, uffici, offline, contrasto, tema, pagine, interfaccia, accessibilità)
+package.json          gli script `npm test`, `npm run test:ui`, `npm run test:a11y`
 ```
 
-Non ci sono dipendenze: è un sito statico (HTML, CSS, moduli JS, JSON) servito da GitHub Pages.
+Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSON) servito da GitHub Pages.
 
 ## Funzioni
 
@@ -62,6 +64,17 @@ I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-ammini
 
 > Pinuzza non è uno sportello e non prende pratiche. Importi, scadenze e documenti vanno sempre
 > verificati sulla scheda del servizio o con l'ufficio.
+
+## Controlli automatici
+
+```bash
+npm test          # 67 test statici sui dati, sul motore e sulle pagine (nessuna dipendenza)
+npm run test:ui   # 12 casi nell'interfaccia con Chromium (serve Playwright: npm i -D playwright)
+npm run test:a11y # audit di accessibilità con axe-core
+```
+
+I primi si lanciano sempre; gli altri due aprono il sito in locale con un browser. Girano anche in
+CI a ogni push su `main` (`.github/workflows/verifica.yml`).
 
 ## Licenza e crediti
 

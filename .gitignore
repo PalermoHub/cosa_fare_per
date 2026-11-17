@@ -1,8 +1,9 @@
 # Cosa non va pubblicato: dati grezzi, script di raccolta, note di lavoro.
 dati/
-scripts/
 docs/
-package.json
+
+# Gli script di raccolta restano in locale; in `tests/` c'è solo quello che serve alla CI.
+scripts/
 
 # cache e residui di esecuzione
 .playwright-mcp/

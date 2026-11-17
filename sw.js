@@ -11,7 +11,7 @@
 // A ogni rilascio va incrementata VERSIONE (o si lancia scripts/nuova_versione.sh): le cache
 // vecchie vengono cancellate all'attivazione, così non si serve mai un misto di versioni.
 
-const VERSIONE = 'pinuzza-v26';
+const VERSIONE = 'pinuzza-v27';
 const GUSCIO = `${VERSIONE}-guscio`;
 const PAGINE = `${VERSIONE}-pagine`;
 const DATI = `${VERSIONE}-dati`;
@@ -129,7 +129,12 @@ async function cachePrima(richiesta, cacheName) {
 
 async function staleWhileRevalidate(richiesta) {
   const cache = await caches.open(DATI);
-  const copia = await cache.match(richiesta, { ignoreSearch: true });
+  const guscio = await caches.open(GUSCIO);
+  // argomenti e servizi stanno nella precache del guscio (servono per la prima domanda),
+  // uffici.json nella cache dei dati: la risposta vecchia può essere in tutte e due
+  const copia =
+    (await cache.match(richiesta, { ignoreSearch: true })) ||
+    (await guscio.match(richiesta, { ignoreSearch: true }));
   const aggiorna = fetch(richiesta)
     .then(risposta => {
       if (risposta && risposta.ok) cache.put(richiesta, risposta.clone());
