@@ -566,6 +566,15 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   letter-spacing: -.005em;
 }
 .risposta-anche .sintesi { margin-bottom: .9rem; font-size: 1rem; }
+/* «Come fare» e «Cosa serve» della seconda scheda sono h5: stessa etichetta in maiuscoletto
+   delle sezioni della scheda principale, che lì è uno h3 */
+.anche .sezione > h5 {
+  margin: 0 0 .35rem;
+  font: 600 .72rem/1.6 var(--sans);
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
 .anche .ufficio h5 { margin: 0 0 .2rem; font: 600 1.06rem/1.35 var(--sans); color: var(--inchiostro); }
 .anche-uffici { margin: .9rem 0 0; }
 .anche-uffici > summary {
