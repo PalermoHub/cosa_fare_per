@@ -11,7 +11,7 @@
 // A ogni rilascio va incrementata VERSIONE (o si lancia scripts/nuova_versione.sh): le cache
 // vecchie vengono cancellate all'attivazione, così non si serve mai un misto di versioni.
 
-const VERSIONE = 'pinuzza-v6';
+const VERSIONE = 'pinuzza-v9';
 const GUSCIO = `${VERSIONE}-guscio`;
 const PAGINE = `${VERSIONE}-pagine`;
 const DATI = `${VERSIONE}-dati`;
@@ -50,6 +50,15 @@ self.addEventListener('install', evento => {
     caches.open(GUSCIO).then(async cache => {
       // uno per uno: se un file manca non deve saltare tutta l'installazione
       await Promise.allSettled(PRECACHE.map(file => cache.add(new Request(file, { cache: 'reload' }))));
+      // ma un guscio incompleto è peggio di nessun aggiornamento: con metà file nuovi e
+      // metà vecchi l'app può rompersi. Se manca qualcosa si butta la cache e l'installazione
+      // fallisce: resta attivo il service worker precedente, che funziona.
+      const presenti = await Promise.all(PRECACHE.map(file => cache.match(file)));
+      const mancanti = PRECACHE.filter((file, i) => !presenti[i]);
+      if (mancanti.length) {
+        await caches.delete(GUSCIO);
+        throw new Error(`cache incompleta: ${mancanti.join(', ')}`);
+      }
       await self.skipWaiting();
     }),
   );

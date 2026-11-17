@@ -372,7 +372,7 @@ async function schedeUffici(voce) {
   return contenitore;
 }
 
-async function rispostaSicura(voce) {
+async function rispostaSicura(voce, domanda) {
   const frammento = document.createDocumentFragment();
   frammento.append(corpoRisposta(voce));
   await caricaUffici();
@@ -382,10 +382,11 @@ async function rispostaSicura(voce) {
     intestazione.append(el('h3', null, 'A chi rivolgerti'));
     frammento.append(intestazione, schede);
   }
+  if (domanda) frammento.append(bloccoUtile(voce, domanda));
   return frammento;
 }
 
-async function rispostaIncerta(voce, alternative) {
+async function rispostaIncerta(voce, domanda, alternative) {
   const frammento = document.createDocumentFragment();
   const avviso = el('p', 'avviso');
   avviso.append(
@@ -397,6 +398,7 @@ async function rispostaIncerta(voce, alternative) {
   const schede = await schedeUffici(voce);
   if (schede) frammento.append(schede);
   if (alternative.length) frammento.append(domandeVicine(alternative));
+  if (domanda) frammento.append(bloccoUtile(voce, domanda));
   return frammento;
 }
 
@@ -445,6 +447,105 @@ async function rispostaVuota(domanda) {
   return frammento;
 }
 
+// ---------- «ti è stato utile?» ----------
+// Nessun backend: «Sì» resta un evento aggregato (solo se il consenso è già dato);
+// «No» apre una segnalazione già scritta su GitHub, che l'utente legge e corregge
+// prima di inviare. Nel testo finiscono solo il codice della voce e la domanda scritta:
+// niente nome, niente email, niente indirizzo IP nostro.
+
+const NUOVA_SEGNALAZIONE = 'https://github.com/PalermoHub/cosa_fare_per/issues/new';
+
+// Evento aggregato: parte solo se il consenso alle statistiche è già stato dato (stessa chiave
+// di js/consenso.js). Non si importa la funzione da consenso.js apposta: se il service worker
+// servisse un consenso.js di una versione vecchia l'import farebbe fallire tutta l'app.
+function registraEvento(nome, parametri = {}) {
+  let scelta = null;
+  try {
+    scelta = localStorage.getItem('pinuzza-consenso');
+  } catch (errore) {
+    return;
+  }
+  if (scelta !== 'accettato' || typeof window.gtag !== 'function') return;
+  window.gtag('event', nome, parametri);
+}
+
+function urlSegnalazione(voce, domanda) {
+  const corpo = [
+    `Voce: ${voce.id} — ${voce.titolo}`,
+    '',
+    `Domanda: ${domanda}`,
+    '',
+    'Cosa non torna (requisito, ufficio, importo, link…):',
+    '- ',
+    '',
+    "Nota: questo testo è preparato dall'app con il codice della voce e la domanda che hai scritto. Non contiene altri dati tuoi.",
+  ].join('\n');
+  const parametri = new URLSearchParams({
+    labels: 'segnalazione',
+    title: `[Risposta] ${voce.id}`,
+    body: corpo,
+  });
+  return `${NUOVA_SEGNALAZIONE}?${parametri.toString()}`;
+}
+
+function bloccoUtile(voce, domanda) {
+  const riquadro = el('div', 'utile');
+  const etichetta = el('p', 'utile-domanda', 'Ti è stato utile?');
+  etichetta.id = `utile-${voce.id}`;
+  riquadro.setAttribute('role', 'group');
+  riquadro.setAttribute('aria-labelledby', etichetta.id);
+
+  const azioni = el('div', 'utile-azioni');
+  const si = el('button', 'utile-si', 'Sì, grazie');
+  const no = el('button', 'utile-no', 'No, la risposta è sbagliata');
+  si.type = 'button';
+  no.type = 'button';
+  azioni.append(si, no);
+
+  const esito = el('div', 'utile-esito');
+  esito.setAttribute('role', 'status');
+
+  si.addEventListener('click', () => {
+    esito.textContent = 'Grazie: lo tengo da conto.';
+    si.disabled = true;
+    no.disabled = true;
+    registraEvento('risposta_utile', { voce_id: voce.id });
+  });
+
+  no.addEventListener('click', () => {
+    // la finestra va aperta subito, dentro il clic, altrimenti il browser la blocca.
+    // Si apre una pagina vuota e poi ci si naviga: con `noopener` window.open restituisce
+    // null e non si saprebbe distinguere «bloccata» da «aperta».
+    const indirizzo = urlSegnalazione(voce, domanda);
+    const finestra = window.open('about:blank', '_blank');
+    if (finestra) {
+      try {
+        finestra.opener = null;
+        finestra.location.replace(indirizzo);
+      } catch (errore) {
+        finestra.location.href = indirizzo;
+      }
+    }
+    esito.replaceChildren(
+      el('p', null, finestra
+        ? 'Ho preparato la segnalazione su GitHub in una nuova scheda: puoi leggerla e correggerla prima di inviarla. Per pubblicarla serve un account GitHub.'
+        : 'La segnalazione è pronta ma il browser ha bloccato la nuova scheda: aprila con il pulsante qui sotto.'),
+    );
+    const link = el('a', null, 'Apri la segnalazione su GitHub');
+    link.href = indirizzo;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    const nota = el('p', 'utile-nota', "Contiene solo il codice della voce e la domanda che hai scritto: nessun altro dato tuo, e puoi modificarla prima di inviarla.");
+    esito.append(link, nota);
+    si.disabled = true;
+    no.disabled = true;
+    registraEvento('risposta_non_utile', { voce_id: voce.id });
+  });
+
+  riquadro.append(etichetta, azioni, esito);
+  return riquadro;
+}
+
 // ---------- conversazione ----------
 
 function aggiornaStatoPagina() {
@@ -478,14 +579,14 @@ async function chiedi(testo, { daStorico = false } = {}) {
     contenuto.textContent = '';
 
     if (migliore && migliore.punteggio >= SOGLIA_SICURA) {
-      contenuto.append(await rispostaSicura(migliore.indice.voce));
+      contenuto.append(await rispostaSicura(migliore.indice.voce, domanda));
     } else if (migliore && migliore.punteggio >= SOGLIA_MINIMA) {
       const alternative = [
         ...trovati.slice(1).map(t => t.indice.voce.domande[0]),
         ...(migliore.indice.voce.domande || []).slice(0, 3),
       ].filter(Boolean);
       ultimeAlternative = [...new Set(alternative)].slice(0, 3);
-      contenuto.append(await rispostaIncerta(migliore.indice.voce, ultimeAlternative));
+      contenuto.append(await rispostaIncerta(migliore.indice.voce, domanda, ultimeAlternative));
     } else {
       ultimeAlternative = suggerimenti(stato.voci, 3);
       contenuto.append(await rispostaVuota(domanda));

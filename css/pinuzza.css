@@ -533,8 +533,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 }
 .utile-azioni { display: flex; flex-wrap: wrap; gap: .5rem; }
 .utile-azioni button {
-  min-height: 2.5rem;
-  padding: .45rem .9rem;
+  min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
+  padding: .5rem .95rem;
   border: 1px solid var(--linea-forte);
   border-radius: 8px;
   background: var(--superficie);

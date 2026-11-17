@@ -1,18 +1,17 @@
 // Tema chiaro e scuro.
 //
 // Regole (P1.2 di docs/DA_FARE.md):
-//  - all'avvio vale la preferenza di sistema (`prefers-color-scheme`);
+//  - il tema di partenza è chiaro, uguale per tutti: non dipende dal sistema;
 //  - se l'utente ha scelto un tema, vale la sua scelta salvata in `localStorage`
-//    (`pinuzza-tema` = "chiaro" | "scuro") e il sistema non la sovrascrive più;
+//    (`pinuzza-tema` = "chiaro" | "scuro");
 //  - il tema è `data-theme` su <html>, i colori stanno tutti in css/pinuzza.css;
 //  - la barra del browser (theme-color) segue il tema.
 //
 // Il tema viene applicato il prima possibile da uno script in linea nell'<head>: qui si
-// gestiscono il pulsante, la scelta dell'utente e il cambio di preferenza del sistema.
+// gestiscono i pulsanti (piede e barra in basso) e la scelta dell'utente.
 
 const CHIAVE = 'pinuzza-tema';
 const radice = document.documentElement;
-const sistemaScuro = window.matchMedia('(prefers-color-scheme: dark)');
 
 function sceltaSalvata() {
   try {
@@ -85,16 +84,10 @@ function inserisciPulsante() {
   const gruppo = document.createElement('span');
   gruppo.className = 'piede-tema';
   gruppo.append(document.createTextNode(' · '), pulsante);
-  if (nota && nota.parentElement === paragrafo) nota.before(gruppo);
+  if (nota && nota.parentElement === paragrafo) nota.after(gruppo);
   else paragrafo.append(gruppo);
   aggiornaPulsante();
 }
-
-// se non c'è una scelta salvata, il tema segue il sistema anche mentre la pagina è aperta
-sistemaScuro.addEventListener('change', evento => {
-  if (sceltaSalvata()) return;
-  applica(evento.matches ? 'scuro' : 'chiaro');
-});
 
 // la voce della barra in basso fa lo stesso del pulsante nel piede
 const voceTema = document.getElementById('tema-barra');
