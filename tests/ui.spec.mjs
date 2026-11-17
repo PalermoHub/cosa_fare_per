@@ -282,7 +282,11 @@ const casi = {
     verifica(dati && dati['@type'] === 'FAQPage', 'manca il JSON-LD FAQPage');
     verifica(dati.mainEntity.length === 20, `domande FAQ: ${dati.mainEntity.length}`);
     verifica(dati.mainEntity.every(q => q.acceptedAnswer.text.length > 60), 'risposte troppo corte');
-    const data = await pagina.textContent('#aggiornato');
+    // la data arriva dai dati (argomenti.json), non dall'HTML: sul live può servire un attimo
+    await pagina
+      .waitForFunction(() => /\d{4}/.test(document.querySelector('#aggiornato')?.textContent || ''), { timeout: 10000 })
+      .catch(() => {});
+    const data = (await pagina.textContent('#aggiornato')) || '—';
     verifica(/\d{4}/.test(data), `data dei dati: ${data}`);
   },
 };
