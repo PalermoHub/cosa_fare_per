@@ -117,7 +117,9 @@ function inserisciBadge() {
     iconaSole.append(linea);
   }
 
+  // il nome resta scritto (per i lettori di schermo), ma a video si vede solo l'icona
   const parola = document.createElement('span');
+  parola.className = 'nascosto';
   pulsante.append(iconaLuna, iconaSole, parola);
   riga.append(pulsante);
 
@@ -126,9 +128,29 @@ function inserisciBadge() {
   aggiornaPulsante();
 }
 
+// Quando c'è una risposta il badge si sposta in testata, subito dopo «Torna all'inizio»:
+// in quel momento le domande suggerite spariscono e il badge sotto il campo resterebbe solo.
+function posizionaBadge() {
+  const riga = document.querySelector('.tema-badge-riga');
+  if (!riga) return;
+  const nuova = document.getElementById('nuova');
+  const titolo = document.querySelector('.riga-titolo');
+  const suggerimenti = document.getElementById('suggerimenti');
+  if (document.body.classList.contains('ha-risultati') && nuova && titolo) {
+    nuova.after(riga);
+    riga.classList.add('in-testata');
+  } else if (suggerimenti) {
+    suggerimenti.after(riga);
+    riga.classList.remove('in-testata');
+  }
+}
+
 // la voce della barra in basso fa lo stesso del badge
 const voceTema = document.getElementById('tema-barra');
 if (voceTema) voceTema.addEventListener('click', cambia);
 
 inserisciBadge();
+// `ha-risultati` sul <body> dice se c'è una risposta aperta: il badge cambia posto da solo
+new MutationObserver(posizionaBadge).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 applica(temaCorrente());
+posizionaBadge();

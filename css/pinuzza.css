@@ -303,9 +303,10 @@ body.ha-risultati .suggerimenti { display: none; }
 .badge-tema {
   display: inline-flex;
   align-items: center;
-  gap: .4rem;
-  min-height: 2.75rem;
-  padding: .45rem .85rem;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
   border: 1px solid var(--linea);
   border-radius: 999px;
   background: var(--carta-alt);
@@ -315,9 +316,13 @@ body.ha-risultati .suggerimenti { display: none; }
   transition: border-color .18s ease, color .18s ease, background .18s ease;
 }
 .badge-tema:hover { border-color: var(--accento); color: var(--accento); background: var(--accento-chiaro); }
+/* dentro la riga del titolo, dopo «Torna all'inizio»: niente margine suo */
+.tema-badge-riga.in-testata { margin: 0; align-self: center; }
+body.ha-risultati .tema-badge-riga.in-testata .badge-tema { width: 2.25rem; height: 2.25rem; }
 .badge-tema svg {
-  width: 1.05rem;
-  height: 1.05rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: 0 0 auto;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
