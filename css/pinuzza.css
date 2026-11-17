@@ -243,7 +243,7 @@ a:hover { color: var(--caldo); }
   max-width: 40rem;
 }
 .etichetta-suggerimenti {
-  margin: 0 0 .2rem;
+  margin: 0 0 .6rem; /* un po' d'aria fra l'etichetta e i badge: erano appiccicati */
   text-align: center;
   font: 600 .68rem/1.6 var(--sans);
   letter-spacing: .12em;
