@@ -255,25 +255,29 @@ input, textarea { caret-color: var(--accento); }
 
 .modulo { margin: 1.7rem auto 0; max-width: 38rem; }
 
+/* Il campo è una superficie unica: la domanda sopra, i comandi sotto.
+   Così il gesto — scrivere e inviare — si legge come una cosa sola, senza bordi in mezzo. */
 .campo {
   display: flex;
-  align-items: stretch;
-  gap: .5rem;
+  flex-direction: column;
+  gap: .1rem;
   background: var(--superficie);
   border: 1px solid var(--linea-forte);
-  border-radius: var(--tondo);
+  border-radius: 1.35rem;
   box-shadow: var(--ombra);
-  padding: .35rem .35rem .35rem 1rem;
-  transition: border-color .2s ease;
+  padding: .5rem .55rem .55rem 1.05rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
-.campo:focus-within { border-color: var(--accento); }
+.campo:focus-within {
+  border-color: var(--accento);
+  box-shadow: 0 0 0 3px var(--accento-chiaro), var(--ombra);
+}
 
 .campo input {
-  flex: 1 1 auto;
-  min-width: 0;
+  width: 100%;
   border: 0;
   background: transparent;
-  padding: .72rem 0;
+  padding: .62rem 0 .38rem;
   font: inherit;
   font-size: 1.05rem;
   color: var(--inchiostro);
@@ -281,47 +285,63 @@ input, textarea { caret-color: var(--accento); }
 .campo input::placeholder { color: var(--inchiostro-fio); }
 .campo input:focus { outline: none; }
 
-.campo button {
-  flex: 0 0 auto;
-  border: 0;
-  border-radius: 7px;
-  background: var(--accento-fondo);
-  color: var(--su-accento);
-  font: 600 .95rem/1 var(--sans);
-  padding: .7rem 1.15rem;
-  cursor: pointer;
-  transition: background .2s ease;
+/* riga dei comandi: a sinistra l'avvertenza, a destra le due icone */
+.campo-piede {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
 }
-.campo button:hover { background: var(--accento-fondo-hover); }
-.campo button:disabled { opacity: .55; cursor: progress; }
 
-/* i comandi stanno insieme, dopo il campo: su schermo largo di fianco a «Chiedi»,
-   sul telefono in una riga loro sotto il campo */
+.aiuto {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  color: var(--inchiostro-fio);
+  font-size: .78rem;
+  line-height: 1.35;
+}
+
 .campo-azioni {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   gap: .35rem;
   flex: 0 0 auto;
 }
+
+/* comandi tondi con la sola icona: l'azione la dice l'etichetta per i lettori di schermo,
+   il suggerimento (title) la mostra a chi passa sopra col mouse */
+.campo-azioni button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  font: 600 .95rem/1 var(--sans);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.campo-azioni svg { width: 1.25rem; height: 1.25rem; }
+
+#invia { background: var(--accento-fondo); color: var(--su-accento); }
+#invia:hover { background: var(--accento-fondo-hover); }
+#invia:disabled { opacity: .55; cursor: progress; }
+
 .campo .azzera {
-  border: 1px solid var(--linea-forte);
+  border: 1px solid var(--linea);
   background: transparent;
   color: var(--inchiostro-tenue);
-  padding-inline: .9rem;
 }
 .campo .azzera:hover {
   border-color: var(--caldo-fondo);
   color: var(--caldo-fondo);
-  background: transparent;
+  background: var(--caldo-chiaro);
 }
 .campo .azzera[hidden] { display: none; }
-
-.aiuto {
-  margin: .7rem 0 0;
-  color: var(--inchiostro-fio);
-  font-size: .82rem;
-  text-align: center;
-}
 
 /* «Prova con» + le domande: l'etichetta sta fuori dal nastro che scorre */
 .suggerimenti {
@@ -385,9 +405,17 @@ body.ha-risultati .titolo { font-size: 1.32rem; text-align: left; letter-spacing
 body.ha-risultati .presentazione,
 body.ha-risultati .aiuto { display: none; }
 body.ha-risultati .modulo { margin: .7rem auto 0; }
-body.ha-risultati .campo { padding: .15rem .15rem .15rem .8rem; box-shadow: none; }
-body.ha-risultati .campo input { padding: .55rem 0; font-size: .98rem; }
-body.ha-risultati .campo button { padding: .55rem .9rem; }
+/* con la risposta aperta il campo torna su una riga: il posto è della risposta */
+body.ha-risultati .campo {
+  flex-direction: row;
+  align-items: center;
+  gap: .3rem;
+  padding: .15rem .3rem .15rem .95rem;
+  border-radius: 1rem;
+  box-shadow: none;
+}
+body.ha-risultati .campo input { padding: .5rem 0; font-size: .98rem; }
+body.ha-risultati .campo-piede { flex: 0 0 auto; }
 body.ha-risultati .suggerimenti { display: none; }
 
 /* Cambio tema: nella barra del sito, in fondo al menu, un pulsante tondo con la sola icona
@@ -897,6 +925,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .ufficio .mappa-link,
   .domande-vicine button { min-height: 2.75rem; }
   .campo button { padding-block: .6rem; }
+  .campo button { padding-block: .6rem; }
   .campo input { min-height: 2.75rem; }
   .riga-domande button { display: flex; align-items: center; }
   .ufficio .mappa-link { display: flex; align-items: center; }
@@ -950,15 +979,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .barra-basso .voce:active { background: var(--carta-alt); }
   .in-cima { bottom: calc(var(--piede-h, 4rem) + var(--barra-h) + .5rem); }
   .interno { width: min(100% - 1.6rem, 46rem); }
-  .campo { flex-wrap: wrap; padding: .5rem .5rem .5rem .85rem; }
-  .campo input { flex-basis: 100%; }
-  .campo button { width: 100%; }
-  /* «Chiedi» e «Azzera» sulla stessa riga, sotto il campo: il primo prende lo spazio,
-     il secondo resta della sua misura */
-  .campo-azioni { flex: 1 1 100%; }
-  .campo-azioni button { width: auto; }
-  .campo-azioni #invia { flex: 1 1 auto; }
-  .campo-azioni .azzera { flex: 0 0 auto; }
+  .campo { padding: .5rem .55rem .6rem .95rem; }
   .ufficio dl { grid-template-columns: 1fr; gap: .1rem; }
   .ufficio dt { margin-top: .45rem; }
 }

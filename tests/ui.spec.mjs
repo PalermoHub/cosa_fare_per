@@ -135,7 +135,7 @@ const casi = {
     verifica(await pagina.locator('.utile-azioni button').count() === 2, 'manca il feedback');
   },
 
-  async 'azzera tutto: sta dopo «Chiedi», svuota risposta e campo e si resta nella pagina'(pagina, base) {
+  async 'azzera tutto: sta nel campo accanto a «Chiedi», svuota risposta e campo e si resta nella pagina'(pagina, base) {
     // a pagina bianca il comando non c'è: compare con la prima risposta
     await pagina.goto(base, { waitUntil: 'load' });
     await attesa(700);
@@ -144,13 +144,14 @@ const casi = {
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
     await attesa(1200);
     verifica(await pagina.locator('#azzera').isVisible(), 'manca il comando «Azzera» con una risposta');
-    // sta dopo il pulsante «Chiedi», sulla stessa riga
+    // sta accanto a «Chiedi», sulla stessa riga e subito prima (il campo compatto ha
+    // la sola icona: l'ordine resta quello di lettura, azzera poi invia)
     const posizioni = await pagina.evaluate(() => {
       const chiedi = document.querySelector('#invia').getBoundingClientRect();
       const azzera = document.querySelector('#azzera').getBoundingClientRect();
-      return { chiediDestra: chiedi.right, azzeraSinistra: azzera.left, chiediTop: chiedi.top, azzeraTop: azzera.top };
+      return { azzeraDestra: azzera.right, chiediSinistra: chiedi.left, chiediTop: chiedi.top, azzeraTop: azzera.top };
     });
-    verifica(posizioni.azzeraSinistra >= posizioni.chiediDestra - 1, `«Azzera» non sta dopo «Chiedi»: ${JSON.stringify(posizioni)}`);
+    verifica(posizioni.azzeraDestra <= posizioni.chiediSinistra + 1, `«Azzera» non sta prima di «Chiedi»: ${JSON.stringify(posizioni)}`);
     verifica(Math.abs(posizioni.azzeraTop - posizioni.chiediTop) < 2, '«Azzera» non sta sulla riga di «Chiedi»');
 
     await pagina.click('#azzera');
