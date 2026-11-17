@@ -384,6 +384,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .ufficio dd { margin: 0; overflow-wrap: anywhere; }
 .ufficio dd a { color: var(--inchiostro); text-decoration-color: var(--linea-forte); }
 .ufficio dd a:hover { color: var(--accento); }
+/* dato che il Comune non pubblica: si dice, invece di lasciare la riga vuota */
+.ufficio .dato-mancante { color: var(--inchiostro-fio); font-style: italic; }
 
 /* mappa della sede */
 .ufficio .mappa {

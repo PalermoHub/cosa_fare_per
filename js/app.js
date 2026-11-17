@@ -91,7 +91,9 @@ function mappaIncorporata(ufficio) {
   const contenitore = el('div', 'mappa');
   if (!haCoordinate(ufficio)) {
     contenitore.classList.add('mappa-senza');
-    contenitore.textContent = ufficio.indirizzo || 'Sede senza coordinate pubblicate: usa la scheda ufficiale.';
+    contenitore.textContent = ufficio.indirizzo
+      ? 'Mappa non disponibile: la sede non ha coordinate pubblicate. Il pulsante «Percorso» usa l’indirizzo.'
+      : 'Mappa non disponibile: il Comune non pubblica indirizzo né coordinate di questa sede. Usa la scheda ufficiale.';
     return contenitore;
   }
   const [lon, lat] = ufficio.coord;
@@ -208,6 +210,9 @@ function schedaUfficio(ufficio) {
     else dd.textContent = valore;
     dl.append(dd);
   };
+  // quando il Comune non pubblica un recapito, la riga c'è lo stesso: il silenzio
+  // sembrerebbe una dimenticanza nostra e chi legge non sa se il dato manca
+  const mancante = testo => el('span', 'dato-mancante', testo);
 
   const indirizzo = ufficio.indirizzo || '';
   const nomeSede = ufficio.sede || '';
@@ -217,34 +222,43 @@ function schedaUfficio(ufficio) {
   const paroleIndirizzo = new Set(indirizzo.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().split(' '));
   const contenuta = paroleSede.length > 0 && paroleSede.filter(p => paroleIndirizzo.has(p)).length >= Math.ceil(paroleSede.length * 0.6);
   const sede = nomeSede && indirizzo && !contenuta ? `${nomeSede} — ${indirizzo}` : indirizzo || nomeSede;
-  riga('Sede', sede);
+  riga('Sede', sede || mancante('Non pubblicata dal Comune'));
 
   if (ufficio.telefoni?.length) {
     const telefono = el('a', null, ufficio.telefoni.slice(0, 2).join(' · '));
     telefono.href = `tel:${ufficio.telefoni[0].replace(/[^\d+]/g, '')}`;
     riga('Telefono', telefono);
+  } else {
+    riga('Telefono', mancante('Non pubblicato dal Comune'));
   }
   const email = (ufficio.email || []).filter(e => !(ufficio.pec || []).includes(e));
   if (email.length) {
     const mail = el('a', null, email[0]);
     mail.href = `mailto:${email[0]}`;
     riga('Email', mail);
+  } else {
+    riga('Email', mancante('Non pubblicata dal Comune'));
   }
   if (ufficio.pec?.length) {
     const pec = el('a', null, ufficio.pec[0]);
     pec.href = `mailto:${ufficio.pec[0]}`;
     riga('PEC', pec);
   }
+  if (ufficio.aggiornata) riga('Scheda aggiornata il', ufficio.aggiornata);
   if (dl.childElementCount) card.append(dl);
 
   card.append(mappaIncorporata(ufficio));
 
   const azioni = el('div', 'azioni');
-  const btnPercorso = el('button', 'percorso', 'Percorso');
-  btnPercorso.type = 'button';
-  btnPercorso.title = 'Calcola il percorso più veloce dalla tua posizione';
-  btnPercorso.addEventListener('click', () => apriPercorso(ufficio, btnPercorso));
-  azioni.append(btnPercorso);
+  // senza un indirizzo o delle coordinate il «Percorso» non porta da nessuna parte:
+  // meglio nessun pulsante che un pulsante che apre una destinazione generica
+  if (ufficio.indirizzo || ufficio.sede || haCoordinate(ufficio)) {
+    const btnPercorso = el('button', 'percorso', 'Percorso');
+    btnPercorso.type = 'button';
+    btnPercorso.title = 'Calcola il percorso più veloce dalla tua posizione';
+    btnPercorso.addEventListener('click', () => apriPercorso(ufficio, btnPercorso));
+    azioni.append(btnPercorso);
+  }
   if (ufficio.url) {
     const a = el('a', null, 'Scheda ufficiale');
     a.href = ufficio.url;
