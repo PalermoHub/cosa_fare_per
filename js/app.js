@@ -14,7 +14,7 @@ const contenitoreSuggerimenti = $('#suggerimenti');
 const bottoneNuova = $('#nuova');
 const bottoneAzzera = $('#azzera');
 const testata = $('#testata');
-const bottoneInCima = $('#inCima');
+const bottoneInCima = $('#inCima'); // solo per nasconderlo quando si azzera la pagina
 
 let indice = [];
 let ultimeAlternative = [];
@@ -774,15 +774,11 @@ async function avvia() {
   bottoneNuova.addEventListener('click', () => tornaAllInizio());
   bottoneAzzera.addEventListener('click', azzeraRisultati);
 
+  // il «torna in cima» lo gestisce js/in-cima.js, uguale su tutte le pagine: qui resta solo
+  // l'ombra della testata quando i risultati le scorrono sotto
   risultati.addEventListener('scroll', () => {
     testata.classList.toggle('scrollata', risultati.scrollTop > 6);
-    bottoneInCima.hidden = risultati.scrollTop < 260;
   }, { passive: true });
-
-  bottoneInCima.addEventListener('click', () => {
-    risultati.scrollTo({ top: 0, behavior: 'smooth' });
-    campo.focus({ preventScroll: true });
-  });
 
 
   // Esc = torna alla pagina bianca, come il pulsante

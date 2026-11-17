@@ -91,3 +91,14 @@ test('le pagine linkano «Tutte le domande»', () => {
     assert.match(leggi(pagina), /href="domande\.html"/, `${pagina}: manca il link a domande.html`);
   }
 });
+
+test('il «torna in cima» c’è in ogni pagina e il modulo è nel guscio offline', () => {
+  // regola del progetto: le pagine lunghe (uffici, domande, informativa) devono poter
+  // tornare in cima con lo stesso comando della home, non solo con la rotella
+  for (const pagina of ['index.html', 'uffici.html', 'domande.html', 'privacy.html']) {
+    const html = leggi(pagina);
+    assert.match(html, /id="inCima"/, `${pagina}: manca il pulsante «torna in cima»`);
+    assert.match(html, /<script type="module" src="js\/in-cima\.js"><\/script>/, `${pagina}: manca js/in-cima.js`);
+  }
+  assert.match(sw, /'js\/in-cima\.js',/, 'sw.js non mette in cache js/in-cima.js: offline il pulsante non funziona');
+});

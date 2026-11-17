@@ -27,6 +27,7 @@
   --tinta-ombra: 23, 21, 15;
   --ombra: 0 1px 2px rgba(var(--tinta-ombra), .06), 0 8px 24px -18px rgba(var(--tinta-ombra), .35);
   --tondo: 12px;
+  --colonna: 46rem; /* larghezza della colonna di lettura: la cambiano le pagine larghe */
   --testo: 1rem;
   --barra-h: 3.7rem; /* altezza della barra di navigazione in basso (solo mobile) */
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
@@ -779,7 +780,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 .in-cima {
   position: fixed;
-  right: max(1rem, calc((100vw - 46rem) / 2 - 3.4rem));
+  right: max(1rem, calc((100vw - var(--colonna, 46rem)) / 2 - 3.4rem));
   bottom: calc(var(--piede-h, 4rem) + .9rem);
   z-index: 3;
   display: grid;
@@ -969,10 +970,11 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   body:not(.ha-risultati) .risultati { flex: 0 0 auto; overflow: visible; }
 }
 
-/* lo stesso vale sui portatili bassi: la testata della home è alta, il piede non va perso */
+/* lo stesso vale sui portatili bassi, ma solo per la home: le altre pagine hanno la loro
+   barra di ricerca agganciata in cima e devono continuare a scorrere dentro `.risultati` */
 @media (min-width: 40.01rem) and (max-height: 860px) {
-  body:not(.ha-risultati) { height: auto; min-height: 100dvh; overflow: visible; }
-  body:not(.ha-risultati) .risultati { flex: 0 0 auto; overflow: visible; }
+  body:not(.ha-risultati):not(.pagina-informativa) { height: auto; min-height: 100dvh; overflow: visible; }
+  body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; overflow: visible; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1259,6 +1261,7 @@ body.crediti-aperti .crediti {
 /* ---------- pagina «Tutti gli uffici» ---------- */
 
 /* la griglia ha bisogno di più spazio della colonna di lettura delle risposte */
+.pagina-uffici { --colonna: 62rem; }
 .pagina-uffici .interno,
 .pagina-uffici .risultati > * { width: min(100% - 2.5rem, 62rem); }
 
