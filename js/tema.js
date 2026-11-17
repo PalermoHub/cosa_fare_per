@@ -45,7 +45,11 @@ function aggiornaPulsante() {
   const pulsante = document.getElementById('tema');
   if (pulsante) {
     pulsante.setAttribute('aria-pressed', String(scuro));
-    pulsante.textContent = scuro ? 'Tema chiaro' : 'Tema scuro';
+    // solo la parola: `textContent` cancellerebbe le due icone (luna e sole)
+    const parola = pulsante.querySelector('span');
+    const etichetta = scuro ? 'Tema chiaro' : 'Tema scuro';
+    if (parola) parola.textContent = etichetta;
+    else pulsante.textContent = etichetta;
     pulsante.title = scuro ? 'Passa al tema chiaro' : 'Passa al tema scuro';
     pulsante.setAttribute('aria-label', `${pulsante.title}: ora ${scuro ? 'scuro' : 'chiaro'}`);
   }
@@ -67,31 +71,64 @@ function cambia() {
   applica(nuovo);
 }
 
-function inserisciPulsante() {
+// Il comando su schermo largo è un badge subito dopo le domande suggerite: sta fuori dal
+// blocco `#suggerimenti`, che sparisce quando compare una risposta, così resta visibile
+// anche mentre si legge. Sul telefono la stessa cosa si fa dalla barra in basso.
+function inserisciBadge() {
   if (document.getElementById('tema')) return;
+  const suggerimenti = document.getElementById('suggerimenti');
+  const riferimento = suggerimenti || document.querySelector('.campo')?.closest('form');
+
+  const riga = document.createElement('div');
+  riga.className = 'tema-badge-riga';
+
   const pulsante = document.createElement('button');
   pulsante.type = 'button';
   pulsante.id = 'tema';
-  pulsante.className = 'link-bottone';
+  pulsante.className = 'badge-tema';
   pulsante.addEventListener('click', cambia);
 
-  // nel piede, dove stanno le impostazioni: è il posto del comando su schermo largo, uguale
-  // per tutte e tre le pagine. Sul telefono lo stesso comando è la voce della barra in basso,
-  // e il CSS nasconde quella del piede (`.piede-tema`).
-  const nota = document.querySelector('.piede .piede-nota');
-  const paragrafo = document.querySelector('.piede p');
-  if (!paragrafo) return;
-  const gruppo = document.createElement('span');
-  gruppo.className = 'piede-tema';
-  gruppo.append(document.createTextNode(' · '), pulsante);
-  if (nota && nota.parentElement === paragrafo) nota.after(gruppo);
-  else paragrafo.append(gruppo);
+  const iconaLuna = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  iconaLuna.setAttribute('viewBox', '0 0 24 24');
+  iconaLuna.setAttribute('class', 'icona-luna');
+  iconaLuna.setAttribute('aria-hidden', 'true');
+  iconaLuna.setAttribute('focusable', 'false');
+  const percorso = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  percorso.setAttribute('d', 'M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z');
+  iconaLuna.append(percorso);
+
+  const iconaSole = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  iconaSole.setAttribute('viewBox', '0 0 24 24');
+  iconaSole.setAttribute('class', 'icona-sole');
+  iconaSole.setAttribute('aria-hidden', 'true');
+  iconaSole.setAttribute('focusable', 'false');
+  const cerchio = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  cerchio.setAttribute('cx', '12');
+  cerchio.setAttribute('cy', '12');
+  cerchio.setAttribute('r', '4.2');
+  iconaSole.append(cerchio);
+  for (const [x1, y1, x2, y2] of [[12, 2.6, 12, 5.2], [12, 18.8, 12, 21.4], [2.6, 12, 5.2, 12], [18.8, 12, 21.4, 12],
+    [5.4, 5.4, 7.2, 7.2], [16.8, 16.8, 18.6, 18.6], [16.8, 7.2, 18.6, 5.4], [5.4, 18.6, 7.2, 16.8]]) {
+    const linea = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    linea.setAttribute('x1', x1);
+    linea.setAttribute('y1', y1);
+    linea.setAttribute('x2', x2);
+    linea.setAttribute('y2', y2);
+    iconaSole.append(linea);
+  }
+
+  const parola = document.createElement('span');
+  pulsante.append(iconaLuna, iconaSole, parola);
+  riga.append(pulsante);
+
+  if (riferimento && riferimento.parentElement) riferimento.after(riga);
+  else document.querySelector('header.testata')?.append(riga);
   aggiornaPulsante();
 }
 
-// la voce della barra in basso fa lo stesso del pulsante nel piede
+// la voce della barra in basso fa lo stesso del badge
 const voceTema = document.getElementById('tema-barra');
 if (voceTema) voceTema.addEventListener('click', cambia);
 
-inserisciPulsante();
+inserisciBadge();
 applica(temaCorrente());

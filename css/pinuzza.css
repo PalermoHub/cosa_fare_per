@@ -291,6 +291,42 @@ body.ha-risultati .campo { padding: .15rem .15rem .15rem .8rem; box-shadow: none
 body.ha-risultati .campo input { padding: .55rem 0; font-size: .98rem; }
 body.ha-risultati .campo button { padding: .55rem .9rem; }
 body.ha-risultati .suggerimenti { display: none; }
+
+/* Cambio tema su schermo largo: un badge dopo le domande suggerite. Sta fuori da
+   `#suggerimenti` (che sparisce quando c'è una risposta) così resta raggiungibile anche
+   mentre si legge. Sul telefono il comando è la voce della barra in basso: qui si nasconde. */
+.tema-badge-riga {
+  display: flex;
+  justify-content: center;
+  margin: .9rem auto 0;
+}
+.badge-tema {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 2.75rem;
+  padding: .45rem .85rem;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--carta-alt);
+  color: var(--inchiostro-tenue);
+  font: 600 .8rem/1 var(--sans);
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.badge-tema:hover { border-color: var(--accento); color: var(--accento); background: var(--accento-chiaro); }
+.badge-tema svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.badge-tema .icona-sole { display: none; }
+[data-theme="scuro"] .badge-tema .icona-luna { display: none; }
+[data-theme="scuro"] .badge-tema .icona-sole { display: block; }
 body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 /* ---------- risultati ---------- */
@@ -639,6 +675,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
     scrollbar-width: none; /* niente barra: si passa alla colonna dopo scorrendo */
   }
   .riga-domande::-webkit-scrollbar { display: none; }
+  .tema-badge-riga { display: none; }
   .riga-domande button {
     display: flex;
     align-items: center;
@@ -672,8 +709,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   /* con la barra in basso il piede resta al credito: i collegamenti sono nelle voci, e
      anche il cambio tema sta lì */
   .piede-dettaglio,
-  .piede-legale,
-  .piede-tema { display: none; }
+  .piede-legale { display: none; }
 
   /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
   body { padding-bottom: var(--barra-h); }
@@ -801,9 +837,6 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 }
 .link-bottone:hover { color: var(--accento); }
 .piede-legale { white-space: nowrap; }
-/* nome del tema nel piede: su schermo largo è l'unico comando, sul telefono c'è la voce
-   nella barra in basso e questo si nasconde (vedi il blocco mobile) */
-.piede-tema { white-space: nowrap; }
 /* il copyright non si spezza fra «©» e l'anno */
 .piede-copyright { white-space: nowrap; }
 /* sotto i 352px i link del piede su una riga sola sfondano la larghezza: si lascia andare a capo */
