@@ -69,7 +69,7 @@ a:hover { color: var(--caldo); }
   position: relative;
   z-index: 2;
   background: var(--carta);
-  padding: clamp(2.2rem, 9vh, 7rem) 0 2.2rem;
+  padding: clamp(2.2rem, 5vh, 7rem) 0 2.2rem;
   border-bottom: 1px solid transparent;
   transition: padding .35s ease, box-shadow .25s ease;
 }
