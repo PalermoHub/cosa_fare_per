@@ -721,6 +721,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .campo button,
   .riga-domande button,
   .consenso-azioni button,
+  .crediti-chiudi,
   .nuova,
   .azioni a,
   .azioni button,
@@ -842,6 +843,56 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .consenso-azioni .consenso-accetta:hover { background: var(--accento-fondo-hover); }
 .consenso-azioni button:hover { border-color: var(--accento); color: var(--accento); }
 .consenso-azioni .consenso-accetta:hover { color: var(--su-accento); }
+
+/* ---------- «Credits»: chi ha ideato e chi ha sviluppato l'app ---------- */
+
+.crediti {
+  width: min(100% - 2rem, 30rem);
+  max-height: min(80vh, 34rem);
+  overflow-y: auto;
+  margin: auto;
+  padding: 1.15rem 1.25rem 1.1rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: var(--tondo);
+  background: var(--superficie);
+  color: var(--inchiostro);
+  box-shadow: 0 18px 50px -20px rgba(var(--tinta-ombra), .55);
+}
+.crediti::backdrop { background: rgba(var(--tinta-ombra), .45); }
+/* ripiego per i browser senza <dialog> modale: il riquadro resta sopra la pagina */
+body.crediti-aperti .crediti {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+}
+.crediti-titolo { margin: 0 0 .5rem; font: 600 1.15rem/1.25 var(--serif); }
+.crediti-sottotitolo {
+  margin: .9rem 0 .25rem;
+  font: 600 .74rem/1.4 var(--sans);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
+.crediti-testo {
+  margin: 0;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: var(--inchiostro-tenue);
+}
+.crediti-testo a { color: var(--accento); }
+.crediti-azioni { display: flex; justify-content: flex-end; margin-top: 1.1rem; }
+.crediti-chiudi {
+  font: 600 .85rem/1 var(--sans);
+  border: 1px solid var(--linea-forte);
+  border-radius: 6px;
+  padding: .5rem .9rem;
+  background: var(--superficie);
+  color: var(--inchiostro-tenue);
+  cursor: pointer;
+}
+.crediti-chiudi:hover { border-color: var(--accento); color: var(--accento); }
 
 .link-bottone {
   border: 0;
