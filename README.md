@@ -68,7 +68,7 @@ I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-ammini
 ## Controlli automatici
 
 ```bash
-npm test          # 67 test statici sui dati, sul motore e sulle pagine (nessuna dipendenza)
+npm test          # 69 test statici sui dati, sul motore e sulle pagine (nessuna dipendenza)
 npm run test:ui   # 12 casi nell'interfaccia con Chromium (serve Playwright: npm i -D playwright)
 npm run test:a11y # audit di accessibilità con axe-core
 ```

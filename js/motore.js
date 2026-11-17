@@ -133,17 +133,44 @@ export function indicizza(voce, schedeServizio = {}) {
 
 const PESO = { domandaIntera: 14, domandaParola: 7, keyword: 6, titolo: 5, extra: 2, risposta: 1 };
 
+// Distanza di editazione (Levenshtein + trasposizioni) con tetto: se il conteggio
+// supera `tetto` si ferma e restituisce tetto+1, così il confronto resta economico.
+function distanza(a, b, tetto) {
+  if (Math.abs(a.length - b.length) > tetto) return tetto + 1;
+  let dueFa = null;
+  let precedente = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const colonna = [i];
+    let minimo = i;
+    for (let j = 1; j <= b.length; j++) {
+      const costo = a[i - 1] === b[j - 1] ? 0 : 1;
+      let v = Math.min(colonna[j - 1] + 1, precedente[j] + 1, precedente[j - 1] + costo);
+      // trasposizione: «residenza» / «resdienza» conta come un errore solo
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        v = Math.min(v, dueFa[j - 2] + 1);
+      }
+      colonna[j] = v;
+      if (v < minimo) minimo = v;
+    }
+    if (minimo > tetto) return tetto + 1;
+    dueFa = precedente;
+    precedente = colonna;
+  }
+  return Math.min(precedente[b.length], tetto + 1);
+}
+
 // Quanto una parola della domanda somiglia a una parola dell'indice.
 // Le forme troncate valgono meno: «insegna» vale 1 con «insegna», 0.8 con «insegne» o «insegne…»,
 // ma «autorizzazione» NON deve valere per «auto».
 function punteggioParola(parola, elenco) {
+  const l = parola.length;
   let migliore = 0;
   for (const p of elenco) {
     if (p === parola) return 1;
-    const corta = parola.length <= p.length ? parola : p;
-    const lunga = parola.length <= p.length ? p : parola;
+    const corta = l <= p.length ? parola : p;
+    const lunga = l <= p.length ? p : parola;
     if (lunga.startsWith(corta) && lunga.length - corta.length <= 4) migliore = Math.max(migliore, 0.8);
-    else if (parola.length > 4 && p.includes(parola)) migliore = Math.max(migliore, 0.6);
+    else if (l > 4 && p.includes(parola)) migliore = Math.max(migliore, 0.6);
   }
   return migliore;
 }
@@ -181,13 +208,100 @@ export function valuta(indice, domanda) {
 export const SOGLIA_SICURA = 4.5; // sopra: risposta diretta
 export const SOGLIA_MINIMA = 2.0; // tra le due: «forse cerchi questo»; sotto: nessuna risposta pronta
 
-// [{ voce, punteggio }] ordinati, al massimo n
+// Parole dell'indice (nomi, titoli, competenze) raccolte una volta sola: servono a
+// capire quali parole della domanda il vocabolario non conosce.
+const vocabolari = new WeakMap();
+function vocabolario(indiceVoci) {
+  let parole = vocabolari.get(indiceVoci);
+  if (parole) return parole;
+  parole = new Set();
+  for (const { campi } of indiceVoci) {
+    for (const elenco of [campi.keywords, campi.titolo, campi.extra, campi.risposta, ...campi.domande.map(d => d.parole)]) {
+      for (const p of elenco) parole.add(p);
+    }
+  }
+  vocabolari.set(indiceVoci, parole);
+  return parole;
+}
+
+// le parole della domanda che nessuna voce riconosce: sono le uniche su cui vale la
+// pena correggere, mentre «colore» o «pasta» restano parole sconosciute e basta
+function paroleSconosciute(indiceVoci, domanda) {
+  const vocab = vocabolario(indiceVoci);
+  return parole(domanda).filter(p => !vocab.has(p) && !vocab.has(p.slice(0, p.length - 1)));
+}
+
+// Refusi: si perdona una lettera sola (sbagliata, mancante o scambiata) e solo dove
+// non fa danni, cioè su parole lunghe abbastanza da non diventare un'altra parola
+// («pasta» / «passo» no, «residenza» / «residensa» sì) e con la stessa lettera
+// iniziale, che nessuno sbaglia.
+const REFUSO_MIN = 6;
+const REFUSO_CANDIDATI = 4;
+
+function refusoAmmesso(parola, altra) {
+  return parola.length >= REFUSO_MIN && altra.length >= REFUSO_MIN &&
+    parola[0] === altra[0] && Math.abs(parola.length - altra.length) <= 1;
+}
+
+// le parole del vocabolario a una lettera di distanza, in ordine alfabetico (l'ordine
+// conta solo per rendere la scelta ripetibile)
+function correzioniPossibili(indiceVoci, parola) {
+  if (parola.length < REFUSO_MIN) return [];
+  const trovate = [];
+  for (const altra of vocabolario(indiceVoci)) {
+    if (!refusoAmmesso(parola, altra)) continue;
+    if (distanza(parola, altra, 1) === 1) trovate.push(altra);
+    if (trovate.length >= 32) break;
+  }
+  return trovate.sort().slice(0, REFUSO_CANDIDATI);
+}
+
+// le domande da provare: quella scritta e, se ci sono parole che il vocabolario non
+// conosce, le varianti con quelle parole corrette (una variante per correzione)
+function variantiDomanda(indiceVoci, domanda) {
+  const scritta = parole(domanda);
+  const sconosciute = paroleSconosciute(indiceVoci, domanda);
+  if (!sconosciute.length) return [domanda];
+  const daCorreggere = sconosciute
+    .map(p => ({ parola: p, correzioni: correzioniPossibili(indiceVoci, p) }))
+    .filter(c => c.correzioni.length);
+  if (!daCorreggere.length) return [domanda];
+  // si correggono al massimo due parole per volta: le combinazioni esplodono e i refusi
+  // veri sono quasi sempre uno o due
+  const combinazioni = [[]];
+  for (const { parola, correzioni } of daCorreggere.slice(0, 2)) {
+    const aggiunte = [];
+    for (const base of combinazioni) for (const c of correzioni) aggiunte.push([...base, [parola, c]]);
+    combinazioni.push(...aggiunte);
+    if (combinazioni.length > 12) break;
+  }
+  const varianti = [];
+  for (const sostituzioni of combinazioni) {
+    if (!sostituzioni.length) continue;
+    const mappa = new Map(sostituzioni);
+    varianti.push(scritta.map(p => mappa.get(p) || p).join(' '));
+  }
+  return [domanda, ...varianti.slice(0, 12)];
+}
+
+// [{ voce, punteggio }] ordinati, al massimo n.
+// Vince la lettura migliore fra la domanda scritta e quelle con i refusi corretti:
+// se una parola non esiste nel vocabolario si prova a raddrizzarla (una o due parole
+// per volta) e si tiene la domanda che trova la voce più pertinente. Le domande scritte
+// bene non hanno parole sconosciute, quindi non pagano nulla di tutto questo.
 export function cerca(indiceVoci, domanda, n = 4) {
-  const risultati = indiceVoci
-    .map(indice => ({ indice, punteggio: valuta(indice, domanda) }))
-    .filter(r => r.punteggio > 0)
-    .sort((a, b) => b.punteggio - a.punteggio);
-  return risultati.slice(0, n);
+  const classifica = testo =>
+    indiceVoci
+      .map(indice => ({ indice, punteggio: valuta(indice, testo) }))
+      .filter(r => r.punteggio > 0)
+      .sort((a, b) => b.punteggio - a.punteggio);
+  const scritta = classifica(domanda);
+  let migliore = scritta;
+  for (const variante of variantiDomanda(indiceVoci, domanda).slice(1)) {
+    const prova = classifica(variante);
+    if ((prova[0]?.punteggio || 0) > (migliore[0]?.punteggio || 0)) migliore = prova;
+  }
+  return migliore.slice(0, n);
 }
 
 // Ricerca di riserva: quale ufficio si occupa di questa cosa (usa nome, area e competenze)

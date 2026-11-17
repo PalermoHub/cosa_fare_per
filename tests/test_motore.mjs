@@ -123,6 +123,29 @@ const CASI = [
   ['sull insegna del negozio devo pagare l imposta di pubblicità', ['pubblicita']],
 ];
 
+// le stesse domande con un refuso: una lettera sbagliata, mancante o scambiata non deve
+// cambiare la risposta (i refusi si correggono solo su parole di almeno 6 lettere che il
+// vocabolario non conosce, quindi «tary» o «imsu» restano fuori: sono parole troppo corte)
+const CASI_REFUSO = [
+  ['residensa', ['dichiarazione-di-cambio-indirizzo-o-abitazione']],
+  ['come faccio per la residensa', ['dichiarazione-di-cambio-indirizzo-o-abitazione']],
+  ['devo cambaire residenza', ['dichiarazione-di-cambio-indirizzo-o-abitazione']],
+  ['famglia', ['certificati-anagrafici']],
+  ['certificato di stato di famglia', ['certificati-anagrafici']],
+  ['certificato di residensa', ['certificati-anagrafici']],
+  ['cartta di identita scaduta', ['cie']],
+  ['como ottengo lo spid', ['spid-identita-digitale']],
+  ['come chido il passo carrabile', ['richiedere-permesso-per-passo-carrabile-2']],
+  ['la spazatura non viene ritirata', ['rifiuti']],
+  ['il lampione davnti casa e spento', ['strade']],
+  ['come ottengo il contrasegno disabili', ['contrassegno-disabili']],
+  ['iscrizione all asilo nido', ['nidi']],
+  ['ho perso il portafoglo', ['oggetti-smarriti']],
+  ['mi hanno rubato la tessera eletorale', ['tessera-elettorale']],
+  ['cila per ristruttrare casa', ['sportello-unico-per-edilizia']],
+  ['come pago la mult', ['pagare-contravvenzioni-2']],
+];
+
 test('il motore trova la voce giusta per le domande tipiche', () => {
   const falliti = [];
   let secondi = 0;
@@ -137,6 +160,24 @@ test('il motore trova la voce giusta per le domande tipiche', () => {
   if (falliti.length) console.error(JSON.stringify(falliti, null, 1));
   if (secondi) console.error(`${secondi} domande giuste solo al 2° o 3° posto`);
   assert.equal(falliti.length, 0, `${falliti.length}/${CASI.length} domande con la risposta sbagliata in prima posizione`);
+});
+
+test('un refuso non cambia la risposta', () => {
+  const falliti = [];
+  for (const [domanda, attesi] of CASI_REFUSO) {
+    const risultati = cerca(indice, domanda, 3);
+    const idTrovati = risultati.map(r => r.indice.voce.id);
+    if (!attesi.includes(idTrovati[0])) falliti.push({ domanda, attesi, trovati: idTrovati });
+  }
+  if (falliti.length) console.error(JSON.stringify(falliti, null, 1));
+  assert.equal(falliti.length, 0, `${falliti.length}/${CASI_REFUSO.length} domande con refuso senza la risposta giusta`);
+});
+
+test('un refuso non inventa una risposta fuori tema', () => {
+  for (const q of ['ricetaa della pasta con le sarde', 'come si aggiusta un frigerifero', 'quale è il colore preferito di pinuzza']) {
+    const r = cerca(indice, q);
+    assert.ok(r.length === 0 || r[0].punteggio < SOGLIA_MINIMA, `«${q}» ha superato la soglia`);
+  }
 });
 
 test('normalizza toglie accenti, maiuscole e punteggiatura', () => {
