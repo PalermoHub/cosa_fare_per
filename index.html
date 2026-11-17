@@ -24,7 +24,7 @@
 <meta name="twitter:description" content="Kaliwatan una domanda e ti dico l'ufficio giusto: sede, telefono, email e PEC.">
 <meta name="twitter:image" content="https://palermohub.github.io/cosa_fare_per/img/social-card.png">
 <script>/* tema subito, prima del primo disegno: niente lampo bianco in tema scuro */
-try{var t=localStorage.getItem("pinuzza-tema");if(t!=="chiaro"&&t!=="scuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"scuro":"chiaro";document.documentElement.dataset.theme=t;}catch(e){}</script>
+try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")==="scuro"?"scuro":"chiaro";}catch(e){}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/pinuzza.css">
 
