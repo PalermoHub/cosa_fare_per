@@ -71,68 +71,12 @@ function cambia() {
   applica(nuovo);
 }
 
-// Il comando sta nel piede, sotto il logo di OpenDataSicilia: è sempre visibile, in tutte le
-// pagine e in tutti gli stati (con la risposta aperta il resto dell'intestazione si stringe).
-// Sul telefono resta anche la voce nella barra in basso, più comoda per il pollice.
-function icone() {
-  const iconaLuna = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  iconaLuna.setAttribute('viewBox', '0 0 24 24');
-  iconaLuna.setAttribute('class', 'icona-luna');
-  iconaLuna.setAttribute('aria-hidden', 'true');
-  iconaLuna.setAttribute('focusable', 'false');
-  const percorso = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  percorso.setAttribute('d', 'M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z');
-  iconaLuna.append(percorso);
-
-  const iconaSole = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  iconaSole.setAttribute('viewBox', '0 0 24 24');
-  iconaSole.setAttribute('class', 'icona-sole');
-  iconaSole.setAttribute('aria-hidden', 'true');
-  iconaSole.setAttribute('focusable', 'false');
-  const cerchio = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-  cerchio.setAttribute('cx', '12');
-  cerchio.setAttribute('cy', '12');
-  cerchio.setAttribute('r', '4.2');
-  iconaSole.append(cerchio);
-  for (const [x1, y1, x2, y2] of [[12, 2.6, 12, 5.2], [12, 18.8, 12, 21.4], [2.6, 12, 5.2, 12], [18.8, 12, 21.4, 12],
-    [5.4, 5.4, 7.2, 7.2], [16.8, 16.8, 18.6, 18.6], [16.8, 7.2, 18.6, 5.4], [5.4, 18.6, 7.2, 16.8]]) {
-    const linea = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-    linea.setAttribute('x1', x1);
-    linea.setAttribute('y1', y1);
-    linea.setAttribute('x2', x2);
-    linea.setAttribute('y2', y2);
-    iconaSole.append(linea);
-  }
-  return [iconaLuna, iconaSole];
-}
-
-function inserisciNelPiede() {
-  if (document.getElementById('tema')) return;
-  const logo = document.querySelector('.piede-riga img');
-  if (!logo) return;
-
-  const pulsante = document.createElement('button');
-  pulsante.type = 'button';
-  pulsante.id = 'tema';
-  pulsante.className = 'tema-piede';
-  pulsante.addEventListener('click', cambia);
-
-  // il nome resta scritto (per i lettori di schermo), ma a video si vede solo l'icona
-  const parola = document.createElement('span');
-  parola.className = 'nascosto';
-  pulsante.append(...icone(), parola);
-
-  // il logo e il pulsante stanno in colonna: il pulsante finisce sotto il logo
-  const marchio = document.createElement('div');
-  marchio.className = 'piede-marchio';
-  logo.before(marchio);
-  marchio.append(logo, pulsante);
-  aggiornaPulsante();
-}
-
-// la voce della barra in basso fa lo stesso del pulsante nel piede
+// Due comandi, una sola scelta: il pulsante nella barra del sito (schermo largo) e la voce
+// della barra in basso (telefono). Stanno nel markup di ogni pagina: qui si collegano soltanto.
 const voceTema = document.getElementById('tema-barra');
 if (voceTema) voceTema.addEventListener('click', cambia);
 
-inserisciNelPiede();
+const pulsanteTema = document.getElementById('tema');
+if (pulsanteTema) pulsanteTema.addEventListener('click', cambia);
+
 applica(temaCorrente());

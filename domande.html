@@ -18,6 +18,43 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
 
 <a class="salta" href="#contenuto">Salta al contenuto</a>
 
+<nav class="barra-sito" aria-label="Navigazione del sito">
+  <div class="barra-interno">
+    <a class="barra-marchio" href="index.html">
+      <svg class="marchio barra-pin" viewBox="0 0 208 208" aria-hidden="true" focusable="false">
+        <circle class="spilla" cx="100" cy="96" r="86"/>
+        <circle class="faccia" cx="100" cy="96" r="66"/>
+        <ellipse class="occhio" cx="83" cy="87" rx="9" ry="12"/>
+        <circle class="luce" cx="86" cy="82" r="3.2"/>
+        <path class="occhiolino" d="M110 90q11-13 23-2"/>
+        <path class="sorriso" d="M80 111q20 17 40-2"/>
+        <circle class="gota" cx="66" cy="109" r="9"/>
+        <circle class="gota" cx="134" cy="109" r="9"/>
+        <path class="lucciola" d="M186 13l6 13 13 6-13 6-6 13-6-13-13-6 13-6Z"/>
+      </svg>
+      <span>Pinuzza</span>
+    </a>
+    <div class="menu-sito">
+      <a href="index.html">Chiedi</a>
+      <a href="domande.html" aria-current="page">Domande</a>
+      <a href="uffici.html">Uffici</a>
+      <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
+      <a href="privacy.html">Privacy</a>
+      <button type="button" class="tema-menu" id="tema" aria-pressed="false"
+              title="Passa al tema scuro" aria-label="Passa al tema scuro: ora chiaro">
+        <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+        </svg>
+        <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+        </svg>
+        <span class="nascosto">Tema scuro</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
 <header class="testata testata-fissa">
   <div class="interno">
     <a class="torna" href="index.html">← Torna a Chiedilo a Pinuzza</a>
@@ -1374,14 +1411,20 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
 </main>
 
 <footer class="piede">
-  <div class="interno piede-riga">
+  <div class="piede-riga">
     <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
-    <p>
-      <strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · <span class="piede-copyright">© 2026 OpenDataSicilia · <a href="https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE" rel="noopener">Licenza MIT</a> · <button type="button" class="link-bottone" data-crediti>Credits</button></span><span class="piede-dettaglio"> · <a href="uffici.html">Tutti gli uffici</a>
-      · <a href="domande.html">Tutte le domande</a>
-      · dati aggiornati al <span>17 novembre 2026</span></span>.
-      <span class="piede-nota">Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</span>
-    </p>
+    <div class="piede-corpo">
+      <p class="piede-credito"><strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · <span class="piede-copyright">© 2026 OpenDataSicilia</span> · <a href="https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE" rel="noopener">Licenza MIT</a> · <button type="button" class="link-bottone" data-crediti>Credits</button></p>
+      <nav class="piede-voci" aria-label="Collegamenti del sito">
+        <a href="index.html">Chiedi</a>
+        <a href="domande.html">Tutte le domande</a>
+        <a href="uffici.html">Tutti gli uffici</a>
+        <a href="privacy.html">Privacy e cookie</a>
+        <button type="button" class="link-bottone" data-preferenze-cookie>Preferenze cookie</button>
+      </nav>
+      <p class="piede-fonte">Dati aggiornati al <span>17 novembre 2026</span> · 601 uffici del Comune di Palermo.</p>
+      <p class="piede-nota">Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</p>
+    </div>
   </div>
 </footer>
 
@@ -1425,6 +1468,17 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
     </svg>
     <span>Privacy</span>
   </a>
+  <button type="button" class="voce voce-tema" id="tema-barra" aria-pressed="false"
+          aria-label="Passa al tema scuro: ora chiaro">
+    <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+    </svg>
+    <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+    </svg>
+    <span>Scuro</span>
+  </button>
 </nav>
 
 <script type="module" src="js/consenso.js"></script>

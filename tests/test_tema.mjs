@@ -13,7 +13,7 @@ const radice = new URL('../', import.meta.url);
 const leggi = percorso => readFileSync(new URL(percorso, radice), 'utf8');
 const tema = leggi('js/tema.js');
 const css = leggi('css/pinuzza.css');
-const PAGINE = ['index.html', 'uffici.html', 'privacy.html'];
+const PAGINE = ['index.html', 'uffici.html', 'domande.html', 'privacy.html'];
 
 test('ogni pagina applica il tema prima del primo disegno', () => {
   for (const pagina of PAGINE) {
@@ -65,21 +65,32 @@ test('il pulsante dichiara lo stato e cosa fa', () => {
   assert.match(tema, /Tema chiaro|Tema scuro/, 'il pulsante non dice cosa fa');
 });
 
-test('il cambio tema sta nel piede, sotto il logo di OpenDataSicilia', () => {
-  assert.ok(tema.includes("querySelector('.piede-riga img')"), 'il pulsante deve agganciarsi al logo del piede');
-  assert.ok(/logo\.before\(marchio\)/.test(tema), 'va creata la colonna logo + pulsante');
-  assert.ok(/marchio\.append\(logo, pulsante\)/.test(tema), 'il pulsante va messo sotto il logo');
-  assert.ok(!tema.includes('tema-badge-riga') && !tema.includes('testata-azioni'), 'non deve restare il vecchio posizionamento');
+test('il cambio tema sta nella barra del sito, in fondo al menu', () => {
+  for (const pagina of PAGINE) {
+    const html = leggi(pagina);
+    const menu = /<nav class="barra-sito"[^>]*>[\s\S]*?<\/nav>/.exec(html);
+    assert.ok(menu, `${pagina}: manca il menu della barra del sito`);
+    assert.match(menu[0], /<button type="button" class="tema-menu" id="tema"/, `${pagina}: il pulsante del tema non è nel menu`);
+    // il pulsante è l'ultimo comando del menu, dopo le voci delle pagine
+    assert.ok(menu[0].indexOf('id="tema"') > menu[0].indexOf('href="privacy.html"'), `${pagina}: il pulsante deve venire dopo le voci`);
+    // niente più costruzione da JavaScript: il pulsante sta nel markup di ogni pagina
+    assert.ok(!tema.includes('createElement'), 'il pulsante non va costruito da JavaScript');
+    assert.ok(!tema.includes('inserisciNelPiede'), 'non deve restare l\'inserimento nel piede');
+  }
   const stile = leggi('css/pinuzza.css');
-  assert.match(stile, /\.piede-marchio[^{}]*\{[^}]*flex-direction: column/, 'il piede deve impilare logo e pulsante');
-  assert.match(stile, /\.tema-piede[^{}]*\{/, 'manca lo stile del pulsante');
+  assert.match(stile, /\.tema-menu[^{}]*\{[^}]*border-radius: 50%/, 'il pulsante deve essere tondo');
+  assert.match(stile, /\.tema-menu[^{}]*\{[^}]*align-self: center/, 'il pulsante va centrato nella barra');
 });
 
 test('il pulsante mostra la sola icona e tiene il nome per i lettori di schermo', () => {
-  assert.ok(/parola\.className = 'nascosto'/.test(tema), 'la parola deve essere nascosta a video, non cancellata');
-  assert.ok(tema.includes("setAttribute('aria-label'"), 'il nome accessibile deve restare sul pulsante');
-  const stile = leggi('css/pinuzza.css');
-  assert.match(stile, /\.tema-piede[^{}]*\{[^}]*border-radius: 50%/, 'il pulsante deve essere tondo');
+  for (const pagina of PAGINE) {
+    const html = leggi(pagina);
+    const pulsante = /<button type="button" class="tema-menu"[\s\S]*?<\/button>/.exec(html);
+    assert.ok(pulsante, `${pagina}: manca il pulsante del tema`);
+    assert.match(pulsante[0], /<span class="nascosto">Tema scuro<\/span>/, `${pagina}: la parola deve essere nascosta a video, non cancellata`);
+    assert.match(pulsante[0], /aria-label="Passa al tema scuro/, `${pagina}: manca il nome accessibile`);
+    assert.match(pulsante[0], /aria-pressed="false"/, `${pagina}: il pulsante non dichiara lo stato`);
+  }
 });
 
 test('aggiornare la parola non deve cancellare le icone', () => {
@@ -92,7 +103,7 @@ test('aggiornare la parola non deve cancellare le icone', () => {
 
 
 
-test('sul telefono il pulsante nel piede non si mostra (c\'è la voce nella barra)', () => {
+test('sul telefono la barra del sito non si mostra (c\'è quella in basso)', () => {
   const stile = leggi('css/pinuzza.css');
-  assert.match(stile, /@media \(max-width: 40rem\)[\s\S]*\.tema-piede \{ display: none; \}/, 'manca la regola mobile');
+  assert.match(stile, /@media \(max-width: 40rem\)[\s\S]*\.barra-sito \{ display: none; \}/, 'manca la regola mobile della barra del sito');
 });
