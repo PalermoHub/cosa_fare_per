@@ -202,6 +202,9 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
 
 </head>
 <body>
+<script>/* se si arriva con ?q=… la pagina è già «risposta aperta»: la testata nasce compatta,
+   senza il salto che farebbe dopo (è il layout shift più grosso all'apertura di una risposta) */
+try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add("ha-risultati");}catch(e){}</script>
 
 <a class="salta" href="#risultati">Salta al contenuto</a>
 
