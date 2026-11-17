@@ -548,8 +548,28 @@ function bloccoUtile(voce, domanda) {
 
 // ---------- conversazione ----------
 
+const annuncio = $('#annuncio');
+
 function aggiornaStatoPagina() {
   document.body.classList.add('ha-risultati');
+}
+
+// Il contenitore dei risultati non è più `aria-live` (avrebbe annunciato tutta la risposta,
+// un carattere alla volta mentre si scrive): qui si annuncia in una riga che cosa è arrivato.
+function annuncia(testo) {
+  if (!annuncio) return;
+  annuncio.textContent = '';
+  // un attimo dopo, altrimenti i lettori di schermo non notano il cambiamento
+  setTimeout(() => { annuncio.textContent = testo; }, 60);
+}
+
+// Dopo una risposta il focus va sul titolo: chi usa la tastiera o un lettore di schermo
+// riparte da lì, non resta nel campo di ricerca.
+function portaFocusSullaRisposta(contenuto) {
+  const titolo = contenuto.querySelector('article.risposta h2, .vuoto h2');
+  if (!titolo) return;
+  titolo.setAttribute('tabindex', '-1');
+  titolo.focus({ preventScroll: true });
 }
 
 function ripulisci(testo) {
@@ -580,6 +600,8 @@ async function chiedi(testo, { daStorico = false } = {}) {
 
     if (migliore && migliore.punteggio >= SOGLIA_SICURA) {
       contenuto.append(await rispostaSicura(migliore.indice.voce, domanda));
+      annuncia(`Risposta pronta: ${migliore.indice.voce.titolo}.`);
+      portaFocusSullaRisposta(contenuto);
     } else if (migliore && migliore.punteggio >= SOGLIA_MINIMA) {
       const alternative = [
         ...trovati.slice(1).map(t => t.indice.voce.domande[0]),
@@ -587,9 +609,13 @@ async function chiedi(testo, { daStorico = false } = {}) {
       ].filter(Boolean);
       ultimeAlternative = [...new Set(alternative)].slice(0, 3);
       contenuto.append(await rispostaIncerta(migliore.indice.voce, domanda, ultimeAlternative));
+      annuncia(`Forse ho capito: ${migliore.indice.voce.titolo}. Se non è questo, scegli una delle domande vicine.`);
+      portaFocusSullaRisposta(contenuto);
     } else {
       ultimeAlternative = suggerimenti(stato.voci, 3);
       contenuto.append(await rispostaVuota(domanda));
+      annuncia('Non ho una risposta pronta: ti indico gli uffici che potrebbero occuparsene.');
+      portaFocusSullaRisposta(contenuto);
     }
   } catch (errore) {
     contenuto.textContent = '';
@@ -614,6 +640,7 @@ function tornaAllInizio({ daStorico = false } = {}) {
   bottoneInCima.hidden = true;
   campo.value = '';
   ultimeAlternative = [];
+  if (annuncio) annuncio.textContent = '';
   if (!daStorico) history.pushState({}, '', window.location.pathname);
   campo.focus({ preventScroll: true });
   risultati.scrollTo({ top: 0, behavior: 'smooth' });

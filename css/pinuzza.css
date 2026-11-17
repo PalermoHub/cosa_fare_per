@@ -716,6 +716,21 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
      deve restare basso */
   .tema-piede { display: none; }
 
+  /* bersagli tattili: 44 px per i comandi che si toccano col dito (i link dentro un testo
+     sono esclusi: sono parte della frase, non bottoni) */
+  .campo button,
+  .riga-domande button,
+  .consenso-azioni button,
+  .nuova,
+  .azioni a,
+  .azioni button,
+  .ufficio .mappa-link,
+  .domande-vicine button { min-height: 2.75rem; }
+  .campo button { padding-block: .6rem; }
+  .campo input { min-height: 2.75rem; }
+  .riga-domande button { display: flex; align-items: center; }
+  .ufficio .mappa-link { display: flex; align-items: center; }
+
   /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
   body { padding-bottom: var(--barra-h); }
   .barra-basso {
