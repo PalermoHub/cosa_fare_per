@@ -18,6 +18,7 @@
   --ombra: 0 1px 2px rgba(23, 21, 15, .06), 0 8px 24px -18px rgba(23, 21, 15, .35);
   --tondo: 10px;
   --testo: 1rem;
+  --barra-h: 3.7rem; /* altezza della barra di navigazione in basso (solo mobile) */
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Menlo, Consolas, monospace;
@@ -518,6 +519,15 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .in-cima:hover { border-color: var(--accento); color: var(--caldo); transform: translateY(-1px); }
 .in-cima[hidden] { display: none; }
 
+/* ---------- barra di navigazione in basso ---------- */
+
+/* Sul telefono le destinazioni stanno dove arriva il pollice: quattro voci con icona e
+   parola (chiedere, sfogliare gli uffici, segnalare, informativa). Su schermo largo non
+   serve: la testata ha il campo e i rimandi, il piede ha i collegamenti. */
+.barra-basso { display: none; }
+
+.barra-basso .voce svg { display: block; }
+
 .avviso-noscript { margin: 2rem auto; max-width: 40rem; padding: 1rem; border: 1px solid var(--linea-forte); }
 
 @media (max-width: 40rem) {
@@ -551,8 +561,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
     scroll-snap-align: start;
     scroll-snap-stop: always; /* un gesto, una colonna: non si salta oltre */
   }
-  /* qui una colonna alla volta: l'etichetta lo dice e i puntini dicono dove sei */
-  .etichetta-suggerimenti::after { content: " · scorri →"; }
+  /* qui una colonna alla volta: i puntini dicono dove sei */
   .puntini {
     display: flex;
     align-items: center;
@@ -570,6 +579,45 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .puntini span.attivo { width: .9rem; background: var(--accento); }
   .piede { font-size: .74rem; }
   .piede .piede-nota { display: none; } /* il piede deve restare basso: l'avvertenza estesa sta nel campo */
+  /* con la barra in basso il piede resta al credito: i collegamenti sono nelle voci */
+  .piede-dettaglio,
+  .piede-legale { display: none; }
+
+  /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
+  body { padding-bottom: var(--barra-h); }
+  .barra-basso {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 6;
+    background: var(--carta);
+    border-top: 1px solid var(--linea);
+    box-shadow: 0 -10px 24px -22px rgba(23, 21, 15, .6);
+  }
+  .barra-basso .voce {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .28rem;
+    min-height: var(--barra-h);
+    padding: .35rem .2rem;
+    border-top: 2px solid transparent;
+    color: var(--inchiostro-tenue);
+    font: 600 .7rem/1 var(--sans);
+    letter-spacing: .01em;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color .2s ease, background .15s ease;
+  }
+  .barra-basso .voce svg { width: 1.4rem; height: 1.4rem; }
+  /* la voce della pagina in cui sei: colore dell'accento e riga in cima */
+  .barra-basso .voce[aria-current] { color: var(--accento); border-top-color: var(--accento); }
+  .barra-basso .voce:active { background: var(--carta-alt); }
+  .in-cima { bottom: calc(var(--piede-h, 4rem) + var(--barra-h) + .5rem); }
   .interno { width: min(100% - 1.6rem, 46rem); }
   .campo { flex-wrap: wrap; padding: .5rem .5rem .5rem .85rem; }
   .campo input { flex-basis: 100%; }
@@ -722,8 +770,20 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 }
 .torna-inizio { margin: 2.2rem 0 0; }
 
+/* le preferenze cookie si rivedono anche qui: sul telefono il piede non le ospita */
+.bottone-cookie {
+  font: 600 .85rem/1 var(--sans);
+  border: 1px solid var(--linea-forte);
+  border-radius: 6px;
+  padding: .5rem .95rem;
+  background: #fff;
+  color: var(--accento);
+  cursor: pointer;
+}
+.bottone-cookie:hover { border-color: var(--accento); background: var(--accento-chiaro); }
+
 @media (max-width: 40rem) {
-  .consenso { bottom: calc(var(--piede-h, 4.2rem) + .6rem); padding: .85rem .95rem; }
+  .consenso { bottom: calc(var(--piede-h, 4.2rem) + var(--barra-h) + .6rem); padding: .85rem .95rem; }
   .consenso-azioni button { flex: 1 1 auto; }
 }
 
