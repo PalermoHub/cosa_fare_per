@@ -570,7 +570,13 @@ async function avvia() {
     else campo.focus();
 
     // gli uffici servono alla prima scheda: si scaricano mentre l'utente legge
-    const scaricaUffici = () => caricaUffici().catch(e => console.warn('uffici non disponibili', e));
+    const scaricaUffici = () => caricaUffici()
+      .then(uffici => {
+        // il badge della scorciatoia dice quanti uffici ci sono davvero, non un numero scritto a mano
+        const badge = $('#badge-uffici');
+        if (badge) badge.textContent = `${Object.keys(uffici).length} uffici`;
+      })
+      .catch(e => console.warn('uffici non disponibili', e));
     if ('requestIdleCallback' in window) requestIdleCallback(scaricaUffici, { timeout: 4000 });
     else setTimeout(scaricaUffici, 1200);
   } catch (errore) {

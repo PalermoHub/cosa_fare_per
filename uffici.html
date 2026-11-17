@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutti gli uffici del Comune di Palermo — Chiedilo a Pinuzza</title>
+<meta name="description" content="I 611 uffici del Comune di Palermo in griglia per area amministrativa o in elenco alfabetico, con telefono, email e link alla scheda ufficiale.">
+<meta name="theme-color" content="#fcfbf7">
+<link rel="icon" href="img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chiedilo a Pinuzza">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Tutti gli uffici del Comune di Palermo — Chiedilo a Pinuzza">
+<meta property="og:description" content="Le aree amministrative, i settori e le unità organizzative del Comune di Palermo con recapiti e scheda ufficiale.">
+<meta property="og:url" content="https://palermohub.github.io/cosa_fare_per/uffici.html">
+<meta property="og:image" content="https://palermohub.github.io/cosa_fare_per/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/pinuzza.css">
+</head>
+<body class="pagina-informativa pagina-uffici">
+
+<a class="salta" href="#contenuto">Salta all'elenco degli uffici</a>
+
+<header class="testata testata-fissa">
+  <div class="interno">
+    <a class="torna" href="index.html">← Torna a Chiedilo a Pinuzza</a>
+    <h1 class="titolo-pagina">Tutti gli uffici del Comune di Palermo</h1>
+    <p class="presentazione-pagina" id="introduzione">Le aree amministrative, i settori e le unità organizzative con recapiti e scheda ufficiale.</p>
+  </div>
+</header>
+
+<main class="risultati" id="contenuto">
+  <div class="barra-uffici">
+    <div class="campo-cerca">
+      <label class="nascosto" for="cerca-ufficio">Cerca un ufficio per nome, area o competenza</label>
+      <input id="cerca-ufficio" type="search" autocomplete="off" enterkeyhint="search"
+             placeholder="Cerca un ufficio: bastano 3 lettere"
+             role="combobox" aria-autocomplete="list" aria-expanded="false"
+             aria-controls="suggerimenti-uffici" aria-describedby="aiuto-cerca">
+      <ul class="lista-suggerimenti" id="suggerimenti-uffici" role="listbox"
+          aria-label="Suggerimenti di ricerca" hidden></ul>
+      <p class="aiuto-cerca" id="aiuto-cerca">Scrivi almeno 3 lettere: propongo l'ufficio o l'area giusta. Frecce su e giù per scegliere.</p>
+    </div>
+    <div class="viste" role="group" aria-label="Come vedere gli uffici">
+      <button type="button" data-vista="area" aria-pressed="true">Per area</button>
+      <button type="button" data-vista="elenco" aria-pressed="false">Elenco A–Z</button>
+    </div>
+    <p class="esito" id="esito" role="status"></p>
+  </div>
+
+  <div id="per-area" aria-label="Uffici raggruppati per area amministrativa"></div>
+  <div id="elenco" aria-label="Uffici in ordine alfabetico" hidden></div>
+
+  <p class="nota-pagina">
+    <strong>Da sapere.</strong> Gli uffici e i recapiti sono quelli pubblicati dal Comune di Palermo
+    (dati aggiornati al 17 novembre 2026). Se una pratica ti riguarda, conferma sempre sede e orario
+    con l'ufficio: il Comune cambia organizzazione e contatti anche senza preavviso.
+  </p>
+  <p class="torna-inizio"><a href="index.html">← Torna a Chiedilo a Pinuzza</a></p>
+</main>
+
+<footer class="piede">
+  <div class="interno piede-riga">
+    <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
+    <p>
+      <strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · uffici pubblicati da
+      <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/" rel="noopener">Comune di Palermo</a>
+      · dati aggiornati al <span>17 novembre 2026</span>.
+      <span class="piede-legale">
+        · <a href="privacy.html">Privacy e cookie</a>
+        · <button type="button" class="link-bottone" data-preferenze-cookie>Preferenze cookie</button>
+      </span>
+      <span class="piede-nota">Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</span>
+    </p>
+  </div>
+</footer>
+
+<noscript>
+  <p class="avviso-noscript">Per usare questa pagina serve JavaScript attivo. Gli uffici restano
+  consultabili sul sito del <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/">Comune di Palermo</a>.</p>
+</noscript>
+
+<script type="module" src="js/consenso.js"></script>
+<script type="module" src="js/uffici.js"></script>
+</body>
+</html>

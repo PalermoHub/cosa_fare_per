@@ -13,13 +13,16 @@ occuparsene.
 
 ```
 index.html            pagina unica (testata e piede fissi, scorre solo la colonna dei risultati)
+uffici.html           tutti gli uffici: griglia per area amministrativa o elenco alfabetico
 css/pinuzza.css       tema chiaro, tipografia di sistema, nessun font remoto
 js/motore.js          normalizzazione, sinonimi, punteggio delle domande, ricerca degli uffici
 js/dati.js            caricamento dei dati (gli uffici solo quando servono)
 js/app.js             risposte, schede ufficio con mappa, percorso con GPS, navigazione
-data/argomenti.json   100 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
+js/aree.js            raggruppamento per area, elenco alfabetico, filtro e suggerimenti (3 lettere)
+js/uffici.js          interfaccia della pagina degli uffici
+data/argomenti.json   102 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
 data/servizi.json     58 schede servizio ufficiali del Comune, estratte con le loro sezioni
-data/uffici.json      611 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
+data/uffici.json      601 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
 img/                  icone e logo OpenDataSicilia
 ```
 
@@ -33,6 +36,10 @@ Non ci sono dipendenze: è un sito statico (HTML, CSS, moduli JS, JSON) servito 
   **Percorso**: chiede la posizione al browser e apre il navigatore verso la sede.
 - URL condivisibile (`?q=…`), tasto indietro del browser, pulsante «Torna all'inizio», pulsante
   «torna in cima», funziona anche da tastiera.
+- **Tutti gli uffici** (`uffici.html`): i 601 uffici in griglia per area amministrativa o in elenco
+  alfabetico. La ricerca suggerisce dopo **3 lettere** l'ufficio o l'area giusta (frecce su/giù e
+  Invio per scegliere) e filtra per nome, area, settore e competenze; la scelta si può condividere
+  con `?q=…` e `?vista=elenco`.
 
 ## Dati e aggiornamenti
 
