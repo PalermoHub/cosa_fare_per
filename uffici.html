@@ -18,6 +18,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script>/* tema subito, prima del primo disegno: niente lampo bianco in tema scuro */
+try{var t=localStorage.getItem("pinuzza-tema");if(t!=="chiaro"&&t!=="scuro")t=matchMedia("(prefers-color-scheme: dark)").matches?"scuro":"chiaro";document.documentElement.dataset.theme=t;}catch(e){}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/pinuzza.css">
 </head>
@@ -67,7 +69,7 @@
   <div class="interno piede-riga">
     <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
     <p>
-      <strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia<span class="piede-dettaglio"> · uffici pubblicati da
+      <strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · <span class="piede-copyright">© 2026 OpenDataSicilia · <a href="https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE" rel="noopener">Licenza MIT</a></span><span class="piede-dettaglio"> · uffici pubblicati da
       <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/" rel="noopener">Comune di Palermo</a>
       · dati aggiornati al <span>17 novembre 2026</span></span>.
       <span class="piede-legale">
@@ -121,6 +123,7 @@
 
 <script type="module" src="js/consenso.js"></script>
 <script type="module" src="js/offline.js"></script>
+<script type="module" src="js/tema.js"></script>
 <script type="module" src="js/uffici.js"></script>
 </body>
 </html>
