@@ -148,6 +148,35 @@ try{var t=localStorage.getItem("pinuzza-tema");if(t!=="chiaro"&&t!=="scuro")t=ma
       I contenuti di terzi (la mappa OpenStreetMap, le statistiche Google) non vengono mai salvati.
     </p>
 
+    <h2>«Ti è stato utile?» e segnalazioni</h2>
+    <p>
+      Sotto ogni risposta ci sono due pulsanti: <strong>Sì</strong> e <strong>No, la risposta è
+      sbagliata</strong>. Servono a sapere quali risposte funzionano, senza raccogliere niente su di te
+      e senza un server nostro.
+    </p>
+    <ul>
+      <li>
+        <strong>«Sì»</strong>: se hai già accettato le statistiche, viene inviato a Google Analytics un
+        solo evento aggregato con il codice della voce (per esempio <code>risposta_utile</code>,
+        <code>voce_id=cie</code>). <strong>Il testo della tua domanda non viene inviato.</strong> Se hai
+        rifiutato le statistiche, il clic non manda niente a nessuno.
+      </li>
+      <li>
+        <strong>«No»</strong>: si apre una segnalazione già scritta su GitHub
+        (<code>github.com/PalermoHub/cosa_fare_per</code>), in una nuova scheda. Il testo contiene il
+        codice della voce e la domanda che hai scritto — nient'altro: nessun nome, nessuna email.
+        Puoi leggerlo e <strong>modificarlo prima di inviarlo</strong>; se non lo invii, non esiste da
+        nessuna parte. Per pubblicarlo serve un account GitHub, e da quel momento la segnalazione è
+        pubblica e gestita da GitHub con le sue regole (informativa:
+        <a href="https://docs.github.com/it/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">GitHub Privacy Statement</a>).
+      </li>
+    </ul>
+    <p class="nota">
+      In nessuno dei due casi chiediamo o conserviamo dati personali, e il pulsante funziona anche con
+      le statistiche rifiutate. Se la domanda che hai scritto contiene un dato personale che non vuoi
+      rendere pubblico, correggila o chiudi la scheda prima di inviarla.
+    </p>
+
     <h2>Servizi di terze parti</h2>
     <ul>
       <li>
@@ -273,6 +302,17 @@ try{var t=localStorage.getItem("pinuzza-tema");if(t!=="chiaro"&&t!=="scuro")t=ma
     </svg>
     <span>Privacy</span>
   </a>
+  <button type="button" class="voce voce-tema" id="tema-barra" aria-pressed="false"
+          aria-label="Passa al tema scuro: ora chiaro">
+    <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+    </svg>
+    <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+    </svg>
+    <span>Scuro</span>
+  </button>
 </nav>
 
 <script type="module" src="js/consenso.js"></script>

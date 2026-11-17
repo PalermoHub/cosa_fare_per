@@ -41,13 +41,25 @@ function applica(tema) {
 }
 
 function aggiornaPulsante() {
-  const pulsante = document.getElementById('tema');
-  if (!pulsante) return;
   const scuro = temaCorrente() === 'scuro';
-  pulsante.setAttribute('aria-pressed', String(scuro));
-  pulsante.textContent = scuro ? 'Tema chiaro' : 'Tema scuro';
-  pulsante.title = scuro ? 'Passa al tema chiaro' : 'Passa al tema scuro';
-  pulsante.setAttribute('aria-label', `${pulsante.title}: ora ${scuro ? 'scuro' : 'chiaro'}`);
+
+  const pulsante = document.getElementById('tema');
+  if (pulsante) {
+    pulsante.setAttribute('aria-pressed', String(scuro));
+    pulsante.textContent = scuro ? 'Tema chiaro' : 'Tema scuro';
+    pulsante.title = scuro ? 'Passa al tema chiaro' : 'Passa al tema scuro';
+    pulsante.setAttribute('aria-label', `${pulsante.title}: ora ${scuro ? 'scuro' : 'chiaro'}`);
+  }
+
+  // voce della barra in basso (solo telefono): l'icona la sceglie il CSS, qui la parola
+  const voce = document.getElementById('tema-barra');
+  if (voce) {
+    const parola = voce.querySelector('span');
+    if (parola) parola.textContent = scuro ? 'Chiaro' : 'Scuro';
+    voce.setAttribute('aria-pressed', String(scuro));
+    voce.setAttribute('aria-label',
+      scuro ? 'Passa al tema chiaro: ora scuro' : 'Passa al tema scuro: ora chiaro');
+  }
 }
 
 function cambia() {
@@ -83,6 +95,10 @@ sistemaScuro.addEventListener('change', evento => {
   if (sceltaSalvata()) return;
   applica(evento.matches ? 'scuro' : 'chiaro');
 });
+
+// la voce della barra in basso fa lo stesso del pulsante nel piede
+const voceTema = document.getElementById('tema-barra');
+if (voceTema) voceTema.addEventListener('click', cambia);
 
 inserisciPulsante();
 applica(temaCorrente());

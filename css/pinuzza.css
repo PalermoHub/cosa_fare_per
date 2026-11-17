@@ -518,6 +518,40 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 .attesa { color: var(--inchiostro-fio); font-size: .95rem; padding: 2rem 0; }
 
+/* ---------- «ti è stato utile?» (js/app.js) ---------- */
+.utile {
+  margin: 1.2rem 0 0;
+  padding: .9rem 0 0;
+  border-top: 1px solid var(--linea);
+}
+.utile-domanda {
+  margin: 0 0 .55rem;
+  font: 600 .78rem/1.5 var(--sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
+.utile-azioni { display: flex; flex-wrap: wrap; gap: .5rem; }
+.utile-azioni button {
+  min-height: 2.5rem;
+  padding: .45rem .9rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--inchiostro-tenue);
+  font: 600 .86rem/1.2 var(--sans);
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.utile-azioni button:hover { border-color: var(--accento); color: var(--accento); }
+.utile-azioni button:disabled { opacity: .55; cursor: default; }
+.utile-azioni .utile-no { color: var(--avviso-tenue); border-color: var(--linea-forte); }
+.utile-azioni .utile-no:hover { border-color: var(--caldo-fondo); color: var(--caldo-fondo); }
+.utile-esito { margin: .7rem 0 0; font-size: .92rem; color: var(--inchiostro-tenue); }
+.utile-esito p { margin: 0 0 .35rem; }
+.utile-esito a { color: var(--accento); }
+.utile-nota { margin: .3rem 0 0; font-size: .84rem; color: var(--inchiostro-fio); }
+
 /* ---------- piede ---------- */
 
 .piede {
@@ -670,6 +704,19 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
     transition: color .2s ease, background .15s ease;
   }
   .barra-basso .voce svg { width: 1.4rem; height: 1.4rem; }
+  /* la voce del tema è un pulsante: stessa forma delle altre, senza il fondo del comando */
+  .barra-basso button.voce {
+    background: none;
+    border: 0;
+    border-top: 2px solid transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  /* l'icona dice cosa ottieni: la luna se sei nel chiaro, il sole se sei nello scuro */
+  .barra-basso .voce-tema .icona-sole { display: none; }
+  [data-theme="scuro"] .barra-basso .voce-tema .icona-luna { display: none; }
+  [data-theme="scuro"] .barra-basso .voce-tema .icona-sole { display: block; }
   /* la voce della pagina in cui sei: colore dell'accento e riga in cima */
   .barra-basso .voce[aria-current] { color: var(--accento); border-top-color: var(--accento); }
   .barra-basso .voce:active { background: var(--carta-alt); }

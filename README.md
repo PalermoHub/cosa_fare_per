@@ -35,7 +35,7 @@ Non ci sono dipendenze: è un sito statico (HTML, CSS, moduli JS, JSON) servito 
   in colonne da tre che scorrono in orizzontale, una alla volta).
 - Due rimandi sotto le domande: gli uffici (`uffici.html`) e le segnalazioni, che aprono le
   [issue del repository](https://github.com/PalermoHub/cosa_fare_per/issues) su GitHub. Su schermo
-  stretto gli stessi tre indirizzi (più l'informativa privacy) stanno nella barra in basso.
+  stretto gli stessi tre indirizzi, più l'informativa privacy e il cambio tema, stanno nella barra in basso.
 - Risposta in tre livelli: sicura, «non sono sicura di aver capito» (con alternative), «non ho una
   risposta pronta» (con gli uffici competenti trovati nelle loro competenze).
 - Scheda ufficio con mini mappa OpenStreetMap (caricata solo quando entra nello schermo) e pulsante
