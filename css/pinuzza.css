@@ -639,6 +639,38 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .utile-esito a { color: var(--accento); }
 .utile-nota { margin: .3rem 0 0; font-size: .84rem; color: var(--inchiostro-fio); }
 
+/* ---------- «azzera tutto» (js/app.js) ---------- */
+.ricomincia {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .9rem;
+  margin: 1.3rem 0 .2rem;
+  padding: .9rem 0 0;
+  border-top: 1px solid var(--linea);
+}
+.ricomincia-testo {
+  margin: 0;
+  font-size: .9rem;
+  color: var(--inchiostro-fio);
+}
+.ricomincia-bottone {
+  min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
+  padding: .5rem .95rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 999px;
+  background: var(--carta-alt);
+  color: var(--inchiostro-tenue);
+  font: 600 .86rem/1.2 var(--sans);
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.ricomincia-bottone:hover {
+  border-color: var(--accento);
+  color: var(--accento);
+  background: var(--accento-chiaro);
+}
+
 /* ---------- piede ---------- */
 
 .piede {

@@ -611,6 +611,9 @@ async function chiedi(testo, { daStorico = false } = {}) {
   bottoneNuova.hidden = false;
   bottone.disabled = true;
 
+  // un solo comando «azzera tutto» per pagina: quello della risposta più recente
+  risultati.querySelectorAll('.ricomincia').forEach(nodo => nodo.remove());
+
   const scambio = el('section', 'scambio');
   scambio.append(el('h2', 'domanda-fatta', domanda));
   const contenuto = el('div', 'contenuto');
@@ -656,6 +659,7 @@ async function chiedi(testo, { daStorico = false } = {}) {
     contenuto.append(avviso);
     console.error(errore);
   } finally {
+    contenuto.append(rigaRicomincia());
     bottone.disabled = false;
     if (!daStorico) {
       const url = new URL(window.location.href);
@@ -665,6 +669,18 @@ async function chiedi(testo, { daStorico = false } = {}) {
   }
 }
 
+// In fondo a ogni risposta, un comando esplicito: azzera la conversazione, il campo di
+// ricerca, l'indirizzo, lo scorrimento e le alternative rimaste in sospeso.
+function rigaRicomincia() {
+  const riga = el('div', 'ricomincia');
+  const testo = el('p', 'ricomincia-testo', 'Vuoi ricominciare da capo?');
+  const azzera = el('button', 'ricomincia-bottone', 'Azzera tutto');
+  azzera.type = 'button';
+  azzera.addEventListener('click', () => tornaAllInizio());
+  riga.append(testo, azzera);
+  return riga;
+}
+
 function tornaAllInizio({ daStorico = false } = {}) {
   risultati.textContent = '';
   document.body.classList.remove('ha-risultati');
@@ -672,8 +688,8 @@ function tornaAllInizio({ daStorico = false } = {}) {
   bottoneInCima.hidden = true;
   campo.value = '';
   ultimeAlternative = [];
-  if (annuncio) annuncio.textContent = '';
   if (!daStorico) history.pushState({}, '', window.location.pathname);
+  annuncia('Ricominciamo: la pagina è di nuovo bianca, puoi scrivere una nuova domanda.');
   campo.focus({ preventScroll: true });
   risultati.scrollTo({ top: 0, behavior: 'smooth' });
   // chi torna all'inizio ritrova un altro giro di domande di prova, non le stesse di prima

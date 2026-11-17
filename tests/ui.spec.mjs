@@ -1,10 +1,10 @@
-// Test dell'interfaccia (P1.7): tredici casi che coprono quello che l'utente fa davvero.
+// Test dell'interfaccia (P1.7): quindici casi che coprono quello che l'utente fa davvero.
 //
 // Apre il sito in locale con Chromium (Playwright) e prova: pagina bianca, risposta con
-// scheda ufficio, domanda con due richieste, risposta incerta, risposta vuota, GPS negato, telefono 390×844, tema
-// scuro, funzionamento senza rete, consenso accettato/rifiutato, feedback e dati
-// strutturati. Non usa @playwright/test: si lancia con `node tests/ui.spec.mjs` e
-// stampa un caso per riga.
+// scheda ufficio, azzeramento della risposta, domanda con due richieste, risposta incerta,
+// risposta vuota, GPS negato, telefono 390×844, tema scuro, funzionamento senza rete,
+// consenso accettato/rifiutato, feedback e dati strutturati. Non usa @playwright/test: si
+// lancia con `node tests/ui.spec.mjs` e stampa un caso per riga.
 //
 // Uso:
 //   node tests/ui.spec.mjs                       # serve la cartella e prova tutto
@@ -133,6 +133,30 @@ const casi = {
     verifica(await pagina.locator('#risultati .uffici .ufficio').count() >= 1, 'nessuna scheda ufficio');
     verifica(await pagina.locator('#risultati .uffici a[href^="tel:"]').count() >= 1, 'nessun telefono cliccabile');
     verifica(await pagina.locator('.utile-azioni button').count() === 2, 'manca il feedback');
+  },
+
+  async 'azzera tutto: spariscono risposta, indirizzo e campo, torna la pagina bianca'(pagina, base) {
+    await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
+    await attesa(1200);
+    const azzera = pagina.locator('#risultati .ricomincia-bottone');
+    verifica(await azzera.count() === 1, 'manca il comando «Azzera tutto» nella risposta');
+    await azzera.scrollIntoViewIfNeeded();
+    await azzera.click();
+    await attesa(500);
+    const dopo = await pagina.evaluate(() => ({
+      risultati: document.querySelector('#risultati').textContent.trim(),
+      campo: document.querySelector('#domanda').value,
+      indirizzo: location.search,
+      inRisposta: document.body.classList.contains('ha-risultati'),
+      suggerimenti: document.querySelectorAll('.riga-domande button').length,
+      focus: document.activeElement ? document.activeElement.id : '',
+    }));
+    verifica(dopo.risultati === '', `risultati non azzerati: ${dopo.risultati.slice(0, 80)}`);
+    verifica(dopo.campo === '', `campo non svuotato: ${dopo.campo}`);
+    verifica(dopo.indirizzo === '', `indirizzo non ripulito: ${dopo.indirizzo}`);
+    verifica(dopo.inRisposta === false, 'la pagina resta in modalità risposta');
+    verifica(dopo.suggerimenti >= 6, `suggerimenti non tornati: ${dopo.suggerimenti}`);
+    verifica(dopo.focus === 'domanda', `il focus non torna al campo: ${dopo.focus}`);
   },
 
   async 'domanda con due richieste: la seconda scheda sta sotto, con i suoi uffici'(pagina, base) {
