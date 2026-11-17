@@ -11,7 +11,7 @@
 // A ogni rilascio va incrementata VERSIONE (o si lancia scripts/nuova_versione.sh): le cache
 // vecchie vengono cancellate all'attivazione, così non si serve mai un misto di versioni.
 
-const VERSIONE = 'pinuzza-v22';
+const VERSIONE = 'pinuzza-v24';
 const GUSCIO = `${VERSIONE}-guscio`;
 const PAGINE = `${VERSIONE}-pagine`;
 const DATI = `${VERSIONE}-dati`;
@@ -101,7 +101,12 @@ async function retePrima(richiesta, cacheName) {
     if (risposta && risposta.ok) cache.put(richiesta, risposta.clone());
     return risposta;
   } catch (errore) {
-    const copia = (await cache.match(richiesta, { ignoreSearch: true })) || (await caches.match('index.html'));
+    // senza rete si serve la pagina chiesta se è in cache (le pagine stanno anche nel guscio),
+    // altrimenti almeno la home: mai una pagina sbagliata con il titolo giusto
+    const copia =
+      (await caches.match(richiesta, { ignoreSearch: true })) ||
+      (await cache.match(richiesta, { ignoreSearch: true })) ||
+      (await caches.match('index.html'));
     if (copia) return copia;
     throw errore;
   }
