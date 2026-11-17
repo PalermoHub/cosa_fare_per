@@ -508,12 +508,15 @@ function tornaAllInizio({ daStorico = false } = {}) {
 
 function mostraSuggerimenti(elenco) {
   contenitoreSuggerimenti.textContent = '';
+  const etichetta = el('p', 'etichetta-suggerimenti', 'Prova con');
+  const riga = el('div', 'riga-domande');
   for (const domanda of elenco) {
     const b = el('button', null, domanda);
     b.type = 'button';
     b.addEventListener('click', () => chiedi(domanda));
-    contenitoreSuggerimenti.append(b);
+    riga.append(b);
   }
+  contenitoreSuggerimenti.append(etichetta, riga);
 }
 
 function dataItaliana(iso) {
@@ -561,8 +564,8 @@ async function avvia() {
   try {
     await caricaBase();
     indice = stato.voci.map(v => indicizza(v, stato.servizi));
-    // su schermo stretto si tengono meno domande: due restano quelle in evidenza
-    const quanteDomande = window.matchMedia('(max-width: 40rem)').matches ? 6 : 8;
+    // su schermo stretto le domande scorrono in orizzontale: ce ne stanno di più senza allungare la testata
+    const quanteDomande = window.matchMedia('(max-width: 40rem)').matches ? 12 : 8;
     mostraSuggerimenti(suggerimenti(stato.voci, quanteDomande));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
