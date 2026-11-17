@@ -1552,3 +1552,110 @@ body.ha-risultati .scorciatoie { display: none; }
 @media (max-width: 40rem) {
   .scorciatoie { display: none; }
 }
+
+/* ---------- risposte salvate (js/salvati.js, js/app.js, js/salvati-pagina.js) ----------
+   Il comando in fondo alla scheda e la pagina dell'elenco. Tutto sta nella memoria del
+   browser: qui si dice solo com'è fatto, nessun contenuto arriva da un server. */
+
+.salva {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem .9rem;
+  margin: 1.1rem 0 0;
+}
+.salva-bottone {
+  min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
+  padding: .5rem .95rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--accento);
+  font: 600 .86rem/1.2 var(--sans);
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+.salva-bottone:hover { border-color: var(--accento); background: var(--accento-chiaro); }
+/* già salvata: lo stato si vede (fondo pieno) e il testo dice come tornare indietro */
+.salva-bottone.salvata {
+  border-color: var(--accento-fondo);
+  background: var(--accento-fondo);
+  color: var(--su-accento);
+}
+.salva-bottone.salvata:hover { background: var(--accento-fondo-hover); border-color: var(--accento-fondo-hover); }
+.salva-bottone:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
+.salva-esito { font-size: .9rem; color: var(--inchiostro-tenue); }
+.salva-esito a { color: var(--accento); }
+.salva-nota { flex-basis: 100%; margin: 0; font-size: .82rem; color: var(--inchiostro-fio); }
+
+/* pagina «Risposte salvate» */
+.elenco-salvati { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .9rem; }
+.salvata {
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--tondo);
+  background: var(--superficie);
+  box-shadow: var(--ombra);
+}
+.salvata .salvata-quando {
+  margin: 0;
+  font: 600 .72rem/1.3 var(--sans);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
+.salvata .salvata-titolo {
+  margin: .3rem 0 .25rem;
+  font: 600 1.12rem/1.3 var(--serif);
+  color: var(--inchiostro);
+}
+.salvata .salvata-domanda {
+  margin: 0 0 .8rem;
+  font-size: .92rem;
+  font-style: italic;
+  color: var(--inchiostro-tenue);
+}
+.salvata-azioni { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.1rem; }
+.salvata-apri { font-weight: 600; }
+.salvata-togli,
+.svuota-salvati,
+.conferma-si,
+.conferma-no {
+  min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
+  padding: .5rem .95rem;
+  border-radius: 8px;
+  font: 600 .86rem/1.2 var(--sans);
+  cursor: pointer;
+}
+.salvata-togli { border: 1px solid var(--linea-forte); background: var(--superficie); color: var(--inchiostro-tenue); }
+.salvata-togli:hover { border-color: var(--caldo-fondo); color: var(--caldo-fondo); }
+.salvata-apri:focus-visible,
+.salvata-togli:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
+
+.salvati-vuoto {
+  margin: 1.2rem 0 0;
+  padding: 1.2rem 1.1rem;
+  border: 1px dashed var(--linea-forte);
+  border-radius: var(--tondo);
+}
+.salvati-vuoto h2 { margin: 0 0 .45rem; font: 600 1.15rem/1.3 var(--serif); }
+.salvati-vuoto p { margin: 0 0 .7rem; font-size: .94rem; color: var(--inchiostro-tenue); }
+.salvati-vuoto a { font-weight: 600; }
+
+.comandi-salvati { margin: 1.5rem 0 0; }
+.svuota-salvati { border: 1px solid var(--linea-forte); background: var(--superficie); color: var(--avviso-tenue); }
+.svuota-salvati:hover { border-color: var(--caldo-fondo); color: var(--caldo-fondo); }
+.conferma-svuota {
+  padding: .9rem 1rem;
+  border: 1px solid var(--caldo-fondo);
+  border-radius: var(--tondo);
+  background: var(--caldo-chiaro);
+}
+.conferma-svuota .conferma-domanda { margin: 0 0 .6rem; font-weight: 600; color: var(--avviso-testo); }
+.conferma-azioni { display: flex; flex-wrap: wrap; gap: .5rem; }
+.conferma-si { border: 1px solid var(--caldo-fondo); background: var(--caldo-fondo); color: var(--su-caldo); }
+.conferma-si:hover { border-color: var(--caldo); background: var(--caldo); }
+.conferma-no { border: 1px solid var(--linea-forte); background: var(--superficie); color: var(--inchiostro-tenue); }
+.conferma-no:hover { border-color: var(--inchiostro-tenue); color: var(--inchiostro); }
+.conferma-si:focus-visible,
+.conferma-no:focus-visible { outline: 2px solid var(--inchiostro); outline-offset: 2px; }

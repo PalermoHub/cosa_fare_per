@@ -228,6 +228,7 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
       <a href="index.html" aria-current="page">Chiedi</a>
       <a href="domande.html">Domande</a>
       <a href="uffici.html">Uffici</a>
+      <a href="salvati.html">Salvate</a>
       <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
       <a href="privacy.html">Privacy</a>
       <button type="button" class="tema-menu" id="tema" aria-pressed="false"
@@ -309,6 +310,11 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
         <span>Tutte le domande, per categoria</span>
         <span class="freccia" aria-hidden="true">→</span>
       </a>
+      <a class="pillola" href="salvati.html" data-scorciatoia-salvati hidden>
+        <span class="badge" data-salvati-numero>1 risposta</span>
+        <span>Le risposte che hai salvato</span>
+        <span class="freccia" aria-hidden="true">→</span>
+      </a>
       <a class="pillola pillola-suggerimenti" href="https://github.com/PalermoHub/cosa_fare_per/issues"
          target="_blank" rel="noopener" aria-label="Suggerimenti: segnala su GitHub un servizio o un ufficio mancante (nuova scheda)">
         <span class="badge badge-issue">suggerimenti</span>
@@ -331,6 +337,7 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
         <a href="index.html">Chiedi</a>
         <a href="domande.html">Tutte le domande</a>
         <a href="uffici.html">Tutti gli uffici</a>
+        <a href="salvati.html">Risposte salvate</a>
         <a href="privacy.html">Privacy e cookie</a>
         <button type="button" class="link-bottone" data-preferenze-cookie>Preferenze cookie</button>
       </nav>
@@ -364,6 +371,12 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
       <path d="M8.2 12.4h1.5M14.3 12.4h1.5"/>
     </svg>
     <span>Uffici</span>
+  </a>
+  <a class="voce" href="salvati.html" data-voce-salvati hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.6 3.7h10.8a1 1 0 0 1 1 1v15.5l-6.4-4.4-6.4 4.4V4.7a1 1 0 0 1 1-1Z"/>
+    </svg>
+    <span>Salvate</span>
   </a>
   <a class="voce" href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener"
      aria-label="Segnala su GitHub un servizio o un ufficio mancante (nuova scheda)">
@@ -405,6 +418,7 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
 <script type="module" src="js/offline.js"></script>
 <script type="module" src="js/tema.js"></script>
 <script type="module" src="js/crediti.js"></script>
+<script type="module" src="js/salvati.js"></script>
 <script type="module" src="js/in-cima.js"></script>
 <script type="module" src="js/app.js"></script>
 </body>

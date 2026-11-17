@@ -36,6 +36,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       <a href="index.html">Chiedi</a>
       <a href="domande.html">Domande</a>
       <a href="uffici.html">Uffici</a>
+      <a href="salvati.html">Salvate</a>
       <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
       <a href="privacy.html" aria-current="page">Privacy</a>
       <button type="button" class="tema-menu" id="tema" aria-pressed="false"
@@ -111,9 +112,9 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
           </tr>
           <tr>
             <td>Testo della domanda</td>
-            <td>Darti la risposta</td>
-            <td>Non viene trasmesso a nessun server: resta nella pagina del tuo browser</td>
-            <td>Finché la pagina resta aperta</td>
+            <td>Darti la risposta; se premi «Salva questa risposta», ricordartela sul tuo dispositivo</td>
+            <td>Non viene trasmesso a nessun server: resta nella pagina del tuo browser e, se lo salvi, nella sua memoria locale</td>
+            <td>Finché la pagina resta aperta; se salvi la risposta, finché non la togli o non svuoti i dati del sito</td>
           </tr>
           <tr>
             <td>Posizione GPS</td>
@@ -140,7 +141,9 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
     <h2>Cookie e altre memorizzazioni</h2>
     <p>
       Alla prima visita il sito <strong>non installa cookie</strong>. Nella memoria locale del browser
-      (<code>localStorage</code>) salva soltanto la tua scelta sull'avviso delle statistiche.
+      (<code>localStorage</code>) salva soltanto tre cose, tutte sul tuo dispositivo: la tua scelta
+      sull'avviso delle statistiche, il tema chiaro o scuro che hai scelto e le risposte che decidi
+      di salvare. Nessuna di queste informazioni viene inviata a noi o a terzi.
     </p>
     <div class="tabella" role="region" aria-label="Quali dati trattiamo e per quale finalità (tabella)" tabindex="0">
       <table>
@@ -153,6 +156,20 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
             <td>Memoria locale (non è un cookie)</td>
             <td>Ricordare se hai accettato o rifiutato le statistiche</td>
             <td>Fino alla cancellazione dei dati del sito</td>
+            <td>Questo sito</td>
+          </tr>
+          <tr>
+            <td><code>pinuzza-tema</code></td>
+            <td>Memoria locale (non è un cookie)</td>
+            <td>Ricordare se preferisci il tema chiaro o quello scuro</td>
+            <td>Fino alla cancellazione dei dati del sito</td>
+            <td>Questo sito</td>
+          </tr>
+          <tr>
+            <td><code>pinuzza-salvati</code></td>
+            <td>Memoria locale (non è un cookie)</td>
+            <td>Tenere l'elenco delle risposte che hai salvato: codice della voce, titolo, testo della domanda e data</td>
+            <td>Fino a quando togli la risposta, svuoti l'elenco o cancelli i dati del sito</td>
             <td>Questo sito</td>
           </tr>
           <tr>
@@ -170,6 +187,24 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       di social network. Se rifiuti le statistiche, nessun cookie di Google viene impostato e lo script di
       Analytics non viene nemmeno scaricato.
     </p>
+
+    <h2>Le risposte salvate</h2>
+    <p>
+      In fondo a ogni risposta c'è il comando <strong>«Salva questa risposta»</strong>. Se lo premi, l'app
+      scrive nella memoria del browser (<code>pinuzza-salvati</code>) quattro cose: il codice della voce,
+      il titolo della risposta, il testo della domanda che hai scritto e la data del salvataggio.
+      Servono a mostrarti l'elenco nella pagina «Risposte salvate» e a riaprire la stessa risposta.
+    </p>
+    <ul>
+      <li><strong>Resta sul tuo dispositivo.</strong> L'elenco non viene inviato a nessun server, non entra
+      nelle statistiche e nessun altro può vederlo: chi usa lo stesso telefono o computer con il tuo
+      browser, però, lo trova aprendo la pagina.</li>
+      <li><strong>Puoi toglierlo quando vuoi.</strong> Nella pagina «Risposte salvate» c'è «Togli» accanto a
+      ogni voce e «Togli tutte le risposte salvate» in fondo; in alternativa basta cancellare i dati
+      del sito dalle impostazioni del browser.</li>
+      <li><strong>Niente profilazione.</strong> Non sappiamo quali risposte salvi: il salvataggio non manda
+      niente a nessuno, nemmeno un conteggio.</li>
+    </ul>
 
     <h2>Copia dei dati sul tuo dispositivo (uso senza rete)</h2>
     <p>
@@ -304,6 +339,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
         <a href="index.html">Chiedi</a>
         <a href="domande.html">Tutte le domande</a>
         <a href="uffici.html">Tutti gli uffici</a>
+        <a href="salvati.html">Risposte salvate</a>
         <a href="privacy.html">Privacy e cookie</a>
         <button type="button" class="link-bottone" data-preferenze-cookie>Preferenze cookie</button>
       </nav>
@@ -337,6 +373,12 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       <path d="M8.2 12.4h1.5M14.3 12.4h1.5"/>
     </svg>
     <span>Uffici</span>
+  </a>
+  <a class="voce" href="salvati.html" data-voce-salvati hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.6 3.7h10.8a1 1 0 0 1 1 1v15.5l-6.4-4.4-6.4 4.4V4.7a1 1 0 0 1 1-1Z"/>
+    </svg>
+    <span>Salvate</span>
   </a>
   <a class="voce" href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener"
      aria-label="Segnala su GitHub un servizio o un ufficio mancante (nuova scheda)">
@@ -373,6 +415,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
 <script type="module" src="js/offline.js"></script>
 <script type="module" src="js/tema.js"></script>
 <script type="module" src="js/crediti.js"></script>
+<script type="module" src="js/salvati.js"></script>
 <script type="module" src="js/in-cima.js"></script>
 </body>
 </html>

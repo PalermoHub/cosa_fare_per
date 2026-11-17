@@ -76,6 +76,8 @@ const VISTE = [
   ['privacy', '/privacy.html', 390],
   ['tutti gli uffici', '/uffici.html', 390],
   ['tutte le domande', '/domande.html', 390],
+  ['risposte salvate (vuoto)', '/salvati.html', 390],
+  ['risposte salvate con una voce', '/salvati.html', 390],
   ['«Credits» aperto', '/', 390],
   ['home (schermo largo)', '/', 1280],
   ['risposta in tema scuro (schermo largo)', '/?q=come%20cambio%20residenza', 1280],
@@ -108,6 +110,15 @@ async function main() {
         await pagina.evaluate(() => localStorage.setItem('pinuzza-tema', 'scuro'));
         await pagina.reload({ waitUntil: 'load' });
       }
+      if (nome.includes('con una voce')) {
+        // una risposta salvata a mano: la pagina deve reggere anche con l'elenco pieno
+        await pagina.evaluate(() => {
+          localStorage.setItem('pinuzza-salvati', JSON.stringify([
+            { id: 'cambio-residenza', domanda: 'come cambio residenza', titolo: 'Cambio di residenza', quando: '2026-11-18' },
+          ]));
+        });
+        await pagina.reload({ waitUntil: 'load' });
+      }
       if (nome.includes('Credits')) {
         // il riquadro dei crediti si apre dal collegamento nel piede
         await pagina.evaluate(() => document.querySelector('[data-crediti]').click());
@@ -121,7 +132,10 @@ async function main() {
         return r.violations.map(v => ({ id: v.id, impatto: v.impact, help: v.help, nodi: v.nodes.length }));
       });
       rapporti.push({ nome, violazioni });
-      await pagina.evaluate(() => localStorage.removeItem('pinuzza-tema'));
+      await pagina.evaluate(() => {
+        localStorage.removeItem('pinuzza-tema');
+        localStorage.removeItem('pinuzza-salvati');
+      });
       process.stdout.write(`${nome}: ${violazioni.length ? violazioni.map(v => v.id).join(', ') : 'nessuna violazione'}\n`);
     }
 

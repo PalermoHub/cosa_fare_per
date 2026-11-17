@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risposte salvate — Chiedilo a Pinuzza</title>
+<meta name="description" content="Le risposte che hai messo da parte con «Salva questa risposta»: restano soltanto nella memoria di questo browser.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#fcfbf7">
+<link rel="icon" href="img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Chiedilo a Pinuzza">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Risposte salvate — Chiedilo a Pinuzza">
+<meta property="og:description" content="Le risposte che hai messo da parte restano soltanto nella memoria di questo browser: nessun server, nessun invio.">
+<meta property="og:url" content="https://palermohub.github.io/cosa_fare_per/salvati.html">
+<meta property="og:image" content="https://palermohub.github.io/cosa_fare_per/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>/* tema subito, prima del primo disegno: niente lampo bianco in tema scuro */
+try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")==="scuro"?"scuro":"chiaro";}catch(e){}</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/pinuzza.css">
+</head>
+<body class="pagina-informativa pagina-salvati">
+
+<a class="salta" href="#contenuto">Salta all'elenco degli uffici</a>
+
+<nav class="barra-sito" aria-label="Navigazione del sito">
+  <div class="barra-interno">
+    <a class="barra-marchio" href="index.html">
+      <svg class="marchio barra-pin" viewBox="0 0 208 208" aria-hidden="true" focusable="false">
+        <circle class="spilla" cx="100" cy="96" r="86"/>
+        <circle class="faccia" cx="100" cy="96" r="66"/>
+        <ellipse class="occhio" cx="83" cy="87" rx="9" ry="12"/>
+        <circle class="luce" cx="86" cy="82" r="3.2"/>
+        <path class="occhiolino" d="M110 90q11-13 23-2"/>
+        <path class="sorriso" d="M80 111q20 17 40-2"/>
+        <circle class="gota" cx="66" cy="109" r="9"/>
+        <circle class="gota" cx="134" cy="109" r="9"/>
+        <path class="lucciola" d="M186 13l6 13 13 6-13 6-6 13-6-13-13-6 13-6Z"/>
+      </svg>
+      <span>Pinuzza</span>
+    </a>
+    <div class="menu-sito">
+      <a href="index.html">Chiedi</a>
+      <a href="domande.html">Domande</a>
+      <a href="uffici.html">Uffici</a>
+      <a href="salvati.html" aria-current="page">Salvate</a>
+      <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
+      <a href="privacy.html">Privacy</a>
+      <button type="button" class="tema-menu" id="tema" aria-pressed="false"
+              title="Passa al tema scuro" aria-label="Passa al tema scuro: ora chiaro">
+        <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+        </svg>
+        <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+        </svg>
+        <span class="nascosto">Tema scuro</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="testata testata-fissa">
+  <div class="interno">
+    <a class="torna" href="index.html">← Torna a Chiedilo a Pinuzza</a>
+    <h1 class="titolo-pagina" tabindex="-1">Risposte salvate</h1>
+    <p class="presentazione-pagina">Le risposte che hai messo da parte, soltanto su questo dispositivo.</p>
+  </div>
+</header>
+
+<main class="risultati" id="contenuto">
+  <article class="testo-lungo">
+    <p>
+      Qui trovi le risposte che hai salvato con «Salva questa risposta», in fondo alla scheda.
+      Restano nella memoria di questo browser: non vengono inviate a nessun server e non le
+      vede nessun altro. Se svuoti i dati del sito, spariscono anche loro.
+    </p>
+    <p class="aggiornamento" id="salvate-quante"></p>
+    <div id="elenco-salvati"></div>
+    <div class="comandi-salvati" id="comandi-salvati" hidden>
+      <button type="button" class="svuota-salvati" id="svuota-salvati">Togli tutte le risposte salvate</button>
+    </div>
+    <p class="nascosto" id="stato-salvati" role="status" aria-live="polite"></p>
+    <p class="torna-inizio"><a href="index.html">← Chiedi qualcosa di nuovo</a></p>
+  </article>
+</main>
+
+<footer class="piede">
+  <div class="piede-riga">
+    <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
+    <div class="piede-corpo">
+      <p class="piede-credito"><strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · <span class="piede-copyright">© 2026 OpenDataSicilia</span> · <a href="https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE" rel="noopener">Licenza MIT</a> · <button type="button" class="link-bottone" data-crediti>Credits</button></p>
+      <nav class="piede-voci" aria-label="Collegamenti del sito">
+        <a href="index.html">Chiedi</a>
+        <a href="domande.html">Tutte le domande</a>
+        <a href="uffici.html">Tutti gli uffici</a>
+        <a href="salvati.html">Risposte salvate</a>
+        <a href="privacy.html">Privacy e cookie</a>
+        <button type="button" class="link-bottone" data-preferenze-cookie>Preferenze cookie</button>
+      </nav>
+      <p class="piede-fonte">Le risposte vengono dalle schede servizio del <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/" rel="noopener">Comune di Palermo</a> · schede aggiornate al <span>17 novembre 2026</span>.</p>
+      <p class="piede-nota">Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra-basso" aria-label="Navigazione principale">
+  <a class="voce" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M20.4 11.9c0 3.6-3.8 6.5-8.4 6.5-1 0-2-.14-2.9-.4l-4.6 1.6 1.2-3.4c-1.4-1.2-2.2-2.8-2.2-4.5C3.5 8.3 7.3 5.4 12 5.4s8.4 2.9 8.4 6.5Z"/>
+      <path d="M8.9 12h.01M12 12h.01M15.1 12h.01" stroke-width="2.2"/>
+    </svg>
+    <span>Chiedi</span>
+  </a>
+  <a class="voce" href="domande.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M9.2 6.6h10.6M9.2 12h10.6M9.2 17.4h10.6"/>
+      <path d="M4.9 6.6h.01M4.9 12h.01M4.9 17.4h.01" stroke-width="2.4"/>
+    </svg>
+    <span>Domande</span>
+  </a>
+  <a class="voce" href="uffici.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M3.4 9.5 12 4.2l8.6 5.3"/>
+      <path d="M5.4 20.2V9.5h13.2v10.7"/>
+      <path d="M3 20.2h18"/>
+      <path d="M9.7 20.2v-4.7h4.6v4.7"/>
+      <path d="M8.2 12.4h1.5M14.3 12.4h1.5"/>
+    </svg>
+    <span>Uffici</span>
+  </a>
+  <a class="voce" href="salvati.html" aria-current="page" data-voce-salvati>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.6 3.7h10.8a1 1 0 0 1 1 1v15.5l-6.4-4.4-6.4 4.4V4.7a1 1 0 0 1 1-1Z"/>
+    </svg>
+    <span>Salvate</span>
+  </a>
+  <a class="voce" href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener"
+     aria-label="Segnala su GitHub un servizio o un ufficio mancante (nuova scheda)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.3 21V3.6"/>
+      <path d="M6.3 5c3-1.5 6 1.6 9 .1l2.4-1v7.5l-2.4 1c-3 1.5-6-1.6-9-.1Z"/>
+    </svg>
+    <span>Segnala</span>
+  </a>
+  <a class="voce" href="privacy.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M12 3.4 5.2 6v5.6c0 4 2.9 7.4 6.8 8.9 3.9-1.5 6.8-4.9 6.8-8.9V6L12 3.4Z"/>
+      <path d="m9.4 11.8 1.8 1.9 3.5-3.6"/>
+    </svg>
+    <span>Privacy</span>
+  </a>
+  <button type="button" class="voce voce-tema" id="tema-barra" aria-pressed="false"
+          aria-label="Passa al tema scuro: ora chiaro">
+    <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+    </svg>
+    <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+    </svg>
+    <span>Scuro</span>
+  </button>
+</nav>
+
+<noscript>
+  <p class="avviso-noscript">Per vedere le risposte salvate serve JavaScript attivo: l'elenco sta nella
+  memoria del browser. Puoi comunque <a href="index.html">chiedere qualcosa</a>.</p>
+</noscript>
+
+<button type="button" class="in-cima" id="inCima" hidden
+        aria-label="Torna all'inizio della pagina" title="Torna in cima">↑</button>
+
+<script type="module" src="js/consenso.js"></script>
+<script type="module" src="js/offline.js"></script>
+<script type="module" src="js/tema.js"></script>
+<script type="module" src="js/crediti.js"></script>
+<script type="module" src="js/in-cima.js"></script>
+<script type="module" src="js/salvati.js"></script>
+<script type="module" src="js/salvati-pagina.js"></script>
+</body>
+</html>

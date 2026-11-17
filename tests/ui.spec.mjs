@@ -335,6 +335,75 @@ const casi = {
     verifica((await pagina.textContent('.utile-esito')).length > 20, 'manca l’esito');
   },
 
+  async 'salva una risposta: resta, si riapre e si toglie'(pagina, base) {
+    const domanda = 'come cambio residenza';
+    await pagina.goto(base + '?q=' + encodeURIComponent(domanda), { waitUntil: 'load' });
+    await attesa(1200);
+    const salva = pagina.locator('#risultati .salva .salva-bottone');
+    verifica(await salva.count() === 1, 'manca il comando «Salva questa risposta» in fondo alla scheda');
+    verifica((await salva.textContent()).includes('Salva questa risposta'), `testo del comando: ${await salva.textContent()}`);
+    await salva.click();
+    await attesa(400);
+
+    const salvate = await pagina.evaluate(() => JSON.parse(localStorage.getItem('pinuzza-salvati') || '[]'));
+    verifica(salvate.length === 1, `voci salvate: ${JSON.stringify(salvate)}`);
+    verifica(salvate[0].domanda === domanda, `domanda salvata: ${salvate[0].domanda}`);
+    verifica(!!salvate[0].id && !!salvate[0].titolo, 'mancano codice e titolo della voce');
+    verifica(/^\d{4}-\d{2}-\d{2}$/.test(salvate[0].quando), `data del salvataggio: ${salvate[0].quando}`);
+    // il comando ora dice che è salvata e porta all'elenco; i lettori di schermo hanno l'annuncio
+    verifica((await salva.textContent()).includes('Salvata'), 'il comando non dice che la risposta è salvata');
+    verifica(await pagina.locator('#risultati .salva a[href="salvati.html"]').count() === 1, 'manca il rimando all’elenco');
+    verifica((await pagina.textContent('.salva-esito')).length > 10, 'manca l’esito del salvataggio');
+
+    // la pillola della home compare con il numero giusto
+    await pagina.goto(base, { waitUntil: 'load' });
+    await attesa(700);
+    verifica(await pagina.locator('[data-scorciatoia-salvati]').isVisible(), 'la pillola delle risposte salvate non compare');
+    verifica(/1 risposta/.test(await pagina.textContent('[data-salvati-numero]')), `badge: ${await pagina.textContent('[data-salvati-numero]')}`);
+
+    // l'elenco: la voce c'è, con data, titolo e rimando che riapre la stessa risposta
+    await pagina.goto(base + 'salvati.html', { waitUntil: 'load' });
+    await attesa(600);
+    verifica(await pagina.locator('.salvata').count() === 1, 'la voce salvata non compare nell’elenco');
+    verifica(/Cambio di residenza/.test(await pagina.textContent('.salvata-titolo')), 'manca il titolo della risposta');
+    await pagina.locator('.salvata-apri').click();
+    await attesa(1200);
+    const titolo = await pagina.textContent('#risultati article.risposta h2');
+    verifica(/Cambio di residenza/.test(titolo || ''), `il rimando non riapre la risposta: ${titolo}`);
+    verifica((await pagina.textContent('.salva-bottone')).includes('Salvata'), 'riaprendo la risposta il comando non ricorda che è salvata');
+
+    // «Togli» toglie la singola voce, lascia lo stato vuoto e non torna al ricaricamento
+    await pagina.goto(base + 'salvati.html', { waitUntil: 'load' });
+    await attesa(600);
+    await pagina.locator('.salvata-togli').click();
+    await attesa(400);
+    verifica(await pagina.locator('.salvata').count() === 0, 'la voce non è stata tolta');
+    verifica(/Non hai ancora salvato/.test(await pagina.textContent('#elenco-salvati')), 'manca lo stato vuoto');
+    await pagina.reload({ waitUntil: 'load' });
+    await attesa(500);
+    verifica(await pagina.locator('.salvata').count() === 0, 'la voce tolta è tornata dopo il ricaricamento');
+
+    // «Togli tutte» chiede conferma e svuota davvero
+    await pagina.evaluate(d => {
+      localStorage.setItem('pinuzza-salvati', JSON.stringify([
+        { id: 'cie', domanda: d, titolo: 'Carta d’identità elettronica (CIE)', quando: '2026-11-18' },
+        { id: 'cambio-residenza', domanda: 'come cambio residenza', titolo: 'Cambio di residenza', quando: '2026-11-18' },
+      ]));
+    }, domanda);
+    await pagina.goto(base + 'salvati.html', { waitUntil: 'load' });
+    await attesa(600);
+    verifica(await pagina.locator('.salvata').count() === 2, 'le due voci non compaiono');
+    await pagina.click('#svuota-salvati');
+    await attesa(300);
+    verifica(await pagina.locator('.conferma-svuota').count() === 1, 'manca la conferma prima di svuotare');
+    verifica(await pagina.locator('.salvata').count() === 2, 'ha svuotato senza chiedere');
+    await pagina.locator('.conferma-si').click();
+    await attesa(400);
+    verifica(await pagina.locator('.salvata').count() === 0, 'l’elenco non è stato svuotato');
+    const rimaste = await pagina.evaluate(() => JSON.parse(localStorage.getItem('pinuzza-salvati') || '[]'));
+    verifica(rimaste.length === 0, `restano ${rimaste.length} voci`);
+  },
+
   async 'la mappa parte solo quando la scheda entra nello schermo'(pagina, base) {
     await pagina.setViewportSize({ width: 390, height: 844 });
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });

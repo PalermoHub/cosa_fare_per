@@ -4,6 +4,7 @@
 
 import { indicizza, cerca, cercaSezioni, cercaUffici, suggerimenti, SOGLIA_SICURA, SOGLIA_MINIMA } from './motore.js';
 import { caricaBase, caricaUffici, stato, ufficiDellaVoce } from './dati.js';
+import { eSalvato, salva, togli } from './salvati.js';
 
 const $ = sel => document.querySelector(sel);
 const risultati = $('#risultati');
@@ -384,6 +385,7 @@ async function rispostaSicura(voce, domanda) {
     frammento.append(intestazione, schede);
   }
   if (domanda) frammento.append(bloccoUtile(voce, domanda));
+  frammento.append(bloccoSalva(voce, domanda));
   return frammento;
 }
 
@@ -570,6 +572,50 @@ function bloccoUtile(voce, domanda) {
   });
 
   riquadro.append(etichetta, azioni, esito);
+  return riquadro;
+}
+
+// ---------- «salva questa risposta» ----------
+// Il comando sta in fondo alla scheda, dopo il «ti è stato utile?»: mette da parte la
+// risposta nella memoria del browser (js/salvati.js), senza inviarla a nessuno. Il testo
+// del pulsante dice sempre cosa succede adesso: salva, oppure toglie se è già salvata.
+
+function bloccoSalva(voce, domanda) {
+  const riquadro = el('div', 'salva');
+  const bottone = el('button', 'salva-bottone');
+  bottone.type = 'button';
+  const esito = el('span', 'salva-esito');
+  esito.setAttribute('role', 'status');
+
+  const disegna = () => {
+    const salvata = eSalvato(voce.id);
+    bottone.textContent = salvata ? 'Salvata: toglila dall’elenco' : 'Salva questa risposta';
+    bottone.classList.toggle('salvata', salvata);
+  };
+  disegna();
+
+  bottone.addEventListener('click', () => {
+    const salvata = eSalvato(voce.id);
+    const riuscito = salvata ? togli(voce.id) : salva(voce, domanda);
+    esito.textContent = '';
+    if (!riuscito) {
+      esito.textContent = 'Non riesco a salvare su questo dispositivo: la memoria del browser è piena o bloccata.';
+      return;
+    }
+    disegna();
+    if (salvata) {
+      esito.textContent = 'Tolta dalle risposte salvate.';
+      annuncia('Risposta tolta dalle risposte salvate.');
+    } else {
+      const link = el('a', null, 'vedi le risposte salvate');
+      link.href = 'salvati.html';
+      esito.append('Salvata su questo dispositivo: ', link, '.');
+      annuncia('Risposta salvata: la trovi nella pagina Risposte salvate.');
+    }
+  });
+
+  riquadro.append(bottone, esito);
+  riquadro.append(el('p', 'salva-nota', 'Resta qui nel browser: la domanda non viene inviata a nessuno.'));
   return riquadro;
 }
 
