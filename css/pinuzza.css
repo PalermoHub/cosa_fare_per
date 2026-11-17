@@ -860,6 +860,22 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 /* sotto i 352px i link del piede su una riga sola sfondano la larghezza: si lascia andare a capo */
 @media (max-width: 22rem) { .piede-legale { white-space: normal; } }
 
+/* ---------- pagina «Tutte le domande» ---------- */
+.pagina-domande .indice-categorie { margin: 1.2rem 0 2rem; }
+.pagina-domande .indice-categorie h2 { margin: 0 0 .6rem; font: 600 .7rem/1.6 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--inchiostro-fio); }
+.pagina-domande .indice-categorie ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem .9rem; }
+.pagina-domande .indice-categorie li span { color: var(--inchiostro-fio); font-size: .8em; }
+.pagina-domande .categoria-domande { margin: 0 0 2rem; scroll-margin-top: 1.5rem; }
+.pagina-domande .categoria-domande > h2 { margin: 0 0 .8rem; padding-bottom: .35rem; border-bottom: 1px solid var(--linea); }
+.pagina-domande .elenco-voci { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+@media (min-width: 40rem) {
+  .pagina-domande .elenco-voci { grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; }
+}
+.pagina-domande .gruppo-domande h3 { margin: 0 0 .25rem; font: 600 .74rem/1.45 var(--sans); letter-spacing: .05em; text-transform: uppercase; color: var(--inchiostro-fio); }
+.pagina-domande .gruppo-domande ul { list-style: none; margin: 0; padding: 0; }
+.pagina-domande .gruppo-domande li { margin: 0 0 .15rem; font-size: .92rem; line-height: 1.45; }
+.pagina-domande .gruppo-domande a { color: var(--accento); text-decoration-color: var(--linea-forte); text-underline-offset: 2px; }
+
 /* ---------- pagina dell'informativa privacy ---------- */
 
 .pagina-informativa .testata-fissa {

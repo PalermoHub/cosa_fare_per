@@ -1,0 +1,5 @@
+# Chiedilo a Pinuzza — tutto pubblico e indicizzabile.
+User-agent: *
+Allow: /
+
+Sitemap: https://palermohub.github.io/cosa_fare_per/sitemap.xml
