@@ -2121,18 +2121,20 @@ body.decifra-aperti .decifra {
 
 /* rimandi sotto le domande suggerite — pagina degli uffici e segnalazioni: un badge per farli vedere */
 .scorciatoie {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* due colonne uguali: i badge stanno sugli stessi assi */
   gap: .5rem;
   margin: 1.4rem auto 0;
-  max-width: 52rem;
-  text-align: center;
+  max-width: 38rem; /* stessa larghezza del campo e della card «Decifra la PA» */
 }
+/* con le risposte salvate visibili le pillole sono cinque: l'ultima occupa la riga intera.
+   Il nodo nascosto resta nel DOM, quindi :nth-child non basta */
+.scorciatoie:has(> [data-scorciatoia-salvati]:not([hidden])) > .pillola-suggerimenti { grid-column: 1 / -1; }
 .pillola {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: .5rem;
+  min-width: 0;
   max-width: 100%;
   padding: .35rem .9rem .35rem .35rem;
   border: 1px solid var(--linea-forte);
@@ -2169,7 +2171,7 @@ body.decifra-aperti .decifra {
   box-shadow: inset 0 0 0 1px currentColor;
 }
 .pillola:hover .badge-issue { background: var(--caldo-fondo); color: var(--su-caldo); box-shadow: none; }
-.pillola .freccia { color: var(--accento); font-weight: 400; }
+.pillola .freccia { margin-left: auto; color: var(--accento); font-weight: 400; }
 .pillola:hover .freccia { color: var(--caldo); }
 body.ha-risultati .scorciatoie { display: none; }
 /* sul telefono i due rimandi non servono: la barra in basso ha già «Uffici» e «Segnala»,
