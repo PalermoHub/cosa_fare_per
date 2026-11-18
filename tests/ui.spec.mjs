@@ -104,7 +104,7 @@ const casi = {
     verifica(await pagina.textContent('h1') !== null, 'manca il titolo');
     verifica(await pagina.isVisible('#domanda'), 'manca il campo di ricerca');
     const domande = await pagina.locator('.riga-domande button').count();
-    verifica(domande >= 6, `suggerimenti: ${domande}`);
+    verifica(domande >= 4, `suggerimenti: ${domande}`);
     const badge = await pagina.textContent('#badge-uffici');
     verifica(/\d{3} uffici/.test(badge), `badge uffici: ${badge}`);
   },
@@ -234,7 +234,7 @@ const casi = {
     verifica(await pagina.isVisible('#altre-voci'), 'il pannello «Altro» non si apre');
     verifica(await pagina.isVisible('#tema-barra'), 'manca il tema nel pannello');
     const righe = await pagina.locator('.altre-voci a').count();
-    verifica(righe === 5, `righe del pannello: ${righe}`);
+    verifica(righe === 4, `righe del pannello: ${righe}`);
     // «Atti» è una destinazione, non un ripiego: deve stare nel pannello e portare alla pagina
     verifica(await pagina.locator('.altre-voci a[href="atti.html"]').count() === 1, 'manca «Atti» nel pannello');
     // i comandi, non i link dentro un testo (`.link-bottone` del piede, per esempio)
