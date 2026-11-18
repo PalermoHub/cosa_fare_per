@@ -1320,9 +1320,18 @@ body.crediti-aperti .crediti {
   padding-top: 1.8rem;
   border-top: 2px solid var(--linea-forte);
 }
+.pagina-domande .indice-categorie a.badge .icona-categoria {
+  width: 1rem;
+  height: 1rem;
+  flex: none;
+  color: var(--inchiostro-fio);
+}
+.pagina-domande .indice-categorie a.badge:hover .icona-categoria,
+.pagina-domande .indice-categorie a.badge:focus-visible .icona-categoria { color: var(--accento); }
 .pagina-domande .categoria-domande > h2 {
   display: inline-flex;
   align-items: center;
+  gap: .45rem;
   margin: 0 0 1rem;
   padding: .32rem .85rem;
   border: 1px solid var(--linea-forte);
@@ -1330,6 +1339,12 @@ body.crediti-aperti .crediti {
   background: var(--accento-chiaro);
   color: var(--accento);
   font: 600 .95rem/1.35 var(--sans);
+}
+/* l'icona è decorativa: prende il colore del titolo e non ruba spazio al testo */
+.pagina-domande .categoria-domande > h2 .icona-categoria {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: none;
 }
 .pagina-domande .elenco-voci { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
 @media (min-width: 40rem) {
