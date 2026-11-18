@@ -123,6 +123,14 @@ const casi = {
     });
     verifica(colonne.righe === 4, `domande per colonna: ${colonne.righe}`);
     verifica(colonne.puntini === 3, `puntini: ${colonne.puntini}`);
+    // ogni domanda occupa la larghezza del campo (non una fetta di colonna) e ha un'altezza da riga
+    const misure = await pagina.evaluate(() => {
+      const r = document.querySelector('.riga-domande').getBoundingClientRect();
+      const b = document.querySelector('.riga-domande button').getBoundingClientRect();
+      return { larghezza: b.width / r.width, altezza: b.height };
+    });
+    verifica(misure.larghezza > 0.95, `larghezza della domanda: ${misure.larghezza}`);
+    verifica(misure.altezza < 60, `altezza della domanda: ${misure.altezza}`);
   },
 
   async 'risposta con scheda ufficio: titolo, recapiti, feedback'(pagina, base) {

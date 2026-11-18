@@ -5,7 +5,7 @@
 // il guscio e i dati; qui si registra e si dice all'utente che sta lavorando offline,
 // con la data dei dati che sta usando.
 
-const VERSIONE_ATTESA = 'pinuzza-v85'; // deve combaciare con VERSIONE in sw.js (scripts/test_offline.mjs)
+const VERSIONE_ATTESA = 'pinuzza-v86'; // deve combaciare con VERSIONE in sw.js (scripts/test_offline.mjs)
 
 // ---------- service worker ----------
 

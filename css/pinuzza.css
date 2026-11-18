@@ -1044,6 +1044,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   .riga-domande {
     display: grid;
     grid-auto-flow: column;
+    grid-template-columns: none; /* la base ha due colonne fisse: qui le colonne nascono da sole, una a schermo */
     grid-template-rows: repeat(4, minmax(2.4rem, auto));
     grid-auto-columns: 100%; /* una colonna occupa tutto: le altre si raggiungono scorrendo */
     justify-content: start; /* la base centra la griglia: qui centrare la sposterebbe fuori asse */
