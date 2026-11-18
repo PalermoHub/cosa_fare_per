@@ -15,6 +15,7 @@ occuparsene.
 index.html            pagina unica (testata e piede fissi, scorre solo la colonna dei risultati)
 domande.html          tutte le domande tipiche, per categoria (generata da scripts/genera_pagine.py)
 uffici.html           tutti gli uffici: griglia per area amministrativa o elenco alfabetico
+atti.html             ricerca dal vivo negli atti del Comune (Albo Pretorio e Delibere e Ordinanze)
 salvati.html          le risposte salvate in questo browser
 guida.html            come funziona l'app, con le schermate e le istruzioni per installarla
 privacy.html          informativa privacy e cookie, con le preferenze
@@ -24,6 +25,7 @@ js/dati.js            caricamento dei dati (gli uffici solo quando servono)
 js/app.js             risposte, schede ufficio con mappa, percorso con GPS, navigazione
 js/aree.js            raggruppamento per area, elenco alfabetico, filtro e suggerimenti (3 lettere)
 js/uffici.js          interfaccia della pagina degli uffici
+js/atti.js            interfaccia della pagina degli atti: chiama il Worker e mostra le schede
 js/salvati.js         risposte salvate nella memoria del browser (nessun server)
 js/salvati-pagina.js  interfaccia della pagina delle risposte salvate
 js/decifra.js         «Decifra la PA»: dalle istruzioni per farsi spiegare un avviso pubblico
@@ -32,7 +34,8 @@ data/servizi.json     58 schede servizio ufficiali del Comune, estratte con le l
 data/uffici.json      601 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
 img/                  icone e logo OpenDataSicilia
 img/guida/            le schermate della guida (WebP, rigenerate a mano quando cambia l'interfaccia)
-tests/                i controlli automatici (motore, uffici, offline, contrasto, tema, pagine, interfaccia, accessibilità)
+worker/               il Worker Cloudflare che interroga i portali del Comune (src/index.js, wrangler.toml)
+tests/                i controlli automatici (motore, uffici, atti, offline, contrasto, tema, pagine, interfaccia, accessibilità)
 package.json          gli script `npm test`, `npm run test:ui`, `npm run test:a11y`
 ```
 
@@ -70,6 +73,15 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
   memoria del browser; da qui si riapre o si toglie, anche tutte insieme. Niente account, niente invio.
 - **Guida** (`guida.html`): come fare una domanda, leggere la risposta, arrivare all'ufficio,
   salvare, usare l'app sul telefono e senza rete. Le schermate stanno in `img/guida/`.
+- **Atti del Comune** (`atti.html`): una casella sola per cercare **delibere, determinazioni,
+  ordinanze, bandi, gare, convocazioni e pubblicazioni di matrimonio** nei due servizi del Comune —
+  l'**Albo Pretorio** (ciò che è pubblicato adesso: alla scadenza l'atto esce dall'elenco) e
+  **Delibere e Ordinanze** (l'archivio degli atti deliberativi). Le due fonti si sovrappongono e sono
+  unificate: ogni atto compare una volta, con il suo numero, la data, l'oggetto e il **link permanente**
+  all'atto ufficiale con gli allegati PDF. Filtri per tipo e anno, e senza parole vedi gli atti più
+  recenti. La ricerca è **dal vivo**: non esiste un archivio nostro, ogni Cerca interroga i portali.
+  Serve un piccolo Worker perché quei portali non si possono chiamare dal browser (niente CORS,
+  niente iframe, ricerca con lo stato in sessione): vedi `worker/README.md`.
 - **Tutti gli uffici** (`uffici.html`): i 601 uffici in griglia per area amministrativa o in elenco
   alfabetico. La ricerca suggerisce dopo **3 lettere** l'ufficio o l'area giusta (frecce su/giù e
   Invio per scegliere) e filtra per nome, area, settore e competenze; la scelta si può condividere
@@ -90,6 +102,20 @@ I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-ammini
 
 > Pinuzza non è uno sportello e non prende pratiche. Importi, scadenze e documenti vanno sempre
 > verificati sulla scheda del servizio o con l'ufficio.
+
+## La ricerca negli atti (Worker)
+
+`atti.html` parla con `pinuzza-atti`, un Worker Cloudflare in `worker/`. Non conserva niente: apre una
+sessione sui due portali SISPI del Comune, esegue la ricerca e restituisce JSON con il link permanente
+dell'atto, che è l'unico modo per puntare a un atto preciso (gli indirizzi «normali» dipendono dalla
+sessione e non si possono condividere). Il codice è nel repository e si pubblica con
+`cd worker && npx wrangler deploy`; se cambia l'indirizzo va aggiornato `ENDPOINT` in `js/atti.js`,
+che è l'unico posto in cui compare.
+
+Sul piano Workers gratuito ci sono 50 subrequest per invocazione e 10 ms di CPU: i portali rispondono
+`302` e ogni passo costa due subrequest, quindi il Worker conta le richieste (`BUDGET_SUBREQUEST`) e,
+quando il bilancio finisce, smette di interrogare tipi invece di far fallire la ricerca. `/prova`
+dice se il Comune risponde e se qualcosa è cambiato.
 
 ## Controlli automatici
 

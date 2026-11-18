@@ -75,6 +75,7 @@ const VISTE = [
   ['domanda con due richieste', '/?q=come%20ottengo%20il%20contrassegno%20disabili%20e%20come%20prenoto%20un%20campo%20di%20calcio', 390],
   ['privacy', '/privacy.html', 390],
   ['tutti gli uffici', '/uffici.html', 390],
+  ['atti del Comune', '/atti.html', 390],
   ['tutte le domande', '/domande.html', 390],
   ['guida', '/guida.html', 390],
   ['guida (schermo largo)', '/guida.html', 1280],
@@ -86,6 +87,24 @@ const VISTE = [
   ['home (schermo largo)', '/', 1280],
   ['risposta in tema scuro (schermo largo)', '/?q=come%20cambio%20residenza', 1280],
 ];
+
+// Le schede degli atti: la pagina le chiede a un Worker, qui la risposta è finta,
+// così l'audit è veloce, sempre uguale e non dipende dal sito del Comune.
+const ATTI_FINTI = {
+  tipo: 'tutti', tipoNome: 'Tutti gli atti', totale: 2,
+  tipiInterrogati: 2, tipiNonDisponibili: 0, tipiNonInterrogati: 0,
+  aggiornato: new Date().toISOString(),
+  risultati: [
+    { tipo: 'Delibere di Giunta', portale: 'Delibere e Ordinanze', numero: '360', data: '13/11/2026',
+      oggetto: 'IL GEMELLAGGIO TRA IL COMUNE DI PALERMO E IL COMUNE DI RIO DE JANEIRO',
+      pubblicato: '14/11/2026', scade: '29/11/2026', allegati: 14,
+      link: 'https://albopretorio.comune.palermo.it/albopretorio/pu/push-tabella-delibere.do?nomeTabella=FO_SCEDELIBEREAP&TD=2024&ALBCOD=6271626779667976607C&sportello=albopretorio' },
+    { tipo: 'Determinazioni dirigenziali', portale: 'Albo Pretorio', numero: '17033', data: '18/11/2026',
+      oggetto: 'AFFIDAMENTO DIRETTO PER L’ACQUISIZIONE DEI SERVIZI DI LAVAGGIO',
+      pubblicato: '18/11/2026', scade: '03/12/2026', allegati: 1,
+      link: 'https://albopretorio.comune.palermo.it/albopretorio/pu/push-tabella-delibere.do?nomeTabella=FO_SCEDELIBEREAP&TD=2010&ALBCOD=62716267796770746778&sportello=albopretorio' },
+  ],
+};
 
 async function main() {
   const argomenti = process.argv.slice(2);
@@ -109,6 +128,11 @@ async function main() {
     for (const [nome, percorso, larghezza] of VISTE) {
       await pagina.setViewportSize({ width: larghezza, height: 900 });
       await pagina.emulateMedia({ colorScheme: 'light' });
+      if (percorso.includes('atti.html')) {
+        await pagina.route('**/cerca?**', route => route.fulfill({
+          status: 200, contentType: 'application/json; charset=utf-8', body: JSON.stringify(ATTI_FINTI),
+        }));
+      }
       await pagina.goto(base.replace(/\/$/, '') + percorso, { waitUntil: 'load' });
       if (nome.includes('tema scuro')) {
         await pagina.evaluate(() => localStorage.setItem('pinuzza-tema', 'scuro'));
@@ -144,6 +168,7 @@ async function main() {
         return r.violations.map(v => ({ id: v.id, impatto: v.impact, help: v.help, nodi: v.nodes.length }));
       });
       rapporti.push({ nome, violazioni });
+      if (percorso.includes('atti.html')) await pagina.unroute('**/cerca?**');
       await pagina.evaluate(() => {
         localStorage.removeItem('pinuzza-tema');
         localStorage.removeItem('pinuzza-salvati');

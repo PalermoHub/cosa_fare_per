@@ -36,6 +36,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       <a href="index.html">Chiedi</a>
       <a href="domande.html">Domande</a>
       <a href="uffici.html">Uffici</a>
+      <a href="atti.html">Atti</a>
       <a href="salvati.html">Salvate</a>
       <a href="guida.html">Guida</a>
       <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
@@ -122,6 +123,12 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
             <td>Calcolare il percorso più breve verso l'ufficio</td>
             <td>Consenso dell'interessato, chiesto dal browser (art. 6.1.a GDPR)</td>
             <td>Non viene conservata dal progetto: è usata solo per comporre il link di navigazione</td>
+          </tr>
+          <tr>
+            <td>Parole cercate negli atti (Albo Pretorio, Delibere e Ordinanze)</td>
+            <td>Mostrarti gli atti del Comune che corrispondono</td>
+            <td>Legittimo interesse a rendere consultabili gli atti pubblici (art. 6.1.f GDPR)</td>
+            <td>La ricerca non viene conservata da noi: la richiesta arriva ai portali del Comune, che applicano le proprie informative</td>
           </tr>
           <tr>
             <td>Statistiche di utilizzo (Google Analytics 4)</td>
@@ -266,11 +273,32 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       rendere pubblico, correggila o chiudi la scheda prima di inviarla.
     </p>
 
+    <h2>La ricerca negli atti del Comune</h2>
+    <p>
+      Nella pagina <a href="atti.html">Atti</a> le parole che scrivi non vengono salvate e non vengono
+      mandate a un motore di ricerca nostro: servono a interrogare, in quel momento, i due portali del
+      Comune di Palermo (<a href="https://albopretorio.comune.palermo.it/albopretorio/jsp/home.jsp?modo=info&amp;info=servizi.jsp" rel="noopener">Albo Pretorio</a>
+      e <a href="https://servizionline.comune.palermo.it/portcitt/jsp/home.jsp?modo=info&amp;info=servizi.jsp&amp;SERCOD=60&amp;SERCODROOT=60" rel="noopener">Delibere e Ordinanze</a>),
+      che pubblicano gli atti per obbligo di legge.
+    </p>
+    <p>
+      L'interrogazione passa da un piccolo servizio che il progetto ospita su <strong>Cloudflare Workers</strong>
+      (Cloudflare Inc., USA): è lui a tenere, per il tempo di una singola ricerca, la sessione che i portali
+      del Comune richiedono. Cloudflare riceve quindi l'indirizzo IP e le parole cercate; non conserviamo
+      né l'uno né le altre. Le schede degli atti restano sui server del Comune: quando premi «Apri l'atto»,
+      apri una pagina del Comune con la sua informativa.
+    </p>
+
     <h2>Servizi di terze parti</h2>
     <ul>
       <li>
         <strong>GitHub Pages</strong> (GitHub Inc., USA) ospita il sito: riceve la richiesta della pagina.
         <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Informativa GitHub</a>.
+      </li>
+      <li>
+        <strong>Cloudflare Workers</strong> (Cloudflare Inc., USA) esegue la ricerca negli atti del Comune
+        per conto della pagina: riceve l'indirizzo IP e il testo cercato, non li conserva.
+        <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Informativa Cloudflare</a>.
       </li>
       <li>
         <strong>Google Analytics 4</strong> (Google Ireland Ltd, con possibile trasferimento a Google LLC,
@@ -356,6 +384,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
         <a href="index.html">Chiedi</a>
         <a href="domande.html">Tutte le domande</a>
         <a href="uffici.html">Tutti gli uffici</a>
+        <a href="atti.html">Atti del Comune</a>
         <a href="guida.html">Come funziona</a>
         <a href="salvati.html">Risposte salvate</a>
         <a href="privacy.html">Privacy e cookie</a>
@@ -410,6 +439,21 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
     </button>
   </div>
   <ul class="altre-voci">
+    <li>
+      <a href="atti.html">
+        <span class="altre-icona">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M14.2 3.4H7.4a1.6 1.6 0 0 0-1.6 1.6v14a1.6 1.6 0 0 0 1.6 1.6h9.2a1.6 1.6 0 0 0 1.6-1.6V7.4Z"/>
+            <path d="M14 3.6V7.4h3.8"/>
+            <path d="M8.8 12h6.4M8.8 15.4h6.4"/>
+          </svg>
+        </span>
+        <span class="altre-testo">
+          <span class="altre-etichetta">Atti</span>
+          <span class="altre-nota">Albo, delibere, ordinanze, bandi</span>
+        </span>
+      </a>
+    </li>
     <li>
       <a href="salvati.html" data-voce-salvati>
         <span class="altre-icona">

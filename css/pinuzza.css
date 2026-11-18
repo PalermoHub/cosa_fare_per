@@ -2208,3 +2208,189 @@ body.ha-risultati .scorciatoie { display: none; }
 .conferma-no:hover { border-color: var(--inchiostro-tenue); color: var(--inchiostro); }
 .conferma-si:focus-visible,
 .conferma-no:focus-visible { outline: 2px solid var(--inchiostro); outline-offset: 2px; }
+
+/* ---------- pagina «Atti»: ricerca dal vivo in Albo e Delibere ---------- */
+
+.pagina-atti { --colonna: 54rem; }
+.pagina-atti .interno,
+.pagina-atti .risultati > * { width: min(100% - 2.5rem, 54rem); }
+
+.atti-cerca { padding: 1.1rem 0 .2rem; }
+
+.atti-slogan { display: flex; flex-direction: column; gap: .3rem; max-width: 42rem; }
+.atti-slogan-domanda {
+  font-family: var(--serif);
+  font-size: 1.22rem;
+  line-height: 1.3;
+  color: var(--inchiostro);
+  text-wrap: pretty;
+}
+.atti-slogan-risposta { font-size: .94rem; line-height: 1.5; color: var(--inchiostro-tenue); text-wrap: pretty; }
+.atti-slogan-risposta strong { color: var(--accento); font-weight: 600; }
+
+.atti-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  padding: 1rem;
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: var(--tondo);
+  box-shadow: var(--ombra);
+}
+
+.atti-campo { display: flex; flex-direction: column; gap: .3rem; flex: 1 1 100%; min-width: 0; }
+.atti-campo label { font: 600 .74rem/1.2 var(--sans); letter-spacing: .04em; text-transform: uppercase; color: var(--inchiostro-tenue); }
+.atti-campo input,
+.atti-campo select {
+  width: 100%;
+  font: inherit;
+  font-size: .95rem;
+  color: var(--inchiostro);
+  background: var(--carta);
+  border: 1px solid var(--linea-forte);
+  border-radius: 9px;
+  padding: .55rem .7rem;
+}
+.atti-campo input::placeholder { color: var(--inchiostro-fio); }
+.atti-campo input:focus,
+.atti-campo select:focus { outline: 2px solid var(--accento); outline-offset: 1px; border-color: var(--accento); }
+
+.atti-filtri { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .7rem; flex: 1 1 100%; }
+.atti-campo-tipo { flex: 1 1 13rem; }
+.atti-campo-anno { flex: 0 1 7rem; }
+
+.atti-cerca-bottone {
+  flex: 0 0 auto;
+  font: 600 .92rem/1 var(--sans);
+  color: var(--su-accento);
+  background: var(--accento-fondo);
+  border: 1px solid var(--accento-fondo);
+  border-radius: 9px;
+  padding: .72rem 1.4rem;
+  cursor: pointer;
+  min-height: 2.9rem;
+}
+.atti-cerca-bottone:hover { background: var(--accento-fondo-hover); }
+.atti-cerca-bottone:disabled { opacity: .6; cursor: progress; }
+
+.atti-aiuto { flex: 1 1 100%; margin: 0; font-size: .78rem; line-height: 1.45; color: var(--inchiostro-fio); }
+.atti-aiuto strong { color: var(--inchiostro-tenue); }
+
+.atti-esito { margin: .9rem 0 .2rem; }
+
+.atti-risultati { display: flex; flex-direction: column; gap: .8rem; padding: .6rem 0 0; }
+
+.atti-scheda {
+  padding: .9rem 1rem 1rem;
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-left: 3px solid var(--accento);
+  border-radius: var(--tondo);
+  box-shadow: var(--ombra);
+}
+
+.atti-testa {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem .6rem;
+  margin: 0 0 .45rem;
+  font-size: .78rem;
+  color: var(--inchiostro-fio);
+}
+.atti-tipo { font: 600 .86rem/1.3 var(--sans); color: var(--inchiostro); }
+.atti-portale {
+  font: 600 .66rem/1.6 var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accento);
+  background: var(--accento-chiaro);
+  border-radius: 3px;
+  padding: 0 .32rem;
+}
+.atti-numero { font-weight: 600; color: var(--inchiostro-tenue); }
+.atti-data { color: var(--inchiostro-tenue); }
+
+.atti-oggetto {
+  margin: 0 0 .5rem;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.42;
+  color: var(--inchiostro);
+  text-wrap: pretty;
+  overflow-wrap: anywhere;
+}
+
+.atti-piede { display: flex; flex-wrap: wrap; gap: .2rem .8rem; margin: 0 0 .55rem; font-size: .78rem; color: var(--inchiostro-fio); }
+.atti-piede:empty { display: none; }
+
+.atti-link {
+  display: inline-block;
+  font: 600 .82rem/1.2 var(--sans);
+  color: var(--accento);
+  text-decoration: none;
+  padding: .35rem 0;
+  border-radius: 4px;
+}
+.atti-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.atti-link-muto { color: var(--inchiostro-fio); font-weight: 500; }
+
+.atti-attesa {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 0;
+  padding: 1.1rem 0;
+  font-size: .92rem;
+  color: var(--inchiostro-tenue);
+}
+.atti-puntini {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  border: 2px solid var(--linea-forte);
+  border-top-color: var(--accento);
+  border-radius: 50%;
+  animation: atti-gira .8s linear infinite;
+}
+@keyframes atti-gira { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) { .atti-puntini { animation: none; } }
+
+.atti-errore {
+  padding: .9rem 1rem;
+  background: var(--caldo-chiaro);
+  border: 1px solid var(--caldo);
+  border-radius: var(--tondo);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+.atti-errore p { margin: 0 0 .5rem; }
+.atti-errore p:last-child { margin-bottom: 0; }
+.atti-errore a { color: var(--caldo); }
+.atti-errore-dettaglio { font-size: .76rem; color: var(--inchiostro-fio); }
+
+.atti-non-trovato {
+  margin: 1.4rem 0 0;
+  padding: .9rem 1rem;
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--inchiostro-tenue);
+  background: var(--carta-alt);
+  border: 1px dashed var(--linea-forte);
+  border-radius: var(--tondo);
+}
+.atti-non-trovato a { color: var(--accento); }
+
+/* questi blocchi hanno un margine proprio (verticale) che annullerebbe il centraggio
+   della colonna: qui l'orizzontale resta automatico, come per gli altri figli di .risultati */
+.pagina-atti .atti-esito,
+.pagina-atti .atti-non-trovato,
+.pagina-atti .nota-pagina,
+.pagina-atti .torna-inizio { margin-left: auto; margin-right: auto; }
+
+@media (max-width: 40rem) {
+  .atti-campo-anno { flex: 0 0 6rem; }
+  .atti-cerca-bottone { flex: 1 1 100%; }
+  .atti-oggetto { font-size: .96rem; }
+}

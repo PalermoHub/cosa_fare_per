@@ -24,3 +24,6 @@ node_modules/
 
 # note di lavoro
 .remember/
+
+# cache locale di wrangler (contiene l'id dell'account)
+worker/.wrangler/

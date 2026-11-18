@@ -1,0 +1,21 @@
+# Worker di «Chiedilo a Pinuzza»: ricerca dal vivo nell'Albo Pretorio e in
+# Delibere e Ordinanze del Comune di Palermo.
+#
+# Pubblicazione (dalla cartella worker/):
+#   npx wrangler deploy
+# Prova:
+#   curl "https://pinuzza-atti.<sottodominio>.workers.dev/prova"
+#
+# Non c'è nessun dato salvato: ogni ricerca è una richiesta alle pagine del Comune.
+name = "pinuzza-atti"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+workers_dev = true
+
+# Nessun binding: niente KV, niente D1, niente R2. La cache è la Cache API,
+# per non ripetere la stessa ricerca (e non ripetere le richieste al Comune).
+
+# Il piano Workers gratuito consente 50 subrequest per invocazione e 10 ms di CPU:
+# la ricerca «in tutti i tipi» dell'Albo ne usa una quarantina, quindi resta sotto.
+# Per questo il Worker non salta nessun passaggio: conta le richieste e si ferma
+# prima di esaurirle (vedi BUDGET_SUBREQUEST in src/index.js).

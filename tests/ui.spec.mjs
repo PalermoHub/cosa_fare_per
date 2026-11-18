@@ -234,7 +234,9 @@ const casi = {
     verifica(await pagina.isVisible('#altre-voci'), 'il pannello «Altro» non si apre');
     verifica(await pagina.isVisible('#tema-barra'), 'manca il tema nel pannello');
     const righe = await pagina.locator('.altre-voci a').count();
-    verifica(righe === 4, `righe del pannello: ${righe}`);
+    verifica(righe === 5, `righe del pannello: ${righe}`);
+    // «Atti» è una destinazione, non un ripiego: deve stare nel pannello e portare alla pagina
+    verifica(await pagina.locator('.altre-voci a[href="atti.html"]').count() === 1, 'manca «Atti» nel pannello');
     // i comandi, non i link dentro un testo (`.link-bottone` del piede, per esempio)
     const piccoli = await pagina.evaluate(() => [...document.querySelectorAll('button, input, .azioni a, .altre-voci a')]
       .filter(el => !el.classList.contains('link-bottone') && el.getClientRects().length)
@@ -435,6 +437,72 @@ const casi = {
     await attesa(1500);
     const dopo = await iff.getAttribute('src');
     verifica(/openstreetmap\.org/.test(dopo || ''), `la mappa non parte allo scorrimento: ${dopo}`);
+  },
+
+
+  async 'pagina atti: le schede si leggono e, se il servizio non risponde, lo dice'(pagina, base) {
+    await pagina.setViewportSize({ width: 390, height: 844 });
+
+    // il Worker non si chiama davvero: la risposta è quella che il Comune darebbe
+    const finto = {
+      tipo: 'tutti',
+      tipoNome: 'Tutti gli atti',
+      totale: 2,
+      tipiInterrogati: 2,
+      tipiNonDisponibili: 0,
+      tipiNonInterrogati: 0,
+      aggiornato: new Date().toISOString(),
+      risultati: [
+        {
+          tipo: 'Delibere di Giunta', portale: 'Delibere e Ordinanze', numero: '360', data: '13/11/2026',
+          oggetto: 'IL GEMELLAGGIO TRA IL COMUNE DI PALERMO E IL COMUNE DI RIO DE JANEIRO',
+          pubblicato: '14/11/2026', scade: '29/11/2026', allegati: 14,
+          link: 'https://albopretorio.comune.palermo.it/albopretorio/pu/push-tabella-delibere.do?nomeTabella=FO_SCEDELIBEREAP&TD=2024&ALBCOD=6271626779667976607C&sportello=albopretorio',
+        },
+        {
+          tipo: 'Determinazioni dirigenziali', portale: 'Albo Pretorio', numero: '17033', data: '18/11/2026',
+          oggetto: 'AFFIDAMENTO DIRETTO PER L’ACQUISIZIONE DEI SERVIZI DI LAVAGGIO',
+          pubblicato: '18/11/2026', scade: '03/12/2026', allegati: 1,
+          link: 'https://albopretorio.comune.palermo.it/albopretorio/pu/push-tabella-delibere.do?nomeTabella=FO_SCEDELIBEREAP&TD=2010&ALBCOD=62716267796770746778&sportello=albopretorio',
+        },
+      ],
+    };
+    await pagina.route('**/cerca?**', route => route.fulfill({
+      status: 200, contentType: 'application/json; charset=utf-8', body: JSON.stringify(finto),
+    }));
+
+    await pagina.goto(base + 'atti.html', { waitUntil: 'load' });
+    await attesa(900);
+
+    verifica(await pagina.locator('.atti-scheda').count() === 2, 'le schede degli atti non compaiono');
+    verifica(/2 atti trovati/.test(await pagina.textContent('#atti-esito')), `esito: ${await pagina.textContent('#atti-esito')}`);
+    const meta = await pagina.evaluate(() => ({
+      tipo: document.querySelector('.atti-tipo')?.textContent,
+      portale: document.querySelector('.atti-portale')?.textContent,
+      numero: document.querySelector('.atti-numero')?.textContent,
+      link: document.querySelector('.atti-link')?.getAttribute('href') || '',
+      oggetto: document.querySelector('.atti-oggetto')?.textContent || '',
+    }));
+    verifica(meta.tipo === 'Delibere di Giunta', `tipo: ${meta.tipo}`);
+    verifica(meta.portale === 'Delibere e Ordinanze', `portale: ${meta.portale}`);
+    verifica(meta.numero === 'n. 360', `numero: ${meta.numero}`);
+    verifica(/ALBCOD=/.test(meta.link), `il link all’atto non è quello permanente: ${meta.link}`);
+    verifica(/GEMELLAGGIO/.test(meta.oggetto), 'manca l’oggetto dell’atto');
+
+    // nessun testo deve finire sul margine sinistro dello schermo
+    const margini = await pagina.evaluate(() => [...document.querySelectorAll('#contenuto > *')]
+      .map(n => Math.round(n.getBoundingClientRect().left)));
+    verifica(Math.min(...margini) >= 6, `blocchi a filo del bordo sinistro: ${margini.join(', ')}`);
+
+    // se il servizio non risponde la pagina non resta vuota: spiega e manda ai portali
+    await pagina.unroute('**/cerca?**');
+    await pagina.route('**/cerca?**', route => route.abort());
+    await pagina.fill('#atti-q', 'pulizia');
+    await pagina.click('.atti-cerca-bottone');
+    await attesa(900);
+    verifica(await pagina.locator('.atti-errore').count() === 1, 'manca il messaggio quando il servizio non risponde');
+    const testo = await pagina.textContent('.atti-errore');
+    verifica(/Albo Pretorio/.test(testo) && /Delibere e Ordinanze/.test(testo), 'il messaggio non rimanda ai portali del Comune');
   },
 
   async 'pagina uffici: elenco A–Z in ordine alfabetico e colonne allineate'(pagina, base) {

@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Chiedilo a Pinuzza: guida colloquiale ai servizi e agli uffici del Comune di Palermo",
   "scripts": {
-    "test": "node --test tests/test_motore.mjs tests/test_uffici.mjs tests/test_offline.mjs tests/test_contrasto.mjs tests/test_tema.mjs tests/test_feedback.mjs tests/test_pagine.mjs tests/test_salvati.mjs tests/test_decifra.mjs",
+    "test": "node --test tests/test_motore.mjs tests/test_uffici.mjs tests/test_atti.mjs tests/test_offline.mjs tests/test_contrasto.mjs tests/test_tema.mjs tests/test_feedback.mjs tests/test_pagine.mjs tests/test_salvati.mjs tests/test_decifra.mjs",
     "test:ui": "node tests/ui.spec.mjs",
     "test:a11y": "node tests/audit_axe.mjs"
   }

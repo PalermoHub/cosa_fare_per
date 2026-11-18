@@ -1,0 +1,58 @@
+# Worker degli atti — come si pubblica
+
+Questo Worker serve la pagina `atti.html`: prende le parole cercate dal cittadino, apre una
+sessione sui due portali SISPI del Comune di Palermo (Albo Pretorio e Delibere e Ordinanze),
+esegue la ricerca e restituisce JSON con gli atti e il loro **link permanente**.
+
+Serve perché dal browser non si può fare: i due portali non mandano `Access-Control-Allow-Origin`,
+rispondono `X-Frame-Options: sameorigin` e la ricerca è un `POST` con lo stato in sessione.
+
+**Non conserva niente**: nessun database, nessun KV, nessun R2. La Cache API serve solo a non
+ripetere due volte la stessa ricerca entro dieci minuti.
+
+## Pubblicare
+
+```bash
+cd worker
+npx wrangler deploy
+```
+
+L'indirizzo viene stampato da `wrangler` (`https://pinuzza-atti.<sottodominio>.workers.dev`).
+Se cambia, va aggiornato l'elenco `ENDPOINT` in `js/atti.js` — è l'unico posto in cui compare.
+
+## Provare
+
+```bash
+# il Comune risponde a un IP Cloudflare? (la domanda che conta)
+curl "https://pinuzza-atti.<sottodominio>.workers.dev/prova"
+
+# gli atti più recenti
+curl "https://pinuzza-atti.<sottodominio>.workers.dev/cerca?tipo=tutti&recenti=1"
+
+# una ricerca vera
+curl "https://pinuzza-atti.<sottodominio>.workers.dev/cerca?tipo=delibere&q=pulizia&anno=2026"
+
+# con i conteggi delle subrequest (per stare dentro il piano gratuito)
+curl "https://pinuzza-atti.<sottodominio>.workers.dev/cerca?tipo=tutti&q=pulizia&debug=1"
+```
+
+## Conti da tenere d'occhio
+
+Il piano **Workers gratuito** dà 50 subrequest per invocazione e 10 ms di CPU. I portali
+rispondono `302` verso `home.jsp?modo=tabella`, quindi ogni passo costa **due** subrequest:
+una ricerca su un tipo costa 3, la scheda di un atto 2. Il codice conta tutto in
+`BUDGET_SUBREQUEST` (46) e, quando il bilancio finisce, smette di interrogare tipi invece di far
+fallire la ricerca: nel JSON lo dice (`tipiNonInterrogati`).
+
+Con il piano a pagamento (5 $/mese) si possono alzare i tetti in `wrangler.toml`
+(`[limits] subrequests = 1000`) e togliere il taglio.
+
+## Se il Comune cambia le pagine
+
+`/prova` risponde `ok: false` quando un portale è irraggiungibile o restituisce
+«Servizio temporaneamente non disponibile». Le cose che possono cambiare senza preavviso:
+
+- i codici `TD` dei tipi di atto (sono nella costante `TIPI` di `src/index.js`);
+- i nomi dei campi del modulo di ricerca (`ALB_DESOGGETTO`, `ALB_NUM_PROT`, `ALB_DESANNOPROT`);
+- il formato delle tabelle (le intestazioni si leggono, non si indovinano) e il `302` dopo la ricerca;
+- il blocco `testoCodiceIpa = '…ALBCOD=…'` da cui si ricava il link permanente.
