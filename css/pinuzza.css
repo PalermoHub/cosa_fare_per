@@ -1974,8 +1974,17 @@ body.decifra-aperti .decifra {
   text-transform: uppercase;
   color: var(--inchiostro-fio);
 }
-.indice-guida ol { margin: 0; padding-left: 1.25rem; }
-.indice-guida li { margin: .18rem 0; font-size: .92rem; }
+/* l'indice su tre colonne: le undici voci stanno in quattro righe invece di undici,
+   così il riquadro non allunga la pagina. L'ordine resta quello di lettura (1, 2, 3
+   sulla prima riga) e la numerazione la porta il marcatore dell'<ol>. */
+.indice-guida ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .22rem 1.6rem;
+}
+.indice-guida li { margin: 0; font-size: .92rem; text-wrap: pretty; }
 
 /* i passi numerati: il numero è un cerchio pieno, non un'immagine */
 .passi { counter-reset: passo; list-style: none; margin: 1.1rem 0 1.5rem; padding: 0; }
@@ -2028,6 +2037,8 @@ body.decifra-aperti .decifra {
   .riga-nome,
   .riga-dove,
   .riga-recapiti { grid-column: 1; }
+  /* tre colonne con le voci lunghe («Salvare, ricominciare, segnalare») non ci stanno */
+  .indice-guida ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 40rem) {
@@ -2037,6 +2048,7 @@ body.decifra-aperti .decifra {
   .pagina-guida .risultati > * { width: min(100% - 1.6rem, 56rem); }
   .schermata-telefono img { max-width: 15rem; }
   .indice-guida { padding: .85rem 1rem; }
+  .indice-guida ol { grid-template-columns: 1fr; }
   .viste { flex: 1 1 100%; }
   .aiuto-cerca { display: none; } /* su mobile il posto è del risultato: l'aiuto lo dice il segnaposto */
   .viste button { flex: 1 1 auto; }
