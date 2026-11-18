@@ -1073,7 +1073,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   /* credito del progetto e logo restano solo da tablet in su: sul telefono il piede tiene copyright, licenza e Credits */
   .piede-riga > img,
   .piede-progetto { display: none; }
-  .piede-riga { justify-content: center; }
+  .piede-riga { grid-template-columns: minmax(0, 1fr); }
   .piede-credito { text-align: center; }
   .piede-corpo { grid-template-columns: 1fr; grid-template-areas: "credito"; }
 
