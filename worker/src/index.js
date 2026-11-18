@@ -34,7 +34,7 @@
 
 const UA = 'Chiedilo-a-Pinuzza/1.0 (+https://palermohub.github.io/cosa_fare_per/)';
 const CACHE_RICERCA = 600; // secondi: la stessa ricerca non torna al Comune
-const MAX_RISULTATI = 10;
+const MAX_RISULTATI = 6;
 const MAX_Q = 80;
 const PARALLELE = 8;
 // Il piano Workers gratuito dà 50 subrequest per invocazione (la Cache API conta
@@ -97,7 +97,7 @@ const TIPI = [
 
 // Le voci del menù «tipo». `tutti` è il predefinito.
 const GRUPPI = {
-  tutti: { nome: 'Tutti gli atti', tipi: ['dgc', 'dcc', 'dcs', 'circ', 'det', 'od', 'os', 'dco'] },
+  tutti: { nome: 'Tutti gli atti', tipi: ['dgc', 'dcc', 'det', 'od', 'os'] },
   delibere: { nome: 'Delibere', tipi: ['dgc', 'dcc', 'dcs', 'circ'] },
   determinazioni: { nome: 'Determinazioni', tipi: ['det'] },
   ordinanze: { nome: 'Ordinanze', tipi: ['od', 'os', 'dco'] },
@@ -119,6 +119,14 @@ function json(dati, stato = 200, extra = {}) {
     status: stato,
     headers: { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...CORS, ...extra },
   });
+}
+
+function misura(contesto, azione) {
+  if (!contesto.tempi) return azione();
+  const inizio = performance.now();
+  const esito = azione();
+  contesto.tempi.parse += performance.now() - inizio;
+  return esito;
 }
 
 function spendi(contesto) {
@@ -304,7 +312,8 @@ async function cercaTipo(tipo, parametri, contesto) {
 
   // senza testo, anno né numero si mostra l'elenco: la pagina di apertura basta
   if (!parametri.q && !parametri.anno && !parametri.numero) {
-    return { tipo, totale: totaleRighe(apertura), righe: righeTabella(apertura), client: c };
+    const totale = misura(contesto, () => totaleRighe(apertura));
+    return { tipo, totale, righe: misura(contesto, () => righeTabella(apertura)), client: c };
   }
 
   const form = {
@@ -324,7 +333,7 @@ async function cercaTipo(tipo, parametri, contesto) {
 
   // Un solo risultato: il portale salta alla scheda, senza elenco.
   if (/record\s*1\s*di\s*1/.test(html) || /id=['"]LINKPERMANENTE['"]/.test(html)) {
-    const s = scheda(html);
+    const s = misura(contesto, () => scheda(html));
     return {
       tipo,
       totale: 1,
@@ -333,7 +342,8 @@ async function cercaTipo(tipo, parametri, contesto) {
     };
   }
 
-  return { tipo, totale: totaleRighe(html), righe: righeTabella(html), client: c };
+  const totale = misura(contesto, () => totaleRighe(html));
+  return { tipo, totale, righe: misura(contesto, () => righeTabella(html)), client: c };
 }
 
 async function cerca(gruppo, parametri, contesto) {
@@ -414,7 +424,8 @@ async function cerca(gruppo, parametri, contesto) {
   await Promise.all([...perSessione.values()].map(async (gruppo) => {
     for (const riga of gruppo) {
       try {
-        schedePerRiga.set(riga, scheda(await riga.client.html(`/dbmanager/tabella-modifica.do?row=${riga.row}`)));
+        const pagina = await riga.client.html(`/dbmanager/tabella-modifica.do?row=${riga.row}`);
+        schedePerRiga.set(riga, misura(contesto, () => scheda(pagina)));
       } catch (errore) {
         schedePerRiga.set(riga, null);
       }
@@ -497,14 +508,14 @@ export default {
       return json({ errore: 'Scrivi una parola, oppure indica un anno o un numero di protocollo' }, 400);
     }
 
-    const chiave = `cerca?v=12&tipo=${tipo}&q=${encodeURIComponent(q)}&anno=${anno}&numero=${numero}`;
+    const chiave = `cerca?v=15&tipo=${tipo}&q=${encodeURIComponent(q)}&anno=${anno}&numero=${numero}`;
     const cache = caches.default;
     const richiestaCache = new Request(`https://cache.pinuzza.internal/${chiave}`);
     const inCache = await cache.match(richiestaCache);
     if (inCache) return new Response(inCache.body, inCache);
 
     const inizio = Date.now();
-    const contesto = { spese: 2 }; // 2 per la cache (match + put)
+    const contesto = { spese: 2, tempi: url.searchParams.get('debug') ? { parse: 0 } : null }; // 2 per la cache (match + put)
     let risposta;
     try {
       const esito = await cerca(tipo, { q, anno, numero }, contesto);
@@ -522,6 +533,7 @@ export default {
         elencoTipi: esito.elencoTipi,
         aggiornato: new Date().toISOString(),
         ms: Date.now() - inizio,
+        debug: contesto.tempi ? { subrequest: contesto.spese, cpuParseMs: Math.round(contesto.tempi.parse * 10) / 10 } : undefined,
       }, 200, { 'Cache-Control': `public, max-age=${CACHE_RICERCA}` });
     } catch (e) {
       risposta = json({ errore: 'Il servizio del Comune non ha risposto', dettaglio: String((e && e.message) || e) }, 502);

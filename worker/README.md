@@ -44,6 +44,12 @@ una ricerca su un tipo costa 3, la scheda di un atto 2. Il codice conta tutto in
 `BUDGET_SUBREQUEST` (46) e, quando il bilancio finisce, smette di interrogare tipi invece di far
 fallire la ricerca: nel JSON lo dice (`tipiNonInterrogati`).
 
+Il gruppo «tutti» interroga cinque tipi e mostra sei risultati: sono i valori scelti per stare
+larghi sul piano gratuito (**2,9-4 s per ricerca, 19-29 subrequest, CPU p50 ~1,7 ms**, misurati
+con `/cerca?…&debug=1`). Gli altri tipi restano cercabili scegliendo il gruppo. Le punte di CPU
+(p90 ~30 ms) sono **avvii a freddo** dell'isolate, non parsing: una richiesta banale ha lo stesso
+p90. Se si alza `MAX_RISULTATI` conviene ricontrollare `debug.cpuParseMs` e `debug.subrequest`.
+
 Con il piano a pagamento (5 $/mese) si possono alzare i tetti in `wrangler.toml`
 (`[limits] subrequests = 1000`) e togliere il taglio.
 
