@@ -24,10 +24,13 @@ const privacy = leggi('privacy.html');
 
 test('la pagina degli atti ha il modulo di ricerca e i suoi campi', () => {
   assert.match(atti, /<form class="atti-form" id="atti-form" role="search">/);
-  for (const campo of ['atti-q', 'atti-tipo', 'atti-anno']) {
+  for (const campo of ['atti-q', 'atti-tipo', 'atti-anno', 'atti-numero']) {
     assert.match(atti, new RegExp(`id="${campo}"`), `manca il campo ${campo}`);
   }
   assert.match(atti, /<button type="submit" class="atti-cerca-bottone">Cerca<\/button>/);
+  // si può cercare anche per numero di protocollo, e si può azzerare tutto
+  assert.match(atti, /<button type="reset" class="atti-pulisci-bottone">/);
+  assert.match(atti, /<label for="atti-numero">N\. protocollo<\/label>/);
 
   // i tipi che si possono scegliere devono essere gli stessi che conosce il Worker
   const scelte = [...atti.matchAll(/<option value="([a-z]+)">/g)].map(m => m[1]);

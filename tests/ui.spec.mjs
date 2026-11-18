@@ -494,6 +494,26 @@ const casi = {
       .map(n => Math.round(n.getBoundingClientRect().left)));
     verifica(Math.min(...margini) >= 6, `blocchi a filo del bordo sinistro: ${margini.join(', ')}`);
 
+    // il numero di protocollo arriva al Worker e finisce nell'indirizzo
+    await pagina.fill('#atti-numero', '360');
+    await pagina.click('.atti-cerca-bottone');
+    await attesa(700);
+    verifica(/numero=360/.test(await pagina.evaluate(() => location.search)), `numero non passato: ${await pagina.evaluate(() => location.search)}`);
+
+    // «Azzera» svuota i campi e riparte dagli atti più recenti
+    await pagina.click('.atti-pulisci-bottone');
+    await attesa(700);
+    const dopoAzzera = await pagina.evaluate(() => ({
+      q: document.getElementById('atti-q').value,
+      numero: document.getElementById('atti-numero').value,
+      anno: document.getElementById('atti-anno').value,
+      tipo: document.getElementById('atti-tipo').value,
+      indirizzo: location.search,
+    }));
+    verifica(dopoAzzera.q === '' && dopoAzzera.numero === '' && dopoAzzera.anno === '', `campi non svuotati: ${JSON.stringify(dopoAzzera)}`);
+    verifica(dopoAzzera.tipo === 'tutti', `il tipo non è tornato a «tutti»: ${dopoAzzera.tipo}`);
+    verifica(dopoAzzera.indirizzo === '', `l'indirizzo non è stato ripulito: ${dopoAzzera.indirizzo}`);
+
     // se il servizio non risponde la pagina non resta vuota: spiega e manda ai portali
     await pagina.unroute('**/cerca?**');
     await pagina.route('**/cerca?**', route => route.abort());

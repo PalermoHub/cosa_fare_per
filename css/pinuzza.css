@@ -2258,10 +2258,12 @@ body.ha-risultati .scorciatoie { display: none; }
 
 .atti-filtri { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .7rem; flex: 1 1 100%; }
 .atti-campo-tipo { flex: 1 1 13rem; }
-.atti-campo-anno { flex: 0 1 7rem; }
+.atti-campo-anno { flex: 0 1 6.5rem; }
+.atti-campo-numero { flex: 0 1 10rem; }
+
+.atti-comandi { display: flex; align-items: stretch; gap: .5rem; flex: 0 0 auto; }
 
 .atti-cerca-bottone {
-  flex: 0 0 auto;
   font: 600 .92rem/1 var(--sans);
   color: var(--su-accento);
   background: var(--accento-fondo);
@@ -2273,6 +2275,23 @@ body.ha-risultati .scorciatoie { display: none; }
 }
 .atti-cerca-bottone:hover { background: var(--accento-fondo-hover); }
 .atti-cerca-bottone:disabled { opacity: .6; cursor: progress; }
+
+.atti-pulisci-bottone {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font: 600 .86rem/1 var(--sans);
+  color: var(--inchiostro-tenue);
+  background: var(--carta);
+  border: 1px solid var(--linea-forte);
+  border-radius: 9px;
+  padding: .72rem 1rem;
+  min-height: 2.9rem;
+  cursor: pointer;
+}
+.atti-pulisci-bottone:hover { color: var(--caldo); border-color: var(--caldo); }
+.atti-pulisci-bottone:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
+.atti-pulisci-bottone svg { flex: 0 0 auto; }
 
 .atti-aiuto { flex: 1 1 100%; margin: 0; font-size: .78rem; line-height: 1.45; color: var(--inchiostro-fio); }
 .atti-aiuto strong { color: var(--inchiostro-tenue); }
@@ -2311,6 +2330,8 @@ body.ha-risultati .scorciatoie { display: none; }
 }
 .atti-numero { font-weight: 600; color: var(--inchiostro-tenue); }
 .atti-data { color: var(--inchiostro-tenue); }
+
+.atti-settore { margin: 0 0 .35rem; font-size: .78rem; color: var(--inchiostro-fio); }
 
 .atti-oggetto {
   margin: 0 0 .5rem;
@@ -2390,7 +2411,10 @@ body.ha-risultati .scorciatoie { display: none; }
 .pagina-atti .torna-inizio { margin-left: auto; margin-right: auto; }
 
 @media (max-width: 40rem) {
-  .atti-campo-anno { flex: 0 0 6rem; }
-  .atti-cerca-bottone { flex: 1 1 100%; }
+  .atti-campo-anno { flex: 1 1 5.5rem; }
+  .atti-campo-numero { flex: 1 1 7rem; }
+  .atti-comandi { flex: 1 1 100%; }
+  .atti-cerca-bottone { flex: 1 1 auto; }
+  .atti-pulisci-bottone { flex: 0 0 auto; }
   .atti-oggetto { font-size: .96rem; }
 }

@@ -18,6 +18,7 @@ const modulo = document.getElementById('atti-form');
 const campoQ = document.getElementById('atti-q');
 const campoTipo = document.getElementById('atti-tipo');
 const campoAnno = document.getElementById('atti-anno');
+const campoNumero = document.getElementById('atti-numero');
 const esito = document.getElementById('atti-esito');
 const contenitore = document.getElementById('atti-risultati');
 const nonTrovato = document.getElementById('atti-non-trovato');
@@ -48,6 +49,9 @@ const ora = (iso) => {
 function schedaAtto(atto) {
   const numero = atto.numero ? `<span class="atti-numero">n. ${scappa(atto.numero)}</span>` : '';
   const data = atto.data ? `<time class="atti-data">${scappa(dataBreve(atto.data))}</time>` : '';
+  const settore = atto.settore
+    ? `<p class="atti-settore">Settore: ${scappa(atto.settore)}</p>`
+    : '';
   const pubblicato = atto.pubblicato
     ? `<span class="atti-pubblicato">pubblicato il ${scappa(dataBreve(atto.pubblicato))}${atto.scade ? `, fino al ${scappa(dataBreve(atto.scade))}` : ''}</span>`
     : '';
@@ -64,6 +68,7 @@ function schedaAtto(atto) {
       <span class="atti-portale">${scappa(atto.portale)}</span>
       ${numero}${data}
     </p>
+    ${settore}
     <p class="atti-oggetto">${scappa(atto.oggetto)}</p>
     <p class="atti-piede">${pubblicato}${allegati}</p>
     ${link}
@@ -169,24 +174,29 @@ async function cerca() {
   const q = (campoQ?.value || '').trim();
   const tipo = campoTipo?.value || 'tutti';
   const anno = (campoAnno?.value || '').trim();
+  const numero = (campoNumero?.value || '').replace(/[^\d/\-]/g, '');
 
   const parametri = { tipo };
   if (q) parametri.q = q;
   if (anno) parametri.anno = anno;
-  if (!q && !anno) parametri.recenti = '1';
+  if (numero) parametri.numero = numero;
+  if (!q && !anno && !numero) parametri.recenti = '1';
 
   if (richiestaInCorso) richiestaInCorso.abort();
   richiestaInCorso = new AbortController();
   const segnale = richiestaInCorso.signal;
 
   bottone?.setAttribute('disabled', 'disabled');
-  statoCaricamento(q ? `Sto cercando «${q}» negli atti del Comune…` : 'Sto leggendo gli atti più recenti dal Comune…');
+  const cosa = q || numero
+    ? `Sto cercando ${q ? `«${q}»` : ''}${q && numero ? ' e ' : ''}${numero ? `il protocollo ${numero}` : ''} negli atti del Comune…`
+    : 'Sto leggendo gli atti più recenti dal Comune…';
+  statoCaricamento(cosa);
   messaggio('La ricerca interroga i portali del Comune in diretta: può volerci qualche secondo.');
 
   try {
     const dati = await chiedi(parametri, segnale);
     mostra(dati, q);
-    aggiornaIndirizzo({ q, tipo, anno });
+    aggiornaIndirizzo({ q, tipo, anno, numero });
   } catch (e) {
     if (e && e.name === 'AbortError') return;
     errore(e);
@@ -203,10 +213,20 @@ if (iniziali.get('tipo') && campoTipo.querySelector(`option[value="${CSS.escape(
   campoTipo.value = iniziali.get('tipo');
 }
 if (iniziali.get('anno')) campoAnno.value = iniziali.get('anno');
+if (iniziali.get('numero')) campoNumero.value = iniziali.get('numero');
 
 modulo?.addEventListener('submit', (evento) => {
   evento.preventDefault();
   cerca();
+});
+
+// «Azzera» svuota il modulo (type="reset" fa il lavoro) e riparte dagli atti più recenti
+modulo?.addEventListener('reset', () => {
+  // il browser svuota i campi dopo l'evento: si riparte al giro successivo
+  requestAnimationFrame(() => {
+    aggiornaIndirizzo({});
+    cerca();
+  });
 });
 
 // prima apertura: gli atti più recenti, senza che si debba premere niente

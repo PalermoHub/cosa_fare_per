@@ -107,11 +107,24 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
           <input id="atti-anno" name="anno" type="number" inputmode="numeric" min="2018" max="2030"
                  step="1" placeholder="tutti">
         </div>
-        <button type="submit" class="atti-cerca-bottone">Cerca</button>
+        <div class="atti-campo atti-campo-numero">
+          <label for="atti-numero">N. protocollo</label>
+          <input id="atti-numero" name="numero" type="text" inputmode="numeric" autocomplete="off"
+                 maxlength="12" placeholder="se lo conosci">
+        </div>
+        <div class="atti-comandi">
+          <button type="submit" class="atti-cerca-bottone">Cerca</button>
+          <button type="reset" class="atti-pulisci-bottone">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6.8 6.8l10.4 10.4M17.2 6.8 6.8 17.2"/></svg>
+            <span>Azzera</span>
+          </button>
+        </div>
       </div>
       <p class="atti-aiuto" id="atti-aiuto">
-        Scrivi una parola dell'oggetto e premi Cerca. Senza parole vedi <strong>gli atti più recenti</strong>.
-        La ricerca interroga in diretta i portali del Comune: non è un archivio nostro.
+        Scrivi una parola dell'oggetto e premi Cerca; se conosci il numero di protocollo mettilo lì.
+        Senza parole vedi <strong>gli atti più recenti</strong>. La ricerca interroga in diretta i portali
+        del Comune: non è un archivio nostro.
       </p>
     </form>
   </section>

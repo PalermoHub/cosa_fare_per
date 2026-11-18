@@ -267,6 +267,7 @@ function scheda(html) {
     oggetto: valoreCampo(html, 'ALB_DESOGGETTO'),
     inizio: valoreCampo(html, 'ALB_DATINIPUB'),
     fine: valoreCampo(html, 'ALB_DATFINPUB'),
+    settore: valoreCampo(html, 'SET_DESSETTORE') || valoreCampo(html, 'SET_COD_DECODIFICATO') || valoreCampo(html, 'SET_DES'),
     allegati: (html.match(/viewDocument\?col=ALLEGATI/g) || []).length,
   };
 }
@@ -435,6 +436,7 @@ async function cerca(gruppo, parametri, contesto) {
       oggetto,
       pubblicato: s.inizio || riga.inizio || '',
       scade: s.fine || riga.fine || '',
+      settore: s.settore || '',
       allegati: s.allegati || 0,
       link: s.link || '',
     };
@@ -495,7 +497,7 @@ export default {
       return json({ errore: 'Scrivi una parola, oppure indica un anno o un numero di protocollo' }, 400);
     }
 
-    const chiave = `cerca?v=11&tipo=${tipo}&q=${encodeURIComponent(q)}&anno=${anno}&numero=${numero}`;
+    const chiave = `cerca?v=12&tipo=${tipo}&q=${encodeURIComponent(q)}&anno=${anno}&numero=${numero}`;
     const cache = caches.default;
     const richiestaCache = new Request(`https://cache.pinuzza.internal/${chiave}`);
     const inCache = await cache.match(richiestaCache);
