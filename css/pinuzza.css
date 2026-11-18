@@ -1627,18 +1627,41 @@ body.crediti-aperti .crediti {
 .ufficio-scheda { color: var(--accento); }
 .ufficio-indirizzo { color: var(--inchiostro-fio); }
 
-.elenco-uffici { list-style: none; margin: .9rem 0 0; padding: 0; }
+/* «Elenco A–Z»: una tabella vera. Le tre colonne stanno sulla lista, non sulla singola
+   riga: così i confini sono gli stessi per tutte le righe (prima ogni riga calcolava le
+   proprie larghezze e i recapiti finivano a zig-zag). */
+.elenco-uffici {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr) minmax(0, 2fr);
+  column-gap: 1.1rem;
+  list-style: none;
+  margin: .9rem 0 0;
+  padding: 0;
+}
+.intestazione-elenco,
 .riga-ufficio {
   display: grid;
-  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.5fr) auto;
-  gap: .1rem 1.1rem;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: baseline;
+}
+.intestazione-elenco {
+  padding: 0 0 .35rem;
+  border-bottom: 1px solid var(--linea-forte);
+  font: 600 .66rem/1.4 var(--sans);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
+.riga-ufficio {
+  row-gap: .1rem;
   padding: .5rem 0;
   border-bottom: 1px solid var(--linea);
 }
-.riga-nome { font-weight: 600; font-size: .92rem; }
-.riga-dove { font-size: .78rem; color: var(--inchiostro-fio); }
-.riga-recapiti { margin: 0; }
+/* la colonna si dichiara sempre: chi non ha area né settore non deve scalare di posto */
+.riga-nome { grid-column: 1; font-weight: 600; font-size: .92rem; text-wrap: pretty; }
+.riga-dove { grid-column: 2; font-size: .78rem; color: var(--inchiostro-fio); text-wrap: pretty; }
+.riga-recapiti { grid-column: 3; margin: 0; }
 
 .nota-pagina {
   margin: 2rem 0 0;
@@ -1729,6 +1752,17 @@ body.crediti-aperti .crediti {
 /* l'attributo hidden deve vincere sui display: grid/flex */
 [hidden] { display: none !important; }
 
+/* sotto le 56rem le tre colonne si pestano i piedi (le email si spezzano a metà parola):
+   l'elenco torna una lista, nome, area e recapiti uno sotto l'altro */
+@media (max-width: 56rem) {
+  .elenco-uffici { display: block; }
+  .intestazione-elenco { display: none; } /* su una colonna sola le etichette non servono */
+  .riga-ufficio { display: grid; grid-template-columns: 1fr; gap: .1rem; padding: .6rem 0; }
+  .riga-nome,
+  .riga-dove,
+  .riga-recapiti { grid-column: 1; }
+}
+
 @media (max-width: 40rem) {
   .pagina-uffici .interno,
   .pagina-uffici .risultati > * { width: min(100% - 1.6rem, 62rem); }
@@ -1740,7 +1774,6 @@ body.crediti-aperti .crediti {
   .aiuto-cerca { display: none; } /* su mobile il posto è del risultato: l'aiuto lo dice il segnaposto */
   .viste button { flex: 1 1 auto; }
   .griglia-uffici { grid-template-columns: 1fr; }
-  .riga-ufficio { grid-template-columns: 1fr; gap: .1rem; padding: .6rem 0; }
 }
 
 /* rimandi sotto le domande suggerite — pagina degli uffici e segnalazioni: un badge per farli vedere */

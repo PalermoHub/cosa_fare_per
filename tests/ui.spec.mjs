@@ -1,10 +1,10 @@
-// Test dell'interfaccia (P1.7): quindici casi che coprono quello che l'utente fa davvero.
+// Test dell'interfaccia (P1.7): diciassette casi che coprono quello che l'utente fa davvero.
 //
 // Apre il sito in locale con Chromium (Playwright) e prova: pagina bianca, risposta con
 // scheda ufficio, azzeramento della risposta, domanda con due richieste, risposta incerta,
 // risposta vuota, GPS negato, telefono 390×844, tema scuro, funzionamento senza rete,
-// consenso accettato/rifiutato, feedback e dati strutturati. Non usa @playwright/test: si
-// lancia con `node tests/ui.spec.mjs` e stampa un caso per riga.
+// consenso accettato/rifiutato, feedback, elenco degli uffici e dati strutturati. Non usa
+// @playwright/test: si lancia con `node tests/ui.spec.mjs` e stampa un caso per riga.
 //
 // Uso:
 //   node tests/ui.spec.mjs                       # serve la cartella e prova tutto
@@ -435,6 +435,48 @@ const casi = {
     await attesa(1500);
     const dopo = await iff.getAttribute('src');
     verifica(/openstreetmap\.org/.test(dopo || ''), `la mappa non parte allo scorrimento: ${dopo}`);
+  },
+
+  async 'pagina uffici: elenco A–Z in ordine alfabetico e colonne allineate'(pagina, base) {
+    await pagina.setViewportSize({ width: 1024, height: 900 });
+    await pagina.goto(base + 'uffici.html?vista=elenco', { waitUntil: 'load' });
+    await attesa(1200);
+
+    const dati = await pagina.evaluate(() => {
+      const righe = [...document.querySelectorAll('#elenco .riga-ufficio')].filter(r => !r.hidden);
+      const sinistra = nodo => Math.round(nodo.getBoundingClientRect().left);
+      return {
+        totale: righe.length,
+        nomi: righe.map(r => r.querySelector('.riga-nome').textContent.trim()),
+        prime: righe.map(r => sinistra(r.querySelector('.riga-nome'))),
+        recapiti: righe.map(r => r.querySelector('.riga-recapiti')).filter(Boolean).map(sinistra),
+        intestazione: document.querySelectorAll('#elenco .intestazione-elenco').length,
+      };
+    });
+
+    verifica(dati.totale > 500, `righe nell’elenco: ${dati.totale}`);
+    verifica(dati.intestazione === 1, 'manca la riga con i nomi delle colonne');
+
+    // l'ordine è alfabetico su tutti gli uffici: con il raggruppamento per area le aree si
+    // susseguivano e «Ufficio…» tornava dopo «Capo Area…»
+    const confronto = new Intl.Collator('it', { sensitivity: 'base' });
+    for (let i = 1; i < dati.nomi.length; i++) {
+      verifica(
+        confronto.compare(dati.nomi[i - 1], dati.nomi[i]) <= 0,
+        `fuori ordine: «${dati.nomi[i - 1]}» prima di «${dati.nomi[i]}»`,
+      );
+    }
+
+    // una colonna per riga allo stesso pixel: prima ogni riga calcolava le proprie larghezze
+    verifica(new Set(dati.prime).size === 1, `la prima colonna si sposta: ${[...new Set(dati.prime)].join(', ')}`);
+    verifica(new Set(dati.recapiti).size === 1, `i recapiti si spostano: ${[...new Set(dati.recapiti)].join(', ')}`);
+
+    // la vista «Per area» resta quella di prima: 24 gruppi con i loro conteggi
+    await pagina.locator('[data-vista="area"]').click();
+    await attesa(300);
+    const gruppi = await pagina.locator('#per-area .gruppo-area').count();
+    verifica(gruppi >= 24, `gruppi per area: ${gruppi}`);
+    verifica(await pagina.locator('#per-area').isVisible(), 'la vista «Per area» non si apre');
   },
 
   async 'dati strutturati: FAQPage con 20 domande e la data dei dati'(pagina, base) {

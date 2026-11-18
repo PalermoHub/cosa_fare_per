@@ -82,7 +82,21 @@ function scheda(ufficio) {
   return card;
 }
 
-function rigaElenco(ufficio) {
+// la riga d'intestazione dell'elenco A–Z: le tre colonne si chiamano per nome.
+// È nascosta ai lettori di schermo (aria-hidden): l'elenco resta una lista di uffici
+// e i recapiti si presentano da soli («tel:», «mailto:»).
+function intestazioneElenco() {
+  const riga = el('li', 'intestazione-elenco');
+  riga.setAttribute('aria-hidden', 'true');
+  riga.append(
+    el('span', 'col-nome', 'Ufficio'),
+    el('span', 'col-dove', 'Area e settore'),
+    el('span', 'col-recapiti', 'Recapiti'),
+  );
+  return riga;
+}
+
+function rigaElenco(ufficio, conteggi) {
   const riga = el('li', 'riga-ufficio');
   const nome = ufficio.url ? link(ufficio.nome, ufficio.url, 'riga-nome') : el('span', 'riga-nome', ufficio.nome);
   if (nome.tagName === 'A') nome.rel = 'noopener';
@@ -90,7 +104,14 @@ function rigaElenco(ufficio) {
 
   const dove = percorso(ufficio);
   if (dove && dove !== ufficio.nome) riga.append(el('span', 'riga-dove', dove));
+  else if (ufficio.livello === 'area') {
+    // la scheda dell'area non ha un'area sopra di sé: al posto del percorso dice quanti
+    // uffici raccoglie, così la colonna non resta vuota
+    const quanti = (conteggi.get(areaDi(ufficio)) || 1) - 1;
+    if (quanti > 0) riga.append(el('span', 'riga-dove', quanti === 1 ? '1 ufficio nell\'area' : `${quanti} uffici nell'area`));
+  }
 
+  // il recapito va sempre nella terza colonna, anche quando area e settore mancano
   const contatti = recapiti(ufficio);
   if (contatti) {
     contatti.className = 'riga-recapiti';
@@ -147,7 +168,7 @@ function applicaFiltro() {
   for (const riga of stato.righe) {
     const ok = trovati.has(riga.ufficio.id);
     riga.card.hidden = !ok;
-    riga.riga.hidden = !ok;
+    if (riga.riga) riga.riga.hidden = !ok;
     if (riga.sezione) {
       if (ok) riga.sezione.trovati += 1;
     }
@@ -238,8 +259,6 @@ function scegliSuggerimento(indice) {
 function costruisci() {
   const gruppi = raggruppaPerArea(stato.uffici);
   const frammentoAree = document.createDocumentFragment();
-  const frammentoElenco = document.createDocumentFragment();
-  const lista = el('ul', 'elenco-uffici');
 
   for (const gruppo of gruppi) {
     const { sezione, griglia, conteggio, totale } = sezioneArea(gruppo);
@@ -247,17 +266,27 @@ function costruisci() {
 
     for (const ufficio of gruppo.uffici) {
       const card = scheda(ufficio);
-      const riga = rigaElenco(ufficio);
       griglia.append(card);
-      lista.append(riga);
-      stato.righe.push({ ufficio, card, riga, sezione: stato.sezioni.at(-1) });
+      stato.righe.push({ ufficio, card, riga: null, sezione: stato.sezioni.at(-1) });
     }
     frammentoAree.append(sezione);
   }
 
   contenitoreAree.append(frammentoAree);
-  frammentoElenco.append(lista);
-  contenitoreElenco.append(frammentoElenco);
+
+  // «Elenco A–Z» è una lista unica: ordine alfabetico su tutti gli uffici, non
+  // area per area (le aree si susseguivano nell'ordine dei gruppi e sembrava disordinato).
+  const lista = el('ul', 'elenco-uffici');
+  lista.append(intestazioneElenco());
+  const conteggi = new Map(gruppi.map(g => [g.area, g.uffici.length]));
+  const righe = new Map(stato.righe.map(r => [r.ufficio.id, r]));
+  for (const ufficio of elencoAlfabetico(stato.uffici)) {
+    const riga = rigaElenco(ufficio, conteggi);
+    const registrata = righe.get(ufficio.id);
+    if (registrata) registrata.riga = riga;
+    lista.append(riga);
+  }
+  contenitoreElenco.append(lista);
 
   const aree = gruppi.filter(g => g.area !== SENZA_AREA).length;
   if (introduzione) {
