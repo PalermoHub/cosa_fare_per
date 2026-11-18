@@ -40,7 +40,7 @@ function costruisci() {
   const titolo = document.createElement('h2');
   titolo.className = 'crediti-titolo';
   titolo.id = 'crediti-titolo';
-  titolo.textContent = 'Credits';
+  titolo.textContent = 'Credits e Fonti';
 
   const idea = sezione(
     'Idea',
@@ -79,6 +79,17 @@ function costruisci() {
     ),
   );
 
+  const fonti = sezione(
+    'Fonti',
+    paragrafo(
+      'Schede servizio e uffici del ',
+      link('Comune di Palermo', 'https://www.comune.palermo.it/amministrazione/aree-amministrative/', 'Aree amministrative del Comune di Palermo'),
+      ', dal catalogo ',
+      link('Cerca servizi', 'https://sites.google.com/comune.palermo.it/trova-servizi/', 'Cerca servizi del Comune di Palermo'),
+      '.',
+    ),
+  );
+
   const licenza = sezione(
     'Licenza',
     paragrafo(
@@ -97,7 +108,7 @@ function costruisci() {
   azioni.className = 'crediti-azioni';
   azioni.append(chiudi);
 
-  finestra.append(titolo, idea, sviluppo, ringraziamenti, licenza, azioni);
+  finestra.append(titolo, idea, sviluppo, ringraziamenti, fonti, licenza, azioni);
   document.body.append(finestra);
 
   const nascondi = () => {
