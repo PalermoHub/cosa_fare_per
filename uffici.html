@@ -149,39 +149,98 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
     </svg>
     <span>Uffici</span>
   </a>
-  <a class="voce" href="salvati.html" data-voce-salvati hidden>
+  <button type="button" class="voce voce-altre" data-altre aria-expanded="false" aria-controls="altre-voci">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M6.6 3.7h10.8a1 1 0 0 1 1 1v15.5l-6.4-4.4-6.4 4.4V4.7a1 1 0 0 1 1-1Z"/>
+      <path d="M5.9 12h.01M12 12h.01M18.1 12h.01" stroke-width="2.6"/>
     </svg>
-    <span>Salvate</span>
-  </a>
-  <a class="voce" href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener"
-     aria-label="Segnala su GitHub un servizio o un ufficio mancante (nuova scheda)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M6.3 21V3.6"/>
-      <path d="M6.3 5c3-1.5 6 1.6 9 .1l2.4-1v7.5l-2.4 1c-3 1.5-6-1.6-9-.1Z"/>
-    </svg>
-    <span>Segnala</span>
-  </a>
-  <a class="voce" href="privacy.html">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M12 3.4 5.2 6v5.6c0 4 2.9 7.4 6.8 8.9 3.9-1.5 6.8-4.9 6.8-8.9V6L12 3.4Z"/>
-      <path d="m9.4 11.8 1.8 1.9 3.5-3.6"/>
-    </svg>
-    <span>Privacy</span>
-  </a>
-  <button type="button" class="voce voce-tema" id="tema-barra" aria-pressed="false"
-          aria-label="Passa al tema scuro: ora chiaro">
-    <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
-    </svg>
-    <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-      <circle cx="12" cy="12" r="4.2"/>
-      <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
-    </svg>
-    <span>Scuro</span>
+    <span>Altro</span>
   </button>
 </nav>
+
+<dialog class="altre" id="altre-voci" aria-labelledby="altre-titolo">
+  <div class="altre-testa">
+    <h2 class="altre-titolo" id="altre-titolo">Altre voci</h2>
+    <button type="button" class="altre-chiudi" data-altre-chiudi aria-label="Chiudi il menù">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <path d="M6.8 6.8l10.4 10.4M17.2 6.8 6.8 17.2"/>
+      </svg>
+    </button>
+  </div>
+  <ul class="altre-voci">
+    <li>
+      <a href="salvati.html" data-voce-salvati>
+        <span class="altre-icona">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M6.6 3.7h10.8a1 1 0 0 1 1 1v15.5l-6.4-4.4-6.4 4.4V4.7a1 1 0 0 1 1-1Z"/>
+          </svg>
+        </span>
+        <span class="altre-testo">
+          <span class="altre-etichetta">Salvate</span>
+          <span class="altre-nota" data-salvati-numero>nessuna per ora</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="guida.html">
+        <span class="altre-icona">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="8.4"/>
+            <path d="M15.4 8.6 13.5 13.5 8.6 15.4l1.9-4.9Z"/>
+          </svg>
+        </span>
+        <span class="altre-testo">
+          <span class="altre-etichetta">Guida</span>
+          <span class="altre-nota">Come funziona, passo per passo</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">
+        <span class="altre-icona">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M6.3 21V3.6"/>
+            <path d="M6.3 5c3-1.5 6 1.6 9 .1l2.4-1v7.5l-2.4 1c-3 1.5-6-1.6-9-.1Z"/>
+          </svg>
+        </span>
+        <span class="altre-testo">
+          <span class="altre-etichetta">Segnala <span class="freccia-esterno" aria-hidden="true">↗</span></span>
+          <span class="altre-nota">Un servizio o un ufficio mancante</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a href="privacy.html">
+        <span class="altre-icona">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 3.4 5.2 6v5.6c0 4 2.9 7.4 6.8 8.9 3.9-1.5 6.8-4.9 6.8-8.9V6L12 3.4Z"/>
+            <path d="m9.4 11.8 1.8 1.9 3.5-3.6"/>
+          </svg>
+        </span>
+        <span class="altre-testo">
+          <span class="altre-etichetta">Privacy e cookie</span>
+          <span class="altre-nota">Cosa fa Pinuzza con i tuoi dati</span>
+        </span>
+      </a>
+    </li>
+  </ul>
+  <button type="button" class="altre-tema" id="tema-barra" aria-pressed="false"
+          aria-label="Passa al tema scuro: ora chiaro">
+    <span class="altre-icona">
+      <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+          </svg>
+      <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+          </svg>
+    </span>
+    <span class="altre-testo">
+      <span class="altre-etichetta">Aspetto</span>
+      <span class="altre-nota" data-tema-parola>Chiaro</span>
+    </span>
+    <span class="altre-interruttore" aria-hidden="true"></span>
+  </button>
+</dialog>
 
 <noscript>
   <p class="avviso-noscript">Per usare questa pagina serve JavaScript attivo. Gli uffici restano
@@ -194,6 +253,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
 <script type="module" src="js/consenso.js"></script>
 <script type="module" src="js/offline.js"></script>
 <script type="module" src="js/tema.js"></script>
+<script type="module" src="js/menu.js"></script>
 <script type="module" src="js/crediti.js"></script>
 <script type="module" src="js/salvati.js"></script>
 <script type="module" src="js/in-cima.js"></script>

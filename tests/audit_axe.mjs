@@ -81,6 +81,7 @@ const VISTE = [
   ['risposte salvate (vuoto)', '/salvati.html', 390],
   ['risposte salvate con una voce', '/salvati.html', 390],
   ['«Credits» aperto', '/', 390],
+  ['pannello «Altro» aperto', '/', 390],
   ['home (schermo largo)', '/', 1280],
   ['risposta in tema scuro (schermo largo)', '/?q=come%20cambio%20residenza', 1280],
 ];
@@ -125,6 +126,10 @@ async function main() {
         // il riquadro dei crediti si apre dal collegamento nel piede
         await pagina.evaluate(() => document.querySelector('[data-crediti]').click());
       }
+      if (nome.includes('Altro')) {
+        // il pannello delle voci secondarie si apre dal suo pulsante, in fondo alla pagina
+        await pagina.evaluate(() => document.querySelector('[data-altre]').click());
+      }
       await pagina.waitForTimeout(900);
       await pagina.addScriptTag({ url: AXE });
       const violazioni = await pagina.evaluate(async () => {
@@ -145,7 +150,9 @@ async function main() {
     await pagina.setViewportSize({ width: 390, height: 844 });
     await pagina.goto(base.replace(/\/$/, '') + '/?q=come%20cambio%20residenza', { waitUntil: 'load' });
     await pagina.waitForTimeout(900);
-    const piccoli = await pagina.evaluate(() => [...document.querySelectorAll('button, input, .azioni a')]
+    await pagina.evaluate(() => document.querySelector('[data-altre]').click());
+    await pagina.waitForTimeout(400);
+    const piccoli = await pagina.evaluate(() => [...document.querySelectorAll('button, input, .azioni a, .altre-voci a, .altre-tema')]
       .filter(el => el.getClientRects().length)
       .map(el => ({ chi: (el.id || String(el.className) || el.tagName).split(' ')[0], altezza: Math.round(el.getBoundingClientRect().height) }))
       .filter(x => x.altezza < 44));

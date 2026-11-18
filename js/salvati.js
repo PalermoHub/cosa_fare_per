@@ -96,19 +96,17 @@ export function svuota() {
 }
 
 // Il numero delle risposte salvate aggiorna i pochi segnali sparsi nelle pagine:
-// la pillola della home e la voce «Salvate» nella barra in basso del telefono.
+// la pillola della home e la riga «Salvate» nel pannello «Altro» del telefono (che resta
+// sempre al suo posto: a zero dice «nessuna per ora», senza sparire dal menù).
 function aggiornaInterfaccia() {
   const quanti = quantiSalvati();
   for (const nodo of document.querySelectorAll('[data-scorciatoia-salvati]')) {
     nodo.hidden = quanti === 0;
   }
   for (const numero of document.querySelectorAll('[data-salvati-numero]')) {
-    numero.textContent = quanti === 1 ? '1 risposta' : `${quanti} risposte`;
-  }
-  const voce = document.querySelector('[data-voce-salvati]');
-  if (voce) {
-    // nella pagina delle salvate la voce c'è sempre: è la pagina in cui ci si trova
-    voce.hidden = quanti === 0 && !document.body.classList.contains('pagina-salvati');
+    numero.textContent = quanti === 0
+      ? 'nessuna per ora'
+      : quanti === 1 ? '1 risposta' : `${quanti} risposte`;
   }
 }
 

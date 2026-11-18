@@ -169,6 +169,19 @@ input, textarea { caret-color: var(--accento); }
 .menu-sito .freccia-esterno { margin-left: .3rem; color: var(--inchiostro-fio); font-size: .92em; }
 .menu-sito a:hover .freccia-esterno { color: var(--accento); }
 
+/* Sopra i 40rem il menu risale in cima, ma con otto voci su un tablet non ci sta: sotto i 48rem
+   la spilla resta da sola (la parola «Pinuzza» resta ai lettori di schermo, solo non si vede)
+   e le voci si stringono. Così nessuna va a capo e la pagina non scorre in orizzontale. */
+@media (min-width: 40.01rem) and (max-width: 48rem) {
+  .barra-interno { gap: .9rem; width: min(100% - 1.6rem, 62rem); }
+  .barra-marchio span {
+    position: absolute; width: 1px; height: 1px; margin: -1px;
+    padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .menu-sito a { padding: 0 .5rem; font-size: .84rem; }
+  .menu-sito .freccia-esterno { margin-left: .15rem; }
+}
+
 /* ---------- testata: pagina bianca stile motore di ricerca ---------- */
 
 .testata {
@@ -846,12 +859,152 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 /* ---------- barra di navigazione in basso ---------- */
 
-/* Sul telefono le destinazioni stanno dove arriva il pollice: quattro voci con icona e
-   parola (chiedere, sfogliare gli uffici, segnalare, informativa). Su schermo largo non
-   serve: la testata ha il campo e i rimandi, il piede ha i collegamenti. */
+/* Sul telefono le destinazioni stanno dove arriva il pollice: quattro posti con icona e
+   parola (chiedere, le domande, gli uffici, e «Altro» per tutto il resto). Su schermo largo
+   non serve: la testata ha il campo e i rimandi, il piede ha i collegamenti. */
 .barra-basso { display: none; }
 
 .barra-basso .voce svg { display: block; }
+
+/* ---------- «Altro»: le voci secondarie in un pannello che sale dal basso ---------- */
+
+/* La barra ha quattro posti e li tiene larghi. Risposte salvate, guida, segnalazioni,
+   informativa e cambio tema stanno qui dentro: un pannello che sul telefono sale dal bordo
+   (dove arriva il pollice) e su schermo largo si apre al centro, sopra la pagina. */
+.altre {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 30;
+  width: min(100%, 30rem);
+  max-width: none;
+  max-height: min(86dvh, 32rem);
+  margin: 0 auto;
+  padding: .3rem .95rem calc(1rem + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  border-radius: 16px 16px 0 0;
+  background: var(--carta);
+  color: var(--inchiostro);
+  box-shadow: 0 -22px 50px -26px rgba(var(--tinta-ombra), .6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.altre::backdrop { background: rgba(var(--tinta-ombra), .5); }
+/* senza <dialog> modale (browser vecchi) il pannello resta un riquadro sopra la pagina */
+body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
+
+.altre[open] { animation: altre-sali .3s cubic-bezier(.16, 1, .3, 1); }
+.altre[open]::backdrop { animation: altre-vela .24s ease-out; }
+@keyframes altre-sali { from { transform: translateY(2.5rem); opacity: 0; } }
+@keyframes altre-vela { from { opacity: 0; } }
+
+.altre-testa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .5rem 0 .15rem;
+}
+.altre-titolo { margin: 0; font: 600 1.02rem/1.2 var(--serif); letter-spacing: -.01em; }
+.altre-chiudi {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--carta);
+  color: var(--inchiostro-tenue);
+  cursor: pointer;
+}
+.altre-chiudi svg { width: 1.05rem; height: 1.05rem; }
+.altre-chiudi:hover { border-color: var(--linea-forte); color: var(--inchiostro); }
+
+.altre-voci { margin: .3rem 0 0; padding: 0; list-style: none; }
+.altre-voci a,
+.altre-tema {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr auto;
+  align-items: center;
+  gap: .8rem;
+  width: 100%;
+  min-height: 3.35rem;
+  margin-inline: -.55rem;
+  padding: .5rem .55rem;
+  border: 0;
+  border-radius: 10px;
+  background: none;
+  color: var(--inchiostro);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+.altre-voci a:hover,
+.altre-tema:hover { background: var(--carta-alt); }
+.altre-icona { display: grid; place-items: center; color: var(--inchiostro-tenue); }
+.altre-icona svg { width: 1.32rem; height: 1.32rem; }
+.altre-testo { display: grid; gap: .1rem; }
+.altre-etichetta { font: 600 .95rem/1.25 var(--sans); }
+.altre-nota { font-size: .78rem; line-height: 1.3; color: var(--inchiostro-tenue); }
+.altre-freccia,
+.altre .freccia-esterno { color: var(--inchiostro-fio); font-size: .92em; }
+/* la pagina in cui ci si trova: stessa lingua della barra (accento), senza altre cornici */
+.altre-voci a[aria-current] .altre-etichetta { color: var(--accento); }
+
+/* il tema è un interruttore: la posizione dice lo stato, la parola lo dice a chi non vede */
+.altre-interruttore {
+  position: relative;
+  flex: 0 0 auto;
+  width: 2.7rem;
+  height: 1.55rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 999px;
+  background: var(--carta-alt);
+  transition: background .2s ease, border-color .2s ease;
+}
+.altre-interruttore::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 999px;
+  background: var(--superficie);
+  box-shadow: 0 1px 2px rgba(var(--tinta-ombra), .35);
+  transition: transform .22s cubic-bezier(.16, 1, .3, 1), background .2s ease;
+}
+.altre-tema[aria-pressed="true"] .altre-interruttore {
+  background: var(--accento-fondo);
+  border-color: var(--accento-fondo);
+}
+.altre-tema[aria-pressed="true"] .altre-interruttore::after {
+  transform: translateX(1.11rem);
+  background: var(--su-accento);
+}
+
+/* l'icona dice cosa ottieni: la luna se sei nel chiaro, il sole se sei nello scuro */
+.altre .icona-sole { display: none; }
+[data-theme="scuro"] .altre .icona-luna { display: none; }
+[data-theme="scuro"] .altre .icona-sole { display: block; }
+
+@media (min-width: 40.01rem) {
+  /* da qui il pannello non serve più: le stesse voci stanno nel menu in cima, e se resta
+     aperto mentre la finestra si allarga si chiude (js/menu.js) — qui solo la forma */
+  .altre {
+    inset: 0;
+    width: min(100% - 2rem, 26rem);
+    max-height: min(80dvh, 30rem);
+    margin: auto;
+    padding: .4rem 1.1rem 1rem;
+    border-radius: 16px;
+    box-shadow: 0 24px 60px -28px rgba(var(--tinta-ombra), .6);
+  }
+  .altre[open] { animation: altre-compare .24s cubic-bezier(.16, 1, .3, 1); }
+  @keyframes altre-compare { from { transform: translateY(.6rem) scale(.98); opacity: 0; } }
+}
 
 .avviso-noscript { margin: 2rem auto; max-width: 40rem; padding: 1rem; border: 1px solid var(--linea-forte); }
 
@@ -954,14 +1107,14 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
     padding: .35rem .2rem;
     border-top: 2px solid transparent;
     color: var(--inchiostro-tenue);
-    font: 600 .7rem/1 var(--sans);
+    font: 600 .72rem/1 var(--sans);
     letter-spacing: .01em;
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
     transition: color .2s ease, background .15s ease;
   }
-  .barra-basso .voce svg { width: 1.4rem; height: 1.4rem; }
-  /* la voce del tema è un pulsante: stessa forma delle altre, senza il fondo del comando */
+  .barra-basso .voce svg { width: 1.45rem; height: 1.45rem; }
+  /* la voce «Altro» è un pulsante: stessa forma delle altre, senza il fondo del comando */
   .barra-basso button.voce {
     background: none;
     border: 0;
@@ -970,12 +1123,14 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
     -webkit-appearance: none;
     appearance: none;
   }
-  /* l'icona dice cosa ottieni: la luna se sei nel chiaro, il sole se sei nello scuro */
-  .barra-basso .voce-tema .icona-sole { display: none; }
-  [data-theme="scuro"] .barra-basso .voce-tema .icona-luna { display: none; }
-  [data-theme="scuro"] .barra-basso .voce-tema .icona-sole { display: block; }
   /* la voce della pagina in cui sei: colore dell'accento e riga in cima */
   .barra-basso .voce[aria-current] { color: var(--accento); border-top-color: var(--accento); }
+  /* il pannello aperto si vede anche dalla barra: il pollice resta dove ha toccato */
+  .barra-basso .voce[aria-expanded="true"] {
+    color: var(--accento);
+    border-top-color: var(--accento);
+    background: var(--carta-alt);
+  }
   .barra-basso .voce:active { background: var(--carta-alt); }
   .in-cima { bottom: calc(var(--piede-h, 4rem) + var(--barra-h) + .5rem); }
   .interno { width: min(100% - 1.6rem, 46rem); }

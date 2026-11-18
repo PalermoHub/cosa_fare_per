@@ -43,8 +43,12 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
   le altre si scelgono a caso a ogni caricamento (otto su schermo largo, nove su schermo stretto,
   in colonne da tre che scorrono in orizzontale, una alla volta).
 - Due rimandi sotto le domande: gli uffici (`uffici.html`) e le segnalazioni, che aprono le
-  [issue del repository](https://github.com/PalermoHub/cosa_fare_per/issues) su GitHub. Su schermo
-  stretto gli stessi tre indirizzi, più l'informativa privacy e il cambio tema, stanno nella barra in basso.
+  [issue del repository](https://github.com/PalermoHub/cosa_fare_per/issues) su GitHub.
+- Navigazione a due velocità: su schermo largo il menu in cima (`Chiedi`, `Domande`, `Uffici`,
+  `Salvate`, `Guida`, `Segnala`, `Privacy` e il cambio tema); sul telefono una barra in basso con
+  **quattro posti** (`Chiedi`, `Domande`, `Uffici`, `Altro`) e il resto dentro il pannello «Altro»
+  (risposte salvate con il numero, guida, segnalazioni, informativa, interruttore del tema). La
+  barra non cresce: una voce nuova che non sia una destinazione principale va nel pannello.
 - Risposta in tre livelli: sicura, «non sono sicura di aver capito» (con alternative), «non ho una
   risposta pronta» (con gli uffici competenti trovati nelle loro competenze).
 - Scheda ufficio con mini mappa OpenStreetMap (caricata solo quando entra nello schermo) e pulsante

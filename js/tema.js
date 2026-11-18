@@ -54,11 +54,12 @@ function aggiornaPulsante() {
     pulsante.setAttribute('aria-label', `${pulsante.title}: ora ${scuro ? 'scuro' : 'chiaro'}`);
   }
 
-  // voce della barra in basso (solo telefono): l'icona la sceglie il CSS, qui la parola
+  // interruttore del pannello «Altro» (telefono): qui la parola dice lo stato, l'icona
+  // (luna o sole) la sceglie il CSS
   const voce = document.getElementById('tema-barra');
   if (voce) {
-    const parola = voce.querySelector('span');
-    if (parola) parola.textContent = scuro ? 'Chiaro' : 'Scuro';
+    const parola = voce.querySelector('[data-tema-parola]');
+    if (parola) parola.textContent = scuro ? 'Scuro' : 'Chiaro';
     voce.setAttribute('aria-pressed', String(scuro));
     voce.setAttribute('aria-label',
       scuro ? 'Passa al tema chiaro: ora scuro' : 'Passa al tema scuro: ora chiaro');
@@ -71,8 +72,9 @@ function cambia() {
   applica(nuovo);
 }
 
-// Due comandi, una sola scelta: il pulsante nella barra del sito (schermo largo) e la voce
-// della barra in basso (telefono). Stanno nel markup di ogni pagina: qui si collegano soltanto.
+// Due comandi, una sola scelta: il pulsante nella barra del sito (schermo largo) e
+// l'interruttore nel pannello «Altro» (telefono). Stanno nel markup di ogni pagina: qui si
+// collegano soltanto.
 const voceTema = document.getElementById('tema-barra');
 if (voceTema) voceTema.addEventListener('click', cambia);
 

@@ -221,18 +221,37 @@ const casi = {
     verifica(avvisi >= 1, 'nessun avviso quando il GPS manca');
   },
 
-  async 'telefono 390×844: barra in basso, tema, bersagli ≥ 44 px'(pagina, base) {
+  async 'telefono 390×844: barra in basso, pannello «Altro», bersagli ≥ 44 px'(pagina, base) {
     await pagina.setViewportSize({ width: 390, height: 844 });
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
     await attesa(1200);
     verifica(await pagina.isVisible('.barra-basso'), 'manca la barra in basso');
-    verifica(await pagina.isVisible('#tema-barra'), 'manca il tema nella barra in basso');
+    const voci = await pagina.locator('.barra-basso .voce').count();
+    verifica(voci === 4, `la barra deve avere quattro posti, non ${voci}`);
+    // le voci secondarie stanno nel pannello: si apre dal suo pulsante e si chiude con Esc
+    await pagina.click('[data-altre]');
+    await attesa(400);
+    verifica(await pagina.isVisible('#altre-voci'), 'il pannello «Altro» non si apre');
+    verifica(await pagina.isVisible('#tema-barra'), 'manca il tema nel pannello');
+    const righe = await pagina.locator('.altre-voci a').count();
+    verifica(righe === 4, `righe del pannello: ${righe}`);
     // i comandi, non i link dentro un testo (`.link-bottone` del piede, per esempio)
-    const piccoli = await pagina.evaluate(() => [...document.querySelectorAll('button, input, .azioni a')]
+    const piccoli = await pagina.evaluate(() => [...document.querySelectorAll('button, input, .azioni a, .altre-voci a')]
       .filter(el => !el.classList.contains('link-bottone') && el.getClientRects().length)
       .map(el => ({ chi: (el.id || String(el.className) || el.tagName).split(' ')[0], h: Math.round(el.getBoundingClientRect().height) }))
       .filter(x => x.h < 44));
     verifica(piccoli.length === 0, `bersagli sotto 44 px: ${JSON.stringify(piccoli)}`);
+    await pagina.keyboard.press('Escape');
+    await attesa(350);
+    const dopo = await pagina.evaluate(() => ({
+      aperto: document.getElementById('altre-voci').open,
+      expanded: document.querySelector('[data-altre]').getAttribute('aria-expanded'),
+      fuoco: document.activeElement === document.querySelector('[data-altre]'),
+      orizzontale: document.documentElement.scrollWidth > window.innerWidth,
+    }));
+    verifica(!dopo.aperto && dopo.expanded === 'false', `pannello dopo Esc: ${JSON.stringify(dopo)}`);
+    verifica(dopo.fuoco, 'dopo la chiusura il fuoco non torna sul pulsante «Altro»');
+    verifica(!dopo.orizzontale, 'la pagina scorre in orizzontale');
   },
 
   async 'tema scuro: cambia, resta dopo il ricaricamento'(pagina, base) {

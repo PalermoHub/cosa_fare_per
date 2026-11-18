@@ -42,16 +42,23 @@ test('la scelta si salva sotto la chiave giusta e non viene sovrascritta', () =>
   assert.ok(!tema.includes('matchMedia'), 'il tema non deve seguire il sistema: si parte chiari e vale la scelta salvata');
 });
 
-test('sul telefono la stessa scelta si fa dalla barra in basso', () => {
+test('sul telefono la stessa scelta si fa dall’interruttore nel pannello «Altro»', () => {
   for (const pagina of PAGINE) {
     const html = leggi(pagina);
-    assert.match(html, /id="tema-barra"/, `${pagina}: manca la voce del tema nella barra in basso`);
-    assert.match(html, /aria-pressed="false"/, `${pagina}: la voce non dichiara lo stato`);
+    assert.match(html, /id="tema-barra"/, `${pagina}: manca l'interruttore del tema nel pannello`);
+    assert.match(html, /aria-pressed="false"/, `${pagina}: l'interruttore non dichiara lo stato`);
     assert.match(html, /icona-luna/, `${pagina}: manca l'icona del tema scuro`);
     assert.match(html, /icona-sole/, `${pagina}: manca l'icona del tema chiaro`);
+    // sta dentro il pannello «Altro», non nella barra: la barra ha quattro posti
+    const pannello = /<dialog class="altre"[\s\S]*?<\/dialog>/.exec(html);
+    assert.ok(pannello, `${pagina}: manca il pannello «Altro»`);
+    assert.match(pannello[0], /id="tema-barra"/, `${pagina}: l'interruttore non sta nel pannello`);
+    assert.match(pannello[0], /data-tema-parola/, `${pagina}: manca la parola che dice lo stato`);
   }
-  assert.ok(tema.includes("getElementById('tema-barra')"), 'tema.js non collega la voce della barra');
-  assert.ok(tema.includes("voce.setAttribute('aria-pressed'"), 'la voce della barra non aggiorna lo stato');
+  assert.ok(tema.includes("getElementById('tema-barra')"), 'tema.js non collega l\'interruttore del pannello');
+  assert.ok(tema.includes("voce.setAttribute('aria-pressed'"), 'l\'interruttore non aggiorna lo stato');
+  // la parola da riscrivere è quella dello stato, non il primo <span> che capita (l'icona)
+  assert.ok(tema.includes("querySelector('[data-tema-parola]')"), 'tema.js non cerca la parola dello stato');
 });
 
 test('il tema cambia anche il colore della barra del browser', () => {

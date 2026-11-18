@@ -116,3 +116,45 @@ test('la guida mostra schermate che esistono e hanno un testo alternativo', () =
   assert.ok(sitemap.includes('guida.html'), 'guida.html non è nella sitemap');
   assert.ok(sw.match(/const PRECACHE = \[([\s\S]*?)\];/)[1].includes("'guida.html'"), 'guida.html non è nella precache');
 });
+
+test('il menù del telefono ha quattro posti e tutto il resto nel pannello «Altro»', () => {
+  // La barra in basso non può crescere all'infinito: ogni voce nuova che non sia una
+  // destinazione principale va nel pannello, che resta lo stesso in tutte le pagine.
+  const PAGINE = ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html'];
+  const destinazioni = ['salvati.html', 'guida.html', 'privacy.html', 'https://github.com/PalermoHub/cosa_fare_per/issues'];
+  for (const pagina of PAGINE) {
+    const html = leggi(pagina);
+    const barra = /<nav class="barra-basso"[^>]*>([\s\S]*?)<\/nav>/.exec(html);
+    assert.ok(barra, `${pagina}: manca la barra in basso`);
+    const voci = [...barra[1].matchAll(/class="voce[^"]*"/g)];
+    assert.equal(voci.length, 4, `${pagina}: la barra deve avere quattro posti, non ${voci.length}`);
+    for (const href of ['index.html', 'domande.html', 'uffici.html']) {
+      assert.ok(barra[1].includes(`href="${href}"`), `${pagina}: manca «${href}» nella barra`);
+    }
+    assert.match(barra[1], /data-altre aria-expanded="false" aria-controls="altre-voci"/, `${pagina}: manca il pulsante del pannello`);
+
+    const pannello = /<dialog class="altre" id="altre-voci"[\s\S]*?<\/dialog>/.exec(html);
+    assert.ok(pannello, `${pagina}: manca il pannello «Altro»`);
+    for (const destinazione of destinazioni) {
+      assert.ok(pannello[0].includes(destinazione), `${pagina}: «${destinazione}» non sta nel pannello`);
+    }
+    // il pannello è una finestra di dialogo: titolo, chiusura e comando che la apre
+    assert.match(pannello[0], /aria-labelledby="altre-titolo"/, `${pagina}: il pannello non è etichettato`);
+    assert.match(pannello[0], /data-altre-chiudi/, `${pagina}: il pannello non si chiude`);
+    assert.match(html, /<script type="module" src="js\/menu\.js"><\/script>/, `${pagina}: manca js/menu.js`);
+    assert.match(sw, /'js\/menu\.js',/, 'sw.js non mette in cache js/menu.js: offline il pannello non si apre');
+  }
+});
+
+test('nessun id ripetuto dentro una pagina', () => {
+  // un id doppio non si vede a occhio ma rompe `getElementById`: il pannello «Altro» non si
+  // apriva in guida.html perché la sezione «Tutte le domande» usava già id="altre".
+  for (const pagina of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html']) {
+    const html = leggi(pagina);
+    const visti = new Set();
+    for (const [, id] of html.matchAll(/\sid="([^"]+)"/g)) {
+      assert.ok(!visti.has(id), `${pagina}: id="${id}" compare più di una volta`);
+      visti.add(id);
+    }
+  }
+});

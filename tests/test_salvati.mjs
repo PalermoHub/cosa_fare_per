@@ -91,20 +91,25 @@ test('ogni pagina porta all’elenco, dal menu largo, dal piede e dal telefono',
     const piede = /<nav class="piede-voci"[^>]*>[\s\S]*?<\/nav>/.exec(html);
     assert.ok(piede, `${file}: manca il piede`);
     assert.ok(piede[0].includes('href="salvati.html"'), `${file}: manca «Risposte salvate» nel piede`);
-    assert.match(html, /data-voce-salvati/, `${file}: manca la voce nella barra in basso`);
+    assert.match(html, /data-voce-salvati/, `${file}: manca la voce nel pannello «Altro»`);
   }
 });
 
-test('la voce del telefono e la pillola della home compaiono solo se c’è qualcosa', () => {
-  for (const file of ['index.html', 'uffici.html', 'domande.html', 'privacy.html']) {
-    const voce = /<a class="voce" href="salvati\.html" data-voce-salvati hidden>/.exec(leggi(file));
-    assert.ok(voce, `${file}: la voce «Salvate» deve partire nascosta`);
+test('la riga del telefono resta sempre, la pillola della home solo se c’è qualcosa', () => {
+  for (const file of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html']) {
+    const html = leggi(file);
+    const pannello = /<dialog class="altre" id="altre-voci"[\s\S]*?<\/dialog>/.exec(html);
+    assert.ok(pannello, `${file}: manca il pannello «Altro»`);
+    // nel pannello la riga non si nasconde: a zero risposte dice «nessuna per ora»
+    const riga = /<a href="salvati\.html" data-voce-salvati[^>]*>[\s\S]*?data-salvati-numero>([^<]*)</.exec(pannello[0]);
+    assert.ok(riga, `${file}: manca la riga «Salvate» con il numero`);
+    assert.ok(!/ hidden/.test(riga[0]), `${file}: la riga del pannello non deve partire nascosta`);
+    assert.equal(riga[1].trim(), 'nessuna per ora', `${file}: la riga vuota deve dirlo`);
   }
   assert.match(leggi('index.html'), /data-scorciatoia-salvati hidden/);
   assert.match(modulo, /nodo\.hidden = quanti === 0/);
   assert.match(modulo, /'1 risposta' : `\$\{quanti\} risposte`/);
-  // nella pagina delle salvate la voce si vede sempre
-  assert.match(modulo, /classList\.contains\('pagina-salvati'\)/);
+  assert.match(modulo, /'nessuna per ora'/, 'a zero risposte la riga deve dire che non ce ne sono');
 });
 
 test('la pagina e i moduli nuovi stanno nel guscio offline', () => {
