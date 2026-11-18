@@ -82,15 +82,12 @@ test('l’elenco si può svuotare, con una conferma prima di cancellare', () => 
   assert.match(paginaJs, /querySelector\('\.salvata-togli'\) \|\| titoloPagina/, 'dopo «Togli» il focus deve andare da qualche parte');
 });
 
-test('ogni pagina porta all’elenco, dal menu largo, dal piede e dal telefono', () => {
+test('ogni pagina porta all’elenco, dal menu largo e dal telefono', () => {
   for (const file of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html']) {
     const html = leggi(file);
     const menu = /<nav class="barra-sito"[^>]*>[\s\S]*?<\/nav>/.exec(html);
     assert.ok(menu, `${file}: manca il menu del sito`);
     assert.ok(menu[0].includes('href="salvati.html"'), `${file}: «Salvate» non sta nel menu`);
-    const piede = /<nav class="piede-voci"[^>]*>[\s\S]*?<\/nav>/.exec(html);
-    assert.ok(piede, `${file}: manca il piede`);
-    assert.ok(piede[0].includes('href="salvati.html"'), `${file}: manca «Risposte salvate» nel piede`);
     assert.match(html, /data-voce-salvati/, `${file}: manca la voce nel pannello «Altro»`);
   }
 });

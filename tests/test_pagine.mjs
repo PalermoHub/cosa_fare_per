@@ -136,7 +136,7 @@ test('il menù del telefono ha quattro posti e tutto il resto nel pannello «Alt
   // La barra in basso non può crescere all'infinito: ogni voce nuova che non sia una
   // destinazione principale va nel pannello, che resta lo stesso in tutte le pagine.
   const PAGINE = ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html'];
-  // la guida non sta nel pannello: si raggiunge dalla pillola in home e dal piede («Come funziona»)
+  // la guida non sta nel pannello: si raggiunge dalla pillola in home e dal menù in alto
   const destinazioni = ['salvati.html', 'privacy.html', 'https://github.com/PalermoHub/cosa_fare_per/issues'];
   for (const pagina of PAGINE) {
     const html = leggi(pagina);

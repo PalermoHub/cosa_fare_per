@@ -829,8 +829,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   display: grid;
   grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
   grid-template-areas:
-    "credito voci"
-    "nota fonte";
+    "credito fonte"
+    "nota nota";
   gap: .25rem 1.8rem;
   align-items: start;
   min-width: 0;
@@ -843,8 +843,6 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
    «Credits» nel piede è solo da tablet (sul telefono sta nel menù «Altro») */
 .piede-stretto { display: none; }
 .piede-credito strong { color: var(--inchiostro); }
-.piede-voci { grid-area: voci; display: flex; flex-wrap: wrap; gap: .15rem .8rem; align-self: start; }
-.piede-voci a, .piede-voci .link-bottone { font-weight: 500; }
 .piede-fonte { grid-area: fonte; color: var(--inchiostro-fio); }
 .piede-nota { grid-area: nota; color: var(--inchiostro-fio); }
 
@@ -855,11 +853,10 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   .piede img { width: 28px; height: 28px; }
   .piede-corpo {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "credito" "voci" "fonte" "nota";
+    grid-template-areas: "credito" "fonte" "nota";
     justify-items: center;
     gap: .2rem;
   }
-  .piede-voci { justify-content: center; align-self: center; }
 }
 
 .in-cima {
@@ -1110,7 +1107,6 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   .piede-riga { width: min(100% - 1.6rem, 62rem); gap: .7rem; }
   /* sul telefono il piede resta al credito: i collegamenti sono nelle voci della barra in basso
      e l'avvertenza estesa sta nel campo di ricerca */
-  .piede-voci,
   .piede-fonte,
   .piede-nota { display: none; }
   /* credito del progetto e logo restano solo da tablet in su: sul telefono il piede tiene copyright, licenza e Credits */

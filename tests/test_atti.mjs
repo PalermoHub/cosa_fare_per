@@ -110,13 +110,12 @@ test('il Worker è versionato nel repository insieme alla pagina', () => {
   assert.match(toml, /main = "src\/index\.js"/);
 });
 
-test('tutte le pagine hanno la voce «Atti» nel menù e nel piede', () => {
+test('tutte le pagine hanno la voce «Atti» nel menù e nel pannello «Altro»', () => {
   const pagine = readdirSync(new URL('.', radice)).filter(f => f.endsWith('.html'));
   assert.ok(pagine.length >= 7, `solo ${pagine.length} pagine`);
   for (const pagina of pagine) {
     const html = leggi(pagina);
     assert.match(html, /<a href="atti\.html"[ >]/, `${pagina}: manca la voce «Atti» nel menù`);
     assert.match(html, /altre-nota">Albo, delibere, ordinanze, bandi/, `${pagina}: manca la voce nel pannello «Altro»`);
-    assert.match(html, /<a href="atti\.html">Atti del Comune<\/a>/, `${pagina}: manca il rimando nel piede`);
   }
 });
