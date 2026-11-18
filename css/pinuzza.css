@@ -631,7 +631,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 .ufficio .mappa {
   margin: 0 0 .9rem;
   border: 1px solid var(--linea);
-  border-radius: 8px;
+  border-radius: .55rem;
   overflow: hidden;
   background: var(--carta-alt);
 }
@@ -655,7 +655,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
   font-size: .85rem;
   text-decoration: none;
   border: 1px solid var(--linea-forte);
-  border-radius: 6px;
+  border-radius: .55rem;
   padding: .34rem .75rem;
   color: var(--inchiostro-tenue);
   background: var(--superficie);
@@ -784,7 +784,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
   min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
   padding: .5rem .95rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 8px;
+  border-radius: .55rem;
   background: var(--superficie);
   color: var(--inchiostro-tenue);
   font: 600 .86rem/1.2 var(--sans);
@@ -973,7 +973,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   margin-inline: -.55rem;
   padding: .5rem .55rem;
   border: 0;
-  border-radius: 10px;
+  border-radius: .55rem;
   background: none;
   color: var(--inchiostro);
   font: inherit;
@@ -1257,7 +1257,7 @@ body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 1 1 auto; ov
 .consenso-azioni button {
   font: 600 .85rem/1 var(--sans);
   border: 1px solid var(--linea-forte);
-  border-radius: 6px;
+  border-radius: .55rem;
   padding: .5rem .9rem;
   background: var(--superficie);
   color: var(--inchiostro-tenue);
@@ -1324,7 +1324,7 @@ body.crediti-aperti .crediti {
 .crediti-chiudi {
   font: 600 .85rem/1 var(--sans);
   border: 1px solid var(--linea-forte);
-  border-radius: 6px;
+  border-radius: .55rem;
   padding: .5rem .9rem;
   background: var(--superficie);
   color: var(--inchiostro-tenue);
@@ -1486,7 +1486,7 @@ body.decifra-aperti .decifra {
   width: 100%;
   padding: .55rem .65rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 8px;
+  border-radius: .55rem;
   background: var(--carta);
   color: var(--inchiostro);
   font: .9rem/1.45 var(--sans);
@@ -1621,7 +1621,7 @@ body.decifra-aperti .decifra {
   gap: .45rem;
   padding: .3rem .35rem .3rem .75rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 999px;
+  border-radius: .55rem;
   background: var(--carta-alt);
   color: var(--inchiostro-tenue);
   font-size: .85rem;
@@ -1635,7 +1635,7 @@ body.decifra-aperti .decifra {
   min-width: 1.5rem;
   padding: .1rem .4rem;
   border: 1px solid var(--linea);
-  border-radius: 999px;
+  border-radius: .55rem;
   background: var(--superficie);
   color: var(--inchiostro-fio);
   font: 600 .72rem/1.4 var(--sans);
@@ -1663,7 +1663,7 @@ body.decifra-aperti .decifra {
   margin: 0 0 1rem;
   padding: .32rem .85rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 999px;
+  border-radius: .55rem;
   background: var(--accento-chiaro);
   color: var(--accento);
   font: 600 .95rem/1.35 var(--sans);
@@ -1768,7 +1768,7 @@ body.decifra-aperti .decifra {
 .bottone-cookie {
   font: 600 .85rem/1 var(--sans);
   border: 1px solid var(--linea-forte);
-  border-radius: 6px;
+  border-radius: .55rem;
   padding: .5rem .95rem;
   background: var(--superficie);
   color: var(--accento);
@@ -1827,7 +1827,7 @@ body.decifra-aperti .decifra {
   align-items: baseline;
   gap: .05rem .5rem;
   padding: .45rem .55rem;
-  border-radius: 6px;
+  border-radius: .55rem;
   cursor: pointer;
 }
 .suggerimento:hover,
@@ -1850,7 +1850,7 @@ body.decifra-aperti .decifra {
   color: var(--inchiostro);
   background: var(--superficie);
   border: 1px solid var(--linea-forte);
-  border-radius: var(--tondo);
+  border-radius: .55rem;
   padding: .6rem .9rem;
   box-shadow: var(--ombra);
 }
@@ -1863,14 +1863,14 @@ body.decifra-aperti .decifra {
   flex: 0 0 auto;
   padding: .2rem;
   border: 1px solid var(--linea);
-  border-radius: 8px;
+  border-radius: .55rem;
   background: var(--carta-alt);
 }
 .viste button {
   border: 0;
   background: none;
   padding: .5rem .8rem;
-  border-radius: 6px;
+  border-radius: .55rem;
   font: 600 .8rem/1 var(--sans);
   color: var(--inchiostro-tenue);
   cursor: pointer;
@@ -1923,7 +1923,7 @@ body.decifra-aperti .decifra {
   gap: .1rem;
   background: var(--superficie);
   border: 1px solid var(--linea);
-  border-radius: 10px;
+  border-radius: var(--tondo);
   padding: .65rem .8rem .6rem;
 }
 .ufficio-livello {
@@ -2037,7 +2037,7 @@ body.decifra-aperti .decifra {
   margin: 1.3rem 0 2rem;
   padding: 1rem 1.2rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 12px;
+  border-radius: var(--tondo);
   background: var(--carta-alt);
 }
 .indice-guida h2 {
@@ -2086,7 +2086,7 @@ body.decifra-aperti .decifra {
   width: 100%;
   height: auto;
   border: 1px solid var(--linea-forte);
-  border-radius: 12px;
+  border-radius: var(--tondo);
   background: var(--superficie);
   box-shadow: 0 26px 46px -42px rgba(var(--tinta-ombra), .75);
 }
@@ -2147,7 +2147,7 @@ body.decifra-aperti .decifra {
   max-width: 100%;
   padding: .35rem .9rem .35rem .35rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 999px;
+  border-radius: .55rem;
   background: var(--superficie);
   box-shadow: var(--ombra);
   font-size: .88rem;
@@ -2165,7 +2165,7 @@ body.decifra-aperti .decifra {
   display: inline-flex;
   align-items: center;
   padding: .32rem .55rem;
-  border-radius: 999px;
+  border-radius: .55rem;
   background: var(--accento-fondo);
   color: var(--su-accento);
   font: 700 .72rem/1 var(--sans);
@@ -2204,7 +2204,7 @@ body.ha-risultati .scorciatoie { display: none; }
   min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
   padding: .5rem .95rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 8px;
+  border-radius: .55rem;
   background: var(--superficie);
   color: var(--accento);
   font: 600 .86rem/1.2 var(--sans);
@@ -2259,7 +2259,7 @@ body.ha-risultati .scorciatoie { display: none; }
 .conferma-no {
   min-height: 2.75rem; /* 44 px: bersaglio tattile minimo su mobile */
   padding: .5rem .95rem;
-  border-radius: 8px;
+  border-radius: .55rem;
   font: 600 .86rem/1.2 var(--sans);
   cursor: pointer;
 }
@@ -2345,7 +2345,7 @@ body.ha-risultati .scorciatoie { display: none; }
   color: var(--inchiostro);
   background: var(--carta);
   border: 1px solid var(--linea-forte);
-  border-radius: 9px;
+  border-radius: .55rem;
   padding: .55rem .7rem;
 }
 .atti-campo input::placeholder { color: var(--inchiostro-fio); }
@@ -2364,7 +2364,7 @@ body.ha-risultati .scorciatoie { display: none; }
   color: var(--su-accento);
   background: var(--accento-fondo);
   border: 1px solid var(--accento-fondo);
-  border-radius: 9px;
+  border-radius: .55rem;
   padding: .72rem 1.4rem;
   cursor: pointer;
   min-height: 2.9rem;
@@ -2380,7 +2380,7 @@ body.ha-risultati .scorciatoie { display: none; }
   color: var(--inchiostro-tenue);
   background: var(--carta);
   border: 1px solid var(--linea-forte);
-  border-radius: 9px;
+  border-radius: .55rem;
   padding: .72rem 1rem;
   min-height: 2.9rem;
   cursor: pointer;
@@ -2542,7 +2542,7 @@ body.ha-risultati .scorciatoie { display: none; }
   .pagina-atti .atti-campo { gap: .2rem; }
   .pagina-atti .atti-campo label { font-size: .64rem; }
   .pagina-atti .atti-campo input,
-  .pagina-atti .atti-campo select { font-size: .82rem; padding: .4rem .55rem; border-radius: 8px; }
+  .pagina-atti .atti-campo select { font-size: .82rem; padding: .4rem .55rem; border-radius: .55rem; }
   .pagina-atti .atti-cerca-bottone { font-size: .82rem; padding: .5rem 1rem; min-height: 2.4rem; }
   .pagina-atti .atti-pulisci-bottone { font-size: .78rem; padding: .5rem .75rem; min-height: 2.4rem; }
 }
