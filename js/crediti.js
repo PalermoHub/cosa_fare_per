@@ -79,6 +79,15 @@ function costruisci() {
     ),
   );
 
+  const licenza = sezione(
+    'Licenza',
+    paragrafo(
+      'Il codice di Chiedilo a Pinuzza è rilasciato con ',
+      link('licenza MIT', 'https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE', 'Testo della licenza MIT'),
+      '.',
+    ),
+  );
+
   const chiudi = document.createElement('button');
   chiudi.type = 'button';
   chiudi.className = 'crediti-chiudi';
@@ -88,7 +97,7 @@ function costruisci() {
   azioni.className = 'crediti-azioni';
   azioni.append(chiudi);
 
-  finestra.append(titolo, idea, sviluppo, ringraziamenti, azioni);
+  finestra.append(titolo, idea, sviluppo, ringraziamenti, licenza, azioni);
   document.body.append(finestra);
 
   const nascondi = () => {
@@ -128,6 +137,9 @@ export function avviaCrediti() {
   for (const bottone of document.querySelectorAll('[data-crediti]')) {
     bottone.addEventListener('click', evento => {
       evento.preventDefault();
+      // dal menù «Altro» del telefono: prima si chiude il pannello, poi si apre il riquadro
+      const menu = bottone.closest('dialog.altre');
+      if (menu && menu.open) menu.querySelector('[data-altre-chiudi]').click();
       apriCrediti();
     });
   }

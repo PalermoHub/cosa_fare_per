@@ -97,7 +97,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
   <div class="piede-riga">
     <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
     <div class="piede-corpo">
-      <p class="piede-credito"><span class="piede-progetto"><strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · </span><span class="piede-copyright">© 2026 OpenDataSicilia</span> · <a href="https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE" rel="noopener">Licenza MIT</a> · <button type="button" class="link-bottone" data-crediti>Credits</button></p>
+      <p class="piede-credito"><span class="piede-progetto"><strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · </span><span class="piede-copyright">© 2026 OpenDataSicilia</span><span class="piede-largo"> · <button type="button" class="link-bottone" data-crediti>Credits</button></span><span class="piede-stretto"> · <a href="guida.html">Come funziona</a></span></p>
       <nav class="piede-voci" aria-label="Collegamenti del sito">
         <a href="index.html">Chiedi</a>
         <a href="domande.html">Tutte le domande</a>
@@ -226,6 +226,21 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
           <span class="altre-nota">Cosa fa Pinuzza con i tuoi dati</span>
         </span>
       </a>
+    </li>
+    <li>
+      <button type="button" class="altre-voce-bottone" data-crediti>
+        <span class="altre-icona">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="8.4"/>
+            <path d="M12 11v5.2"/>
+            <path d="M12 7.8h.01" stroke-width="2.4"/>
+          </svg>
+        </span>
+        <span class="altre-testo">
+          <span class="altre-etichetta">Credits</span>
+          <span class="altre-nota">Idea, sviluppo e licenza</span>
+        </span>
+      </button>
     </li>
   </ul>
   <button type="button" class="altre-tema" id="tema-barra" aria-pressed="false"
