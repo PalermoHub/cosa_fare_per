@@ -2514,3 +2514,18 @@ body.ha-risultati .scorciatoie { display: none; }
   .pagina-atti .atti-cerca-bottone { font-size: .82rem; padding: .5rem 1rem; min-height: 2.4rem; }
   .pagina-atti .atti-pulisci-bottone { font-size: .78rem; padding: .5rem .75rem; min-height: 2.4rem; }
 }
+
+/* Telefono, pagina iniziale: la testata prende tutta l'altezza libera e i blocchi (titolo,
+   presentazione, campo, «Decifra la PA», suggerimenti) si distribuiscono in modo uniforme,
+   invece di restare addossati in alto con un vuoto sopra la barra in basso. */
+@media (max-width: 40rem) {
+  body:not(.ha-risultati):not(.pagina-informativa) .testata { flex: 1 1 auto; display: flex; flex-direction: column; }
+  body:not(.ha-risultati):not(.pagina-informativa) .testata > .interno {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  body:not(.ha-risultati):not(.pagina-informativa) .testata > .interno > * { margin-block: 0; }
+  body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; }
+}
