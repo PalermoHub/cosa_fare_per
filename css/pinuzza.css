@@ -2430,3 +2430,11 @@ body.ha-risultati .scorciatoie { display: none; }
   .atti-pulisci-bottone { flex: 0 0 auto; }
   .atti-oggetto { font-size: .96rem; }
 }
+
+/* pagina «Atti»: su telefono la testata fissa occupa meno spazio, così restano più righe ai risultati */
+@media (max-width: 40rem) {
+  .pagina-atti .titolo-pagina { font-size: 1.3rem; margin: .2rem 0 .1rem; }
+  .pagina-atti .atti-slogan { gap: .15rem; }
+  .pagina-atti .atti-slogan-domanda { font-size: .95rem; line-height: 1.25; }
+  .pagina-atti .atti-slogan-risposta { font-size: .8rem; line-height: 1.4; }
+}

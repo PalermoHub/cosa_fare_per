@@ -173,3 +173,12 @@ test('nessun id ripetuto dentro una pagina', () => {
     }
   }
 });
+
+test('schermo intero su telefono: manifest, modulo in ogni pagina e nel guscio offline', () => {
+  const manifest = JSON.parse(leggi('manifest.webmanifest'));
+  assert.deepEqual(manifest.display_override, ['fullscreen', 'standalone'], 'manifest: manca il display_override a schermo intero');
+  for (const pagina of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html', 'atti.html']) {
+    assert.match(leggi(pagina), /<script type="module" src="js\/schermo-intero\.js"><\/script>/, `${pagina}: manca js/schermo-intero.js`);
+  }
+  assert.match(sw, /'js\/schermo-intero\.js',/, 'sw.js non mette in cache js/schermo-intero.js');
+});
