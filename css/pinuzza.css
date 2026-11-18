@@ -1063,7 +1063,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
     transition: background .2s ease, width .2s ease;
   }
   .puntini span.attivo { width: .9rem; background: var(--accento); }
-  .piede { font-size: .74rem; padding: .6rem 0 .7rem; }
+  .piede { font-size: .72rem; line-height: 1.35; padding: .3rem 0 .35rem; }
   .piede-riga { width: min(100% - 1.6rem, 62rem); gap: .7rem; }
   /* sul telefono il piede resta al credito: i collegamenti sono nelle voci della barra in basso
      e l'avvertenza estesa sta nel campo di ricerca */
