@@ -2249,7 +2249,7 @@ body.ha-risultati .scorciatoie { display: none; }
 .atti-slogan-domanda { cursor: pointer; list-style: none; display: block; }
 .atti-slogan-domanda::-webkit-details-marker { display: none; }
 .atti-slogan-domanda::after {
-  content: ""; display: inline-block; width: .4rem; height: .4rem; margin-left: .45rem;
+  content: ""; display: inline-block; width: .4rem; height: .4rem; margin-left: .9rem;
   border: solid var(--inchiostro-fio); border-width: 0 1.5px 1.5px 0;
   transform: translateY(-.2rem) rotate(45deg); transition: transform .2s ease;
 }
