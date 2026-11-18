@@ -1,3 +1,7 @@
+/* Hallmark · shape: kept · genre: editorial · theme: brand · redesign: full
+ * paper: oklch(98.8% 0.007 95) · accent: oklch(42% 0.07 187) · display: serif di sistema · body: sans di sistema · hero: kept · nav: kept · footer: kept · signature: kept
+ * axes: light/roman-serif/cool · posture: kept · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V3 · weakest: V, etichette senza maiuscolo e tracking, disabilitati su tre canali, piede con filetti */
 /* Chiedilo a Pinuzza — foglio di stile unico, tema chiaro.
    Tipografia sobria: serif per i titoli, carattere di sistema per il testo.
    Nessun font remoto: la pagina deve funzionare anche senza rete. */
@@ -66,13 +70,13 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
 
 body {
   margin: 0;
   height: 100vh;
   height: 100dvh;
-  overflow: hidden; /* scorre solo la colonna dei risultati */
+  overflow: clip; /* scorre solo la colonna dei risultati */
   display: flex;
   flex-direction: column;
   background: var(--carta);
@@ -193,7 +197,7 @@ input, textarea { caret-color: var(--accento); }
   background: var(--carta);
   padding: clamp(1.2rem, 3.2vh, 3.2rem) 0 1.8rem;
   border-bottom: 1px solid transparent;
-  transition: padding .35s ease, box-shadow .25s ease;
+  transition: box-shadow .25s ease;
 }
 /* quando i risultati sono scorsi sotto la testata, una riga di stacco */
 .testata.scrollata { box-shadow: 0 6px 18px -16px rgba(var(--tinta-ombra), .55); }
@@ -248,7 +252,7 @@ input, textarea { caret-color: var(--accento); }
 .marchio .spilla { fill: var(--accento); stroke: var(--inchiostro); stroke-width: 9; }
 .marchio .faccia { fill: var(--carta); stroke: var(--inchiostro); stroke-width: 8; }
 .marchio .occhio { fill: var(--inchiostro); }
-.marchio .luce { fill: #fff; }
+.marchio .luce { fill: var(--superficie); }
 .marchio .occhiolino,
 .marchio .sorriso { fill: none; stroke: var(--inchiostro); stroke-width: 7; stroke-linecap: round; }
 .marchio .gota { fill: var(--caldo); opacity: .3; }
@@ -344,7 +348,7 @@ input, textarea { caret-color: var(--accento); }
 
 #invia { background: var(--accento-fondo); color: var(--su-accento); }
 #invia:hover { background: var(--accento-fondo-hover); }
-#invia:disabled { opacity: .55; cursor: progress; }
+#invia:disabled { background: var(--linea); color: var(--inchiostro-fio); cursor: progress; }
 
 .campo .azzera {
   border: 1px solid var(--linea);
@@ -371,9 +375,8 @@ input, textarea { caret-color: var(--accento); }
 .etichetta-suggerimenti {
   margin: 0 0 .6rem; /* un po' d'aria fra l'etichetta e i badge: erano appiccicati */
   text-align: center;
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .riga-domande {
@@ -521,9 +524,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 .domanda-fatta::before {
   content: "Tu";
   flex: 0 0 auto;
-  font: 600 .7rem/1 var(--sans);
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  font: 600 .8rem/1 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
   transform: translateY(-.35em);
 }
@@ -533,9 +535,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 .etichetta {
   display: inline-block;
   margin: 0 0 .7rem;
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--accento);
   background: var(--accento-chiaro);
   padding: .1rem .5rem;
@@ -556,9 +557,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 .sezione { margin: 0 0 1.15rem; }
 .sezione > h3 {
   margin: 0 0 .35rem;
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .11em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .sezione p { margin: 0 0 .5rem; }
@@ -614,9 +614,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
   /* l'icona resta sulla prima riga dell'etichetta anche quando va a capo */
   align-items: flex-start;
   gap: .3rem;
-  font: 600 .7rem/1.9 var(--sans);
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.9 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 /* l'icona del recapito: decorativa, prende il colore dell'etichetta */
@@ -669,7 +668,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
   font-weight: 600;
 }
 .azioni .percorso:hover { background: var(--accento-fondo-hover); border-color: var(--accento-fondo-hover); color: var(--su-accento); }
-.azioni .percorso:disabled { opacity: .7; cursor: progress; }
+.azioni .percorso:disabled { background: var(--linea); border-color: var(--linea); color: var(--inchiostro-fio); cursor: progress; }
 .azioni .percorso::before { content: "↗ "; font-weight: 400; }
 
 .avviso-gps {
@@ -708,9 +707,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 .anche { max-width: none; margin: 2rem 0 0; padding: 1.2rem 0 0; border-top: 1px solid var(--linea); }
 .anche > h3 {
   margin: 0 0 .7rem;
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .11em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .risposta-anche {
@@ -731,17 +729,15 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
    delle sezioni della scheda principale, che lì è uno h3 */
 .anche .sezione > h5 {
   margin: 0 0 .35rem;
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .11em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .anche .ufficio h5 { margin: 0 0 .2rem; font: 600 1.06rem/1.35 var(--sans); color: var(--inchiostro); }
 .anche-uffici { margin: .9rem 0 0; }
 .anche-uffici > summary {
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .11em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
   cursor: pointer;
   padding: .35rem 0;
@@ -753,7 +749,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 
 .domande-vicine { margin: 1.2rem 0 0; }
 .domande-vicine h3 {
-  font: 600 .72rem/1.6 var(--sans); letter-spacing: .11em; text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans); letter-spacing: 0;
   color: var(--inchiostro-fio); margin: 0 0 .3rem;
 }
 .domande-vicine ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .15rem; }
@@ -774,9 +770,8 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 }
 .utile-domanda {
   margin: 0 0 .55rem;
-  font: 600 .78rem/1.5 var(--sans);
-  letter-spacing: .06em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.5 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .utile-azioni { display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -792,7 +787,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
   transition: border-color .18s ease, color .18s ease, background .18s ease;
 }
 .utile-azioni button:hover { border-color: var(--accento); color: var(--accento); }
-.utile-azioni button:disabled { opacity: .55; cursor: default; }
+.utile-azioni button:disabled { background: var(--carta-alt); border-color: var(--linea); color: var(--inchiostro-fio); cursor: default; }
 .utile-azioni .utile-no { color: var(--avviso-tenue); border-color: var(--linea-forte); }
 .utile-azioni .utile-no:hover { border-color: var(--caldo-fondo); color: var(--caldo-fondo); }
 .utile-esito { margin: .7rem 0 0; font-size: .92rem; color: var(--inchiostro-tenue); }
@@ -1100,7 +1095,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
     height: .34rem;
     border-radius: 999px;
     background: var(--linea-forte);
-    transition: background .2s ease, width .2s ease;
+    transition: background .2s ease;
   }
   .puntini span.attivo { width: .9rem; background: var(--accento); }
   .piede { font-size: .72rem; line-height: 1.25; padding: .25rem 0 .35rem; }
@@ -1199,7 +1194,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
    la PA»), scorre solo lei: il piede resta sempre intero sopra la barra in basso, senza
    dover scorrere la pagina. Con una risposta aperta (`ha-risultati`) valgono le regole
    di sempre: testata compatta fissa e colonna dei risultati che scorre. */
-body:not(.ha-risultati):not(.pagina-informativa) { height: 100dvh; overflow: hidden; }
+body:not(.ha-risultati):not(.pagina-informativa) { height: 100dvh; overflow: clip; }
 body:not(.ha-risultati):not(.pagina-informativa) .testata {
   flex: 0 1 auto;
   min-height: 0;
@@ -1305,9 +1300,8 @@ body.crediti-aperti .crediti {
   align-items: center;
   gap: .45rem;
   margin: 0 0 .3rem;
-  font: 600 .74rem/1.4 var(--sans);
-  letter-spacing: .07em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.4 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .crediti-sottotitolo svg { flex: none; width: 1.2rem; height: 1.2rem; }
@@ -1610,7 +1604,7 @@ body.decifra-aperti .decifra {
 
 /* ---------- pagina «Tutte le domande» ---------- */
 .pagina-domande .indice-categorie { margin: 1.2rem 0 2rem; }
-.pagina-domande .indice-categorie h2 { margin: 0 0 .6rem; font: 600 .7rem/1.6 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--inchiostro-fio); }
+.pagina-domande .indice-categorie h2 { margin: 0 0 .6rem; font: 600 .8rem/1.6 var(--sans); letter-spacing: 0; color: var(--inchiostro-fio); }
 .pagina-domande .indice-categorie ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .45rem; }
 
 /* Le categorie sono etichette: badge nell'indice (con il numero di voci dentro) e titolo
@@ -1676,9 +1670,9 @@ body.decifra-aperti .decifra {
 }
 .pagina-domande .elenco-voci { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
 @media (min-width: 40rem) {
-  .pagina-domande .elenco-voci { grid-template-columns: 1fr 1fr; gap: 1rem 1.6rem; }
+  .pagina-domande .elenco-voci { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.6rem; }
 }
-.pagina-domande .gruppo-domande h3 { margin: 0 0 .25rem; font: 600 .74rem/1.45 var(--sans); letter-spacing: .05em; text-transform: uppercase; color: var(--inchiostro-fio); }
+.pagina-domande .gruppo-domande h3 { margin: 0 0 .25rem; font: 600 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--inchiostro-fio); }
 .pagina-domande .gruppo-domande ul { list-style: none; margin: 0; padding: 0; }
 .pagina-domande .gruppo-domande li { margin: 0 0 .15rem; font-size: .92rem; line-height: 1.45; }
 .pagina-domande .gruppo-domande a { color: var(--accento); text-decoration-color: var(--linea-forte); text-underline-offset: 2px; }
@@ -1742,8 +1736,7 @@ body.decifra-aperti .decifra {
 .aggiornamento {
   margin: 0 0 1rem;
   font-size: .8rem;
-  letter-spacing: .04em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 
@@ -1756,9 +1749,8 @@ body.decifra-aperti .decifra {
   border-bottom: 1px solid var(--linea);
 }
 .tabella th {
-  font: 600 .72rem/1.4 var(--sans);
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.4 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
   background: var(--carta-alt);
 }
@@ -1835,9 +1827,8 @@ body.decifra-aperti .decifra {
 .suggerimento-nome { font: 600 .86rem/1.32 var(--sans); color: var(--inchiostro); }
 .suggerimento-dove { font-size: .74rem; color: var(--inchiostro-fio); }
 .suggerimento-tipo {
-  font: 600 .7rem/1.6 var(--sans);
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--accento);
   background: var(--accento-chiaro);
   border-radius: 3px;
@@ -1904,9 +1895,8 @@ body.decifra-aperti .decifra {
 .conteggio-area {
   margin: 0;
   flex: 0 0 auto;
-  font: 600 .72rem/1.6 var(--sans);
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .nota-area { margin: -.15rem 0 .8rem; font-size: .85rem; color: var(--inchiostro-tenue); }
@@ -1928,9 +1918,8 @@ body.decifra-aperti .decifra {
 }
 .ufficio-livello {
   margin: 0;
-  font: 600 .7rem/1.5 var(--sans);
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.5 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .ufficio-nome { margin: 0; font: 600 .88rem/1.35 var(--sans); color: var(--inchiostro); text-wrap: pretty; }
@@ -1992,9 +1981,8 @@ body.decifra-aperti .decifra {
 .intestazione-elenco {
   padding: 0 0 .35rem;
   border-bottom: 1px solid var(--linea-forte);
-  font: 600 .66rem/1.4 var(--sans);
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.4 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .riga-ufficio {
@@ -2042,9 +2030,8 @@ body.decifra-aperti .decifra {
 }
 .indice-guida h2 {
   margin: 0 0 .45rem;
-  font: 600 .74rem/1.4 var(--sans);
-  letter-spacing: .06em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.4 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 /* l'indice su tre colonne: le undici voci stanno in quattro righe invece di undici,
@@ -2180,7 +2167,7 @@ body.decifra-aperti .decifra {
   box-shadow: inset 0 0 0 1px currentColor;
 }
 .pillola:hover .badge-issue { background: var(--caldo-fondo); color: var(--su-caldo); box-shadow: none; }
-.pillola .freccia { margin-left: auto; color: var(--accento); font-weight: 400; }
+.pillola .freccia { margin-left: auto; width: 1rem; height: 1rem; flex: none; color: var(--accento); }
 .pillola:hover .freccia { color: var(--caldo); }
 body.ha-risultati .scorciatoie { display: none; }
 /* sul telefono i due rimandi non servono: la barra in basso ha già «Uffici» e «Segnala»,
@@ -2235,9 +2222,8 @@ body.ha-risultati .scorciatoie { display: none; }
 }
 .salvata .salvata-quando {
   margin: 0;
-  font: 600 .72rem/1.3 var(--sans);
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.3 var(--sans);
+  letter-spacing: 0;
   color: var(--inchiostro-fio);
 }
 .salvata .salvata-titolo {
@@ -2336,7 +2322,7 @@ body.ha-risultati .scorciatoie { display: none; }
 }
 
 .atti-campo { display: flex; flex-direction: column; gap: .3rem; flex: 1 1 100%; min-width: 0; }
-.atti-campo label { font: 600 .74rem/1.2 var(--sans); letter-spacing: .04em; text-transform: uppercase; color: var(--inchiostro-tenue); }
+.atti-campo label { font: 600 .8rem/1.2 var(--sans); letter-spacing: 0; color: var(--inchiostro-tenue); }
 .atti-campo input,
 .atti-campo select {
   width: 100%;
@@ -2370,7 +2356,7 @@ body.ha-risultati .scorciatoie { display: none; }
   min-height: 2.9rem;
 }
 .atti-cerca-bottone:hover { background: var(--accento-fondo-hover); }
-.atti-cerca-bottone:disabled { opacity: .6; cursor: progress; }
+.atti-cerca-bottone:disabled { background: var(--linea); border-color: var(--linea); color: var(--inchiostro-fio); cursor: progress; }
 
 .atti-pulisci-bottone {
   display: inline-flex;
@@ -2410,7 +2396,6 @@ body.ha-risultati .scorciatoie { display: none; }
   padding: .9rem 1rem 1rem;
   background: var(--superficie);
   border: 1px solid var(--linea);
-  border-left: 3px solid var(--accento);
   border-radius: var(--tondo);
   box-shadow: var(--ombra);
 }
@@ -2426,9 +2411,8 @@ body.ha-risultati .scorciatoie { display: none; }
 }
 .atti-tipo { font: 600 .86rem/1.3 var(--sans); color: var(--inchiostro); }
 .atti-portale {
-  font: 600 .66rem/1.6 var(--sans);
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  font: 600 .8rem/1.6 var(--sans);
+  letter-spacing: 0;
   color: var(--accento);
   background: var(--accento-chiaro);
   border-radius: 3px;
@@ -2561,3 +2545,6 @@ body.ha-risultati .scorciatoie { display: none; }
   body:not(.ha-risultati):not(.pagina-informativa) .testata > .interno > * { margin-block: 0; }
   body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; }
 }
+
+/* separatore tra le voci del piede: un filetto, non un puntino */
+.sep { display: inline-block; width: 1px; height: .9em; margin: 0 .65em; background: var(--linea-forte); vertical-align: -.1em; }
