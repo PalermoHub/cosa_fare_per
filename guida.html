@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Come funziona — guida a Chiedilo a Pinuzza</title>
-<meta name="description" content="Guida passo per passo a Chiedilo a Pinuzza: come fare una domanda, leggere la risposta, trovare l'ufficio competente, salvare le risposte e usarla sul telefono e senza rete. Con le schermate dell'app.">
+<meta name="description" content="Guida passo per passo a Chiedilo a Pinuzza: come fare una domanda, leggere la risposta, trovare l'ufficio competente, decifrare un avviso pubblico, salvare le risposte e usarla sul telefono e senza rete. Con le schermate dell'app.">
 <meta name="theme-color" content="#fcfbf7">
 <link rel="icon" href="img/favicon.png" sizes="any">
 <link rel="apple-touch-icon" href="img/icon-192.png">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Chiedilo a Pinuzza">
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Come funziona — guida a Chiedilo a Pinuzza">
-<meta property="og:description" content="Dalla domanda alla scheda dell'ufficio: la guida con le schermate dell'app, per usarla al meglio anche sul telefono e senza rete.">
+<meta property="og:description" content="Dalla domanda alla scheda dell'ufficio, fino a «Decifra la PA»: la guida con le schermate dell'app, per usarla al meglio anche sul telefono e senza rete.">
 <meta property="og:url" content="https://palermohub.github.io/cosa_fare_per/guida.html">
 <meta property="og:image" content="https://palermohub.github.io/cosa_fare_per/img/social-card.png">
 <meta property="og:image:width" content="1200">
@@ -88,8 +88,9 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
     <div class="nota-pagina">
       <strong>In breve.</strong> Scrivi cosa devi fare, leggi la risposta, apri la scheda
       dell'ufficio. Se la risposta non c'è, Pinuzza te lo dice e ti propone gli uffici più vicini
-      al tuo caso: non inventa requisiti, importi o scadenze. Funziona anche sul telefono e,
-      dopo la prima apertura, anche senza rete.
+      al tuo caso: non inventa requisiti, importi o scadenze. Se devi capire un avviso scritto in
+      burocratese, il riquadro «Decifra la PA» prepara le istruzioni per fartelo spiegare da un
+      assistente AI. Funziona anche sul telefono e, dopo la prima apertura, anche senza rete.
     </div>
 
     <nav class="indice-guida" aria-label="Cosa trovi nella guida">
@@ -102,6 +103,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
         <li><a href="#salvare">Salvare, ricominciare, segnalare</a></li>
         <li><a href="#altre">Tutte le domande e tutti gli uffici</a></li>
         <li><a href="#telefono">Sul telefono, al buio, senza rete</a></li>
+        <li><a href="#decifra">Decifrare un avviso pubblico</a></li>
         <li><a href="#privacy">Cosa sa di te</a></li>
         <li><a href="#limiti">Cosa non è</a></li>
       </ol>
@@ -292,7 +294,64 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       collegamenti esterni, ovviamente, no.
     </p>
 
-    <h2 id="privacy">8. Cosa sa di te</h2>
+    <h2 id="decifra">8. Decifrare un avviso pubblico</h2>
+    <p>
+      In home, sotto il campo della domanda, c'è il riquadro <strong>«Decifra la PA»</strong>:
+      serve quando trovi un avviso, un bando o un comunicato scritto in burocratese e vuoi capire
+      cosa cambia davvero per te. Incolla il link dell'avviso — va bene anche un PDF pubblico —
+      oppure, se il link non c'è o è dietro un accesso, il suo testo.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/decifra-home.webp" alt="La home di Chiedilo a Pinuzza con il riquadro «Decifra la PA» sotto il campo della domanda: titolo, spiegazione breve e pulsante «Incolla un link»." width="1400" height="1000" loading="lazy" decoding="async">
+      <figcaption>Il riquadro «Decifra la PA» sta in home, subito sotto il campo della domanda.</figcaption>
+    </figure>
+
+    <p>
+      L'app non chiama nessuna intelligenza artificiale: compone soltanto le istruzioni da dare
+      al tuo assistente AI, che scegli tu (Claude, ChatGPT, Gemini, DeepSeek, Qwen, Z.ai, Kimi,
+      Copilot, Perplexity o Grok). Il link o il testo restano nel browser: nessun dato esce finché
+      non copi le istruzioni o non apri la chat.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/decifra-finestra.webp" alt="La finestra «Decifra la PA» aperta: il campo per incollare il link di un avviso, il comando «Prepara le istruzioni» e il ripiego «Non c'è un link? Incolla il testo»." width="1400" height="1000" loading="lazy" decoding="async">
+      <figcaption>Incolli il link e premi «Prepara le istruzioni»; se non c'è un link, apri «Non c'è un link? Incolla il testo».</figcaption>
+    </figure>
+
+    <p>
+      Le istruzioni chiedono un testo in italiano semplice: cosa bisogna fare, da quando, chi è
+      coinvolto, quali obblighi ci sono e cosa succede se non si rispettano, con una chiusura
+      «In pratica questo significa». Se qualcosa non è scritto nella fonte, l'assistente deve
+      dirlo invece di inventarlo.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/decifra-istruzioni.webp" alt="La finestra con le istruzioni pronte: il comando «Copia le istruzioni», l'elenco della chat web con Claude e il pulsante «Apri Claude», e il testo completo da incollare nell'assistente AI." width="1400" height="1000" loading="lazy" decoding="async">
+      <figcaption>Le istruzioni sono pronte: «Copia le istruzioni» le mette negli appunti, «Apri» apre la chat web scelta (Claude è la predefinita) e, sul telefono, «Condividi» le passa all'app che usi.</figcaption>
+    </figure>
+
+    <figure class="schermata schermata-telefono">
+      <img src="img/guida/decifra-telefono.webp" alt="La finestra «Decifra la PA» sul telefono con le istruzioni pronte: «Copia le istruzioni», «Condividi», la scelta della chat web con Claude e il testo da incollare nell'assistente AI." width="780" height="1688" loading="lazy" decoding="async">
+      <figcaption>Sul telefono i comandi stanno uno sotto l'altro: «Condividi» passa le istruzioni all'app dell'assistente AI che hai installato.</figcaption>
+    </figure>
+
+    <ol class="passi">
+      <li><strong>Incolla il link</strong> dell'avviso e premi «Prepara le istruzioni». Se il link manca, apri «Non c'è un link? Incolla il testo» e incolla il testo dell'avviso.</li>
+      <li><strong>Prendi le istruzioni</strong> con «Copia le istruzioni» e incollale nella chat dell'assistente AI che preferisci; oppure scegli la chat dall'elenco e premi «Apri»: le istruzioni vengono copiate e, dove il servizio lo consente, arrivano già pronte.</li>
+      <li><strong>Confronta la spiegazione con l'avviso</strong>: se qualcosa non torna, chiedi all'assistente di citare il punto esatto, oppure verifica sulla scheda del servizio o con l'ufficio competente.</li>
+    </ol>
+
+    <p class="nota-pagina">
+      <strong>«Decifra la PA» non è Pinuzza.</strong> L'app prepara le istruzioni, la spiegazione la
+      scrive il tuo assistente AI. Non è un parere legale e non sostituisce l'avviso ufficiale:
+      date, importi e requisiti vanno sempre controllati sul testo pubblicato dall'ente. Le
+      istruzioni sono adattate dal modello «Decifra la PA» dell'app
+      <a href="https://github.com/aborruso/in_due_tocchi" rel="noopener">in due tocchi</a>
+      di Andrea Borruso (MIT).
+    </p>
+
+    <h2 id="privacy">9. Cosa sa di te</h2>
     <p>
       Non c'è registrazione, non c'è un profilo e le domande che scrivi non vengono inviate a
       nessun server: la ricerca avviene nel browser, sui dati scaricati. Le risposte salvate
@@ -304,7 +363,7 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       privacy e cookie</a>.
     </p>
 
-    <h2 id="limiti">9. Cosa non è</h2>
+    <h2 id="limiti">10. Cosa non è</h2>
     <ul>
       <li><strong>Non è uno sportello</strong> e non sostituisce il Comune: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</li>
       <li><strong>Non è un modello linguistico</strong>: risponde con le voci preparate e le schede ufficiali, e quando non sa rispondere lo dice.</li>

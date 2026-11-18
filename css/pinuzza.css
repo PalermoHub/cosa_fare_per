@@ -1099,8 +1099,9 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
     right: 0;
     bottom: 0;
     z-index: 6;
-    background: var(--carta);
-    border-top: 1px solid var(--linea);
+    /* stesso fondo del piede: la barra è attaccata a lui, senza una striscia chiara in mezzo */
+    background: var(--carta-alt);
+    border-top: 1px solid var(--carta-alt);
     box-shadow: 0 -10px 24px -22px rgba(var(--tinta-ombra), .6);
   }
   .barra-basso .voce {
