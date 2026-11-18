@@ -1040,15 +1040,29 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
     scrollbar-width: none; /* niente barra: si passa alla colonna dopo scorrendo */
   }
   .riga-domande::-webkit-scrollbar { display: none; }
+  /* freccia «in su»: la domanda sale nel campo di ricerca; decorativa, disegnata col colore del testo */
+  .riga-domande button::after {
+    content: "";
+    flex: 0 0 auto;
+    width: .95rem;
+    height: .95rem;
+    background: currentColor;
+    opacity: .7;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5 12l7-7 7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 19V5M5 12l7-7 7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
   .riga-domande button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: .45rem .8rem;
-    font-size: .82rem;
+    justify-content: space-between; /* testo a sinistra, freccia a destra come nelle domande suggerite dei chatbot */
+    gap: .6rem;
+    padding: .45rem .9rem;
+    border-radius: 1rem;
+    text-align: left;
+    font-size: .88rem;
     line-height: 1.25;
     white-space: normal;
-    text-wrap: balance;
+    text-wrap: pretty;
     scroll-snap-align: start;
     scroll-snap-stop: always; /* un gesto, una colonna: non si salta oltre */
   }
