@@ -1101,22 +1101,19 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   .riga-domande button { display: flex; align-items: center; }
   .ufficio .mappa-link { display: flex; align-items: center; }
 
-  /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
-  /* la barra è alta `--barra-h` più il suo bordo superiore: il piede deve finire sopra, non sotto */
-  body { padding-bottom: calc(var(--barra-h) + 1px); }
+  /* barra in basso: sta nel flusso del corpo (che è una colonna ad altezza fissa) e,
+     con `order`, finisce sopra il piede: il piede resta l'ultima riga dello schermo */
   .barra-basso {
     display: flex;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    flex: 0 0 auto;
+    order: 1;
+    position: relative;
     z-index: 6;
-    /* stesso fondo del piede: la barra è attaccata a lui, senza una striscia chiara in mezzo */
     background: var(--carta-alt);
-    border-top: 1px solid var(--carta-alt);
-    /* niente ombra in su: cadrebbe sul piede, che sta attaccato qui sopra */
+    border-top: 1px solid var(--linea);
     box-shadow: none;
   }
+  .piede { order: 2; border-top: 0; }
   .barra-basso .voce {
     flex: 1 1 0;
     display: flex;

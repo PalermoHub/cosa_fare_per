@@ -136,7 +136,8 @@ test('il menù del telefono ha quattro posti e tutto il resto nel pannello «Alt
   // La barra in basso non può crescere all'infinito: ogni voce nuova che non sia una
   // destinazione principale va nel pannello, che resta lo stesso in tutte le pagine.
   const PAGINE = ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html'];
-  const destinazioni = ['salvati.html', 'guida.html', 'privacy.html', 'https://github.com/PalermoHub/cosa_fare_per/issues'];
+  // la guida non sta nel pannello: si raggiunge dalla pillola in home e dal piede («Come funziona»)
+  const destinazioni = ['salvati.html', 'privacy.html', 'https://github.com/PalermoHub/cosa_fare_per/issues'];
   for (const pagina of PAGINE) {
     const html = leggi(pagina);
     const barra = /<nav class="barra-basso"[^>]*>([\s\S]*?)<\/nav>/.exec(html);
@@ -153,6 +154,7 @@ test('il menù del telefono ha quattro posti e tutto il resto nel pannello «Alt
     for (const destinazione of destinazioni) {
       assert.ok(pannello[0].includes(destinazione), `${pagina}: «${destinazione}» non sta nel pannello`);
     }
+    assert.ok(!pannello[0].includes('guida.html'), `${pagina}: la guida non deve stare nel pannello «Altro»`);
     // il pannello è una finestra di dialogo: titolo, chiusura e comando che la apre
     assert.match(pannello[0], /aria-labelledby="altre-titolo"/, `${pagina}: il pannello non è etichettato`);
     assert.match(pannello[0], /data-altre-chiudi/, `${pagina}: il pannello non si chiude`);
