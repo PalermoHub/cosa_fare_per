@@ -124,7 +124,7 @@ input, textarea { caret-color: var(--accento); }
 .barra-interno {
   /* tre colonne: spilla a sinistra, voci al centro della barra (le due colonne laterali sono uguali) */
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr minmax(0, 38rem) 1fr; /* 38rem = larghezza del campo */
   align-items: stretch;
   gap: 1.5rem;
   width: min(100% - 2.5rem, 62rem);
@@ -145,7 +145,7 @@ input, textarea { caret-color: var(--accento); }
 .barra-marchio:hover { color: var(--accento); }
 .barra-pin { width: 1.6rem; height: 1.6rem; margin: 0; }
 
-.menu-sito { grid-column: 2; display: flex; align-items: stretch; gap: .1rem; }
+.menu-sito { grid-column: 2; display: flex; align-items: stretch; justify-content: space-between; gap: .1rem; }
 .menu-sito a {
   position: relative;
   display: inline-flex;
