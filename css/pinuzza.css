@@ -1267,11 +1267,13 @@ body.crediti-aperti .crediti {
   z-index: 40;
 }
 .crediti-titolo { margin: 0 0 .5rem; padding-top: 1.1rem; font: 600 1.15rem/1.25 var(--serif); }
+.crediti section { margin-top: .9rem; }
+.crediti section + section { padding-top: .9rem; border-top: 1px solid var(--linea); }
 .crediti-sottotitolo {
   display: flex;
   align-items: center;
   gap: .45rem;
-  margin: .9rem 0 .25rem;
+  margin: 0 0 .3rem;
   font: 600 .74rem/1.4 var(--sans);
   letter-spacing: .07em;
   text-transform: uppercase;
