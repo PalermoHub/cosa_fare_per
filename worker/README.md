@@ -62,3 +62,33 @@ Con il piano a pagamento (5 $/mese) si possono alzare i tetti in `wrangler.toml`
 - i nomi dei campi del modulo di ricerca (`ALB_DESOGGETTO`, `ALB_NUM_PROT`, `ALB_DESANNOPROT`);
 - il formato delle tabelle (le intestazioni si leggono, non si indovinano) e il `302` dopo la ricerca;
 - il blocco `testoCodiceIpa = '…ALBCOD=…'` da cui si ricava il link permanente.
+
+## Un secondo account, come ripiego
+
+La pagina prova gli indirizzi in `ENDPOINT` (in `js/atti.js`) uno dopo l'altro: il secondo entra
+in gioco solo se il primo non risponde (rete, 5xx, quota finita, sospensione). Non serve per il
+blocco lato Comune: gli IP di uscita di Cloudflare sono gli stessi per tutti gli account, e per
+quello servirebbe un host diverso.
+
+Per aggiungerlo serve un token di **quell'account**, non il login OAuth del nostro:
+
+```bash
+# 1) token creato dal pannello dell'altro account (template «Edit Cloudflare Workers»)
+mkdir -p ~/.config/pinuzza
+cat > ~/.config/pinuzza/nuovo.env <<'EOF'
+CLOUDFLARE_API_TOKEN=…
+CLOUDFLARE_ACCOUNT_ID=…
+EOF
+chmod 600 ~/.config/pinuzza/nuovo.env
+
+# 2) deploy nell'altro account (le credenziali di casa restano intatte)
+set -a; . ~/.config/pinuzza/nuovo.env; set +a
+cd worker && npx wrangler deploy      # stampa https://pinuzza-atti.<sottodominio>.workers.dev
+
+# 3) quel nuovo indirizzo va messo PRIMA nell'elenco ENDPOINT di js/atti.js,
+#    lasciando https://pinuzza-atti.coseerobe.workers.dev come secondo.
+```
+
+Attenzione: `wrangler login` sovrascrive le credenziali in `~/.config/.wrangler` (una sola per
+volta). Se si usa OAuth e non un token, isolare la configurazione con `XDG_CONFIG_HOME` — non con
+`WRANGLER_HOME`, che non è più letto.
