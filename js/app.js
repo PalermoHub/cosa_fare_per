@@ -4,6 +4,7 @@
 
 import { indicizza, cerca, cercaSezioni, cercaUffici, suggerimenti, SOGLIA_SICURA, SOGLIA_MINIMA } from './motore.js';
 import { caricaBase, caricaUffici, stato, ufficiDellaVoce } from './dati.js';
+import { icona } from './icone.js';
 import { eSalvato, salva, togli } from './salvati.js';
 
 const $ = sel => document.querySelector(sel);
@@ -204,9 +205,21 @@ function schedaUfficio(ufficio, { livello = 3, mappa = true } = {}) {
   if (ufficio.responsabili) card.append(el('p', 'responsabile', `Responsabile: ${ufficio.responsabili}`));
 
   const dl = el('dl');
+  // l'icona dice a colpo d'occhio di che recapito si tratta; l'etichetta resta la parola
+  const ICONE_ETICHETTA = {
+    Sede: 'sede',
+    Telefono: 'telefono',
+    Email: 'email',
+    PEC: 'pec',
+    'Scheda aggiornata il': 'calendario',
+  };
   const riga = (etichetta, valore) => {
     if (!valore) return;
-    dl.append(el('dt', null, etichetta));
+    const termine = el('dt');
+    const segno = ICONE_ETICHETTA[etichetta] && icona(ICONE_ETICHETTA[etichetta]);
+    if (segno) termine.append(segno);
+    termine.append(document.createTextNode(etichetta));
+    dl.append(termine);
     const dd = el('dd');
     if (valore instanceof Node) dd.append(valore);
     else dd.textContent = valore;

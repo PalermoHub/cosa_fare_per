@@ -590,11 +590,17 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   font-size: .92rem;
 }
 .ufficio dt {
+  display: flex;
+  /* l'icona resta sulla prima riga dell'etichetta anche quando va a capo */
+  align-items: flex-start;
+  gap: .3rem;
   font: 600 .7rem/1.9 var(--sans);
   letter-spacing: .09em;
   text-transform: uppercase;
   color: var(--inchiostro-fio);
 }
+/* l'icona del recapito: decorativa, prende il colore dell'etichetta */
+.ufficio dt .icona-recapito { width: .95rem; height: .95rem; flex: none; margin-top: .19rem; }
 .ufficio dd { margin: 0; overflow-wrap: anywhere; }
 .ufficio dd a { color: var(--inchiostro); text-decoration-color: var(--linea-forte); }
 .ufficio dd a:hover { color: var(--accento); }
@@ -1606,15 +1612,27 @@ body.crediti-aperti .crediti {
 
 .ufficio-recapiti,
 .riga-recapiti {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .15rem .85rem;
   margin: .25rem 0 0;
   font-size: .78rem;
   color: var(--inchiostro-tenue);
   overflow-wrap: anywhere;
 }
 .ufficio-recapiti a,
-.riga-recapiti a { color: var(--inchiostro-tenue); text-decoration-color: var(--linea-forte); }
+.riga-recapiti a {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  color: var(--inchiostro-tenue);
+  text-decoration-color: var(--linea-forte);
+}
 .ufficio-recapiti a:hover,
 .riga-recapiti a:hover { color: var(--accento); }
+/* stessa misura del testo, così l'icona non allarga la riga */
+.icona-recapito { width: 1em; height: 1em; flex: none; }
 
 .ufficio-azioni {
   display: flex;
@@ -1625,7 +1643,7 @@ body.crediti-aperti .crediti {
   font-size: .75rem;
 }
 .ufficio-scheda { color: var(--accento); }
-.ufficio-indirizzo { color: var(--inchiostro-fio); }
+.ufficio-indirizzo { display: inline-flex; align-items: center; gap: .25rem; color: var(--inchiostro-fio); }
 
 /* «Elenco A–Z»: una tabella vera. Le tre colonne stanno sulla lista, non sulla singola
    riga: così i confini sono gli stessi per tutte le righe (prima ogni riga calcolava le

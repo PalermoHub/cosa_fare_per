@@ -3,6 +3,7 @@
 // «Elenco A–Z» è la lista piatta in ordine alfabetico. Nessuna mappa: qui conta l'elenco.
 
 import { caricaUffici } from './dati.js';
+import { icona } from './icone.js';
 import { raggruppaPerArea, elencoAlfabetico, filtra, suggerisci, areaDi, LIVELLI, SENZA_AREA } from './aree.js';
 
 const $ = sel => document.querySelector(sel);
@@ -47,17 +48,21 @@ function percorso(ufficio) {
   return parti.filter(Boolean).join(' › ');
 }
 
+// telefono ed email con la loro icona: il separatore «·» non serve più, i due recapiti
+// si distinguono dal disegno e restano su una riga sola finché c'è spazio
 function recapiti(ufficio) {
   const p = el('p', 'ufficio-recapiti');
   const telefono = (ufficio.telefoni || [])[0];
   if (telefono) {
     const a = link(telefono, `tel:${telefono.replace(/[^\d+]/g, '')}`);
+    a.prepend(icona('telefono'));
     p.append(a);
   }
   const email = (ufficio.email || []).find(e => !(ufficio.pec || []).includes(e));
   if (email) {
-    if (p.childElementCount) p.append(document.createTextNode(' · '));
-    p.append(link(email, `mailto:${email}`));
+    const a = link(email, `mailto:${email}`);
+    a.prepend(icona('email'));
+    p.append(a);
   }
   return p.childElementCount ? p : null;
 }
@@ -77,7 +82,11 @@ function scheda(ufficio) {
     azioni.append(a);
   }
   const via = (ufficio.indirizzo || '').replace(/,\s*\d{5}\b.*$/, '').trim();
-  if (via) azioni.append(el('span', 'ufficio-indirizzo', via));
+  if (via) {
+    const sede = el('span', 'ufficio-indirizzo');
+    sede.append(icona('sede'), document.createTextNode(via));
+    azioni.append(sede);
+  }
   if (azioni.childElementCount) card.append(azioni);
   return card;
 }

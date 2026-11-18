@@ -31,6 +31,21 @@ test('domande.html elenca tutte le domande tipiche, una per una', () => {
   assert.match(domandeHtml, /<h1 class="titolo-pagina">Tutte le domande<\/h1>/);
 });
 
+test('i recapiti degli uffici portano la loro icona, senza rete', () => {
+  const icone = leggi('js/icone.js');
+  for (const nome of ['sede', 'telefono', 'email', 'pec', 'calendario']) {
+    assert.match(icone, new RegExp(`\\b${nome}: \\[`), `manca il disegno «${nome}» in js/icone.js`);
+  }
+  // decorative (il testo accanto dice già di che recapito si tratta) e col colore del testo
+  assert.match(icone, /setAttribute\('aria-hidden', 'true'\)/);
+  assert.match(icone, /setAttribute\('stroke', 'currentColor'\)/);
+  for (const modulo of ['js/app.js', 'js/uffici.js']) {
+    assert.match(leggi(modulo), /import \{ icona \} from '\.\/icone\.js'/, `${modulo}: non usa le icone dei recapiti`);
+  }
+  // senza rete l'icona non c'è: il file deve stare nella precache del service worker
+  assert.match(sw, /'js\/icone\.js'/, 'js/icone.js non è nella precache');
+});
+
 test('ogni link di domande.html porta a una domanda vera', () => {
   const testo = decodeURIComponent(domandeHtml);
   const mancanti = domande.filter(d => !testo.includes(`index.html?q=${d}"`));
