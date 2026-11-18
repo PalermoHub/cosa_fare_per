@@ -1714,6 +1714,12 @@ body.decifra-aperti .decifra {
 }
 
 .testo-lungo { padding: 1.5rem 0 1.5rem; max-width: 46rem; }
+
+/* tutte le pagine informative hanno la stessa larghezza su desktop */
+.pagina-informativa { --colonna: 56rem; }
+.pagina-informativa .interno,
+.pagina-informativa .risultati > * { width: min(100% - 2.5rem, 56rem); }
+.pagina-informativa .testo-lungo { max-width: 100%; }
 .testo-lungo h2 {
   margin: 1.9rem 0 .55rem;
   font-family: var(--serif);
@@ -1781,9 +1787,6 @@ body.decifra-aperti .decifra {
 /* ---------- pagina «Tutti gli uffici» ---------- */
 
 /* la griglia ha bisogno di più spazio della colonna di lettura delle risposte */
-.pagina-uffici { --colonna: 62rem; }
-.pagina-uffici .interno,
-.pagina-uffici .risultati > * { width: min(100% - 2.5rem, 62rem); }
 
 .barra-uffici {
   position: sticky;
@@ -2018,10 +2021,6 @@ body.decifra-aperti .decifra {
 /* ---------- pagina «Come funziona» (guida con le schermate) ---------- */
 
 /* la guida respira più delle pagine di testo: le schermate hanno bisogno di larghezza */
-.pagina-guida { --colonna: 56rem; }
-.pagina-guida .interno,
-.pagina-guida .risultati > * { width: min(100% - 2.5rem, 56rem); }
-.pagina-guida .testo-lungo { max-width: 100%; }
 
 .pagina-guida .testo-lungo h3 {
   margin: 1.5rem 0 .35rem;
@@ -2299,9 +2298,6 @@ body.ha-risultati .scorciatoie { display: none; }
 
 /* ---------- pagina «Atti»: ricerca dal vivo in Albo e Delibere ---------- */
 
-.pagina-atti { --colonna: 54rem; }
-.pagina-atti .interno,
-.pagina-atti .risultati > * { width: min(100% - 2.5rem, 54rem); }
 
 .atti-cerca { padding: 1.1rem 0 .2rem; }
 
