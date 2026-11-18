@@ -27,7 +27,7 @@
   --tinta-ombra: 23, 21, 15;
   --ombra: 0 1px 2px rgba(var(--tinta-ombra), .06), 0 8px 24px -18px rgba(var(--tinta-ombra), .35);
   --tondo: 12px;
-  --colonna: 46rem; /* larghezza della colonna di lettura: la cambiano le pagine larghe */
+  --colonna: 56rem; /* larghezza della colonna di lettura: la cambiano le pagine larghe */
   --testo: 1rem;
   --barra-h: 3.7rem; /* altezza della barra di navigazione in basso (solo mobile) */
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
@@ -106,7 +106,7 @@ input, textarea { caret-color: var(--accento); }
 }
 .salta:focus { left: 0; color: var(--carta); }
 
-.interno { width: min(100% - 2.5rem, 46rem); margin-inline: auto; }
+.interno { width: min(100% - 2.5rem, 56rem); margin-inline: auto; }
 
 /* ---------- barra del sito: il menu delle pagine, su schermo largo ---------- */
 
@@ -485,7 +485,7 @@ body.ha-risultati .suggerimenti { display: none; }
 [data-theme="scuro"] .tema-menu .icona-luna { display: none; }
 [data-theme="scuro"] .tema-menu .icona-sole { display: block; }
 
-body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
+body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 
 /* ---------- risultati ---------- */
 
@@ -501,7 +501,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   scrollbar-color: var(--linea-forte) transparent;
 }
 .risultati > * {
-  width: min(100% - 2.5rem, 46rem);
+  width: min(100% - 2.5rem, 56rem);
   margin-inline: auto;
 }
 
@@ -528,7 +528,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   transform: translateY(-.35em);
 }
 
-.risposta { max-width: 42rem; }
+.risposta { max-width: none; }
 
 .etichetta {
   display: inline-block;
@@ -705,7 +705,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 /* seconda richiesta dentro la stessa domanda: sta sotto la risposta principale, separata
    da una riga, con la scheda in tono più basso (sfondo carta-alt, titolo h4 più piccolo) */
-.anche { max-width: 42rem; margin: 2rem 0 0; padding: 1.2rem 0 0; border-top: 1px solid var(--linea); }
+.anche { max-width: none; margin: 2rem 0 0; padding: 1.2rem 0 0; border-top: 1px solid var(--linea); }
 .anche > h3 {
   margin: 0 0 .7rem;
   font: 600 .72rem/1.6 var(--sans);
@@ -861,7 +861,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 
 .in-cima {
   position: fixed;
-  right: max(1rem, calc((100vw - var(--colonna, 46rem)) / 2 - 3.4rem));
+  right: max(1rem, calc((100vw - var(--colonna, 56rem)) / 2 - 3.4rem));
   bottom: calc(var(--piede-h, 4rem) + .9rem);
   z-index: 3;
   display: grid;
@@ -887,7 +887,7 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
   align-items: flex-start;
   gap: .55rem;
   margin: 0;
-  padding: .55rem max(1rem, calc((100vw - 46rem) / 2));
+  padding: .55rem max(1rem, calc((100vw - 56rem) / 2));
   background: var(--caldo-chiaro);
   border-bottom: 1px solid var(--linea-forte);
   font: 500 .82rem/1.45 var(--sans);
