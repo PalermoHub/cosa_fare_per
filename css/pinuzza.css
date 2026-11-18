@@ -1165,7 +1165,7 @@ body:not(.ha-risultati):not(.pagina-informativa) .testata {
   scrollbar-width: thin;
   scrollbar-color: var(--linea-forte) transparent;
 }
-body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; overflow: visible; }
+body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 1 1 auto; overflow: visible; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
