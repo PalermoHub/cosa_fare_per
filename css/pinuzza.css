@@ -1274,6 +1274,7 @@ body.crediti-aperti .crediti {
   text-transform: uppercase;
   color: var(--inchiostro-fio);
 }
+.crediti-testo + .crediti-testo { margin-top: .45rem; }
 .crediti-testo {
   margin: 0;
   font-size: .86rem;

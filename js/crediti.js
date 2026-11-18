@@ -82,12 +82,25 @@ function costruisci() {
   const fonti = sezione(
     'Fonti',
     paragrafo(
-      'Schede servizio e uffici del ',
+      'Schede servizio e uffici: ',
       link('Comune di Palermo', 'https://www.comune.palermo.it/amministrazione/aree-amministrative/', 'Aree amministrative del Comune di Palermo'),
       ', dal catalogo ',
       link('Cerca servizi', 'https://sites.google.com/comune.palermo.it/trova-servizi/', 'Cerca servizi del Comune di Palermo'),
       '.',
     ),
+    paragrafo(
+      'Atti del Comune: ',
+      link('Albo Pretorio', 'https://albopretorio.comune.palermo.it/albopretorio/jsp/home.jsp?modo=info&info=servizi.jsp', 'Albo Pretorio del Comune di Palermo'),
+      ' e ',
+      link('Delibere e Ordinanze', 'https://servizionline.comune.palermo.it/portcitt/jsp/home.jsp?modo=info&info=servizi.jsp&SERCOD=60&SERCODROOT=60', 'Delibere e Ordinanze sui servizi online del Comune'),
+      '.',
+    ),
+    paragrafo(
+      'Mappe: © ',
+      link('OpenStreetMap', 'https://www.openstreetmap.org/copyright', 'Copyright di OpenStreetMap'),
+      ' contributors.',
+    ),
+    paragrafo('Le risposte alle domande più frequenti sono schede preparate dal progetto sulle fonti ufficiali: vanno sempre confermate con l\'ufficio competente.'),
   );
 
   const licenza = sezione(
