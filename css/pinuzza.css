@@ -2324,6 +2324,16 @@ body.ha-risultati .scorciatoie { display: none; }
 
 .atti-aiuto { flex: 1 1 100%; margin: 0; font-size: .78rem; line-height: 1.45; color: var(--inchiostro-fio); }
 .atti-aiuto strong { color: var(--inchiostro-tenue); }
+.atti-aiuto summary { cursor: pointer; list-style: none; display: block; }
+.atti-aiuto summary::-webkit-details-marker { display: none; }
+.atti-aiuto summary::after {
+  content: ""; display: inline-block; width: .4rem; height: .4rem; margin-left: .9rem;
+  border: solid var(--inchiostro-fio); border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-.2rem) rotate(45deg); transition: transform .2s ease;
+}
+.atti-aiuto[open] > summary::after { transform: translateY(-.05rem) rotate(-135deg); }
+.atti-aiuto summary:focus-visible { outline: 2px solid var(--accento); outline-offset: 3px; border-radius: 3px; }
+.atti-aiuto p { margin: .3rem 0 0; }
 
 .atti-esito { margin: .9rem 0 .2rem; }
 
