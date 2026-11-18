@@ -848,6 +848,20 @@ body.ha-risultati .interno { width: min(100% - 2.5rem, 46rem); }
 .piede-fonte { grid-area: fonte; color: var(--inchiostro-fio); }
 .piede-nota { grid-area: nota; color: var(--inchiostro-fio); }
 
+/* Da tablet in su il piede è una colonna centrata: logo, credito, collegamenti, fonte, avvertenza.
+   Sul telefono valgono le regole più sotto (solo il credito, già centrato). */
+@media (min-width: 40.01rem) {
+  .piede-riga { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: .4rem; text-align: center; }
+  .piede img { width: 28px; height: 28px; }
+  .piede-corpo {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "credito" "voci" "fonte" "nota";
+    justify-items: center;
+    gap: .2rem;
+  }
+  .piede-voci { justify-content: center; align-self: center; }
+}
+
 .in-cima {
   position: fixed;
   right: max(1rem, calc((100vw - var(--colonna, 46rem)) / 2 - 3.4rem));
