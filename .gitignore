@@ -27,3 +27,7 @@ node_modules/
 
 # cache locale di wrangler (contiene l'id dell'account)
 worker/.wrangler/
+
+# strumenti di design e grafo di conoscenza: restano locali
+.hallmark/
+graphify-out/
