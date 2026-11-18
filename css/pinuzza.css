@@ -68,6 +68,223 @@
   --ombra: 0 1px 2px rgba(var(--tinta-ombra), .5), 0 8px 24px -18px rgba(var(--tinta-ombra), .8);
 }
 
+/* Altri temi fatti a mano, stessi ruoli. Chiari: «Seppia» (carta calda, riposante per leggere a
+   lungo), «Salvia», «Mare». Scuri: «Notte», «Bosco». Per chi ha bisogno di distinguere bene,
+   due «Alto contrasto» (≥ 7:1): nero e giallo, oppure nero su bianco. */
+[data-theme="seppia"] {
+  --carta: #f2e8d2;
+  --carta-alt: #e9dcc0;
+  --superficie: #faf3e2;
+  --inchiostro: #2b2214;
+  --inchiostro-tenue: #54452b;
+  --inchiostro-fio: #66552f;
+  --linea: #d8c9a5;
+  --linea-forte: #bfae84;
+  --accento: #0b5a4f;
+  --accento-chiaro: #dfe6d2;
+  --accento-fondo: #0b5a4f;
+  --accento-fondo-hover: #08463e;
+  --su-accento: #ffffff;
+  --su-caldo: #ffffff;
+  --caldo: #9a3d12;
+  --caldo-fondo: #9a3d12;
+  --caldo-chiaro: #f3dcc4;
+  --avviso-testo: #45200c;
+  --avviso-tenue: #62300f;
+  --tinta-ombra: 43, 34, 20;
+}
+[data-theme="contrasto"] {
+  color-scheme: dark;
+  --carta: #000000;
+  --carta-alt: #101010;
+  --superficie: #0a0a0a;
+  --inchiostro: #ffffff;
+  --inchiostro-tenue: #f0f0f0;
+  --inchiostro-fio: #dcdcdc;
+  --linea: #8c8c8c;
+  --linea-forte: #ffffff;
+  --accento: #ffe14d;
+  --accento-chiaro: #2c2600;
+  --accento-fondo: #ffe14d;
+  --accento-fondo-hover: #fff09a;
+  --su-accento: #000000;
+  --su-caldo: #000000;
+  --caldo: #ffb27a;
+  --caldo-fondo: #ffb27a;
+  --caldo-chiaro: #2e1808;
+  --avviso-testo: #ffffff;
+  --avviso-tenue: #ffe3d0;
+  --tinta-ombra: 0, 0, 0;
+}
+[data-theme="salvia"] {
+  --carta: #eef2e6;
+  --carta-alt: #e2e9d6;
+  --superficie: #f8faf3;
+  --inchiostro: #1f2a1c;
+  --inchiostro-tenue: #46553f;
+  --inchiostro-fio: #566648;
+  --linea: #d3dcc3;
+  --linea-forte: #b9c6a3;
+  --accento: #2f5d2a;
+  --accento-chiaro: #dde8d0;
+  --accento-fondo: #2f5d2a;
+  --accento-fondo-hover: #244a20;
+  --su-accento: #ffffff;
+  --su-caldo: #ffffff;
+  --caldo: #8f3f12;
+  --caldo-fondo: #8f3f12;
+  --caldo-chiaro: #f2e0cf;
+  --avviso-testo: #3f1d0a;
+  --avviso-tenue: #5c2c0e;
+  --tinta-ombra: 31, 42, 28;
+}
+[data-theme="mare"] {
+  --carta: #eaf1f5;
+  --carta-alt: #dce8ef;
+  --superficie: #f6fafc;
+  --inchiostro: #14232e;
+  --inchiostro-tenue: #3d5463;
+  --inchiostro-fio: #4f6675;
+  --linea: #cbdbe5;
+  --linea-forte: #a9c0cf;
+  --accento: #0b5a8a;
+  --accento-chiaro: #d6e8f3;
+  --accento-fondo: #0b5a8a;
+  --accento-fondo-hover: #084a73;
+  --su-accento: #ffffff;
+  --su-caldo: #ffffff;
+  --caldo: #a6481a;
+  --caldo-fondo: #a6481a;
+  --caldo-chiaro: #f7e3d6;
+  --avviso-testo: #4a210c;
+  --avviso-tenue: #683211;
+  --tinta-ombra: 20, 35, 46;
+}
+[data-theme="notte"] {
+  color-scheme: dark;
+  --carta: #0e1420;
+  --carta-alt: #151d2c;
+  --superficie: #1a2436;
+  --inchiostro: #e9eef7;
+  --inchiostro-tenue: #bcc7da;
+  --inchiostro-fio: #9aa8c0;
+  --linea: #25324a;
+  --linea-forte: #3a4a68;
+  --accento: #8fc2ff;
+  --accento-chiaro: #14284a;
+  --accento-fondo: #8fc2ff;
+  --accento-fondo-hover: #b3d6ff;
+  --su-accento: #0e1420;
+  --su-caldo: #0e1420;
+  --caldo: #ffb184;
+  --caldo-fondo: #ffb184;
+  --caldo-chiaro: #35201a;
+  --avviso-testo: #ffdcc4;
+  --avviso-tenue: #f5b894;
+  --tinta-ombra: 0, 0, 0;
+}
+[data-theme="bosco"] {
+  color-scheme: dark;
+  --carta: #0f1a14;
+  --carta-alt: #16241c;
+  --superficie: #1b2c22;
+  --inchiostro: #e8f1e6;
+  --inchiostro-tenue: #bccfbb;
+  --inchiostro-fio: #9bb39a;
+  --linea: #26392d;
+  --linea-forte: #3b5445;
+  --accento: #9be0a8;
+  --accento-chiaro: #163325;
+  --accento-fondo: #9be0a8;
+  --accento-fondo-hover: #b9ecc3;
+  --su-accento: #0f1a14;
+  --su-caldo: #0f1a14;
+  --caldo: #f0b27a;
+  --caldo-fondo: #f0b27a;
+  --caldo-chiaro: #33241a;
+  --avviso-testo: #ffe0c4;
+  --avviso-tenue: #f0c196;
+  --tinta-ombra: 0, 0, 0;
+}
+[data-theme="contrasto-chiaro"] {
+  --carta: #ffffff;
+  --carta-alt: #f2f2f2;
+  --superficie: #ffffff;
+  --inchiostro: #000000;
+  --inchiostro-tenue: #1a1a1a;
+  --inchiostro-fio: #2e2e2e;
+  --linea: #6b6b6b;
+  --linea-forte: #000000;
+  --accento: #00428a;
+  --accento-chiaro: #e3eefc;
+  --accento-fondo: #00428a;
+  --accento-fondo-hover: #002f63;
+  --su-accento: #ffffff;
+  --su-caldo: #ffffff;
+  --caldo: #8a2a00;
+  --caldo-fondo: #8a2a00;
+  --caldo-chiaro: #ffe9dc;
+  --avviso-testo: #3d1200;
+  --avviso-tenue: #4d1900;
+  --tinta-ombra: 0, 0, 0;
+}
+/* Per il daltonismo: le due tinte dell'interfaccia (accento e «caldo») si distinguono anche per
+   luminosità, e non stanno mai sull'asse che quella forma di daltonismo confonde.
+   «Blu e arancio»: rosso-verde (protanopia e deuteranopia). «Rosso e petrolio»: blu-giallo. */
+[data-theme="blu-arancio"] {
+  --carta: #fbfbf9;
+  --carta-alt: #f1f1ee;
+  --superficie: #ffffff;
+  --inchiostro: #16181c;
+  --inchiostro-tenue: #44484f;
+  --inchiostro-fio: #565b63;
+  --linea: #dcdde0;
+  --linea-forte: #bcbfc5;
+  --accento: #004f8c;
+  --accento-chiaro: #dbe8f5;
+  --accento-fondo: #004f8c;
+  --accento-fondo-hover: #003c6b;
+  --su-accento: #ffffff;
+  --su-caldo: #ffffff;
+  --caldo: #a14400;
+  --caldo-fondo: #a14400;
+  --caldo-chiaro: #fbe6d2;
+  --avviso-testo: #4a2000;
+  --avviso-tenue: #663000;
+  --tinta-ombra: 22, 24, 28;
+}
+[data-theme="rosso-petrolio"] {
+  --carta: #fcfaf9;
+  --carta-alt: #f3efed;
+  --superficie: #ffffff;
+  --inchiostro: #1a1618;
+  --inchiostro-tenue: #4a4346;
+  --inchiostro-fio: #5d5558;
+  --linea: #e2dcda;
+  --linea-forte: #c4bbb8;
+  --accento: #9c1139;
+  --accento-chiaro: #f8dfe6;
+  --accento-fondo: #9c1139;
+  --accento-fondo-hover: #7d0d2e;
+  --su-accento: #ffffff;
+  --su-caldo: #ffffff;
+  --caldo: #0b5560;
+  --caldo-fondo: #0b5560;
+  --caldo-chiaro: #d9ecee;
+  --avviso-testo: #052a30;
+  --avviso-tenue: #0a4049;
+  --tinta-ombra: 26, 22, 24;
+}
+/* Tema personalizzato: le variabili le scrive js/tema.js sulla radice (derivate da quattro
+   colori scelti, con il contrasto garantito da js/tema-colori.js). Qui resta solo lo schema. */
+[data-theme="personalizzato"] { color-scheme: var(--schema, light); }
+
+/* Dimensione del testo: scala tutto, perché il CSS è in rem. Cinque livelli (js/tema.js). */
+html[data-testo="0"] { font-size: 90%; }
+html[data-testo="2"] { font-size: 115%; }
+html[data-testo="3"] { font-size: 130%; }
+html[data-testo="4"] { font-size: 150%; }
+
 * { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
@@ -454,9 +671,9 @@ body.ha-risultati .campo input { padding: .5rem 0; font-size: .98rem; }
 body.ha-risultati .campo-piede { flex: 0 0 auto; }
 body.ha-risultati .suggerimenti { display: none; }
 
-/* Cambio tema: nella barra del sito, in fondo al menu, un pulsante tondo con la sola icona
-   (la luna se sei nel chiaro, il sole se sei nello scuro). Sul telefono il comando è la voce
-   della barra in basso, più comoda per il pollice. */
+/* Aspetto: nella barra del sito, in fondo al menu, un pulsante tondo con la sola icona
+   (cerchio mezzo pieno) che apre il pannello dei temi. Sul telefono il comando è la voce
+   del pannello «Altro», più comoda per il pollice. */
 .tema-menu {
   align-self: center;
   display: inline-flex;
@@ -484,9 +701,6 @@ body.ha-risultati .suggerimenti { display: none; }
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.tema-menu .icona-sole { display: none; }
-[data-theme="scuro"] .tema-menu .icona-luna { display: none; }
-[data-theme="scuro"] .tema-menu .icona-sole { display: block; }
 
 body.ha-risultati .interno { width: min(100% - 2.5rem, 56rem); }
 
@@ -990,42 +1204,109 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
 /* la pagina in cui ci si trova: stessa lingua della barra (accento), senza altre cornici */
 .altre-voci a[aria-current] .altre-etichetta { color: var(--accento); }
 
-/* il tema è un interruttore: la posizione dice lo stato, la parola lo dice a chi non vede */
-.altre-interruttore {
+
+
+/* ---------- «Aspetto»: tema e dimensione del testo (costruito da js/tema.js) ---------- */
+
+/* la vela resta trasparente: mentre si sceglie, la pagina dietro cambia e si vede come viene */
+.aspetto::backdrop { background: transparent; }
+.aspetto { max-height: min(88dvh, 40rem); }
+.aspetto-gruppo { margin: .9rem 0 0; padding: 0; border: 0; min-width: 0; }
+.aspetto-gruppo legend {
+  padding: 0;
+  margin-bottom: .45rem;
+  font: 600 .8rem/1.3 var(--sans);
+  color: var(--inchiostro-tenue);
+}
+.aspetto-temi { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.2rem, 1fr)); gap: .5rem; }
+.aspetto-tema {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 2.9rem;
+  padding: .45rem .7rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: .55rem;
+  background: var(--superficie);
+  color: var(--inchiostro);
+  font: 500 .9rem/1.2 var(--sans);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.aspetto-tema:hover { border-color: var(--accento); }
+/* il radio vero resta nel documento (tastiera, lettori di schermo) ma non si vede */
+.aspetto-tema input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.aspetto-tema:has(input:checked) { border-color: var(--accento); background: var(--accento-chiaro); box-shadow: inset 0 0 0 1px var(--accento); }
+.aspetto-tema:has(input:focus-visible) { outline: 2px solid var(--accento); outline-offset: 2px; }
+.aspetto-campioni {
   position: relative;
   flex: 0 0 auto;
-  width: 2.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .18rem;
+  width: 2.1rem;
   height: 1.55rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 999px;
-  background: var(--carta-alt);
-  transition: background .2s ease, border-color .2s ease;
+  border-radius: .35rem;
 }
-.altre-interruttore::after {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 1.05rem;
-  height: 1.05rem;
-  border-radius: 999px;
-  background: var(--superficie);
-  box-shadow: 0 1px 2px rgba(var(--tinta-ombra), .35);
-  transition: transform .22s cubic-bezier(.16, 1, .3, 1), background .2s ease;
-}
-.altre-tema[aria-pressed="true"] .altre-interruttore {
-  background: var(--accento-fondo);
-  border-color: var(--accento-fondo);
-}
-.altre-tema[aria-pressed="true"] .altre-interruttore::after {
-  transform: translateX(1.11rem);
-  background: var(--su-accento);
-}
+.aspetto-campioni i { width: .5rem; height: .5rem; border-radius: 50%; }
+.aspetto-campioni-libero { background: conic-gradient(hsl(0 70% 58%), hsl(45 85% 55%), hsl(130 55% 48%), hsl(195 70% 52%), hsl(260 60% 62%), hsl(0 70% 58%)); }
 
-/* l'icona dice cosa ottieni: la luna se sei nel chiaro, il sole se sei nello scuro */
-.altre .icona-sole { display: none; }
-[data-theme="scuro"] .altre .icona-luna { display: none; }
-[data-theme="scuro"] .altre .icona-sole { display: block; }
+.aspetto-nota { margin: .6rem 0 0; font-size: .78rem; line-height: 1.45; color: var(--inchiostro-tenue); }
+.aspetto-editor { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--linea); }
+.aspetto-colori { display: grid; grid-template-columns: repeat(auto-fit, minmax(5.2rem, 1fr)); gap: .6rem; }
+.aspetto-colore { display: grid; gap: .3rem; justify-items: start; font: 500 .8rem/1.2 var(--sans); color: var(--inchiostro-tenue); }
+.aspetto-colore input[type="color"] {
+  width: 100%;
+  height: 2.75rem;
+  padding: 2px;
+  border: 1px solid var(--linea-forte);
+  border-radius: .45rem;
+  background: var(--superficie);
+  cursor: pointer;
+}
+.aspetto-colore input[type="color"]:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
+.aspetto-stato { margin: .7rem 0 .5rem; font-size: .8rem; line-height: 1.45; color: var(--inchiostro-tenue); }
+
+.aspetto-testo {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr 2.75rem;
+  align-items: center;
+  gap: .6rem;
+}
+.aspetto-passo {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--linea-forte);
+  border-radius: .55rem;
+  background: var(--superficie);
+  color: var(--inchiostro);
+  font: 600 .95rem/1 var(--serif);
+  cursor: pointer;
+  transition: border-color .15s ease, background .15s ease;
+}
+.aspetto-passo-grande { font-size: 1.25rem; }
+.aspetto-passo:hover:not(:disabled) { border-color: var(--accento); background: var(--accento-chiaro); }
+.aspetto-passo:disabled { opacity: .4; cursor: not-allowed; }
+.aspetto-valore { text-align: center; font: 600 1rem/1 var(--sans); font-variant-numeric: tabular-nums; }
+.aspetto-azione {
+  margin-top: .55rem;
+  min-height: 2.75rem;
+  padding: .4rem .8rem;
+  border: 1px solid var(--linea);
+  border-radius: .55rem;
+  background: transparent;
+  color: var(--inchiostro-tenue);
+  font: 500 .85rem/1.2 var(--sans);
+  cursor: pointer;
+}
+.aspetto-azione:hover:not(:disabled) { border-color: var(--accento); color: var(--accento); }
+.aspetto-azione:disabled { opacity: .4; cursor: not-allowed; }
 
 @media (min-width: 40.01rem) {
   /* da qui il pannello non serve più: le stesse voci stanno nel menu in cima, e se resta

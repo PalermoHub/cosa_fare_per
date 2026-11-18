@@ -18,8 +18,11 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script>/* tema subito, prima del primo disegno: niente lampo bianco in tema scuro */
-try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")==="scuro"?"scuro":"chiaro";}catch(e){}</script>
+<script>/* tema e dimensione del testo subito, prima del primo disegno: niente lampo di un altro tema */
+try{var r=document.documentElement,t=localStorage.getItem("pinuzza-tema"),z=localStorage.getItem("pinuzza-testo");
+if(/^[0234]$/.test(z))r.dataset.testo=z;
+if(t==="personalizzato"){var v=JSON.parse(localStorage.getItem("pinuzza-tema-colori")).vars;for(var k in v)if(/^--[a-z-]+$/.test(k)&&/^(#[0-9a-f]{6}|[\d, ]+|light|dark)$/i.test(v[k]))r.style.setProperty(k,v[k]);r.dataset.theme=t;}
+else r.dataset.theme=/^(scuro|seppia|salvia|mare|notte|bosco|contrasto|contrasto-chiaro|blu-arancio|rosso-petrolio)$/.test(t)?t:"chiaro";}catch(e){document.documentElement.dataset.theme="chiaro";}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="css/pinuzza.css">
 </head>
@@ -52,16 +55,14 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       <a href="guida.html">Guida</a>
       <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
       <a href="privacy.html">Privacy</a>
-      <button type="button" class="tema-menu" id="tema" aria-pressed="false"
-              title="Passa al tema scuro" aria-label="Passa al tema scuro: ora chiaro">
-        <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+      <button type="button" class="tema-menu" id="tema" aria-haspopup="dialog"
+              title="Aspetto: tema e dimensione del testo" aria-label="Aspetto del sito: apri le opzioni">
+        <svg class="icona-aspetto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="8.4"/>
+          <path d="M12 3.6v16.8" />
+          <path d="M12 3.6a8.4 8.4 0 0 1 0 16.8Z" fill="currentColor" stroke="none"/>
         </svg>
-        <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="4.2"/>
-          <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
-        </svg>
-        <span class="nascosto">Tema scuro</span>
+        <span class="nascosto">Aspetto</span>
       </button>
     </div>
   </div>
@@ -277,22 +278,20 @@ try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")=
       </button>
     </li>
   </ul>
-  <button type="button" class="altre-tema" id="tema-barra" aria-pressed="false"
-          aria-label="Passa al tema scuro: ora chiaro">
+  <button type="button" class="altre-tema" id="tema-barra" aria-haspopup="dialog"
+          aria-label="Aspetto: apri le opzioni">
     <span class="altre-icona">
-      <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
-          </svg>
-      <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="4.2"/>
-            <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
-          </svg>
+      <svg class="icona-aspetto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <circle cx="12" cy="12" r="8.4"/>
+        <path d="M12 3.6v16.8" />
+        <path d="M12 3.6a8.4 8.4 0 0 1 0 16.8Z" fill="currentColor" stroke="none"/>
+      </svg>
     </span>
     <span class="altre-testo">
       <span class="altre-etichetta">Aspetto</span>
       <span class="altre-nota" data-tema-parola>Chiaro</span>
     </span>
-    <span class="altre-interruttore" aria-hidden="true"></span>
+    <span class="altre-freccia" aria-hidden="true">›</span>
   </button>
 </dialog>
 

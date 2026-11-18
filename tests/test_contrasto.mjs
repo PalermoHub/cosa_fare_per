@@ -33,6 +33,11 @@ function blocco(selettore) {
 
 const CHIARO = blocco(':root');
 const SCURO = { ...CHIARO, ...blocco('\\[data-theme="scuro"\\]') };
+const SEPPIA = { ...CHIARO, ...blocco('\\[data-theme="seppia"\\]') };
+const CONTRASTO = { ...CHIARO, ...blocco('\\[data-theme="contrasto"\\]') };
+// gli altri temi curati: stesse regole (AA), i due «contrasto» anche AAA
+const ALTRI = ['salvia', 'mare', 'notte', 'bosco', 'contrasto-chiaro', 'blu-arancio', 'rosso-petrolio'];
+const ALTRI_MISURATI = {};
 
 // ---------- calcolo WCAG ----------
 
@@ -86,6 +91,9 @@ function misura(tema) {
 
 const CHIARO_MISURATO = misura(CHIARO);
 const SCURO_MISURATO = misura(SCURO);
+const SEPPIA_MISURATO = misura(SEPPIA);
+const CONTRASTO_MISURATO = misura(CONTRASTO);
+for (const nome of ALTRI) ALTRI_MISURATI[nome] = misura({ ...CHIARO, ...blocco(`\\[data-theme="${nome}"\\]`) });
 
 // ---------- test ----------
 
@@ -101,18 +109,44 @@ test('nel tema scuro ogni testo supera 4,5:1', () => {
   }
 });
 
-test('il tema scuro ridefinisce tutti i colori del tema chiaro', () => {
-  const scuro = blocco('\\[data-theme="scuro"\\]');
-  const soloChiaro = Object.entries(CHIARO)
-    .filter(([, valore]) => /^#[0-9a-f]{6}$/i.test(valore)) // solo i colori, non misure e font
-    .filter(([nome]) => !(nome in scuro))
-    .map(([nome]) => nome);
-  assert.deepEqual(soloChiaro, [], `colori non ridefiniti nel tema scuro: ${soloChiaro.join(', ')}`);
+test('nel tema seppia ogni testo supera 4,5:1', () => {
+  for (const riga of SEPPIA_MISURATO) {
+    assert.ok(riga.rapporto >= SOGLIA_AA, `${riga.nome}: ${riga.rapporto.toFixed(2)}:1 (serve ${SOGLIA_AA})`);
+  }
 });
+
+test('nel tema alto contrasto ogni testo supera 7:1 (AAA)', () => {
+  for (const riga of CONTRASTO_MISURATO) {
+    assert.ok(riga.rapporto >= 7, `${riga.nome}: ${riga.rapporto.toFixed(2)}:1 (serve 7)`);
+  }
+});
+
+for (const nome of ALTRI) {
+  test(`nel tema ${nome} ogni testo supera ${nome.startsWith('contrasto') ? 7 : 4.5}:1`, () => {
+    const soglia = nome.startsWith('contrasto') ? 7 : SOGLIA_AA;
+    for (const riga of ALTRI_MISURATI[nome]) {
+      assert.ok(riga.rapporto >= soglia, `${riga.nome}: ${riga.rapporto.toFixed(2)}:1 (serve ${soglia})`);
+    }
+  });
+}
+
+for (const nome of ['scuro', 'seppia', 'contrasto', ...ALTRI]) {
+  test(`il tema ${nome} ridefinisce tutti i colori del tema chiaro`, () => {
+    const proprio = blocco(`\\[data-theme="${nome}"\\]`);
+    const soloChiaro = Object.entries(CHIARO)
+      .filter(([, valore]) => /^#[0-9a-f]{6}$/i.test(valore)) // solo i colori, non misure e font
+      .filter(([variabile]) => !(variabile in proprio) && variabile !== '--giallo')
+      .map(([variabile]) => variabile);
+    assert.deepEqual(soloChiaro, [], `colori non ridefiniti nel tema ${nome}: ${soloChiaro.join(', ')}`);
+  });
+}
 
 test('nessun colore è scritto a mano fuori dalle variabili', () => {
   const senzaVariabili = CSS.replace(/:root\s*\{[^}]*\}/s, '')
     .replace(/\[data-theme="scuro"\]\s*\{[^}]*\}/s, '')
+    .replace(/\[data-theme="seppia"\]\s*\{[^}]*\}/s, '')
+    .replace(/\[data-theme="contrasto"\]\s*\{[^}]*\}/s, '')
+    .replace(/\[data-theme="(?:salvia|mare|notte|bosco|contrasto-chiaro|blu-arancio|rosso-petrolio)"\]\s*\{[^}]*\}/gs, '')
     .split('\n')
     .filter(riga => /#(fff|ffffff|[0-9a-f]{6})\b/i.test(riga))
     .map(riga => riga.trim())
@@ -139,6 +173,9 @@ const REPORT = [
   '',
   ...tabella('Tema chiaro', CHIARO_MISURATO),
   ...tabella('Tema scuro', SCURO_MISURATO),
+  ...tabella('Tema seppia', SEPPIA_MISURATO),
+  ...tabella('Tema alto contrasto (giallo)', CONTRASTO_MISURATO),
+  ...ALTRI.flatMap(nome => tabella(`Tema ${nome}`, ALTRI_MISURATI[nome])),
 ].join('\n');
 
 if (process.argv.includes('--tabella')) console.log(REPORT);

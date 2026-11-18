@@ -264,11 +264,14 @@ const casi = {
     verifica(!dopo.orizzontale, 'la pagina scorre in orizzontale');
   },
 
-  async 'tema scuro: cambia, resta dopo il ricaricamento'(pagina, base) {
+  async 'aspetto: tema scuro dal pannello, resta dopo il ricaricamento'(pagina, base) {
     await pagina.setViewportSize({ width: 1280, height: 900 });
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
     await attesa(1000);
     await pagina.click('#tema');
+    await attesa(300);
+    verifica(await pagina.isVisible('#aspetto'), 'il pannello Aspetto non si apre');
+    await pagina.click('#aspetto label.aspetto-tema:has(input[value="scuro"])');
     await attesa(300);
     const dopo = await pagina.evaluate(() => ({
       tema: document.documentElement.dataset.theme,
@@ -277,10 +280,53 @@ const casi = {
     }));
     verifica(dopo.tema === 'scuro' && dopo.salvato === 'scuro', `tema dopo il clic: ${JSON.stringify(dopo)}`);
     verifica(dopo.fondo === 'rgb(19, 18, 16)', `fondo scuro atteso, trovato ${dopo.fondo}`);
+    await pagina.keyboard.press('Escape');
+    await attesa(200);
+    verifica(!(await pagina.isVisible('#aspetto')), 'Esc non chiude il pannello');
     await pagina.reload({ waitUntil: 'load' });
     await attesa(800);
     verifica(await pagina.evaluate(() => document.documentElement.dataset.theme) === 'scuro', 'il tema non resta dopo il ricaricamento');
     await pagina.evaluate(() => { localStorage.removeItem('pinuzza-tema'); document.documentElement.dataset.theme = 'chiaro'; });
+  },
+
+  async 'aspetto: tema personalizzato e dimensione del testo, anche dopo il ricaricamento'(pagina, base) {
+    await pagina.setViewportSize({ width: 1280, height: 900 });
+    await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });
+    await attesa(1000);
+    await pagina.click('#tema');
+    await pagina.click('#aspetto label.aspetto-tema:has(input[value="personalizzato"])');
+    await attesa(200);
+    verifica(await pagina.isVisible('#aspetto-editor'), 'l\'editor dei colori non compare');
+    // uno sfondo scuro con un testo quasi uguale: l'app deve correggerlo, non diventare illeggibile
+    await pagina.fill('#aspetto input[data-colore="sfondo"]', '#1a2b3c');
+    await pagina.fill('#aspetto input[data-colore="testo"]', '#1c2d3e');
+    await attesa(200);
+    const colori = await pagina.evaluate(() => ({
+      carta: getComputedStyle(document.documentElement).getPropertyValue('--carta').trim(),
+      inchiostro: getComputedStyle(document.documentElement).getPropertyValue('--inchiostro').trim(),
+      stato: document.getElementById('aspetto-stato').textContent,
+    }));
+    verifica(colori.carta === '#1a2b3c', `sfondo non applicato: ${JSON.stringify(colori)}`);
+    verifica(colori.inchiostro !== '#1c2d3e', `testo illeggibile non corretto: ${JSON.stringify(colori)}`);
+    verifica(/ritoccato: testo/.test(colori.stato), `manca l'avviso del ritocco: ${colori.stato}`);
+    // dimensione del testo
+    const prima = await pagina.evaluate(() => parseFloat(getComputedStyle(document.documentElement).fontSize));
+    await pagina.click('[data-testo-piu]');
+    await pagina.click('[data-testo-piu]');
+    const dopoTesto = await pagina.evaluate(() => ({ px: parseFloat(getComputedStyle(document.documentElement).fontSize), salvato: localStorage.getItem('pinuzza-testo') }));
+    verifica(dopoTesto.px > prima * 1.25 && dopoTesto.salvato === '3', `testo non ingrandito: ${JSON.stringify(dopoTesto)} (prima ${prima})`);
+    await pagina.keyboard.press('Escape');
+    await pagina.reload({ waitUntil: 'load' });
+    await attesa(800);
+    const resta = await pagina.evaluate(() => ({
+      tema: document.documentElement.dataset.theme,
+      carta: getComputedStyle(document.documentElement).getPropertyValue('--carta').trim(),
+      testo: document.documentElement.dataset.testo,
+      orizzontale: document.documentElement.scrollWidth > window.innerWidth,
+    }));
+    verifica(resta.tema === 'personalizzato' && resta.carta === '#1a2b3c' && resta.testo === '3', `dopo il ricaricamento: ${JSON.stringify(resta)}`);
+    verifica(!resta.orizzontale, 'con il testo grande la pagina scorre in orizzontale');
+    await pagina.evaluate(() => { ['pinuzza-tema', 'pinuzza-tema-colori', 'pinuzza-testo'].forEach(k => localStorage.removeItem(k)); });
   },
 
   async 'senza rete: l’app si apre, risponde e mostra la scheda'(pagina, base) {

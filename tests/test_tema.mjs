@@ -36,79 +36,68 @@ test('ogni pagina carica js/tema.js (pulsante e scelta dell\'utente)', () => {
   }
 });
 
-test('la scelta si salva sotto la chiave giusta e non viene sovrascritta', () => {
+test('la scelta si salva sotto le chiavi giuste e non segue il sistema', () => {
   assert.ok(tema.includes("const CHIAVE = 'pinuzza-tema'"), 'chiave di memoria diversa da pinuzza-tema');
-  assert.ok(tema.includes('localStorage.setItem(CHIAVE'), 'la scelta non viene salvata');
+  assert.ok(tema.includes("'pinuzza-tema-colori'"), 'manca la chiave dei colori personalizzati');
+  assert.ok(tema.includes("'pinuzza-testo'"), 'manca la chiave della dimensione del testo');
+  assert.ok(tema.includes('localStorage.setItem(chiave'), 'la scelta non viene salvata');
   assert.ok(!tema.includes('matchMedia'), 'il tema non deve seguire il sistema: si parte chiari e vale la scelta salvata');
 });
 
-test('sul telefono la stessa scelta si fa dall’interruttore nel pannello «Altro»', () => {
+test('lo script in linea applica anche dimensione del testo e tema personalizzato, con controlli sui valori', () => {
   for (const pagina of PAGINE) {
     const html = leggi(pagina);
-    assert.match(html, /id="tema-barra"/, `${pagina}: manca l'interruttore del tema nel pannello`);
-    assert.match(html, /aria-pressed="false"/, `${pagina}: l'interruttore non dichiara lo stato`);
-    assert.match(html, /icona-luna/, `${pagina}: manca l'icona del tema scuro`);
-    assert.match(html, /icona-sole/, `${pagina}: manca l'icona del tema chiaro`);
-    // sta dentro il pannello «Altro», non nella barra: la barra ha quattro posti
-    const pannello = /<dialog class="altre"[\s\S]*?<\/dialog>/.exec(html);
-    assert.ok(pannello, `${pagina}: manca il pannello «Altro»`);
-    assert.match(pannello[0], /id="tema-barra"/, `${pagina}: l'interruttore non sta nel pannello`);
-    assert.match(pannello[0], /data-tema-parola/, `${pagina}: manca la parola che dice lo stato`);
+    const script = /<script>(?:(?!<\/script>)[\s\S])*pinuzza-tema[\s\S]*?<\/script>/.exec(html)[0];
+    assert.match(script, /pinuzza-testo/, `${pagina}: lo script non legge la dimensione del testo`);
+    assert.match(script, /pinuzza-tema-colori/, `${pagina}: lo script non legge i colori personalizzati`);
+    // dalla memoria entrano solo nomi di variabile e valori attesi: niente stringhe arbitrarie nello stile
+    assert.match(script, /\^--\[a-z-\]\+\$/, `${pagina}: le variabili lette dalla memoria non sono filtrate`);
+    for (const id of ['seppia', 'salvia', 'mare', 'notte', 'bosco', 'contrasto', 'contrasto-chiaro', 'blu-arancio', 'rosso-petrolio']) {
+      assert.ok(script.includes(id), `${pagina}: lo script non conosce il tema ${id}`);
+    }
   }
-  assert.ok(tema.includes("getElementById('tema-barra')"), 'tema.js non collega l\'interruttore del pannello');
-  assert.ok(tema.includes("voce.setAttribute('aria-pressed'"), 'l\'interruttore non aggiorna lo stato');
-  // la parola da riscrivere è quella dello stato, non il primo <span> che capita (l'icona)
-  assert.ok(tema.includes("querySelector('[data-tema-parola]')"), 'tema.js non cerca la parola dello stato');
+});
+
+test('i temi curati hanno nome, campioni e valori uguali a quelli del CSS', () => {
+  const dichiarati = [...tema.matchAll(/\{ id: '([\w-]+)', nome: '([^']+)', campioni: \['(#\w+)', '(#\w+)', '(#\w+)'\] \}/g)];
+  assert.deepEqual(dichiarati.map(m => m[1]), ['chiaro', 'scuro', 'seppia', 'salvia', 'mare', 'notte', 'bosco', 'contrasto', 'contrasto-chiaro', 'blu-arancio', 'rosso-petrolio'], 'temi curati diversi dagli undici attesi');
+  for (const [, id, , sfondo, testo, accento] of dichiarati) {
+    const selettore = id === 'chiaro' ? ':root' : `\\[data-theme="${id}"\\]`;
+    const blocco = new RegExp(`${selettore}\\s*\\{([^}]*)\\}`).exec(css)[1];
+    const valore = nome => new RegExp(`${nome}:\\s*(#\\w+)`).exec(blocco)[1].toLowerCase();
+    assert.equal(valore('--carta'), sfondo, `${id}: lo sfondo del campione non coincide con --carta`);
+    assert.equal(valore('--inchiostro'), testo, `${id}: il testo del campione non coincide con --inchiostro`);
+    assert.equal(valore('--accento'), accento, `${id}: l'accento del campione non coincide con --accento`);
+  }
 });
 
 test('il tema cambia anche il colore della barra del browser', () => {
   assert.match(tema, /meta\[name="theme-color"\]/, 'manca l\'aggiornamento di theme-color');
-  assert.ok(tema.includes('#131210') && tema.includes('#fcfbf7'), 'mancano i due colori della barra');
+  assert.ok(tema.includes("colore('--carta')"), 'la barra deve prendere il colore della carta del tema in uso');
 });
 
-test('il pulsante dichiara lo stato e cosa fa', () => {
-  assert.ok(tema.includes("setAttribute('aria-pressed'"), 'manca aria-pressed');
-  assert.ok(tema.includes('aria-label'), 'manca l\'etichetta accessibile');
-  assert.match(tema, /Tema chiaro|Tema scuro/, 'il pulsante non dice cosa fa');
-});
-
-test('il cambio tema sta nella barra del sito, in fondo al menu', () => {
-  for (const pagina of PAGINE) {
-    const html = leggi(pagina);
-    const menu = /<nav class="barra-sito"[^>]*>[\s\S]*?<\/nav>/.exec(html);
-    assert.ok(menu, `${pagina}: manca il menu della barra del sito`);
-    assert.match(menu[0], /<button type="button" class="tema-menu" id="tema"/, `${pagina}: il pulsante del tema non è nel menu`);
-    // il pulsante è l'ultimo comando del menu, dopo le voci delle pagine
-    assert.ok(menu[0].indexOf('id="tema"') > menu[0].indexOf('href="privacy.html"'), `${pagina}: il pulsante deve venire dopo le voci`);
-    // niente più costruzione da JavaScript: il pulsante sta nel markup di ogni pagina
-    assert.ok(!tema.includes('createElement'), 'il pulsante non va costruito da JavaScript');
-    assert.ok(!tema.includes('inserisciNelPiede'), 'non deve restare l\'inserimento nel piede');
-  }
-  const stile = leggi('css/pinuzza.css');
-  assert.match(stile, /\.tema-menu[^{}]*\{[^}]*border-radius: 50%/, 'il pulsante deve essere tondo');
-  assert.match(stile, /\.tema-menu[^{}]*\{[^}]*align-self: center/, 'il pulsante va centrato nella barra');
-});
-
-test('il pulsante mostra la sola icona e tiene il nome per i lettori di schermo', () => {
+test('il comando Aspetto apre un pannello, dichiara cosa fa e non perde il nome accessibile', () => {
   for (const pagina of PAGINE) {
     const html = leggi(pagina);
     const pulsante = /<button type="button" class="tema-menu"[\s\S]*?<\/button>/.exec(html);
-    assert.ok(pulsante, `${pagina}: manca il pulsante del tema`);
-    assert.match(pulsante[0], /<span class="nascosto">Tema scuro<\/span>/, `${pagina}: la parola deve essere nascosta a video, non cancellata`);
-    assert.match(pulsante[0], /aria-label="Passa al tema scuro/, `${pagina}: manca il nome accessibile`);
-    assert.match(pulsante[0], /aria-pressed="false"/, `${pagina}: il pulsante non dichiara lo stato`);
+    assert.ok(pulsante, `${pagina}: manca il pulsante dell'aspetto`);
+    assert.match(pulsante[0], /aria-haspopup="dialog"/, `${pagina}: il pulsante non dichiara che apre un pannello`);
+    assert.match(pulsante[0], /aria-label="Aspetto del sito/, `${pagina}: manca il nome accessibile`);
+    assert.match(pulsante[0], /<span class="nascosto">Aspetto<\/span>/, `${pagina}: la parola deve essere nascosta a video, non cancellata`);
+    const voce = /<button type="button" class="altre-tema" id="tema-barra"[\s\S]*?<\/button>/.exec(html);
+    assert.ok(voce, `${pagina}: manca la voce Aspetto nel pannello «Altro»`);
+    assert.match(voce[0], /data-tema-parola/, `${pagina}: la voce non dice il tema in uso`);
+  }
+  for (const frammento of ['type: \'radio\'', "type: 'color'", 'role: \'status\'', 'showModal', 'data-testo-meno', 'data-testo-piu']) {
+    assert.ok(tema.includes(frammento), `nel pannello manca: ${frammento}`);
   }
 });
 
-test('aggiornare la parola non deve cancellare le icone', () => {
-  const funzione = /function aggiornaPulsante\(\)[\s\S]*?\n\}/.exec(tema);
-  assert.ok(funzione, 'non trovo aggiornaPulsante');
-  assert.ok(!/pulsante\.textContent\s*=/.test(funzione[0]) || funzione[0].includes('if (parola)'),
-    'aggiornaPulsante deve scrivere nella sola <span>, altrimenti perde le icone');
-  assert.ok(funzione[0].includes("querySelector('span')"), 'la parola va cercata nella span');
+test('la dimensione del testo ha cinque livelli e scala tutto', () => {
+  assert.match(tema, /PASSI_TESTO = \['90%', '100%', '115%', '130%', '150%'\]/, 'livelli diversi dai cinque attesi');
+  for (const n of [0, 2, 3, 4]) assert.match(css, new RegExp(`html\\[data-testo="${n}"\\]\\s*\\{\\s*font-size: \\d+%`), `manca la regola per il livello ${n}`);
+  assert.ok(!/(^|[^-])html\s*\{[^}]*font-size:\s*\d+px/m.test(css), 'html non deve avere una dimensione in px: bloccherebbe la scala');
 });
-
-
 
 test('sul telefono la barra del sito non si mostra (c\'è quella in basso)', () => {
   const stile = leggi('css/pinuzza.css');
