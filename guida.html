@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Come funziona — guida a Chiedilo a Pinuzza</title>
+<meta name="description" content="Guida passo per passo a Chiedilo a Pinuzza: come fare una domanda, leggere la risposta, trovare l'ufficio competente, salvare le risposte e usarla sul telefono e senza rete. Con le schermate dell'app.">
+<meta name="theme-color" content="#fcfbf7">
+<link rel="icon" href="img/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Chiedilo a Pinuzza">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Come funziona — guida a Chiedilo a Pinuzza">
+<meta property="og:description" content="Dalla domanda alla scheda dell'ufficio: la guida con le schermate dell'app, per usarla al meglio anche sul telefono e senza rete.">
+<meta property="og:url" content="https://palermohub.github.io/cosa_fare_per/guida.html">
+<meta property="og:image" content="https://palermohub.github.io/cosa_fare_per/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script>/* tema subito, prima del primo disegno: niente lampo bianco in tema scuro */
+try{document.documentElement.dataset.theme=localStorage.getItem("pinuzza-tema")==="scuro"?"scuro":"chiaro";}catch(e){}</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="css/pinuzza.css">
+</head>
+<body class="pagina-informativa pagina-guida">
+
+<a class="salta" href="#contenuto">Salta alla guida</a>
+
+<nav class="barra-sito" aria-label="Navigazione del sito">
+  <div class="barra-interno">
+    <a class="barra-marchio" href="index.html">
+      <svg class="marchio barra-pin" viewBox="0 0 208 208" aria-hidden="true" focusable="false">
+        <circle class="spilla" cx="100" cy="96" r="86"/>
+        <circle class="faccia" cx="100" cy="96" r="66"/>
+        <ellipse class="occhio" cx="83" cy="87" rx="9" ry="12"/>
+        <circle class="luce" cx="86" cy="82" r="3.2"/>
+        <path class="occhiolino" d="M110 90q11-13 23-2"/>
+        <path class="sorriso" d="M80 111q20 17 40-2"/>
+        <circle class="gota" cx="66" cy="109" r="9"/>
+        <circle class="gota" cx="134" cy="109" r="9"/>
+        <path class="lucciola" d="M186 13l6 13 13 6-13 6-6 13-6-13-13-6 13-6Z"/>
+      </svg>
+      <span>Pinuzza</span>
+    </a>
+    <div class="menu-sito">
+      <a href="index.html">Chiedi</a>
+      <a href="domande.html">Domande</a>
+      <a href="uffici.html">Uffici</a>
+      <a href="salvati.html">Salvate</a>
+      <a href="guida.html" aria-current="page">Guida</a>
+      <a href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener">Segnala<span class="freccia-esterno" aria-hidden="true">↗</span></a>
+      <a href="privacy.html">Privacy</a>
+      <button type="button" class="tema-menu" id="tema" aria-pressed="false"
+              title="Passa al tema scuro" aria-label="Passa al tema scuro: ora chiaro">
+        <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+        </svg>
+        <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+        </svg>
+        <span class="nascosto">Tema scuro</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="testata testata-fissa">
+  <div class="interno">
+    <a class="torna" href="index.html">← Torna a Chiedilo a Pinuzza</a>
+    <h1 class="titolo-pagina">Come funziona Chiedilo a Pinuzza</h1>
+    <p class="presentazione-pagina">Dalla domanda scritta in italiano semplice alla scheda dell'ufficio competente. Una guida passo per passo, con le schermate vere dell'app.</p>
+  </div>
+</header>
+
+<main class="risultati" id="contenuto">
+  <article class="testo-lungo">
+    <p class="aggiornamento">Guida aggiornata al 18 novembre 2026</p>
+
+    <p>
+      <strong>Chiedilo a Pinuzza</strong> risponde alle domande sulla burocrazia del Comune di Palermo
+      e per ogni risposta mostra l'ufficio che se ne occupa, con sede, telefono, email e PEC.
+      Non è un modello linguistico e non chiama nessun servizio a pagamento: le risposte vengono
+      da un archivio preparato di domande, schede servizio e uffici del Comune.
+    </p>
+
+    <div class="nota-pagina">
+      <strong>In breve.</strong> Scrivi cosa devi fare, leggi la risposta, apri la scheda
+      dell'ufficio. Se la risposta non c'è, Pinuzza te lo dice e ti propone gli uffici più vicini
+      al tuo caso: non inventa requisiti, importi o scadenze. Funziona anche sul telefono e,
+      dopo la prima apertura, anche senza rete.
+    </div>
+
+    <nav class="indice-guida" aria-label="Cosa trovi nella guida">
+      <h2>In questa guida</h2>
+      <ol>
+        <li><a href="#domanda">Fare una domanda</a></li>
+        <li><a href="#risposta">Leggere la risposta</a></li>
+        <li><a href="#ufficio">A chi rivolgerti</a></li>
+        <li><a href="#incerta">Quando non è sicura</a></li>
+        <li><a href="#salvare">Salvare, ricominciare, segnalare</a></li>
+        <li><a href="#altre">Tutte le domande e tutti gli uffici</a></li>
+        <li><a href="#telefono">Sul telefono, al buio, senza rete</a></li>
+        <li><a href="#privacy">Cosa sa di te</a></li>
+        <li><a href="#limiti">Cosa non è</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="domanda">1. Fare una domanda</h2>
+    <p>
+      Apri la home e scrivi nel campo in alto, con parole tue: «come cambio residenza»,
+      «quanto costa la mensa», «come faccio per la carta d'identità». Non serve sapere il nome
+      dell'ufficio né il termine tecnico: se scrivi «rifiuti» Pinuzza capisce anche «spazzatura»
+      e «immondizia».
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/home.webp" alt="La home di Chiedilo a Pinuzza: titolo, campo della domanda con il pulsante di invio, le domande di prova e i collegamenti a uffici, domande e segnalazioni." width="1400" height="897" decoding="async">
+      <figcaption>La home: una domanda, qualche esempio per cominciare e le altre strade (tutte le domande, tutti gli uffici, segnalazioni).</figcaption>
+    </figure>
+
+    <ol class="passi">
+      <li><strong>Scrivi la domanda</strong> nel campo e premi la freccia in alto a destra (o il tasto Invio).</li>
+      <li><strong>Se non sai da dove partire</strong>, tocca una delle domande di prova sotto il campo: cambiano a ogni apertura, così non vedi sempre le stesse.</li>
+      <li><strong>Puoi chiedere due cose insieme</strong>: «come cambio residenza e come iscrivo mio figlio alla mensa». La risposta principale resta la prima, la seconda arriva in un riquadro «Nella domanda c'è anche questo».</li>
+    </ol>
+
+    <p>
+      I refusi non fermano la ricerca: «residensa» o «famglia» vengono corretti e la domanda si
+      cerca come le altre. Se invece la domanda è davvero fuori tema, Pinuzza lo dice apertamente
+      (lo vedi al <a href="#incerta">punto 4</a>).
+    </p>
+    <p>
+      Dopo la prima risposta l'indirizzo della pagina cambia in <code>?q=…</code>: puoi copiarlo,
+      aggiungerlo ai preferiti o mandarlo a qualcuno, e si riaprirà con la stessa risposta.
+    </p>
+
+    <h2 id="risposta">2. Leggere la risposta</h2>
+    <p>
+      Ogni risposta è una scheda divisa sempre allo stesso modo: prima il tema e il nome del
+      servizio, poi la sintesi, quindi i passi e i documenti. È la struttura delle schede servizio
+      pubblicate dal Comune, non un testo generato al momento.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/risposta.webp" alt="Una risposta di Pinuzza sul cambio di residenza: la domanda scritta, l'etichetta «Anagrafe e stato civile», il titolo del servizio, la sintesi e le sezioni Come fare, Cosa serve, Cosa si ottiene, Tempi e scadenze." width="1400" height="984" loading="lazy" decoding="async">
+      <figcaption>La risposta al cambio di residenza: categoria, servizio, riassunto e sezioni con i passi, i documenti, i tempi e i costi.</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>L'etichetta</strong> (per esempio «Anagrafe e stato civile») dice il tema della risposta.</li>
+      <li><strong>Il titolo</strong> è il nome del servizio; sotto c'è la sintesi in una o due frasi.</li>
+      <li><strong>Le sezioni</strong> raccontano come fare, cosa serve, cosa si ottiene, tempi e scadenze, quanto costa, come presentare la richiesta.</li>
+      <li><strong>I collegamenti</strong> in fondo portano alla scheda ufficiale del servizio sul sito del Comune.</li>
+      <li><strong>L'avviso in rosa</strong>, quando c'è, segnala che una parte del testo è preparata dal progetto e non ancora verificata da una persona: in quel caso confermala allo sportello.</li>
+    </ul>
+
+    <h2 id="ufficio">3. A chi rivolgerti</h2>
+    <p>
+      Sotto la risposta ci sono le schede degli uffici competenti. Ognuna riporta il percorso
+      nell'organizzazione del Comune (Area › Settore › U.O.), il responsabile, la sede, il
+      telefono, l'email e la PEC, con la data in cui la scheda è stata aggiornata.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/ufficio.webp" alt="La scheda dell'ufficio competente: U.O. Gestione Residenze, responsabile, sede in Viale Lazio 119/A, telefono, email, PEC, data di aggiornamento, mappa OpenStreetMap e i pulsanti Percorso e Scheda ufficiale." width="1400" height="1120" loading="lazy" decoding="async">
+      <figcaption>La scheda dell'ufficio: recapiti completi, mappa della sede e due comandi, «Percorso» e «Scheda ufficiale».</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>Percorso</strong> chiede il permesso di usare la posizione e apre il navigatore con la destinazione già impostata. Se rifiuti, non succede nulla: restano indirizzo e mappa.</li>
+      <li><strong>Scheda ufficiale</strong> apre la pagina dell'ufficio sul sito del Comune, per controllare orari e competenze direttamente alla fonte.</li>
+      <li><strong>La mappa</strong> è di OpenStreetMap e si carica solo quando la scheda entra nello schermo: non pesa all'apertura.</li>
+    </ul>
+
+    <p>
+      Se un ufficio non pubblica l'indirizzo o le coordinate, la mappa lo dice e resta il link alla
+      scheda ufficiale. Non vengono mostrati recapiti inventati: se un dato manca, compare come
+      mancante.
+    </p>
+
+    <h2 id="incerta">4. Quando non è sicura</h2>
+    <p>
+      Può succedere che la domanda assomigli a più servizi. In quel caso Pinuzza non sceglie in
+      silenzio: mostra un avviso rosa, «Non sono sicura di aver capito», la risposta che ritiene
+      più probabile e, sotto, un elenco di domande vicine tra cui scegliere.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/incerta.webp" alt="Risposta incerta: avviso rosa «Non sono sicura di aver capito» sopra la risposta su come pagare una contravvenzione." width="1400" height="1094" loading="lazy" decoding="async">
+      <figcaption>Quando il motore è incerto lo dichiara, invece di far passare per certa una risposta che forse non è quella giusta.</figcaption>
+    </figure>
+
+    <p>
+      Se invece la domanda non ha proprio una risposta pronta, la scheda diventa «Non ho una
+      risposta pronta» e Pinuzza ti indica gli uffici che potrebbero occuparsene, invitandoti a
+      riformulare. È il comportamento voluto: meglio dire «non lo so» che inventare un requisito
+      o un importo.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/vuota.webp" alt="Risposta «Non ho una risposta pronta» a una domanda fuori tema, con l'elenco «Uffici che potrebbero occuparsene» e la scheda di un ufficio." width="1400" height="984" loading="lazy" decoding="async">
+      <figcaption>Quando la risposta manca, Pinuzza lo dice e propone gli uffici che si occupano di cose simili.</figcaption>
+    </figure>
+
+    <h2 id="salvare">5. Salvare, ricominciare, segnalare</h2>
+    <p>
+      In fondo a ogni risposta ci sono tre gesti utili: dire se la risposta è stata utile,
+      metterla da parte e ricominciare da capo.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/salva.webp" alt="Il riquadro «Ti è stato utile?» con i pulsanti Sì, grazie e No, la risposta è sbagliata, e sotto il pulsante «Salva questa risposta» con la nota che resta nel browser." width="1400" height="370" loading="lazy" decoding="async">
+      <figcaption>Il riquadro in fondo alla risposta: il parere, il salvataggio e la nota che la domanda non viene inviata a nessuno.</figcaption>
+    </figure>
+
+    <ul>
+      <li><strong>«Salva questa risposta»</strong> la mette da parte nella memoria di questo browser. La ritrovi nella pagina <a href="salvati.html">Risposte salvate</a>, voce «Salvate» nel menu; da lì puoi riaprirla o toglierla.</li>
+      <li><strong>«Sì, grazie»</strong> registra un evento aggregato solo se hai già accettato le statistiche; <strong>«No, la risposta è sbagliata»</strong> apre una segnalazione su GitHub già scritta, che leggi e correggi prima di inviare.</li>
+      <li><strong>«Azzera»</strong> (la × accanto alla freccia) svuota risposta e campo, toglie il <code>?q=</code> dall'indirizzo e ti lascia nella pagina, pronto per una nuova domanda. «Torna all'inizio» in alto riporta invece alla home bianca.</li>
+    </ul>
+
+    <figure class="schermata">
+      <img src="img/guida/salvati.webp" alt="La pagina Risposte salvate con una scheda «Cambio di residenza o di abitazione», i pulsanti Riapri la risposta e Togli, e più sotto «Togli tutte le risposte salvate»." width="1400" height="897" loading="lazy" decoding="async">
+      <figcaption>Le risposte salvate restano su questo dispositivo: nessun server, nessun account, nessun invio.</figcaption>
+    </figure>
+
+    <h2 id="altre">6. Tutte le domande e tutti gli uffici</h2>
+    <p>
+      Non sempre si parte da una domanda. Nella pagina <a href="domande.html">Tutte le domande</a>
+      ci sono le 607 domande tipiche divise per categoria: sceglierne una apre direttamente la
+      risposta. È comodo per farsi un'idea di cosa sa fare Pinuzza, o per trovare la domanda giusta
+      quando non ci viene la parola.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/domande.webp" alt="La pagina Tutte le domande: titolo, introduzione, e i badge delle categorie con il numero di domande, da Beni comuni a Contatti." width="1400" height="897" loading="lazy" decoding="async">
+      <figcaption>«Tutte le domande»: le categorie in alto sono collegamenti alle sezioni, ognuna con il numero di domande.</figcaption>
+    </figure>
+
+    <p>
+      Nella pagina <a href="uffici.html">Tutti gli uffici</a> ci sono invece i 601 uffici del Comune,
+      in griglia per area o in elenco alfabetico. La ricerca parte dopo tre lettere e propone
+      l'ufficio o l'area giusta: frecce su e giù per scegliere, Invio per aprire.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/uffici.webp" alt="La pagina Tutti gli uffici con la ricerca «residenza»: venti uffici trovati, raggruppati per area, ognuno con recapiti e collegamento alla scheda ufficiale." width="1400" height="897" loading="lazy" decoding="async">
+      <figcaption>«Tutti gli uffici»: la ricerca filtra per nome, area, settore e competenze; ogni scheda porta alla pagina ufficiale.</figcaption>
+    </figure>
+
+    <h2 id="telefono">7. Sul telefono, al buio, senza rete</h2>
+    <p>
+      Sul telefono la barra del menu sta in basso, con le voci Chiedi, Domande, Uffici, Segnala,
+      Privacy e il pulsante del tema. La pagina è la stessa, ridisposta in una colonna: la testata
+      resta in alto e scorre soltanto la parte dei risultati.
+    </p>
+
+    <figure class="schermata schermata-telefono">
+      <img src="img/guida/telefono.webp" alt="La stessa risposta sul telefono: testata compatta con il campo della domanda, la scheda del cambio di residenza e la barra di navigazione in basso." width="780" height="1688" loading="lazy" decoding="async">
+      <figcaption>Sul telefono il campo resta in alto e i comandi sono a portata di pollice; in basso la barra con le sezioni dell'app.</figcaption>
+    </figure>
+
+    <p>
+      Il pulsante con la luna (o il sole) passa al tema scuro e torna al chiaro: la scelta resta
+      memorizzata in questo browser e si ritrova anche nelle altre pagine. Il tema chiaro è quello
+      di partenza.
+    </p>
+
+    <figure class="schermata">
+      <img src="img/guida/scuro.webp" alt="La home di Chiedilo a Pinuzza in tema scuro, con lo sfondo nero, il testo chiaro e il pulsante del sole in alto a destra." width="1400" height="897" loading="lazy" decoding="async">
+      <figcaption>Il tema scuro non cambia contenuti né posizioni: serve solo a leggere meglio la sera e con poca luce.</figcaption>
+    </figure>
+
+    <p>
+      <strong>Installarla come app.</strong> Su Android, dal menu del browser scegli «Installa app»
+      (o «Aggiungi a schermata Home»); su iPhone e iPad, in Safari, tocca Condividi e poi «Aggiungi
+      a Home». Su computer, Chrome ed Edge mostrano l'icona di installazione nella barra degli
+      indirizzi. L'icona sul telefono apre la stessa app, senza barra del browser.
+    </p>
+    <p>
+      <strong>Senza rete.</strong> Dopo la prima apertura il service worker tiene in cache le
+      pagine, i dati e le icone: allo sportello, in metro o in un posto senza campo, domande e
+      risposte continuano a funzionare. La prima visita però richiede la rete; le mappe e i
+      collegamenti esterni, ovviamente, no.
+    </p>
+
+    <h2 id="privacy">8. Cosa sa di te</h2>
+    <p>
+      Non c'è registrazione, non c'è un profilo e le domande che scrivi non vengono inviate a
+      nessun server: la ricerca avviene nel browser, sui dati scaricati. Le risposte salvate
+      restano nella memoria locale del dispositivo e spariscono se svuoti i dati del sito.
+    </p>
+    <p>
+      Google Analytics entra in funzione solo se lo accetti dal banner o da «Preferenze cookie»,
+      e puoi cambiare idea quando vuoi. I dettagli sono nell'<a href="privacy.html">informativa
+      privacy e cookie</a>.
+    </p>
+
+    <h2 id="limiti">9. Cosa non è</h2>
+    <ul>
+      <li><strong>Non è uno sportello</strong> e non sostituisce il Comune: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</li>
+      <li><strong>Non è un modello linguistico</strong>: risponde con le voci preparate e le schede ufficiali, e quando non sa rispondere lo dice.</li>
+      <li><strong>Non conosce tutti i servizi del mondo</strong>: se la tua domanda riguarda un altro ente (per esempio la patente o una visita medica), ti indica gli uffici comunali più vicini ma non inventa la procedura.</li>
+      <li><strong>Non è aggiornata in tempo reale</strong>: i dati sono quelli pubblicati dal Comune alla data indicata nel piede di ogni pagina. Se trovi qualcosa che non torna, <a href="https://github.com/PalermoHub/cosa_fare_per/issues" rel="noopener">segnalalo su GitHub</a>.</li>
+    </ul>
+
+    <h2 id="domande-frequenti">Domande sulla guida</h2>
+    <h3>Serve un account?</h3>
+    <p>No. Non si registra nulla: apri la pagina e scrivi.</p>
+    <h3>Le mie domande vengono registrate?</h3>
+    <p>No. La domanda resta nel tuo browser e, se vuoi, nell'indirizzo della pagina. Non viene trasmessa a nessuno.</p>
+    <h3>Posso usarla senza installare niente?</h3>
+    <p>Sì. È un sito: si apre dal browser. L'installazione come app è solo una comodità in più, e serve la rete solo la prima volta.</p>
+    <h3>Perché a volte risponde «Non ho una risposta pronta»?</h3>
+    <p>Perché la domanda non è tra quelle preparate. Puoi provare a scriverla in un altro modo, scegliere una delle domande vicine o cercare l'ufficio nella pagina <a href="uffici.html">Tutti gli uffici</a>.</p>
+    <h3>I dati sono aggiornati?</h3>
+    <p>Le schede arrivano dal catalogo dei servizi e dagli uffici del Comune di Palermo, con la data di aggiornamento in ogni scheda e nel piede del sito. Prima di andare allo sportello, una chiamata o un'occhiata alla scheda ufficiale è sempre una buona idea.</p>
+
+    <p class="torna-inizio">
+      <a href="index.html">← Chiedi qualcosa a Pinuzza</a> ·
+      <a href="domande.html">Tutte le domande</a> ·
+      <a href="uffici.html">Tutti gli uffici</a>
+    </p>
+  </article>
+</main>
+
+<footer class="piede">
+  <div class="piede-riga">
+    <img src="img/opendatasicilia.png" alt="OpenDataSicilia" width="34" height="34" loading="lazy">
+    <div class="piede-corpo">
+      <p class="piede-credito"><strong>Chiedilo a Pinuzza</strong> è un progetto di OpenDataSicilia · <span class="piede-copyright">© 2026 OpenDataSicilia</span> · <a href="https://github.com/PalermoHub/cosa_fare_per/blob/main/LICENSE" rel="noopener">Licenza MIT</a> · <button type="button" class="link-bottone" data-crediti>Credits</button></p>
+      <nav class="piede-voci" aria-label="Collegamenti del sito">
+        <a href="index.html">Chiedi</a>
+        <a href="domande.html">Tutte le domande</a>
+        <a href="uffici.html">Tutti gli uffici</a>
+        <a href="guida.html">Come funziona</a>
+        <a href="salvati.html">Risposte salvate</a>
+        <a href="privacy.html">Privacy e cookie</a>
+        <button type="button" class="link-bottone" data-preferenze-cookie>Preferenze cookie</button>
+      </nav>
+      <p class="piede-fonte">Schede servizio e uffici del <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/" rel="noopener">Comune di Palermo</a>, dal catalogo <a href="https://sites.google.com/comune.palermo.it/trova-servizi/" rel="noopener">Cerca servizi</a> · dati aggiornati al <span id="aggiornato">17 novembre 2026</span>.</p>
+      <p class="piede-nota">Pinuzza non è uno sportello: importi, scadenze e documenti vanno sempre verificati sulla scheda del servizio o con l'ufficio.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="barra-basso" aria-label="Navigazione principale">
+  <a class="voce" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M20.4 11.9c0 3.6-3.8 6.5-8.4 6.5-1 0-2-.14-2.9-.4l-4.6 1.6 1.2-3.4c-1.4-1.2-2.2-2.8-2.2-4.5C3.5 8.3 7.3 5.4 12 5.4s8.4 2.9 8.4 6.5Z"/>
+      <path d="M8.9 12h.01M12 12h.01M15.1 12h.01" stroke-width="2.2"/>
+    </svg>
+    <span>Chiedi</span>
+  </a>
+  <a class="voce" href="domande.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M9.2 6.6h10.6M9.2 12h10.6M9.2 17.4h10.6"/>
+      <path d="M4.9 6.6h.01M4.9 12h.01M4.9 17.4h.01" stroke-width="2.4"/>
+    </svg>
+    <span>Domande</span>
+  </a>
+  <a class="voce" href="uffici.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M3.4 9.5 12 4.2l8.6 5.3"/>
+      <path d="M5.4 20.2V9.5h13.2v10.7"/>
+      <path d="M3 20.2h18"/>
+      <path d="M9.7 20.2v-4.7h4.6v4.7"/>
+      <path d="M8.2 12.4h1.5M14.3 12.4h1.5"/>
+    </svg>
+    <span>Uffici</span>
+  </a>
+  <a class="voce" href="salvati.html" data-voce-salvati hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.6 3.7h10.8a1 1 0 0 1 1 1v15.5l-6.4-4.4-6.4 4.4V4.7a1 1 0 0 1 1-1Z"/>
+    </svg>
+    <span>Salvate</span>
+  </a>
+  <a class="voce" href="https://github.com/PalermoHub/cosa_fare_per/issues" target="_blank" rel="noopener"
+     aria-label="Segnala su GitHub un servizio o un ufficio mancante (nuova scheda)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M6.3 21V3.6"/>
+      <path d="M6.3 5c3-1.5 6 1.6 9 .1l2.4-1v7.5l-2.4 1c-3 1.5-6-1.6-9-.1Z"/>
+    </svg>
+    <span>Segnala</span>
+  </a>
+  <a class="voce" href="privacy.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M12 3.4 5.2 6v5.6c0 4 2.9 7.4 6.8 8.9 3.9-1.5 6.8-4.9 6.8-8.9V6L12 3.4Z"/>
+      <path d="m9.4 11.8 1.8 1.9 3.5-3.6"/>
+    </svg>
+    <span>Privacy</span>
+  </a>
+  <button type="button" class="voce voce-tema" id="tema-barra" aria-pressed="false"
+          aria-label="Passa al tema scuro: ora chiaro">
+    <svg class="icona-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M20.2 14.4A8.6 8.6 0 0 1 9.6 3.8a8.6 8.6 0 1 0 10.6 10.6Z"/>
+    </svg>
+    <svg class="icona-sole" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 2.8v2.2M12 19v2.2M2.8 12h2.2M19 12h2.2M5.5 5.5l1.55 1.55M16.95 16.95l1.55 1.55M18.5 5.5l-1.55 1.55M7.05 16.95 5.5 18.5"/>
+    </svg>
+    <span>Scuro</span>
+  </button>
+</nav>
+
+<button type="button" class="in-cima" id="inCima" hidden
+        aria-label="Torna all'inizio della pagina" title="Torna in cima">↑</button>
+
+<script type="module" src="js/consenso.js"></script>
+<script type="module" src="js/offline.js"></script>
+<script type="module" src="js/tema.js"></script>
+<script type="module" src="js/crediti.js"></script>
+<script type="module" src="js/in-cima.js"></script>
+</body>
+</html>

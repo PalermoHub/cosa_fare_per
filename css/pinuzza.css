@@ -1481,12 +1481,91 @@ body.crediti-aperti .crediti {
 }
 .nota-pagina strong { color: var(--inchiostro); }
 
+/* ---------- pagina «Come funziona» (guida con le schermate) ---------- */
+
+/* la guida respira più delle pagine di testo: le schermate hanno bisogno di larghezza */
+.pagina-guida { --colonna: 56rem; }
+.pagina-guida .interno,
+.pagina-guida .risultati > * { width: min(100% - 2.5rem, 56rem); }
+.pagina-guida .testo-lungo { max-width: 100%; }
+
+.pagina-guida .testo-lungo h3 {
+  margin: 1.5rem 0 .35rem;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.12rem;
+  line-height: 1.25;
+}
+.pagina-guida .testo-lungo h3 + p { margin-bottom: .9rem; }
+.pagina-guida .testo-lungo figure,
+.pagina-guida .testo-lungo .nota-pagina { text-wrap: pretty; }
+
+.indice-guida {
+  margin: 1.3rem 0 2rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 12px;
+  background: var(--carta-alt);
+}
+.indice-guida h2 {
+  margin: 0 0 .45rem;
+  font: 600 .74rem/1.4 var(--sans);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--inchiostro-fio);
+}
+.indice-guida ol { margin: 0; padding-left: 1.25rem; }
+.indice-guida li { margin: .18rem 0; font-size: .92rem; }
+
+/* i passi numerati: il numero è un cerchio pieno, non un'immagine */
+.passi { counter-reset: passo; list-style: none; margin: 1.1rem 0 1.5rem; padding: 0; }
+.passi > li { position: relative; margin: 0 0 .85rem; padding-left: 2.3rem; font-size: .95rem; }
+.passi > li::before {
+  counter-increment: passo;
+  content: counter(passo);
+  position: absolute;
+  left: 0;
+  top: -.1rem;
+  display: grid;
+  place-items: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  background: var(--accento);
+  color: var(--su-accento);
+  font: 600 .78rem/1 var(--sans);
+  font-variant-numeric: tabular-nums;
+}
+
+/* le schermate: bordo, angoli tondi, un'ombra bassa che le stacca dalla pagina */
+.schermata { margin: 1.15rem 0 1.8rem; }
+.schermata img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea-forte);
+  border-radius: 12px;
+  background: var(--superficie);
+  box-shadow: 0 26px 46px -42px rgba(var(--tinta-ombra), .75);
+}
+.schermata figcaption {
+  margin: .55rem .1rem 0;
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--inchiostro-fio);
+}
+.schermata-telefono img { max-width: 19rem; margin-inline: auto; }
+
 /* l'attributo hidden deve vincere sui display: grid/flex */
 [hidden] { display: none !important; }
 
 @media (max-width: 40rem) {
   .pagina-uffici .interno,
   .pagina-uffici .risultati > * { width: min(100% - 1.6rem, 62rem); }
+  .pagina-guida .interno,
+  .pagina-guida .risultati > * { width: min(100% - 1.6rem, 56rem); }
+  .schermata-telefono img { max-width: 15rem; }
+  .indice-guida { padding: .85rem 1rem; }
   .viste { flex: 1 1 100%; }
   .aiuto-cerca { display: none; } /* su mobile il posto è del risultato: l'aiuto lo dice il segnaposto */
   .viste button { flex: 1 1 auto; }

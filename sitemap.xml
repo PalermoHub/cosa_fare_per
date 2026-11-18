@@ -19,6 +19,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://palermohub.github.io/cosa_fare_per/guida.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://palermohub.github.io/cosa_fare_per/privacy.html</loc>
     <lastmod>2026-11-17</lastmod>
     <changefreq>yearly</changefreq>

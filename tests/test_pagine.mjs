@@ -87,7 +87,7 @@ test('la pagina delle domande è disponibile anche senza rete', () => {
 });
 
 test('le pagine linkano «Tutte le domande»', () => {
-  for (const pagina of ['index.html', 'uffici.html', 'privacy.html', 'domande.html']) {
+  for (const pagina of ['index.html', 'uffici.html', 'privacy.html', 'domande.html', 'guida.html']) {
     assert.match(leggi(pagina), /href="domande\.html"/, `${pagina}: manca il link a domande.html`);
   }
 });
@@ -95,10 +95,24 @@ test('le pagine linkano «Tutte le domande»', () => {
 test('il «torna in cima» c’è in ogni pagina e il modulo è nel guscio offline', () => {
   // regola del progetto: le pagine lunghe (uffici, domande, informativa) devono poter
   // tornare in cima con lo stesso comando della home, non solo con la rotella
-  for (const pagina of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html']) {
+  for (const pagina of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html']) {
     const html = leggi(pagina);
     assert.match(html, /id="inCima"/, `${pagina}: manca il pulsante «torna in cima»`);
     assert.match(html, /<script type="module" src="js\/in-cima\.js"><\/script>/, `${pagina}: manca js/in-cima.js`);
   }
   assert.match(sw, /'js\/in-cima\.js',/, 'sw.js non mette in cache js/in-cima.js: offline il pulsante non funziona');
+});
+
+test('la guida mostra schermate che esistono e hanno un testo alternativo', () => {
+  const guida = leggi('guida.html');
+  const immagini = [...guida.matchAll(/<img src="(img\/guida\/[^"]+)"[^>]*>/g)];
+  assert.ok(immagini.length >= 8, `solo ${immagini.length} schermate nella guida`);
+  for (const [tag, percorso] of immagini) {
+    assert.ok(existsSync(new URL(percorso, radice)), `schermata mancante: ${percorso}`);
+    assert.match(tag, /alt="[^"]{20,}"/, `la schermata ${percorso} non ha un testo alternativo utile`);
+    assert.match(tag, /width="\d+" height="\d+"/, `la schermata ${percorso} non dichiara le misure: salterebbe il layout`);
+  }
+  // la guida sta nella sitemap e nella cache offline, altrimenti non arriva a nessuno
+  assert.ok(sitemap.includes('guida.html'), 'guida.html non è nella sitemap');
+  assert.ok(sw.match(/const PRECACHE = \[([\s\S]*?)\];/)[1].includes("'guida.html'"), 'guida.html non è nella precache');
 });

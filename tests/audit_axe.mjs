@@ -76,6 +76,8 @@ const VISTE = [
   ['privacy', '/privacy.html', 390],
   ['tutti gli uffici', '/uffici.html', 390],
   ['tutte le domande', '/domande.html', 390],
+  ['guida', '/guida.html', 390],
+  ['guida (schermo largo)', '/guida.html', 1280],
   ['risposte salvate (vuoto)', '/salvati.html', 390],
   ['risposte salvate con una voce', '/salvati.html', 390],
   ['«Credits» aperto', '/', 390],

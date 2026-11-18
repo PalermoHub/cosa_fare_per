@@ -83,7 +83,7 @@ test('l’elenco si può svuotare, con una conferma prima di cancellare', () => 
 });
 
 test('ogni pagina porta all’elenco, dal menu largo, dal piede e dal telefono', () => {
-  for (const file of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html']) {
+  for (const file of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html']) {
     const html = leggi(file);
     const menu = /<nav class="barra-sito"[^>]*>[\s\S]*?<\/nav>/.exec(html);
     assert.ok(menu, `${file}: manca il menu del sito`);

@@ -13,7 +13,7 @@ const radice = new URL('../', import.meta.url);
 const leggi = percorso => readFileSync(new URL(percorso, radice), 'utf8');
 const tema = leggi('js/tema.js');
 const css = leggi('css/pinuzza.css');
-const PAGINE = ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html'];
+const PAGINE = ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html'];
 
 test('ogni pagina applica il tema prima del primo disegno', () => {
   for (const pagina of PAGINE) {

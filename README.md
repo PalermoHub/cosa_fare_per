@@ -13,17 +13,24 @@ occuparsene.
 
 ```
 index.html            pagina unica (testata e piede fissi, scorre solo la colonna dei risultati)
+domande.html          tutte le domande tipiche, per categoria (generata da scripts/genera_pagine.py)
 uffici.html           tutti gli uffici: griglia per area amministrativa o elenco alfabetico
+salvati.html          le risposte salvate in questo browser
+guida.html            come funziona l'app, con le schermate e le istruzioni per installarla
+privacy.html          informativa privacy e cookie, con le preferenze
 css/pinuzza.css       tema chiaro, tipografia di sistema, nessun font remoto
 js/motore.js          normalizzazione, sinonimi, punteggio delle domande, ricerca degli uffici
 js/dati.js            caricamento dei dati (gli uffici solo quando servono)
 js/app.js             risposte, schede ufficio con mappa, percorso con GPS, navigazione
 js/aree.js            raggruppamento per area, elenco alfabetico, filtro e suggerimenti (3 lettere)
 js/uffici.js          interfaccia della pagina degli uffici
-data/argomenti.json   104 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
+js/salvati.js         risposte salvate nella memoria del browser (nessun server)
+js/salvati-pagina.js  interfaccia della pagina delle risposte salvate
+data/argomenti.json   122 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
 data/servizi.json     58 schede servizio ufficiali del Comune, estratte con le loro sezioni
 data/uffici.json      601 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
 img/                  icone e logo OpenDataSicilia
+img/guida/            le schermate della guida (WebP, rigenerate a mano quando cambia l'interfaccia)
 tests/                i controlli automatici (motore, uffici, offline, contrasto, tema, pagine, interfaccia, accessibilità)
 package.json          gli script `npm test`, `npm run test:ui`, `npm run test:a11y`
 ```
@@ -44,6 +51,10 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
   **Percorso**: chiede la posizione al browser e apre il navigatore verso la sede.
 - URL condivisibile (`?q=…`), tasto indietro del browser, pulsante «Torna all'inizio», pulsante
   «torna in cima», funziona anche da tastiera.
+- **Risposte salvate** (`salvati.html`): «Salva questa risposta» mette la scheda da parte nella
+  memoria del browser; da qui si riapre o si toglie, anche tutte insieme. Niente account, niente invio.
+- **Guida** (`guida.html`): come fare una domanda, leggere la risposta, arrivare all'ufficio,
+  salvare, usare l'app sul telefono e senza rete. Le schermate stanno in `img/guida/`.
 - **Tutti gli uffici** (`uffici.html`): i 601 uffici in griglia per area amministrativa o in elenco
   alfabetico. La ricerca suggerisce dopo **3 lettere** l'ufficio o l'area giusta (frecce su/giù e
   Invio per scegliere) e filtra per nome, area, settore e competenze; la scelta si può condividere
@@ -68,8 +79,8 @@ I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-ammini
 ## Controlli automatici
 
 ```bash
-npm test          # 73 test statici sui dati, sul motore e sulle pagine (nessuna dipendenza)
-npm run test:ui   # 15 casi nell’interfaccia con Chromium (serve Playwright: npm i -D playwright)
+npm test          # 85 test statici sui dati, sul motore e sulle pagine (nessuna dipendenza)
+npm run test:ui   # 16 casi nell’interfaccia con Chromium (serve Playwright: npm i -D playwright)
 npm run test:a11y # audit di accessibilità con axe-core
 ```
 
