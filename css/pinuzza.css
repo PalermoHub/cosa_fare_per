@@ -276,7 +276,7 @@ input, textarea { caret-color: var(--accento); }
   gap: .1rem;
   background: var(--superficie);
   border: 1px solid var(--linea-forte);
-  border-radius: 1.35rem;
+  border-radius: .55rem;
   box-shadow: var(--ombra);
   padding: .5rem .55rem .55rem 1.05rem;
   transition: border-color .2s ease, box-shadow .2s ease;
@@ -376,7 +376,9 @@ input, textarea { caret-color: var(--accento); }
 }
 .riga-domande {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* schermo largo: due colonne (sul telefono torna una colonna scorrevole) */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* schermo largo: due colonne da quattro domande (sul telefono torna una colonna scorrevole) */
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column; /* si riempie prima una colonna, poi l'altra */
   gap: .35rem;
   width: 100%;
 }
@@ -440,7 +442,7 @@ body.ha-risultati .campo {
   align-items: center;
   gap: .3rem;
   padding: .15rem .3rem .15rem .95rem;
-  border-radius: 1rem;
+  border-radius: .55rem;
   box-shadow: none;
 }
 body.ha-risultati .campo input { padding: .5rem 0; font-size: .98rem; }
@@ -1367,7 +1369,7 @@ body.crediti-aperti .crediti {
   margin: 1.2rem auto 0;
   padding: .7rem .9rem;
   border: 1px solid var(--linea-forte);
-  border-radius: 1.35rem;
+  border-radius: .55rem;
   background: var(--superficie);
   box-shadow: var(--ombra);
   text-align: left;

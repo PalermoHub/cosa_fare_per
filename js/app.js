@@ -767,9 +767,9 @@ function tornaAllInizio({ daStorico = false } = {}) {
 // ---------- avvio ----------
 
 // domande di prova: sul telefono dodici che girano in tre colonne da quattro (se ne vedono
-// quattro per volta, si passa alle altre scorrendo), sullo schermo largo quattro domande in due colonne (2×2): di più uscirebbero dallo spazio fra moduli e piede
+// quattro per volta, si passa alle altre scorrendo), sullo schermo largo otto domande in due colonne da quattro: di più uscirebbero dallo spazio fra moduli e piede
 const DOMANDE_STRETTO = 12;
-const DOMANDE_LARGO = 4;
+const DOMANDE_LARGO = 8;
 const RIGHE_STRETTO = 4;
 const LARGHEZZA_STRETTO = '(max-width: 40rem)';
 
