@@ -22,11 +22,36 @@ function paragrafo(...contenuto) {
   return p;
 }
 
+// Icone dei titoli: tracciati fissi scritti qui (stesso stile delle icone del menù «Altro»)
+const ICONE = {
+  Idea: '<path d="M9.2 17.2h5.6M10 20.4h4"/><path d="M12 3.4a5.6 5.6 0 0 0-3.3 10.1c.5.4.5.9.5 1.5v.2h5.6V15c0-.6 0-1.1.5-1.5A5.6 5.6 0 0 0 12 3.4Z"/>',
+  Sviluppo: '<path d="m8.6 8.2-4 3.8 4 3.8M15.4 8.2l4 3.8-4 3.8M13.2 6.4l-2.4 11.2"/>',
+  Ringraziamenti: '<path d="M12 20.2s-7.2-4.4-7.2-9.8A4.1 4.1 0 0 1 12 7.9a4.1 4.1 0 0 1 7.2 2.5c0 5.4-7.2 9.8-7.2 9.8Z"/>',
+  Fonti: '<path d="M5.8 4.6h9.4a2 2 0 0 1 2 2v12.8H7.8a2 2 0 0 1-2-2Z"/><path d="M5.8 17.4a2 2 0 0 1 2-2h9.4M9 8.6h5.2"/>',
+  Licenza: '<path d="M12 3.6v16.8M7.6 20.4h8.8M5.2 7.2h13.6"/><path d="m5.2 7.2-2.4 6a3 3 0 0 0 4.8 0ZM18.8 7.2l-2.4 6a3 3 0 0 0 4.8 0Z"/>',
+};
+
+function icona(nome) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.7');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.innerHTML = ICONE[nome] || '';
+  return svg;
+}
+
 function sezione(titolo, ...paragrafi) {
   const blocco = document.createElement('section');
   const intestazione = document.createElement('h3');
   intestazione.className = 'crediti-sottotitolo';
-  intestazione.textContent = titolo;
+  const testo = document.createElement('span');
+  testo.textContent = titolo;
+  intestazione.append(icona(titolo), testo);
   blocco.append(intestazione, ...paragrafi);
   return blocco;
 }

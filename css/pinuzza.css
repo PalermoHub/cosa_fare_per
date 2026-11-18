@@ -1268,12 +1268,16 @@ body.crediti-aperti .crediti {
 }
 .crediti-titolo { margin: 0 0 .5rem; font: 600 1.15rem/1.25 var(--serif); }
 .crediti-sottotitolo {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
   margin: .9rem 0 .25rem;
   font: 600 .74rem/1.4 var(--sans);
   letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--inchiostro-fio);
 }
+.crediti-sottotitolo svg { flex: none; width: 1.2rem; height: 1.2rem; }
 .crediti-testo + .crediti-testo { margin-top: .45rem; }
 .crediti-testo {
   margin: 0;
