@@ -1102,7 +1102,8 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
     /* stesso fondo del piede: la barra è attaccata a lui, senza una striscia chiara in mezzo */
     background: var(--carta-alt);
     border-top: 1px solid var(--carta-alt);
-    box-shadow: 0 -10px 24px -22px rgba(var(--tinta-ombra), .6);
+    /* niente ombra in su: cadrebbe sul piede, che sta attaccato qui sopra */
+    box-shadow: none;
   }
   .barra-basso .voce {
     flex: 1 1 0;
