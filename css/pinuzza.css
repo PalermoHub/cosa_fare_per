@@ -1018,12 +1018,12 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   :root { --testo: .98rem; }
   /* sul telefono il menu è la barra in basso: quello in cima non serve */
   .barra-sito { display: none; }
-  /* su schermo stretto una colonna alla volta: cinque domande impilate, si passa alla colonna
+  /* su schermo stretto una colonna alla volta: quattro domande impilate, si passa alla colonna
      successiva scorrendo in orizzontale (senza barra visibile, basta la colonna che si intravede) */
   .riga-domande {
     display: grid;
     grid-auto-flow: column;
-    grid-template-rows: repeat(5, minmax(2.4rem, auto));
+    grid-template-rows: repeat(4, minmax(2.4rem, auto));
     grid-auto-columns: 100%; /* una colonna occupa tutto: le altre si raggiungono scorrendo */
     justify-content: start; /* la base centra la griglia: qui centrare la sposterebbe fuori asse */
     gap: .35rem;
@@ -1090,7 +1090,8 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   .ufficio .mappa-link { display: flex; align-items: center; }
 
   /* barra in basso: il corpo le lascia il posto, così il piede non le finisce sotto */
-  body { padding-bottom: var(--barra-h); }
+  /* la barra è alta `--barra-h` più il suo bordo superiore: il piede deve finire sopra, non sotto */
+  body { padding-bottom: calc(var(--barra-h) + 1px); }
   .barra-basso {
     display: flex;
     position: fixed;
@@ -1140,24 +1141,29 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   .barra-basso .voce:active { background: var(--carta-alt); }
   .in-cima { bottom: calc(var(--piede-h, 4rem) + var(--barra-h) + .5rem); }
   .interno { width: min(100% - 1.6rem, 46rem); }
+  /* la home sta in una schermata: con dodici domande il contenuto ci sta anche sui telefoni
+     alti, senza scorrere; sotto i 900px circa la testata scorre da sola e il piede resta fermo */
+  body:not(.ha-risultati):not(.pagina-informativa) .testata { padding-bottom: .9rem; }
   .campo { padding: .5rem .55rem .6rem .95rem; }
   .ufficio dl { grid-template-columns: 1fr; gap: .1rem; }
   .ufficio dt { margin-top: .45rem; }
 }
 
-/* schermo basso: la home scorre con la pagina, così il piede resta raggiungibile invece di
-   finire tagliato sotto il bordo. Con i risultati si torna alla testata fissa */
-@media (max-width: 40rem) and (max-height: 860px) {
-  body:not(.ha-risultati) { height: auto; min-height: 100dvh; overflow: visible; }
-  body:not(.ha-risultati) .risultati { flex: 0 0 auto; overflow: visible; }
+/* La home sta in una schermata: testata e piede fissi, come nelle risposte. Se il
+   contenuto della testata non ci sta (per esempio sul telefono con il riquadro «Decifra
+   la PA»), scorre solo lei: il piede resta sempre intero sopra la barra in basso, senza
+   dover scorrere la pagina. Con una risposta aperta (`ha-risultati`) valgono le regole
+   di sempre: testata compatta fissa e colonna dei risultati che scorre. */
+body:not(.ha-risultati):not(.pagina-informativa) { height: 100dvh; overflow: hidden; }
+body:not(.ha-risultati):not(.pagina-informativa) .testata {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--linea-forte) transparent;
 }
-
-/* lo stesso vale sui portatili bassi, ma solo per la home: le altre pagine hanno la loro
-   barra di ricerca agganciata in cima e devono continuare a scorrere dentro `.risultati` */
-@media (min-width: 40.01rem) and (max-height: 860px) {
-  body:not(.ha-risultati):not(.pagina-informativa) { height: auto; min-height: 100dvh; overflow: visible; }
-  body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; overflow: visible; }
-}
+body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; overflow: visible; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }

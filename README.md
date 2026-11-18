@@ -41,8 +41,8 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
 ## Funzioni
 
 - In home le domande suggerite sono badge: le voci marcate `inEvidenza` compaiono sempre per prime,
-  le altre si scelgono a caso a ogni caricamento (otto su schermo largo, nove su schermo stretto,
-  in colonne da tre che scorrono in orizzontale, una alla volta).
+  le altre si scelgono a caso a ogni caricamento (otto su schermo largo, dodici su schermo stretto,
+  in tre colonne da quattro che scorrono in orizzontale, una alla volta).
 - Due rimandi sotto le domande: gli uffici (`uffici.html`) e le segnalazioni, che aprono le
   [issue del repository](https://github.com/PalermoHub/cosa_fare_per/issues) su GitHub.
 - Navigazione a due velocità: su schermo largo il menu in cima (`Chiedi`, `Domande`, `Uffici`,

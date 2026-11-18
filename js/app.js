@@ -766,11 +766,11 @@ function tornaAllInizio({ daStorico = false } = {}) {
 
 // ---------- avvio ----------
 
-// domande di prova: sul telefono quindici che girano in tre colonne da cinque (se ne vedono
-// cinque per volta, si passa alle altre scorrendo), sullo schermo largo otto in fila
-const DOMANDE_STRETTO = 15;
+// domande di prova: sul telefono dodici che girano in tre colonne da quattro (se ne vedono
+// quattro per volta, si passa alle altre scorrendo), sullo schermo largo otto in fila
+const DOMANDE_STRETTO = 12;
 const DOMANDE_LARGO = 8;
-const RIGHE_STRETTO = 5;
+const RIGHE_STRETTO = 4;
 const LARGHEZZA_STRETTO = '(max-width: 40rem)';
 
 function schermoStretto() {
@@ -858,7 +858,7 @@ async function avvia() {
   try {
     await caricaBase();
     indice = stato.voci.map(v => indicizza(v, stato.servizi));
-    // quindici domande che girano, cinque per colonna sul telefono (vedi domandeDiProva)
+    // dodici domande che girano, quattro per colonna sul telefono (vedi domandeDiProva)
     mostraSuggerimenti(suggerimenti(stato.voci, domandeDiProva()));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
