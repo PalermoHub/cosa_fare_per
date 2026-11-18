@@ -2246,14 +2246,14 @@ body.ha-risultati .scorciatoie { display: none; }
 .atti-slogan-risposta strong { color: var(--accento); font-weight: 600; }
 
 /* slogan apri/chiudi: resta visibile solo la domanda, la risposta si apre al tocco */
-.atti-slogan-domanda { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: .45rem; }
+.atti-slogan-domanda { cursor: pointer; list-style: none; display: block; }
 .atti-slogan-domanda::-webkit-details-marker { display: none; }
 .atti-slogan-domanda::after {
-  content: ""; flex: 0 0 auto; width: .45rem; height: .45rem; margin-left: auto;
-  border: solid var(--inchiostro-tenue); border-width: 0 2px 2px 0;
-  transform: translateY(-.15rem) rotate(45deg); transition: transform .2s ease;
+  content: ""; display: inline-block; width: .4rem; height: .4rem; margin-left: .45rem;
+  border: solid var(--inchiostro-fio); border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-.2rem) rotate(45deg); transition: transform .2s ease;
 }
-.atti-slogan[open] > .atti-slogan-domanda::after { transform: translateY(.1rem) rotate(-135deg); }
+.atti-slogan[open] > .atti-slogan-domanda::after { transform: translateY(-.05rem) rotate(-135deg); }
 .atti-slogan-domanda:focus-visible { outline: 2px solid var(--accento); outline-offset: 3px; border-radius: 3px; }
 .atti-slogan-risposta { margin: .3rem 0 0; }
 
