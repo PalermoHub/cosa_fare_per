@@ -2438,3 +2438,16 @@ body.ha-risultati .scorciatoie { display: none; }
   .pagina-atti .atti-slogan-domanda { font-size: .95rem; line-height: 1.25; }
   .pagina-atti .atti-slogan-risposta { font-size: .8rem; line-height: 1.4; }
 }
+
+/* pagina «Atti»: anche il modulo di ricerca si stringe su telefono */
+@media (max-width: 40rem) {
+  .pagina-atti .atti-cerca { padding-top: .6rem; }
+  .pagina-atti .atti-form { gap: .5rem; padding: .65rem; }
+  .pagina-atti .atti-filtri { gap: .5rem; }
+  .pagina-atti .atti-campo { gap: .2rem; }
+  .pagina-atti .atti-campo label { font-size: .64rem; }
+  .pagina-atti .atti-campo input,
+  .pagina-atti .atti-campo select { font-size: .82rem; padding: .4rem .55rem; border-radius: 8px; }
+  .pagina-atti .atti-cerca-bottone { font-size: .82rem; padding: .5rem 1rem; min-height: 2.4rem; }
+  .pagina-atti .atti-pulisci-bottone { font-size: .78rem; padding: .5rem .75rem; min-height: 2.4rem; }
+}
