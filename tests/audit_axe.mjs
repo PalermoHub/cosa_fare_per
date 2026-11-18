@@ -81,6 +81,7 @@ const VISTE = [
   ['risposte salvate (vuoto)', '/salvati.html', 390],
   ['risposte salvate con una voce', '/salvati.html', 390],
   ['«Credits» aperto', '/', 390],
+  ['«Decifra la PA» aperto', '/', 390],
   ['pannello «Altro» aperto', '/', 390],
   ['home (schermo largo)', '/', 1280],
   ['risposta in tema scuro (schermo largo)', '/?q=come%20cambio%20residenza', 1280],
@@ -125,6 +126,10 @@ async function main() {
       if (nome.includes('Credits')) {
         // il riquadro dei crediti si apre dal collegamento nel piede
         await pagina.evaluate(() => document.querySelector('[data-crediti]').click());
+      }
+      if (nome.includes('Decifra')) {
+        // la finestra si apre dal riquadro in home; il campo del link prende il fuoco
+        await pagina.evaluate(() => document.querySelector('[data-decifra]').click());
       }
       if (nome.includes('Altro')) {
         // il pannello delle voci secondarie si apre dal suo pulsante, in fondo alla pagina

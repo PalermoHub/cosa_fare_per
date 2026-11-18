@@ -298,6 +298,21 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
       </div>
     </form>
 
+    <section class="decifra-invito" aria-labelledby="decifra-invito-titolo">
+      <span class="decifra-invito-icona" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+          <path d="M4.6 5.2h11v13.6H6.4a1.8 1.8 0 0 1-1.8-1.8Z"/>
+          <path d="M15.6 8.4h3.8v8.6a1.8 1.8 0 0 1-1.8 1.8h-2"/>
+          <path d="M7.5 8.6h5.2M7.5 11.6h5.2M7.5 14.6h3.2"/>
+        </svg>
+      </span>
+      <div class="decifra-invito-corpo">
+        <h2 class="decifra-invito-titolo" id="decifra-invito-titolo">Decifra la PA</h2>
+        <p class="decifra-invito-testo">Avviso o bando in burocratese? Incolla il link: preparo le istruzioni per fartelo spiegare in parole semplici dall'AI che usi.</p>
+      </div>
+      <button type="button" class="decifra-invito-apri" data-decifra>Incolla un link</button>
+    </section>
+
     <nav class="suggerimenti" id="suggerimenti" aria-label="Domande frequenti"></nav>
 
     <nav class="scorciatoie" aria-label="Altri modi per usare Pinuzza">
@@ -485,6 +500,7 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
 <script type="module" src="js/tema.js"></script>
 <script type="module" src="js/menu.js"></script>
 <script type="module" src="js/crediti.js"></script>
+<script type="module" src="js/decifra.js"></script>
 <script type="module" src="js/salvati.js"></script>
 <script type="module" src="js/in-cima.js"></script>
 <script type="module" src="js/app.js"></script>

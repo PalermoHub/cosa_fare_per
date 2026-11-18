@@ -1226,7 +1226,9 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
   max-height: min(80vh, 34rem);
   overflow-y: auto;
   margin: auto;
-  padding: 1.15rem 1.25rem 1.1rem;
+  /* il padding in cima sta nella testata (appiccicata): così il testo che scorre
+     non passa mai sopra il titolo, nemmeno sul telefono */
+  padding: 0 1.25rem 1.1rem;
   border: 1px solid var(--linea-forte);
   border-radius: var(--tondo);
   background: var(--superficie);
@@ -1283,6 +1285,245 @@ body.crediti-aperti .crediti {
 .piede-legale { white-space: nowrap; }
 /* il copyright non si spezza fra «©» e l'anno */
 .piede-copyright { white-space: nowrap; }
+
+/* ---------- «Decifra la PA» (js/decifra.js) ----------
+   La scheda invita dalla home; la finestra compone soltanto il testo delle istruzioni:
+   nessuna chiamata a un'AI, nessun dato che esce dal browser. */
+
+.decifra-invito {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .35rem .8rem;
+  /* stessa larghezza e stesso tondo del campo della domanda: è un secondo modo di chiedere */
+  width: min(100%, 38rem);
+  margin: 1.2rem auto 0;
+  padding: .7rem .9rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 1.35rem;
+  background: var(--superficie);
+  box-shadow: var(--ombra);
+  text-align: left;
+}
+.decifra-invito-icona {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 999px;
+  background: var(--accento-fondo);
+  color: var(--su-accento);
+}
+.decifra-invito-icona svg { width: 1.25rem; height: 1.25rem; }
+.decifra-invito-titolo { margin: 0; font: 600 .98rem/1.25 var(--serif); }
+.decifra-invito-testo {
+  margin: .15rem 0 0;
+  font-size: .82rem;
+  line-height: 1.45;
+  color: var(--inchiostro-tenue);
+  /* niente ultima riga con una parola sola («AI.»): le righe si bilanciano */
+  text-wrap: pretty;
+}
+.decifra-invito-apri {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .5rem .85rem;
+  border: 1px solid var(--accento);
+  border-radius: 999px;
+  background: var(--accento-fondo);
+  color: var(--su-accento);
+  font: 600 .82rem/1 var(--sans);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.decifra-invito-apri:hover { background: var(--accento-fondo-hover); }
+body.ha-risultati .decifra-invito { display: none; }
+
+.decifra {
+  width: min(100% - 2rem, 34rem);
+  max-height: min(92dvh, 50rem);
+  overflow-y: auto;
+  margin: auto;
+  /* il padding in cima sta nella testata (appiccicata): così il testo che scorre
+     non passa mai sopra il titolo, nemmeno sul telefono */
+  padding: 0 1.25rem 1.1rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: var(--tondo);
+  background: var(--superficie);
+  color: var(--inchiostro);
+  box-shadow: 0 18px 50px -20px rgba(var(--tinta-ombra), .55);
+}
+.decifra::backdrop { background: rgba(var(--tinta-ombra), .45); }
+/* ripiego per i browser senza <dialog> modale: il riquadro resta sopra la pagina */
+body.decifra-aperti .decifra {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+}
+.decifra-testa {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: 1.15rem 0 .35rem;
+  background: var(--superficie);
+}
+.decifra-titolo { margin: 0; font: 600 1.15rem/1.25 var(--serif); }
+.decifra-chiudi {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--linea-forte);
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--inchiostro-tenue);
+  cursor: pointer;
+}
+.decifra-chiudi:hover { border-color: var(--accento); color: var(--accento); }
+.decifra-chiudi svg { width: 1.05rem; height: 1.05rem; }
+.decifra-spiega {
+  margin: .55rem 0 .9rem;
+  font-size: .86rem;
+  line-height: 1.5;
+  color: var(--inchiostro-tenue);
+}
+.decifra-campi { display: grid; gap: .35rem; }
+.decifra-etichetta { font: 600 .8rem/1.35 var(--sans); color: var(--inchiostro); }
+.decifra-campi input,
+.decifra-campi textarea,
+.decifra-esito textarea {
+  width: 100%;
+  padding: .55rem .65rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 8px;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font: .9rem/1.45 var(--sans);
+}
+.decifra-campi input:focus-visible,
+.decifra-campi textarea:focus-visible,
+.decifra-esito textarea:focus-visible {
+  outline: 2px solid var(--accento);
+  outline-offset: 1px;
+  border-color: var(--accento);
+}
+.decifra-campi input[aria-invalid="true"] { border-color: var(--caldo); }
+.decifra-aiuto { margin: 0; font-size: .74rem; line-height: 1.4; color: var(--inchiostro-fio); }
+.decifra-senza-link { margin: .25rem 0 0; }
+.decifra-senza-link summary { font-size: .8rem; font-weight: 600; color: var(--accento); cursor: pointer; }
+.decifra-senza-link summary:hover { text-decoration: underline; text-underline-offset: 2px; }
+.decifra-senza-link textarea { margin-top: .45rem; resize: vertical; }
+.decifra-errore { margin: .15rem 0 0; font-size: .8rem; line-height: 1.4; color: var(--caldo); }
+.decifra-prepara {
+  justify-self: start;
+  margin-top: .55rem;
+  padding: .6rem 1rem;
+  border: 1px solid var(--accento);
+  border-radius: 999px;
+  background: var(--accento-fondo);
+  color: var(--su-accento);
+  font: 600 .85rem/1 var(--sans);
+  cursor: pointer;
+}
+.decifra-prepara:hover { background: var(--accento-fondo-hover); }
+.decifra-esito {
+  display: grid;
+  gap: .35rem;
+  margin-top: 1rem;
+  padding-top: .9rem;
+  border-top: 1px dashed var(--linea-forte);
+}
+.decifra-esito textarea { resize: vertical; min-height: 6.5rem; }
+.decifra-azioni { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .1rem; }
+.decifra-azioni button,
+.decifra-azioni a {
+  display: inline-flex;
+  align-items: center;
+  padding: .55rem .9rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--inchiostro);
+  font: 600 .82rem/1 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+}
+.decifra-azioni button:hover,
+.decifra-azioni a:hover { border-color: var(--accento); color: var(--accento); }
+.decifra-azioni .decifra-copia {
+  border-color: var(--accento);
+  background: var(--accento-fondo);
+  color: var(--su-accento);
+}
+.decifra-azioni .decifra-copia:hover { background: var(--accento-fondo-hover); color: var(--su-accento); }
+.decifra-apri {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .15rem;
+}
+.decifra-etichetta-apri { font-size: .78rem; font-weight: 600; color: var(--inchiostro-tenue); }
+.decifra-servizio {
+  padding: .45rem .6rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 999px;
+  background: var(--carta);
+  color: var(--inchiostro);
+  font: .82rem/1 var(--sans);
+  cursor: pointer;
+}
+.decifra-apri-chat {
+  display: inline-flex;
+  align-items: center;
+  padding: .55rem .9rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--inchiostro);
+  font: 600 .82rem/1 var(--sans);
+  text-decoration: none;
+}
+.decifra-apri-chat:hover { border-color: var(--accento); color: var(--accento); }
+.decifra-nota-computer {
+  margin: .15rem 0 0;
+  font-size: .76rem;
+  line-height: 1.45;
+  color: var(--inchiostro-fio);
+}
+.decifra-stato {
+  min-height: 1.2em;
+  margin: .25rem 0 0;
+  font-size: .78rem;
+  line-height: 1.4;
+  color: var(--accento);
+}
+.decifra-fonte { margin: 1rem 0 0; font-size: .72rem; line-height: 1.45; color: var(--inchiostro-fio); }
+.decifra-fonte a { color: var(--accento); }
+
+@media (max-width: 40rem) {
+  /* sul telefono il comando va a tutta larghezza e sotto il testo */
+  .decifra-invito { grid-template-columns: auto minmax(0, 1fr); }
+  .decifra-invito-apri { grid-column: 1 / -1; min-height: 2.75rem; }
+  .decifra-chiudi,
+  .decifra-prepara,
+  .decifra-azioni button,
+  .decifra-servizio,
+  .decifra-apri-chat { min-height: 2.75rem; }
+  .decifra-servizio { padding-inline: .8rem; }
+  .decifra-senza-link summary { min-height: 2.75rem; padding-block: .7rem; }
+  .decifra-chiudi { width: 2.75rem; height: 2.75rem; }
+}
 /* sotto i 352px i link del piede su una riga sola sfondano la larghezza: si lascia andare a capo */
 @media (max-width: 22rem) { .piede-legale { white-space: normal; } }
 

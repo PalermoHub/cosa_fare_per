@@ -1,4 +1,4 @@
-// Test dell'interfaccia (P1.7): diciassette casi che coprono quello che l'utente fa davvero.
+// Test dell'interfaccia (P1.7): diciotto casi che coprono quello che l'utente fa davvero.
 //
 // Apre il sito in locale con Chromium (Playwright) e prova: pagina bianca, risposta con
 // scheda ufficio, azzeramento della risposta, domanda con due richieste, risposta incerta,
@@ -494,6 +494,70 @@ const casi = {
       .catch(() => {});
     const data = (await pagina.textContent('#aggiornato')) || '—';
     verifica(/\d{4}/.test(data), `data dei dati: ${data}`);
+  },
+
+  async '«Decifra la PA»: dal link alle istruzioni pronte, con il credito all\'app di origine'(pagina, base) {
+    await pagina.goto(base, { waitUntil: 'load' });
+    await attesa(900);
+
+    verifica(await pagina.locator('[data-decifra]').isVisible(), 'manca l\'invito a «Decifra la PA»');
+    await pagina.click('[data-decifra]');
+    verifica(await pagina.locator('#decifra-pa').evaluate(finestra => finestra.open), 'la finestra non si apre');
+    verifica(
+      await pagina.evaluate(() => document.activeElement && document.activeElement.id === 'decifra-link'),
+      'il fuoco non va sul campo del link',
+    );
+
+    // un link che non è un indirizzo: messaggio di errore e nessuna istruzione
+    await pagina.fill('#decifra-link', 'non un link');
+    await pagina.click('.decifra-prepara');
+    const errore = await pagina.textContent('#decifra-errore');
+    verifica(/http/.test(errore), `errore sul link: ${errore}`);
+    verifica(await pagina.locator('#decifra-esito').isHidden(), 'le istruzioni compaiono anche con un link sbagliato');
+
+    // un indirizzo scritto senza «https://» viene completato e finisce nelle istruzioni
+    await pagina.fill('#decifra-link', 'www.comune.palermo.it/avviso/123');
+    await pagina.click('.decifra-prepara');
+    await attesa(200);
+    const istruzioni = await pagina.inputValue('#decifra-istruzioni');
+    verifica(istruzioni.includes('https://www.comune.palermo.it/avviso/123'), 'manca il link nelle istruzioni');
+    verifica(istruzioni.includes('In pratica questo significa:'), 'manca la sezione finale del modello');
+    verifica(await pagina.locator('.decifra-copia').isVisible(), 'manca «Copia le istruzioni»');
+    // si sceglie la chat web preferita: l'indirizzo porta le istruzioni dove è supportato
+    const servizi = await pagina.$$eval('#decifra-servizio option', opzioni => opzioni.map(o => o.value));
+    verifica(servizi.length >= 10, `chat web nell'elenco: ${servizi.length}`);
+    for (const nome of ['Claude', 'DeepSeek', 'Qwen', 'Z.ai', 'Kimi', 'ChatGPT', 'Gemini', 'Copilot', 'Perplexity', 'Grok']) {
+      verifica(servizi.includes(nome), `manca ${nome} fra le chat web`);
+    }
+    const predefinita = await pagina.$eval('.decifra-apri-chat', a => ({ testo: a.textContent.trim(), href: a.href }));
+    verifica(predefinita.testo.includes('Claude'), `comando predefinito: ${predefinita.testo}`);
+    verifica(predefinita.href.startsWith('https://claude.ai/new?q='), 'Claude non è la scelta predefinita');
+
+    await pagina.selectOption('#decifra-servizio', 'Perplexity');
+    const perplexity = await pagina.$eval('.decifra-apri-chat', a => ({ testo: a.textContent.trim(), href: a.href }));
+    verifica(perplexity.testo.includes('Perplexity'), `etichetta del comando: ${perplexity.testo}`);
+    verifica(perplexity.href.startsWith('https://www.perplexity.ai/search?q='), 'manca l\'indirizzo di Perplexity');
+    verifica(
+      decodeURIComponent(perplexity.href).includes('https://www.comune.palermo.it/avviso/123'),
+      'le istruzioni non arrivano all\'indirizzo della chat',
+    );
+
+    // Gemini non accetta il testo nell'indirizzo: si apre la chat e le istruzioni restano da incollare
+    await pagina.selectOption('#decifra-servizio', 'Gemini');
+    const gemini = await pagina.$eval('.decifra-apri-chat', a => a.href);
+    verifica(gemini === 'https://gemini.google.com/app', `indirizzo Gemini: ${gemini}`);
+    verifica(
+      await pagina.locator('.decifra-fonte a[href*="aborruso.github.io/in_due_tocchi"]').count() === 1,
+      'manca il credito all\'app di origine',
+    );
+
+    // Esc chiude e riporta il fuoco sul comando che l'ha aperta
+    await pagina.keyboard.press('Escape');
+    verifica(!(await pagina.locator('#decifra-pa').evaluate(finestra => finestra.open)), 'Esc non chiude la finestra');
+    verifica(
+      await pagina.evaluate(() => document.activeElement && document.activeElement.hasAttribute('data-decifra')),
+      'il fuoco non torna sul comando della home',
+    );
   },
 };
 

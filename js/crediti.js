@@ -66,6 +66,19 @@ function costruisci() {
     ),
   );
 
+  const ringraziamenti = sezione(
+    'Ringraziamenti',
+    paragrafo(
+      'La funzione «Decifra la PA» arriva dall\'app ',
+      link('in due tocchi', 'https://aborruso.github.io/in_due_tocchi/', 'in due tocchi, l\'app di Andrea Borruso'),
+      ' di ',
+      link('Andrea Borruso', 'https://github.com/aborruso', 'aborruso su GitHub'),
+      ' (codice su ',
+      link('GitHub', 'https://github.com/aborruso/in_due_tocchi', 'Repository in_due_tocchi'),
+      ', licenza MIT): le istruzioni sono adattate dal suo modello «Decifra la PA».',
+    ),
+  );
+
   const chiudi = document.createElement('button');
   chiudi.type = 'button';
   chiudi.className = 'crediti-chiudi';
@@ -75,7 +88,7 @@ function costruisci() {
   azioni.className = 'crediti-azioni';
   azioni.append(chiudi);
 
-  finestra.append(titolo, idea, sviluppo, azioni);
+  finestra.append(titolo, idea, sviluppo, ringraziamenti, azioni);
   document.body.append(finestra);
 
   const nascondi = () => {

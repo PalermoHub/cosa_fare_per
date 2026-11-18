@@ -26,6 +26,7 @@ js/aree.js            raggruppamento per area, elenco alfabetico, filtro e sugge
 js/uffici.js          interfaccia della pagina degli uffici
 js/salvati.js         risposte salvate nella memoria del browser (nessun server)
 js/salvati-pagina.js  interfaccia della pagina delle risposte salvate
+js/decifra.js         «Decifra la PA»: dalle istruzioni per farsi spiegare un avviso pubblico
 data/argomenti.json   122 voci: domande tipiche, parole chiave, risposta preparata, uffici competenti
 data/servizi.json     58 schede servizio ufficiali del Comune, estratte con le loro sezioni
 data/uffici.json      601 nodi Area / Settore / U.O. con competenze, contatti, sede, coordinate
@@ -55,6 +56,16 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
   **Percorso**: chiede la posizione al browser e apre il navigatore verso la sede.
 - URL condivisibile (`?q=…`), tasto indietro del browser, pulsante «Torna all'inizio», pulsante
   «torna in cima», funziona anche da tastiera.
+- **«Decifra la PA»** (in home): incolli il link di un avviso, di un bando o di una notizia
+  della pubblica amministrazione e l'app prepara le istruzioni da incollare in un assistente AI
+  (ChatGPT, Claude, Gemini…), perché te lo spieghi in italiano semplice: cosa cambia, cosa devi
+  fare e da quando. Nessuna AI viene chiamata e nessun dato esce dal browser: il testo si compone
+  lì e resta lì finché non lo copi tu. Sul telefono il pannello di condivisione le passa all'app
+  che usi; sul computer si sceglie fra le chat web più usate (Claude, DeepSeek, Qwen, Z.ai, Kimi,
+  ChatGPT, Gemini, Copilot, Perplexity, Grok) e le istruzioni si aprono già pronte dove il servizio
+  lo consente.
+  Le istruzioni sono adattate dal modello «Decifra la PA»
+  dell'app [in due tocchi](https://github.com/aborruso/in_due_tocchi) di Andrea Borruso (MIT).
 - **Risposte salvate** (`salvati.html`): «Salva questa risposta» mette la scheda da parte nella
   memoria del browser; da qui si riapre o si toglie, anche tutte insieme. Niente account, niente invio.
 - **Guida** (`guida.html`): come fare una domanda, leggere la risposta, arrivare all'ufficio,
