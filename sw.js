@@ -11,7 +11,7 @@
 // A ogni rilascio va incrementata VERSIONE (o si lancia scripts/nuova_versione.sh): le cache
 // vecchie vengono cancellate all'attivazione, così non si serve mai un misto di versioni.
 
-const VERSIONE = 'pinuzza-v71';
+const VERSIONE = 'pinuzza-v72';
 const GUSCIO = `${VERSIONE}-guscio`;
 const PAGINE = `${VERSIONE}-pagine`;
 const DATI = `${VERSIONE}-dati`;
@@ -38,6 +38,7 @@ const PRECACHE = [
   'js/decifra.js',
   'js/icone.js',
   'js/in-cima.js',
+  'js/installa.js',
   'js/schermo-intero.js',
   'js/menu.js',
   'js/motore.js',

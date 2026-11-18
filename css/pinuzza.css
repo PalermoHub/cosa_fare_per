@@ -1178,7 +1178,8 @@ body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 1 1 auto; ov
 
 /* ---------- avviso sul consenso alle statistiche ---------- */
 
-.consenso {
+.consenso,
+.installa {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -1194,7 +1195,8 @@ body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 1 1 auto; ov
 /* su schermo largo il banner non attraversa il campo di ricerca e non copre il «torna in cima»,
    che sta in basso a destra: si mette in un angolo a sinistra, come un avviso di sistema */
 @media (min-width: 40.01rem) {
-  .consenso {
+  .consenso,
+  .installa {
     left: max(1.25rem, calc((100vw - 62rem) / 2));
     right: auto;
     transform: none;
@@ -1703,7 +1705,8 @@ body.decifra-aperti .decifra {
 .bottone-cookie:hover { border-color: var(--accento); background: var(--accento-chiaro); }
 
 @media (max-width: 40rem) {
-  .consenso { bottom: calc(var(--piede-h, 4.2rem) + var(--barra-h) + .6rem); padding: .85rem .95rem; }
+  .consenso,
+  .installa { bottom: calc(var(--piede-h, 4.2rem) + var(--barra-h) + .6rem); padding: .85rem .95rem; }
   /* le etichette delle categorie sono comode al dito */
   .pagina-domande .indice-categorie a.badge { min-height: 2.75rem; }
   .consenso-azioni button { flex: 1 1 auto; }

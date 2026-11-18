@@ -1,4 +1,4 @@
-// Test dell'interfaccia (P1.7): diciotto casi che coprono quello che l'utente fa davvero.
+// Test dell'interfaccia (P1.7): diciannove casi che coprono quello che l'utente fa davvero.
 //
 // Apre il sito in locale con Chromium (Playwright) e prova: pagina bianca, risposta con
 // scheda ufficio, azzeramento della risposta, domanda con due richieste, risposta incerta,
@@ -333,6 +333,44 @@ const casi = {
     await attesa(1200);
     verifica(await pagina.locator('script[data-analytics]').count() === 1, 'Analytics non parte nemmeno con il consenso');
     await pagina.evaluate(() => localStorage.removeItem('pinuzza-consenso'));
+  },
+
+  async 'invito a installare: compare, «Installa» apre il prompt, «Non ora» lo mette a riposo'(pagina, base) {
+    await pagina.setViewportSize({ width: 390, height: 844 });
+    await pagina.goto(base, { waitUntil: 'load' });
+    await pagina.evaluate(() => {
+      localStorage.removeItem('pinuzza-installa-no');
+      window.__prompt = 0;
+      const evento = new Event('beforeinstallprompt', { cancelable: true });
+      evento.prompt = async () => { window.__prompt += 1; };
+      evento.userChoice = Promise.resolve({ outcome: 'accepted' });
+      window.dispatchEvent(evento);
+    });
+    verifica(await pagina.locator('.installa').count() === 0, 'l\u2019invito compare subito, senza lasciar leggere la pagina');
+    await pagina.waitForSelector('.installa', { timeout: 6000 });
+    verifica(/senza le barre del browser/.test(await pagina.textContent('.installa')), 'testo dell\u2019invito');
+    await pagina.locator('.installa .consenso-accetta').click();
+    verifica(await pagina.evaluate(() => window.__prompt) === 1, '«Installa» non ha aperto il prompt del browser');
+    verifica(await pagina.locator('.installa').count() === 0, 'l\u2019invito resta dopo «Installa»');
+    // «Non ora»: riposo di 14 giorni, anche ricaricando
+    await pagina.evaluate(() => {
+      const evento = new Event('beforeinstallprompt', { cancelable: true });
+      evento.prompt = async () => {};
+      evento.userChoice = Promise.resolve({ outcome: 'dismissed' });
+      window.dispatchEvent(evento);
+    });
+    await pagina.waitForSelector('.installa', { timeout: 6000 });
+    await pagina.locator('.installa button:not(.consenso-accetta)').click();
+    verifica(await pagina.evaluate(() => !!localStorage.getItem('pinuzza-installa-no')), '«Non ora» non è stato ricordato');
+    await pagina.reload({ waitUntil: 'load' });
+    await pagina.evaluate(() => {
+      const evento = new Event('beforeinstallprompt', { cancelable: true });
+      evento.prompt = async () => {};
+      window.dispatchEvent(evento);
+    });
+    await attesa(3500);
+    verifica(await pagina.locator('.installa').count() === 0, 'l\u2019invito è tornato prima dei 14 giorni');
+    await pagina.evaluate(() => localStorage.removeItem('pinuzza-installa-no'));
   },
 
   async 'feedback: «No» prepara la segnalazione su GitHub'(pagina, base) {

@@ -181,4 +181,8 @@ test('schermo intero su telefono: manifest, modulo in ogni pagina e nel guscio o
     assert.match(leggi(pagina), /<script type="module" src="js\/schermo-intero\.js"><\/script>/, `${pagina}: manca js/schermo-intero.js`);
   }
   assert.match(sw, /'js\/schermo-intero\.js',/, 'sw.js non mette in cache js/schermo-intero.js');
+  for (const pagina of ['index.html', 'uffici.html', 'domande.html', 'privacy.html', 'salvati.html', 'guida.html', 'atti.html']) {
+    assert.match(leggi(pagina), /<script type="module" src="js\/installa\.js"><\/script>/, `${pagina}: manca js/installa.js`);
+  }
+  assert.match(sw, /'js\/installa\.js',/, 'sw.js non mette in cache js/installa.js');
 });
