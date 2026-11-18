@@ -362,7 +362,9 @@ input, textarea { caret-color: var(--accento); }
   flex-direction: column;
   align-items: center;
   margin: 1.35rem auto 0;
-  max-width: 40rem;
+  max-width: 38rem; /* come i due moduli sopra: stessa larghezza del campo */
+  width: 100%;
+  min-width: 0; /* la riga scorrevole non deve allargare il contenitore oltre lo schermo */
 }
 .etichetta-suggerimenti {
   margin: 0 0 .6rem; /* un po' d'aria fra l'etichetta e i badge: erano appiccicati */
@@ -1057,7 +1059,7 @@ body.altre-aperte .altre { inset: auto 0 0 0; margin: 0 auto; }
     justify-content: space-between; /* testo a sinistra, freccia a destra come nelle domande suggerite dei chatbot */
     gap: .6rem;
     padding: .45rem .9rem;
-    border-radius: 1rem;
+    border-radius: .55rem;
     text-align: left;
     font-size: .88rem;
     line-height: 1.25;
