@@ -485,8 +485,8 @@ input, textarea { caret-color: var(--accento); }
   margin: .9rem auto 0;
   color: var(--inchiostro-tenue);
   font-size: 1.02rem;
-  text-align: center;
-  text-wrap: wrap; /* a tutta larghezza, fino ai margini del campo */
+  text-align: justify; text-align-last: center; /* bordi allineati a quelli del campo; l’ultima riga resta centrata */
+  text-wrap: wrap;
 }
 
 .modulo { margin: 1.7rem auto 0; max-width: 44rem; }
