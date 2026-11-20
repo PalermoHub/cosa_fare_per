@@ -11,7 +11,7 @@
 // A ogni rilascio va incrementata VERSIONE (o si lancia scripts/nuova_versione.sh): le cache
 // vecchie vengono cancellate all'attivazione, così non si serve mai un misto di versioni.
 
-const VERSIONE = 'pinuzza-v109';
+const VERSIONE = 'pinuzza-v110';
 const GUSCIO = `${VERSIONE}-guscio`;
 const PAGINE = `${VERSIONE}-pagine`;
 const DATI = `${VERSIONE}-dati`;
@@ -54,6 +54,9 @@ const PRECACHE = [
   'img/icon-maskable-512.png',
   'img/opendatasicilia.png',
   'img/guida/home.webp',
+  'img/guida/ambito-rous.webp',
+  'img/guida/ambito-uffici.webp',
+  'img/guida/ambiti-telefono.webp',
   'img/guida/risposta.webp',
   'img/guida/ufficio.webp',
   'img/guida/incerta.webp',
