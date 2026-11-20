@@ -2936,6 +2936,8 @@ body.ha-risultati .scorciatoie { display: none; }
     justify-content: space-evenly;
   }
   body:not(.ha-risultati):not(.pagina-informativa) .testata > .interno > * { margin-block: 0; }
+  /* il benvenuto non deve toccare il campo: spazio minimo garantito anche con poca altezza */
+  body:not(.ha-risultati):not(.pagina-informativa) .testata > .interno > .presentazione { margin-bottom: 1.1rem; }
   body:not(.ha-risultati):not(.pagina-informativa) .risultati { flex: 0 0 auto; }
 }
 
