@@ -642,6 +642,41 @@ body.ha-risultati .campo-piede { flex-wrap: nowrap; }
 body.ha-risultati .campo input { flex: 1 1 8rem; width: auto; min-width: 0; }
 body.ha-risultati .ambiti select { padding-block: .3rem; }
 
+/* Telefono, prima della risposta: il menù dell'ambito e il tasto d'invio stanno sulla stessa
+   riga (il menù occupa lo spazio, il tasto tondo gli sta accanto), poi la descrizione e
+   l'avvertenza a tutta larghezza. Prima il tasto finiva solo, a capo, sotto un testo lungo. */
+@media (max-width: 40rem) {
+  body:not(.ha-risultati) .campo-piede {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "etichetta etichetta"
+      "menu      azioni"
+      "descr     descr"
+      "aiuto     aiuto";
+    align-items: center;
+    column-gap: .6rem;
+    row-gap: .15rem;
+    margin-top: .35rem;
+    padding-top: .65rem;
+    border-top: 1px solid var(--linea);
+  }
+  body:not(.ha-risultati) .ambiti { display: contents; }
+  body:not(.ha-risultati) .ambiti-etichetta { grid-area: etichetta; margin: 0 0 .1rem; }
+  body:not(.ha-risultati) .ambiti select {
+    grid-area: menu;
+    width: 100%;
+    min-height: 2.75rem;
+    padding: .5rem 2.2rem .5rem 1rem;
+    font-size: .95rem;
+    background-position: right .9rem center;
+    background-size: .8rem;
+  }
+  body:not(.ha-risultati) .ambito-descrizione { grid-area: descr; margin: .3rem 0 0; }
+  body:not(.ha-risultati) .campo-azioni { grid-area: azioni; }
+  body:not(.ha-risultati) .aiuto { grid-area: aiuto; margin-top: .4rem; }
+}
+
 /* «Prova con» + le domande: l'etichetta sta fuori dal nastro che scorre */
 .suggerimenti {
   display: flex;
