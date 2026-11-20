@@ -980,6 +980,9 @@ async function impostaAmbito(nuovo, { aggiornaProva = true } = {}) {
   const menu = $('#ambiti-menu');
   if (menu) menu.value = ambito;
   campo.placeholder = AMBITI[ambito].placeholder;
+  const descr = $('#ambito-descrizione');
+  const opzione = menu && [...menu.options].find((o) => o.value === ambito);
+  if (descr && opzione?.dataset.descrizione) descr.textContent = opzione.dataset.descrizione;
   const aiuto = $('#aiuto-campo');
   if (aiuto) aiuto.innerHTML = AMBITI[ambito].aiuto;
   try {

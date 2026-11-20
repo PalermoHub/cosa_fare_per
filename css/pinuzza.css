@@ -586,6 +586,9 @@ input, textarea { caret-color: var(--accento); }
 /* piccola didascalia sopra la scelta, nello stesso tono dell'avvertenza; con la risposta aperta il posto manca */
 .ambiti-etichetta { margin: 0 0 .3rem .15rem; color: var(--inchiostro-fio); font-size: .78rem; line-height: 1.35; }
 body.ha-risultati .ambiti-etichetta { display: none; }
+/* riga sotto i badge: stesso testo del tooltip, sempre visibile (anche sul telefono, sotto il menù) */
+.ambito-descrizione { margin: .35rem 0 0 .15rem; color: var(--inchiostro-fio); font-size: .74rem; line-height: 1.35; }
+body.ha-risultati .ambito-descrizione { display: none; }
 .ambito { position: relative; cursor: pointer; }
 .ambito input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .ambito span {
