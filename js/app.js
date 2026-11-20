@@ -28,9 +28,9 @@ let ultimeAlternative = [];
 // e ricerca degli uffici; ROUS = il Regolamento sull'ordinamento degli Uffici e dei Servizi.
 // Ogni ambito ha il suo indice e le sue domande di prova: le soglie e i sinonimi non si mischiano.
 const AMBITI = {
-  argomenti: { placeholder: 'Es. come cambio residenza', aiuto: 'Nessuna registrazione. Le risposte arrivano dai dati pubblicati dal Comune di Palermo.' },
-  uffici: { placeholder: 'Es. quale ufficio si occupa dei cimiteri', aiuto: 'Cerco tra le schede dei servizi del Comune e tra gli uffici, con sede e recapiti.' },
-  rous: { placeholder: 'Es. come si chiede il part-time', aiuto: "Le risposte vengono dal Regolamento sull'ordinamento degli Uffici e dei Servizi (ROUS), con gli articoli e il link ai PDF." },
+  argomenti: { placeholder: 'Es. come cambio residenza', aiuto: `Nessuna registrazione. Le risposte arrivano dai dati pubblicati sul <a href="https://www.comune.palermo.it/" target="_blank" rel="noopener" title="Apri il portale istituzionale del Comune di Palermo">portale del Comune di Palermo</a>.` },
+  uffici: { placeholder: 'Es. quale ufficio si occupa dei cimiteri', aiuto: `Cerco tra le schede dei servizi pubblicate sul <a href="https://www.comune.palermo.it/servizi/" target="_blank" rel="noopener" title="Apri l’elenco dei servizi sul portale del Comune di Palermo">portale del Comune</a> e tra gli <a href="https://www.comune.palermo.it/amministrazione/aree-amministrative/" target="_blank" rel="noopener" title="Apri l’elenco delle aree amministrative sul portale del Comune di Palermo">uffici</a>, con sede e recapiti.` },
+  rous: { placeholder: 'Es. come si chiede il part-time', aiuto: `Le risposte vengono dal <a href="https://www.comune.palermo.it/documento_pubblico/regolamento-sullordinamento-degli-uffici-e-dei-servizi/" target="_blank" rel="noopener" title="Apri il Regolamento sull’ordinamento degli Uffici e dei Servizi sul portale del Comune di Palermo">Regolamento sull’ordinamento degli Uffici e dei Servizi (ROUS)</a>, con gli articoli e il link ai PDF.` },
 };
 let ambito = 'argomenti';
 
@@ -981,7 +981,7 @@ async function impostaAmbito(nuovo, { aggiornaProva = true } = {}) {
   if (menu) menu.value = ambito;
   campo.placeholder = AMBITI[ambito].placeholder;
   const aiuto = $('#aiuto-campo');
-  if (aiuto) aiuto.textContent = AMBITI[ambito].aiuto;
+  if (aiuto) aiuto.innerHTML = AMBITI[ambito].aiuto;
   try {
     await preparaAmbito(ambito);
   } catch (errore) {

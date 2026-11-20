@@ -2927,3 +2927,6 @@ body.ha-risultati .scorciatoie { display: none; }
   overflow-wrap: anywhere;
 }
 .fonte-riga { margin: 0 0 .4rem; font-size: .88rem; color: var(--inchiostro-tenue); }
+
+.aiuto a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.aiuto a:hover, .aiuto a:focus-visible { color: var(--inchiostro, currentColor); }
