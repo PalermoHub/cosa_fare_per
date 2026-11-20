@@ -579,6 +579,49 @@ input, textarea { caret-color: var(--accento); }
 }
 .campo .azzera[hidden] { display: none; }
 
+/* Selettore dell'ambito: tre scelte nel campo, sopra la domanda. Sono radio veri (tastiera e
+   lettori di schermo gratis); la pillola attiva usa gli stessi token del resto dell'app. */
+.ambiti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin: 0 0 .15rem;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.ambito { position: relative; cursor: pointer; }
+.ambito input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.ambito span {
+  display: inline-block;
+  padding: .2rem .7rem;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--carta-alt);
+  color: var(--inchiostro-tenue);
+  font: 600 .78rem/1.4 var(--sans);
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+.ambito:hover span { border-color: var(--accento); color: var(--accento); }
+.ambito input:checked + span {
+  background: var(--accento-fondo);
+  border-color: var(--accento-fondo);
+  color: var(--su-accento);
+}
+.ambito input:focus-visible + span { outline: 2px solid var(--accento); outline-offset: 2px; }
+/* con i risultati il campo diventa una riga sola: le tre scelte stanno sopra, a tutta larghezza */
+body.ha-risultati .campo { flex-wrap: wrap; padding-top: .35rem; }
+body.ha-risultati .ambiti { flex: 0 0 100%; margin: 0; }
+body.ha-risultati .campo input { flex: 1 1 8rem; width: auto; min-width: 0; }
+
 /* «Prova con» + le domande: l'etichetta sta fuori dal nastro che scorre */
 .suggerimenti {
   display: flex;
@@ -2829,3 +2872,31 @@ body.ha-risultati .scorciatoie { display: none; }
 
 /* separatore tra le voci del piede: un filetto, non un puntino */
 .sep { display: inline-block; width: 1px; height: .9em; margin: 0 .65em; background: var(--linea-forte); vertical-align: -.1em; }
+
+/* ROUS: gli articoli citati dalla risposta, uno per riquadro apribile col testo ufficiale */
+.fonti { margin: 1.2rem 0 0; }
+.fonti h3 { margin: 0 0 .5rem; font-size: .95rem; }
+.fonte {
+  border: 1px solid var(--linea);
+  border-radius: .55rem;
+  background: var(--superficie);
+  margin: 0 0 .4rem;
+}
+.fonte summary {
+  cursor: pointer;
+  padding: .55rem .8rem;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--inchiostro);
+}
+.fonte[open] summary { border-bottom: 1px solid var(--linea); }
+.fonte-testo {
+  margin: 0;
+  padding: .7rem .8rem .8rem;
+  white-space: pre-line;
+  font-size: .88rem;
+  line-height: 1.55;
+  color: var(--inchiostro-tenue);
+  overflow-wrap: anywhere;
+}
+.fonte-riga { margin: 0 0 .4rem; font-size: .88rem; color: var(--inchiostro-tenue); }

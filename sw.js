@@ -11,7 +11,7 @@
 // A ogni rilascio va incrementata VERSIONE (o si lancia scripts/nuova_versione.sh): le cache
 // vecchie vengono cancellate all'attivazione, così non si serve mai un misto di versioni.
 
-const VERSIONE = 'pinuzza-v101';
+const VERSIONE = 'pinuzza-v102';
 const GUSCIO = `${VERSIONE}-guscio`;
 const PAGINE = `${VERSIONE}-pagine`;
 const DATI = `${VERSIONE}-dati`;
@@ -74,9 +74,11 @@ const PRECACHE = [
   'img/guida/scuro.webp',
   'data/argomenti.json',
   'data/servizi.json',
+  'data/rous.json',
 ];
 
-// data/uffici.json pesa più di 1 MB: non si scarica all'installazione, entra in cache
+// data/uffici.json (più di 1 MB) e data/rous-articoli.json (700 KB, i testi del ROUS) non si scaricano
+// all'installazione: non si scarica all'installazione, entra in cache
 // la prima volta che l'app lo chiede (lo fa da sola, in background, dopo l'apertura).
 
 self.addEventListener('install', evento => {

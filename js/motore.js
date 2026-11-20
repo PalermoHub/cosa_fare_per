@@ -256,6 +256,13 @@ function correzioniPossibili(indiceVoci, parola) {
   return trovate.sort().slice(0, REFUSO_CANDIDATI);
 }
 
+function fuoriVocabolario(indiceVoci, domanda) {
+  const tutte = parole(domanda);
+  if (!tutte.length) return false;
+  const estranee = paroleSconosciute(indiceVoci, domanda).filter(p => !correzioniPossibili(indiceVoci, p).length);
+  return estranee.length >= 1 && estranee.length >= tutte.length - estranee.length;
+}
+
 // le domande da provare: quella scritta e, se ci sono parole che il vocabolario non
 // conosce, le varianti con quelle parole corrette (una variante per correzione)
 function variantiDomanda(indiceVoci, domanda) {
@@ -289,10 +296,20 @@ function variantiDomanda(indiceVoci, domanda) {
 // se una parola non esiste nel vocabolario si prova a raddrizzarla (una o due parole
 // per volta) e si tiene la domanda che trova la voce più pertinente. Le domande scritte
 // bene non hanno parole sconosciute, quindi non pagano nulla di tutto questo.
-export function cerca(indiceVoci, domanda, n = 4) {
+export function cerca(indiceVoci, domanda, n = 4, filtro = null) {
+  if (filtro) {
+    domanda = filtro(domanda);
+    // fuori argomento: le parole che il vocabolario non conosce (e non sono refusi di parole note)
+    // pesano quanto o più di quelle che conosce, per esempio «come cambio residenza» nel ROUS
+    if (fuoriVocabolario(indiceVoci, domanda)) return [];
+  }
+  // ambito ROUS (con filtro): una domanda identica a una preparata, per esempio quella cliccata
+  // in «Prova con», dà sempre quella voce: le parole in comune con altre voci non devono scavalcarla
+  const q = normalizza(domanda);
+  const identica = indice => indice.campi.domande.some(d => d.testo === q);
   const classifica = testo =>
     indiceVoci
-      .map(indice => ({ indice, punteggio: valuta(indice, testo) }))
+      .map(indice => ({ indice, punteggio: valuta(indice, testo) + (filtro && testo === domanda && q && identica(indice) ? 100 : 0) }))
       .filter(r => r.punteggio > 0)
       .sort((a, b) => b.punteggio - a.punteggio);
   const scritta = classifica(domanda);
@@ -319,13 +336,13 @@ export function sezioniDomanda(domanda) {
 // Le altre cose chieste dalla stessa domanda: una voce diversa da quella principale per
 // ogni pezzo che, preso da solo, trova una risposta sicura. Serve alla scheda «nella
 // domanda c'è anche questo»: su una domanda di un solo tema restituisce [].
-export function cercaSezioni(indiceVoci, domanda, { esclusa = null, quante = 1 } = {}) {
+export function cercaSezioni(indiceVoci, domanda, { esclusa = null, quante = 1, filtro = null } = {}) {
   const sezioni = sezioniDomanda(domanda);
   if (sezioni.length < 2) return [];
   const trovate = [];
   const visti = new Set(esclusa ? [esclusa] : []);
   for (const sezione of sezioni) {
-    const migliore = cerca(indiceVoci, sezione, 1)[0];
+    const migliore = cerca(indiceVoci, sezione, 1, filtro)[0];
     if (!migliore || migliore.punteggio < SOGLIA_SICURA) continue;
     const id = migliore.indice.voce.id;
     if (visti.has(id)) continue;
@@ -412,4 +429,63 @@ export function suggerimenti(voci, n = 6, caso = Math.random) {
     }
   }
   return scelti;
+}
+
+// Ricerca sul testo degli articoli (ambito ROUS, quando nessuna voce curata risponde):
+// il titolo pesa di più del testo. Restituisce l'articolo così com'è, non una sintesi.
+const paroleArticoli = new WeakMap();
+
+function indiceArticolo(articolo) {
+  let c = paroleArticoli.get(articolo);
+  if (!c) {
+    c = { titolo: parole(articolo.titolo, { conSinonimi: true }), testo: new Set(parole(articolo.testo)) };
+    paroleArticoli.set(articolo, c);
+  }
+  return c;
+}
+
+export function cercaArticoli(articoli, domanda, n = 3) {
+  const qp = parole(domanda, { conSinonimi: true });
+  if (!qp.length) return [];
+  const trovati = [];
+  for (const [id, articolo] of Object.entries(articoli)) {
+    const c = indiceArticolo(articolo);
+    let punti = 0;
+    let coperte = 0;
+    for (const p of qp) {
+      const t = punteggioParola(p, c.titolo);
+      const x = c.testo.has(p) ? 1 : 0;
+      punti += t * 3 * pesoParola(p) + x * pesoParola(p);
+      if (t || x) coperte++;
+    }
+    // serve che le parole della domanda ci siano quasi tutte: una sola parola in comune non basta
+    if (coperte / qp.length < 0.6 || coperte < 2) continue;
+    trovati.push({ id, articolo, punteggio: punti / qp.length });
+  }
+  return trovati.sort((a, b) => b.punteggio - a.punteggio).slice(0, n);
+}
+
+// Ambito ROUS: «comune», «Palermo», «dipendenti» ci sono in ogni voce e in ogni domanda («cos'è il CUG
+// del Comune di Palermo»): contati come parole qualunque coprirebbero quelle che distinguono i temi.
+const GENERICHE_ROUS = new Set(['comune', 'comunale', 'comunali', 'palermo', 'dipendente', 'dipendenti']);
+
+// «concorso» è in metà delle voci: si toglie solo se restano altre parole che distinguono il tema
+const DEBOLI_ROUS = new Set(['concorso', 'concorsi']);
+
+export function filtroRous(testo) {
+  const p = normalizza(testo).split(' ').filter(x => !GENERICHE_ROUS.has(x));
+  const senzaDeboli = p.filter(x => !DEBOLI_ROUS.has(x));
+  return (parole(senzaDeboli.join(' ')).length >= 1 ? senzaDeboli : p).join(' ');
+}
+
+export function indicizzaRous(voce) {
+  const f = filtroRous;
+  const indice = indicizza({
+    ...voce,
+    titolo: f(voce.titolo || ''),
+    domande: (voce.domande || []).map(f),
+    keywords: (voce.keywords || []).map(f),
+  }, {});
+  indice.voce = voce; // l'indice usa il testo filtrato, la risposta mostra quello vero
+  return indice;
 }

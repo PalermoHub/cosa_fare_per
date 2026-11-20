@@ -5,6 +5,8 @@ const percorsi = {
   argomenti: 'data/argomenti.json',
   servizi: 'data/servizi.json',
   uffici: 'data/uffici.json',
+  rous: 'data/rous.json',
+  rousArticoli: 'data/rous-articoli.json',
 };
 
 const inMemoria = {};
@@ -21,6 +23,8 @@ export const stato = {
   voci: [],
   servizi: {}, // id -> scheda servizio
   uffici: null, // id -> ufficio (caricato su richiesta)
+  rous: null, // { voci, documenti, pdf } (caricato quando si sceglie l'ambito ROUS)
+  articoliRous: null, // id -> { doc, numero, titolo, testo }
   aggiornato: '',
 };
 
@@ -50,4 +54,18 @@ export function ufficiDellaVoce(voce) {
   const scheda = voce.servizio ? stato.servizi[voce.servizio] : null;
   for (const u of scheda?.uffici || []) ids.push(u.id);
   return [...new Set(ids)].map(ufficioDa).filter(Boolean);
+}
+
+// ROUS: le voci curate servono subito (ambito «ROUS»), i testi integrali degli articoli
+// solo quando si apre una fonte o la ricerca ricade sul testo.
+export async function caricaRous() {
+  if (stato.rous) return stato.rous;
+  stato.rous = await scarica('rous');
+  return stato.rous;
+}
+
+export async function caricaArticoliRous() {
+  if (stato.articoliRous) return stato.articoliRous;
+  stato.articoliRous = await scarica('rousArticoli');
+  return stato.articoliRous;
 }

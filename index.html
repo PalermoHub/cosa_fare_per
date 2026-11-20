@@ -275,6 +275,12 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
     <form class="modulo" id="modulo" role="search" autocomplete="off">
       <label class="nascosto" for="domanda">La tua domanda</label>
       <div class="campo">
+        <fieldset class="ambiti" id="ambiti">
+          <legend class="nascosto">Su che cosa vuoi chiedere</legend>
+          <label class="ambito"><input type="radio" name="ambito" value="argomenti" checked><span>Argomenti</span></label>
+          <label class="ambito"><input type="radio" name="ambito" value="uffici"><span>Uffici e servizi</span></label>
+          <label class="ambito"><input type="radio" name="ambito" value="rous"><span>ROUS</span></label>
+        </fieldset>
         <input id="domanda" name="q" type="text" enterkeyhint="search"
                placeholder="Es. come cambio residenza"
                aria-describedby="aiuto-campo">

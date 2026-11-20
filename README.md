@@ -43,6 +43,11 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
 
 ## Funzioni
 
+- Un selettore sopra il campo sceglie **su che cosa si chiede**: *Argomenti* (voci curate, comportamento
+  di sempre), *Uffici e servizi* (schede servizio e ricerca degli uffici per nome e competenze) e *ROUS*
+  (Regolamento sull'ordinamento degli Uffici e dei Servizi). Ogni ambito ha il suo indice e le sue
+  domande di prova; l'ambito sta nell'indirizzo (`?q=…&ambito=rous`). Le risposte ROUS citano gli
+  articoli col testo ufficiale e il link ai PDF originali del Comune.
 - In home le domande suggerite sono badge: le voci marcate `inEvidenza` compaiono sempre per prime,
   le altre si scelgono a caso a ogni caricamento (otto su schermo largo, dodici su schermo stretto,
   in tre colonne da quattro che scorrono in orizzontale, una alla volta).
@@ -95,6 +100,11 @@ Le voci curate (`data/argomenti.json`) si modificano a mano: ogni voce ha `doman
 `uffici` e, se non esiste una scheda servizio, una risposta con `sintesi`, `passi`, `serve` e `nota`.
 Con `inEvidenza: true` la voce finisce sempre tra le domande suggerite in home, con la sua prima
 domanda.
+
+Il ROUS (`data/rous.json`: 65 voci per tema; `data/rous-articoli.json`: testo degli articoli, caricato
+solo quando serve) si rigenera dai PDF in `dati/rous/pdf` con `python3 scripts/rous_estrai.py` e
+`python3 scripts/rous_build.py`; le voci curate stanno in `scripts/rous_voci_a.py` e `rous_voci_b.py` e
+il build controlla che le fonti, gli uffici e i numeri citati esistano. Sono marcate `da-rivedere`.
 
 I dati degli uffici provengono da `comune.palermo.it/amministrazione/aree-amministrative/` e
 `/amministrazione/uffici/`; il catalogo dei servizi anche da

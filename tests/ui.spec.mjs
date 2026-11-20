@@ -1,4 +1,4 @@
-// Test dell'interfaccia (P1.7): diciannove casi che coprono quello che l'utente fa davvero.
+// Test dell'interfaccia (P1.7): ventitré casi che coprono quello che l'utente fa davvero.
 //
 // Apre il sito in locale con Chromium (Playwright) e prova: pagina bianca, risposta con
 // scheda ufficio, azzeramento della risposta, domanda con due richieste, risposta incerta,
@@ -107,6 +107,45 @@ const casi = {
     verifica(domande >= 4, `suggerimenti: ${domande}`);
     const badge = await pagina.textContent('#badge-uffici');
     verifica(/\d{3} uffici/.test(badge), `badge uffici: ${badge}`);
+  },
+
+  async 'selettore: ROUS risponde con articoli e link ai PDF, e cambia le domande di prova'(pagina, base) {
+    await pagina.goto(base, { waitUntil: 'load' });
+    await attesa(900);
+    verifica(await pagina.locator('#ambiti input').count() === 3, 'il selettore non ha tre scelte');
+    verifica(await pagina.isChecked('#ambiti input[value="argomenti"]'), 'Argomenti non è la scelta di partenza');
+    const prima = await pagina.locator('.riga-domande button').allTextContents();
+    await pagina.check('#ambiti input[value="rous"]');
+    await attesa(900);
+    const dopo = await pagina.locator('.riga-domande button').allTextContents();
+    verifica(dopo.length >= 4 && dopo.join() !== prima.join(), 'le domande di prova non sono cambiate');
+    verifica((await pagina.getAttribute('#domanda', 'placeholder')).includes('part-time'), 'segnaposto del ROUS mancante');
+    await pagina.fill('#domanda', 'quanti giorni di smart working posso fare a settimana');
+    await pagina.press('#domanda', 'Enter');
+    await pagina.waitForSelector('#risultati article.risposta h2');
+    const titolo = await pagina.textContent('#risultati article.risposta h2');
+    verifica(/lavoro agile/i.test(titolo), `titolo della risposta: ${titolo}`);
+    verifica(await pagina.locator('#risultati details.fonte').count() >= 1, 'mancano gli articoli citati');
+    const pdf = await pagina.locator('#risultati a[href*="regolamento-sullordinamento-degli-uffici-e-dei-servizi"]').count();
+    verifica(pdf >= 1, 'manca il link ai PDF originali');
+    verifica(pagina.url().includes('ambito=rous'), `l'indirizzo non porta l'ambito: ${pagina.url()}`);
+    // una domanda fuori dal regolamento lo dice e offre gli altri ambiti
+    await pagina.fill('#domanda', 'come cambio residenza');
+    await pagina.press('#domanda', 'Enter');
+    await pagina.waitForSelector('#risultati .vuoto h2');
+    verifica(await pagina.locator('#risultati .domande-vicine button').count() >= 2, 'mancano i pulsanti per cambiare ambito');
+  },
+
+  async 'selettore: un link con ?ambito=rous apre l\'ambito giusto, e «Uffici e servizi» trova gli uffici'(pagina, base) {
+    await pagina.goto(`${base}?q=${encodeURIComponent('come si chiede il part time')}&ambito=rous`, { waitUntil: 'load' });
+    await pagina.waitForSelector('#risultati article.risposta h2');
+    verifica(await pagina.isChecked('#ambiti input[value="rous"]'), 'il selettore non è su ROUS');
+    verifica(/part-time/i.test(await pagina.textContent('#risultati article.risposta h2')), 'risposta sbagliata');
+    await pagina.check('#ambiti input[value="uffici"]');
+    await pagina.fill('#domanda', 'ufficio protezione civile');
+    await pagina.press('#domanda', 'Enter');
+    await pagina.waitForSelector('#risultati .ufficio');
+    verifica(await pagina.locator('#risultati .ufficio').count() >= 1, 'nessun ufficio');
   },
 
   async 'telefono a pagina bianca: dodici domande di prova, quattro per colonna'(pagina, base) {

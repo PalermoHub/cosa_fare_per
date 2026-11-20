@@ -35,6 +35,7 @@ function leggi() {
       id: voce.id,
       domanda: voce.domanda,
       titolo: typeof voce.titolo === 'string' ? voce.titolo : '',
+      ambito: voce.ambito === 'rous' || voce.ambito === 'uffici' ? voce.ambito : '',
       quando: /^\d{4}-\d{2}-\d{2}$/.test(String(voce.quando || '')) ? voce.quando : '',
     }));
 }
@@ -66,13 +67,14 @@ export function eSalvato(id) {
 
 // Salva una voce della risposta (non l'HTML: codici e testo che bastano a ritrovarla).
 // Salvare due volte la stessa voce non la duplica: si aggiorna con la domanda nuova.
-export function salva(voce, domanda) {
+export function salva(voce, domanda, ambito = '') {
   if (!voce || !voce.id || !domanda) return false;
   const elenco = leggi().filter(s => s.id !== voce.id);
   elenco.unshift({
     id: voce.id,
     domanda: String(domanda),
     titolo: voce.titolo || '',
+    ambito,
     quando: new Date().toISOString().slice(0, 10),
   });
   const esito = scrivi(elenco.slice(0, MASSIMO));

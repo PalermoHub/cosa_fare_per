@@ -61,7 +61,7 @@ function scheda(voce) {
 
   const azioni = el('div', 'salvata-azioni');
   const apri = el('a', 'salvata-apri', 'Riapri la risposta');
-  apri.href = `index.html?q=${encodeURIComponent(voce.domanda)}`;
+  apri.href = `index.html?q=${encodeURIComponent(voce.domanda)}${voce.ambito ? `&ambito=${voce.ambito}` : ''}`;
   apri.setAttribute('aria-label', `Riapri la risposta su «${etichetta(voce)}»`);
 
   const pulsante = el('button', 'salvata-togli', 'Togli');

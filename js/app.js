@@ -2,8 +2,8 @@
 // Nessuna rete oltre ai dati locali, nessun modello linguistico: la risposta viene
 // dalle voci preparate (data/argomenti.json) e dalle schede servizio del Comune.
 
-import { indicizza, cerca, cercaSezioni, cercaUffici, suggerimenti, SOGLIA_SICURA, SOGLIA_MINIMA } from './motore.js';
-import { caricaBase, caricaUffici, stato, ufficiDellaVoce } from './dati.js';
+import { indicizza, indicizzaRous, filtroRous, cerca, cercaSezioni, cercaUffici, cercaArticoli, suggerimenti, SOGLIA_SICURA, SOGLIA_MINIMA } from './motore.js';
+import { caricaBase, caricaUffici, caricaRous, caricaArticoliRous, stato, ufficiDellaVoce } from './dati.js';
 import { icona } from './icone.js';
 import { eSalvato, salva, togli } from './salvati.js';
 
@@ -18,8 +18,70 @@ const bottoneAzzera = $('#azzera');
 const testata = $('#testata');
 const bottoneInCima = $('#inCima'); // solo per nasconderlo quando si azzera la pagina
 
-let indice = [];
+let indice = []; // ambito «Argomenti»: le voci curate + le schede servizio
+let indiceRous = null; // ambito «ROUS» (si costruisce alla prima scelta)
+let indiceServizi = null; // ambito «Uffici e servizi»: una voce per ogni scheda servizio
 let ultimeAlternative = [];
+
+// ---------- ambiti: su che cosa si sta chiedendo ----------
+// Argomenti = le voci curate (comportamento di sempre); Uffici e servizi = schede servizio ufficiali
+// e ricerca degli uffici; ROUS = il Regolamento sull'ordinamento degli Uffici e dei Servizi.
+// Ogni ambito ha il suo indice e le sue domande di prova: le soglie e i sinonimi non si mischiano.
+const AMBITI = {
+  argomenti: { placeholder: 'Es. come cambio residenza', aiuto: 'Nessuna registrazione. Le risposte arrivano dai servizi e dagli uffici pubblicati dal Comune di Palermo.' },
+  uffici: { placeholder: 'Es. quale ufficio si occupa dei cimiteri', aiuto: 'Cerco tra le schede dei servizi del Comune e tra gli uffici, con sede e recapiti.' },
+  rous: { placeholder: 'Es. come si chiede il part-time', aiuto: "Le risposte vengono dal Regolamento sull'ordinamento degli Uffici e dei Servizi (ROUS), con gli articoli e il link ai PDF." },
+};
+let ambito = 'argomenti';
+
+const ESEMPI_UFFICI = [
+  'ufficio anagrafe e stato civile',
+  'a chi mi rivolgo per la tari',
+  'quale ufficio gestisce il suolo pubblico e i tavolini',
+  'ufficio protezione civile',
+  'ufficio sport e impianti sportivi',
+  'chi si occupa del canile e dei randagi',
+  'servizi sociali per anziani',
+  'ufficio relazioni con il pubblico urp',
+  'chi si occupa delle pubblicazioni di matrimonio',
+  'a chi segnalo un albero pericolante',
+  'ufficio tributi imu',
+  'quale ufficio autorizza i lavori edilizi cila',
+  'ufficio per le multe e i verbali',
+];
+
+const nomeAmbito = a => (AMBITI[a] ? a : 'argomenti');
+const ambitoDellaVoce = voce => (voce._v === 'rous' ? 'rous' : String(voce.id || '').startsWith('srv-') ? 'uffici' : 'argomenti');
+
+// la voce di ogni scheda servizio, come se fosse un argomento: il motore la tratta allo stesso modo
+function vociServizi() {
+  return Object.values(stato.servizi).map(s => ({
+    id: `srv-${s.id}`, titolo: s.titolo, categoria: s.categorie?.[0] || 'Servizi del Comune',
+    servizio: s.id, domande: [s.titolo], keywords: [s.titolo, ...(s.categorie || [])],
+    revisione: { stato: 'fonte-ufficiale' },
+  }));
+}
+
+async function preparaAmbito(a) {
+  if (a === 'rous' && !indiceRous) {
+    const rous = await caricaRous();
+    indiceRous = rous.voci.map(indicizzaRous);
+  }
+  if (a === 'uffici' && !indiceServizi) indiceServizi = vociServizi().map(v => indicizza(v, stato.servizi));
+}
+
+function esempiDellAmbito(n) {
+  if (ambito === 'rous') return suggerimenti(stato.rous?.voci || [], n);
+  if (ambito === 'uffici') {
+    const mescolati = [...ESEMPI_UFFICI];
+    for (let k = mescolati.length - 1; k > 0; k--) {
+      const j = Math.floor(Math.random() * (k + 1));
+      [mescolati[k], mescolati[j]] = [mescolati[j], mescolati[k]];
+    }
+    return mescolati.slice(0, n);
+  }
+  return suggerimenti(stato.voci, n);
+}
 
 // etichette delle sezioni delle schede servizio ufficiali
 const SEZIONI_SCHEDA = [
@@ -387,9 +449,34 @@ async function schedeUffici(voce, { livello = 3, mappa = true } = {}) {
   return contenitore;
 }
 
+// Dove si trova nel regolamento quello che la risposta dice: un riquadro per articolo, col testo
+// integrale. Le sintesi sono nostre, il testo qui sotto è quello ufficiale.
+async function bloccoFonti(voce) {
+  if (voce._v !== 'rous' || !voce.fonte?.length) return null;
+  const articoli = await caricaArticoliRous();
+  const rous = await caricaRous();
+  const box = el('section', 'fonti');
+  box.append(el('h3', null, 'Dove lo trovi nel regolamento'));
+  for (const f of voce.fonte) {
+    const a = f.id ? articoli[f.id] : null;
+    const nome = rous.documenti?.[f.doc] || f.doc;
+    if (!a) {
+      box.append(el('p', 'fonte-riga', `${nome}: documento intero, nel PDF ufficiale.`));
+      continue;
+    }
+    const d = el('details', 'fonte');
+    d.append(el('summary', null, `Art. ${a.numero} – ${a.titolo} (${nome.split(' – ')[0]})`));
+    d.append(el('p', 'fonte-testo', a.testo));
+    box.append(d);
+  }
+  return box;
+}
+
 async function rispostaSicura(voce, domanda) {
   const frammento = document.createDocumentFragment();
   frammento.append(corpoRisposta(voce));
+  const fonti = await bloccoFonti(voce);
+  if (fonti) frammento.append(fonti);
   await caricaUffici();
   const schede = await schedeUffici(voce);
   if (schede) {
@@ -410,6 +497,8 @@ async function rispostaIncerta(voce, domanda, alternative) {
     document.createTextNode('Se non è questo, dimmelo con altre parole o scegli una delle domande qui sotto.'),
   );
   frammento.append(avviso, corpoRisposta(voce));
+  const fontiIncerta = await bloccoFonti(voce);
+  if (fontiIncerta) frammento.append(fontiIncerta);
   await caricaUffici();
   const schede = await schedeUffici(voce);
   if (schede) frammento.append(schede);
@@ -429,6 +518,8 @@ async function rispostaAnche(sezioni) {
   await caricaUffici();
   for (const sezione of sezioni) {
     box.append(corpoRisposta(sezione.voce, { livello: 4, classe: 'risposta risposta-anche' }));
+    const fontiAnche = await bloccoFonti(sezione.voce);
+    if (fontiAnche) box.append(fontiAnche);
     // niente mappa nella seconda scheda: raddoppierebbe i riquadri OpenStreetMap della pagina.
     // Gli uffici stanno chiusi in un <details>: la seconda scheda non deve raddoppiare la
     // lunghezza della pagina, ma i recapiti devono restare a una riga di distanza.
@@ -458,6 +549,78 @@ function domandeVicine(elencoDomande) {
   }
   box.append(ul);
   return box;
+}
+
+// Ambito ROUS senza voce pertinente: si prova col testo degli articoli (riportato com'è),
+// altrimenti si dice chiaramente che nel regolamento non c'è e si offrono gli altri ambiti.
+async function rispostaVuotaRous(domanda) {
+  const frammento = document.createDocumentFragment();
+  const articoli = await caricaArticoliRous();
+  const rous = await caricaRous();
+  const trovati = cercaArticoli(articoli, domanda, 3);
+  const box = el('div', 'vuoto');
+  if (trovati.length) {
+    box.append(el('h2', null, 'Non ho una risposta preparata, ma il ROUS ne parla'));
+    box.append(el('p', null, `Su «${domanda}» non ho una scheda: ti mostro gli articoli del regolamento che si avvicinano di più, con il testo ufficiale.`));
+    frammento.append(box);
+    const fonti = el('section', 'fonti');
+    fonti.append(el('h3', null, 'Articoli del ROUS'));
+    trovati.forEach((t, i) => {
+      const nome = rous.documenti?.[t.articolo.doc] || t.articolo.doc;
+      const d = el('details', 'fonte');
+      if (i === 0) d.open = true;
+      d.append(el('summary', null, `Art. ${t.articolo.numero} – ${t.articolo.titolo} (${nome.split(' – ')[0]})`));
+      d.append(el('p', 'fonte-testo', t.articolo.testo));
+      fonti.append(d);
+    });
+    const collegamenti = el('div', 'collegamenti');
+    const a = el('a', null, 'Regolamento ROUS: PDF originali sul sito del Comune');
+    a.href = rous.pdf;
+    a.rel = 'noopener';
+    collegamenti.append(a);
+    frammento.append(fonti, collegamenti);
+  } else {
+    box.append(el('h2', null, 'Non ho trovato nulla nel ROUS'));
+    box.append(el('p', null, `Su «${domanda}» il regolamento non sembra dire niente, oppure lo dice con parole diverse: prova a riscriverla. Se è una pratica per i cittadini, cercala negli altri ambiti.`));
+    frammento.append(box);
+  }
+  const altri = el('div', 'domande-vicine');
+  altri.append(el('h3', null, 'Cerca altrove'));
+  const ul = el('ul');
+  for (const [valore, testo] of [['argomenti', 'Cerca negli Argomenti'], ['uffici', 'Cerca tra Uffici e servizi']]) {
+    const li = el('li');
+    const b = el('button', null, testo);
+    b.type = 'button';
+    b.addEventListener('click', async () => { await impostaAmbito(valore); chiedi(domanda); });
+    li.append(b);
+    ul.append(li);
+  }
+  altri.append(ul);
+  frammento.append(altri);
+  if (ultimeAlternative.length) frammento.append(domandeVicine(ultimeAlternative));
+  return frammento;
+}
+
+// Ambito «Uffici e servizi» senza scheda servizio pertinente: gli uffici per nome e competenze.
+async function rispostaUffici(domanda) {
+  const frammento = document.createDocumentFragment();
+  await caricaUffici();
+  const trovati = cercaUffici(Object.values(stato.uffici), domanda, 3);
+  const box = el('div', 'vuoto');
+  if (trovati.length) {
+    box.append(el('h2', null, 'Uffici che si occupano di questo'));
+    box.append(el('p', null, `Per «${domanda}» non c'è una scheda servizio, ma questi uffici hanno competenze vicine. Controlla che siano quelli giusti: i recapiti sono quelli pubblicati dal Comune.`));
+    frammento.append(box);
+    const contenitore = el('div', 'uffici');
+    for (const t of trovati) contenitore.append(schedaUfficio(t.ufficio));
+    frammento.append(contenitore);
+  } else {
+    box.append(el('h2', null, 'Non ho trovato un ufficio'));
+    box.append(el('p', null, `Su «${domanda}» non trovo né una scheda servizio né un ufficio con quelle competenze: prova con le parole del servizio, per esempio «tari», «cila», «mensa», oppure cerca negli Argomenti.`));
+    frammento.append(box);
+  }
+  if (ultimeAlternative.length) frammento.append(domandeVicine(ultimeAlternative));
+  return frammento;
 }
 
 async function rispostaVuota(domanda) {
@@ -609,7 +772,7 @@ function bloccoSalva(voce, domanda) {
 
   bottone.addEventListener('click', () => {
     const salvata = eSalvato(voce.id);
-    const riuscito = salvata ? togli(voce.id) : salva(voce, domanda);
+    const riuscito = salvata ? togli(voce.id) : salva(voce, domanda, ambitoDellaVoce(voce) === 'argomenti' ? '' : ambitoDellaVoce(voce));
     esito.textContent = '';
     if (!riuscito) {
       esito.textContent = 'Non riesco a salvare su questo dispositivo: la memoria del browser è piena o bloccata.';
@@ -684,13 +847,23 @@ async function chiedi(testo, { daStorico = false } = {}) {
   contenuto.append(el('p', 'attesa', 'Pinuzza sta cercando…'));
 
   try {
-    const trovati = cerca(indice, domanda, 3);
+    await preparaAmbito(ambito);
+    const indiceAttivo = ambito === 'rous' ? indiceRous : ambito === 'uffici' ? indiceServizi : indice;
+    const filtro = ambito === 'rous' ? filtroRous : null;
+    const trovati = cerca(indiceAttivo, domanda, 3, filtro);
     const migliore = trovati[0];
     contenuto.textContent = '';
 
-    if (migliore && migliore.punteggio >= SOGLIA_SICURA) {
+    if (ambito === 'uffici' && !(migliore && migliore.punteggio >= SOGLIA_SICURA)) {
+      // «Uffici e servizi»: se nessuna scheda servizio è pertinente si cercano gli uffici
+      // dal nome e dalle competenze, che qui è la risposta e non un ripiego
+      ultimeAlternative = esempiDellAmbito(3);
+      contenuto.append(await rispostaUffici(domanda));
+      annuncia('Ti indico gli uffici che potrebbero occuparsene.');
+      portaFocusSullaRisposta(contenuto);
+    } else if (migliore && migliore.punteggio >= SOGLIA_SICURA) {
       contenuto.append(await rispostaSicura(migliore.indice.voce, domanda));
-      const anche = cercaSezioni(indice, domanda, { esclusa: migliore.indice.voce.id, quante: 2 });
+      const anche = cercaSezioni(indiceAttivo, domanda, { esclusa: migliore.indice.voce.id, quante: 2, filtro });
       if (anche.length) contenuto.append(await rispostaAnche(anche));
       annuncia(
         anche.length
@@ -708,9 +881,9 @@ async function chiedi(testo, { daStorico = false } = {}) {
       annuncia(`Forse ho capito: ${migliore.indice.voce.titolo}. Se non è questo, scegli una delle domande vicine.`);
       portaFocusSullaRisposta(contenuto);
     } else {
-      ultimeAlternative = suggerimenti(stato.voci, 3);
-      contenuto.append(await rispostaVuota(domanda));
-      annuncia('Non ho una risposta pronta: ti indico gli uffici che potrebbero occuparsene.');
+      ultimeAlternative = esempiDellAmbito(3);
+      contenuto.append(await (ambito === 'rous' ? rispostaVuotaRous(domanda) : rispostaVuota(domanda)));
+      annuncia(ambito === 'rous' ? 'Non ho una risposta preparata nel ROUS: ti mostro gli articoli più vicini, se ci sono.' : 'Non ho una risposta pronta: ti indico gli uffici che potrebbero occuparsene.');
       portaFocusSullaRisposta(contenuto);
     }
   } catch (errore) {
@@ -724,6 +897,8 @@ async function chiedi(testo, { daStorico = false } = {}) {
     if (!daStorico) {
       const url = new URL(window.location.href);
       url.searchParams.set('q', domanda);
+      if (ambito === 'argomenti') url.searchParams.delete('ambito');
+      else url.searchParams.set('ambito', ambito);
       if (url.href !== window.location.href) history.pushState({ domanda }, '', url);
     }
   }
@@ -761,7 +936,26 @@ function tornaAllInizio({ daStorico = false } = {}) {
   campo.focus({ preventScroll: true });
   risultati.scrollTo({ top: 0, behavior: 'smooth' });
   // chi torna all'inizio ritrova un altro giro di domande di prova, non le stesse di prima
-  if (stato.voci.length) mostraSuggerimenti(suggerimenti(stato.voci, domandeDiProva()));
+  if (stato.voci.length) mostraSuggerimenti(esempiDellAmbito(domandeDiProva()));
+}
+
+// ---------- cambio di ambito ----------
+
+const selettoreAmbiti = $('#ambiti');
+
+async function impostaAmbito(nuovo, { aggiornaProva = true } = {}) {
+  ambito = nomeAmbito(nuovo);
+  const radio = selettoreAmbiti?.querySelector(`input[value="${ambito}"]`);
+  if (radio) radio.checked = true;
+  campo.placeholder = AMBITI[ambito].placeholder;
+  const aiuto = $('#aiuto-campo');
+  if (aiuto) aiuto.textContent = AMBITI[ambito].aiuto;
+  try {
+    await preparaAmbito(ambito);
+  } catch (errore) {
+    console.warn('ambito non disponibile', errore);
+  }
+  if (aggiornaProva && stato.voci.length) mostraSuggerimenti(esempiDellAmbito(domandeDiProva()));
 }
 
 // ---------- avvio ----------
@@ -830,6 +1024,9 @@ async function avvia() {
     chiedi(campo.value);
   });
 
+  selettoreAmbiti?.addEventListener('change', evento => {
+    if (evento.target.name === 'ambito') impostaAmbito(evento.target.value);
+  });
   bottoneNuova.addEventListener('click', () => tornaAllInizio());
   bottoneAzzera.addEventListener('click', azzeraRisultati);
 
@@ -850,22 +1047,26 @@ async function avvia() {
 
   // tasto indietro/avanti del browser: si torna alla domanda precedente o alla pagina bianca
   window.addEventListener('popstate', () => {
-    const q = new URLSearchParams(window.location.search).get('q');
-    if (q) chiedi(q, { daStorico: true });
-    else tornaAllInizio({ daStorico: true });
+    const parametri = new URLSearchParams(window.location.search);
+    const q = parametri.get('q');
+    impostaAmbito(parametri.get('ambito') || 'argomenti', { aggiornaProva: false }).then(() => {
+      if (q) chiedi(q, { daStorico: true });
+      else tornaAllInizio({ daStorico: true });
+    });
   });
 
   try {
     await caricaBase();
     indice = stato.voci.map(v => indicizza(v, stato.servizi));
     // dodici domande che girano, quattro per colonna sul telefono (vedi domandeDiProva)
-    mostraSuggerimenti(suggerimenti(stato.voci, domandeDiProva()));
+    mostraSuggerimenti(esempiDellAmbito(domandeDiProva()));
     const aggiornato = $('#aggiornato');
     if (aggiornato) aggiornato.textContent = dataItaliana(stato.aggiornato);
     // js/offline.js aspetta questo evento per scrivere la data nell'avviso «senza rete»
     window.dispatchEvent(new Event('caricato'));
 
     const q = new URLSearchParams(location.search).get('q');
+    await impostaAmbito(new URLSearchParams(location.search).get('ambito') || 'argomenti');
     if (q) chiedi(q, { daStorico: true });
     else campo.focus();
 
