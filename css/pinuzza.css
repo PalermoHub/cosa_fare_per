@@ -593,12 +593,14 @@ input, textarea { caret-color: var(--accento); }
 .ambito:hover span { border-color: var(--accento); color: var(--accento); }
 .ambito input:checked + span { background: var(--accento-fondo); border-color: var(--accento-fondo); color: var(--su-accento); }
 .ambito input:focus-visible + span { outline: 2px solid var(--accento); outline-offset: 2px; }
-/* telefono: un menù solo; schermo largo: i badge */
+/* telefono: un menù solo; schermo largo: i badge; con 4 o più ambiti (.solo-menu) sempre il menù */
 .ambiti select { display: none; }
 @media (max-width: 40rem) {
   .ambiti-badge { display: none; }
   .ambiti select { display: block; }
 }
+.ambiti.solo-menu .ambiti-badge { display: none; }
+.ambiti.solo-menu select { display: block; }
 /* badge/menù e invio sulla stessa riga, l'avvertenza sotto a tutta larghezza */
 .campo-piede { flex-wrap: wrap; }
 .ambiti { flex: 1 1 auto; }

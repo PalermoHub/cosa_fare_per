@@ -943,6 +943,30 @@ function tornaAllInizio({ daStorico = false } = {}) {
 
 const selettoreAmbiti = $('#ambiti');
 
+// Regola: fino a MAX_BADGE ambiti si mostrano i badge (su schermo largo); dal quarto in poi
+// resta solo il menù a tendina, che regge qualunque numero di scelte. Fonte unica: gli <option>.
+const MAX_BADGE = 3;
+(function costruisciBadge() {
+  const menu = $('#ambiti-menu');
+  const gruppo = $('#ambiti-badge');
+  if (!menu || !gruppo) return;
+  const opzioni = [...menu.options];
+  if (opzioni.length > MAX_BADGE) {
+    selettoreAmbiti.classList.add('solo-menu');
+    return;
+  }
+  for (const o of opzioni) {
+    const etichetta = el('label', 'ambito');
+    const radio = el('input');
+    radio.type = 'radio';
+    radio.name = 'ambito';
+    radio.value = o.value;
+    radio.checked = o.selected;
+    etichetta.append(radio, el('span', null, o.textContent));
+    gruppo.append(etichetta);
+  }
+})();
+
 async function impostaAmbito(nuovo, { aggiornaProva = true } = {}) {
   ambito = nomeAmbito(nuovo);
   const radio = selettoreAmbiti?.querySelector(`input[value="${ambito}"]`);

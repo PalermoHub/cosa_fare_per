@@ -281,13 +281,9 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
         <div class="campo-piede">
           <div class="ambiti" id="ambiti">
             <!-- schermo largo: badge (si vedono subito le scelte); telefono: menù a tendina.
-                 Sono due viste della stessa scelta, tenute allineate da impostaAmbito() -->
-            <fieldset class="ambiti-badge" id="ambiti-badge">
-              <legend class="nascosto">Su che cosa vuoi chiedere</legend>
-              <label class="ambito"><input type="radio" name="ambito" value="argomenti" checked><span>Generale</span></label>
-              <label class="ambito"><input type="radio" name="ambito" value="uffici"><span>Uffici e servizi</span></label>
-              <label class="ambito"><input type="radio" name="ambito" value="rous"><span>ROUS</span></label>
-            </fieldset>
+                 Sono due viste della stessa scelta, tenute allineate da impostaAmbito().
+                 L'elenco è quello degli <option>: i badge li crea app.js; da 4 ambiti in su resta solo il menù -->
+            <fieldset class="ambiti-badge" id="ambiti-badge"><legend class="nascosto">Su che cosa vuoi chiedere</legend></fieldset>
             <label class="nascosto" for="ambiti-menu">Su che cosa vuoi chiedere</label>
             <select id="ambiti-menu" name="ambito-menu">
               <option value="argomenti" selected>Generale</option>
