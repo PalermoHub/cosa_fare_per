@@ -345,7 +345,7 @@ input, textarea { caret-color: var(--accento); }
 .barra-interno {
   /* tre colonne: spilla a sinistra, voci al centro della barra (le due colonne laterali sono uguali) */
   display: grid;
-  grid-template-columns: 1fr minmax(0, 38rem) 1fr; /* 38rem = larghezza del campo */
+  grid-template-columns: 1fr minmax(0, 44rem) 1fr; /* 44rem = larghezza del campo */
   align-items: stretch;
   gap: 1.5rem;
   width: min(100% - 2.5rem, 62rem);
@@ -481,15 +481,15 @@ input, textarea { caret-color: var(--accento); }
 }
 
 .presentazione {
-  max-width: 34rem;
+  max-width: 44rem;
   margin: .9rem auto 0;
   color: var(--inchiostro-tenue);
   font-size: 1.02rem;
   text-align: center;
-  text-wrap: pretty;
+  text-wrap: wrap; /* a tutta larghezza, fino ai margini del campo */
 }
 
-.modulo { margin: 1.7rem auto 0; max-width: 38rem; }
+.modulo { margin: 1.7rem auto 0; max-width: 44rem; }
 
 /* Il campo è una superficie unica: la domanda sopra, i comandi sotto.
    Così il gesto — scrivere e inviare — si legge come una cosa sola, senza bordi in mezzo. */
@@ -648,7 +648,7 @@ body.ha-risultati .ambiti select { padding-block: .3rem; }
   flex-direction: column;
   align-items: center;
   margin: 1.35rem auto 0;
-  max-width: 38rem; /* come i due moduli sopra: stessa larghezza del campo */
+  max-width: 44rem; /* come i due moduli sopra: stessa larghezza del campo */
   width: 100%;
   min-width: 0; /* la riga scorrevole non deve allargare il contenitore oltre lo schermo */
 }
@@ -667,6 +667,8 @@ body.ha-risultati .ambiti select { padding-block: .3rem; }
   gap: .35rem;
   width: 100%;
 }
+/* schermo largo: righe di altezza fissa (due righe di testo), così cambiando ambito le domande, che vanno a capo in modo diverso, non spostano la pagina */
+@media (min-width: 40.01rem) { .riga-domande { grid-template-rows: repeat(4, 3.35rem); } }
 /* puntini di posizione: su schermo largo ci sono tutte le domande sotto gli occhi, non servono */
 .puntini { display: none; }
 /* le domande sono badge: si leggono come scelte, non come link */
@@ -711,7 +713,7 @@ body.ha-risultati .riga-titolo { justify-content: space-between; }
 /* con la barra del sito sopra, il nome del prodotto nella testata sarebbe una ripetizione:
    sugli schermi larghi il titolo resta per i lettori di schermo, ma a video non si vede */
 @media (min-width: 40.01rem) {
-  body.ha-risultati .riga-titolo { justify-content: flex-start; max-width: 38rem; margin-inline: auto; }
+  body.ha-risultati .riga-titolo { justify-content: flex-start; max-width: 44rem; margin-inline: auto; }
   body.ha-risultati .titolo {
     position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
@@ -1715,7 +1717,7 @@ body.crediti-aperti .crediti {
   align-items: center;
   gap: .35rem .8rem;
   /* stessa larghezza e stesso tondo del campo della domanda: è un secondo modo di chiedere */
-  width: min(100%, 38rem);
+  width: min(100%, 44rem);
   margin: 1.2rem auto 0;
   padding: .7rem .9rem;
   border: 1px solid var(--linea-forte);
@@ -2475,7 +2477,7 @@ body.decifra-aperti .decifra {
   grid-template-columns: 1fr 1fr; /* due colonne uguali: i badge stanno sugli stessi assi */
   gap: .5rem;
   margin: 1.4rem auto 0;
-  max-width: 38rem; /* stessa larghezza del campo e della card «Decifra la PA» */
+  max-width: 44rem; /* stessa larghezza del campo e della card «Decifra la PA» */
 }
 /* con le risposte salvate visibili le pillole sono cinque: l'ultima occupa la riga intera.
    Il nodo nascosto resta nel DOM, quindi :nth-child non basta */
