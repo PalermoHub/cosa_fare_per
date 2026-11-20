@@ -28,7 +28,7 @@ let ultimeAlternative = [];
 // e ricerca degli uffici; ROUS = il Regolamento sull'ordinamento degli Uffici e dei Servizi.
 // Ogni ambito ha il suo indice e le sue domande di prova: le soglie e i sinonimi non si mischiano.
 const AMBITI = {
-  argomenti: { placeholder: 'Es. come cambio residenza', aiuto: 'Nessuna registrazione. Le risposte arrivano dai servizi e dagli uffici pubblicati dal Comune di Palermo.' },
+  argomenti: { placeholder: 'Es. come cambio residenza', aiuto: 'Nessuna registrazione. Le risposte arrivano dai dati pubblicati dal Comune di Palermo.' },
   uffici: { placeholder: 'Es. quale ufficio si occupa dei cimiteri', aiuto: 'Cerco tra le schede dei servizi del Comune e tra gli uffici, con sede e recapiti.' },
   rous: { placeholder: 'Es. come si chiede il part-time', aiuto: "Le risposte vengono dal Regolamento sull'ordinamento degli Uffici e dei Servizi (ROUS), con gli articoli e il link ai PDF." },
 };
