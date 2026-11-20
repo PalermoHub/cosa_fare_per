@@ -593,6 +593,16 @@ input, textarea { caret-color: var(--accento); }
 .ambito:hover span { border-color: var(--accento); color: var(--accento); }
 .ambito input:checked + span { background: var(--accento-fondo); border-color: var(--accento-fondo); color: var(--su-accento); }
 .ambito input:focus-visible + span { outline: 2px solid var(--accento); outline-offset: 2px; }
+/* tooltip con la descrizione dell'ambito (al passaggio del mouse e col focus da tastiera) */
+.ambito[data-descrizione]::after {
+  content: attr(data-descrizione); position: absolute; left: 0; bottom: calc(100% + .45rem); z-index: 20;
+  width: max-content; max-width: min(16rem, 80vw); padding: .45rem .65rem; border-radius: .5rem;
+  background: var(--inchiostro); color: var(--carta); font: 500 .76rem/1.4 var(--sans); white-space: normal;
+  box-shadow: 0 4px 14px rgb(0 0 0 / .25); pointer-events: none;
+  opacity: 0; transform: translateY(3px); transition: opacity .15s ease .25s, transform .15s ease .25s;
+}
+.ambito[data-descrizione]:hover::after, .ambito[data-descrizione]:has(input:focus-visible)::after { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .ambito[data-descrizione]::after { transition: none; } }
 /* telefono: un menù solo; schermo largo: i badge; con 4 o più ambiti (.solo-menu) sempre il menù */
 .ambiti select { display: none; }
 @media (max-width: 40rem) {

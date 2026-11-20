@@ -962,6 +962,12 @@ const MAX_BADGE = 3;
     radio.name = 'ambito';
     radio.value = o.value;
     radio.checked = o.selected;
+    const descrizione = o.dataset.descrizione;
+    if (descrizione) {
+      etichetta.dataset.descrizione = descrizione;
+      radio.setAttribute('aria-description', descrizione);
+      o.title = descrizione;
+    }
     etichetta.append(radio, el('span', null, o.textContent));
     gruppo.append(etichetta);
   }
