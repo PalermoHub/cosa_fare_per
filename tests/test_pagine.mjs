@@ -20,6 +20,9 @@ const robots = leggi('robots.txt');
 const index = leggi('index.html');
 const sw = leggi('sw.js');
 
+// i link, decodificati uno a uno (un «%» letterale nel testo della pagina non è una sequenza valida)
+const linkDecodificati = html => [...html.matchAll(/href="(index\.html\?[^"]*)"/g)].map(m => decodeURIComponent(m[1]) + '"').join('\n');
+
 const domande = argomenti.voci.flatMap(v => v.domande || []);
 
 test('domande.html elenca tutte le domande tipiche, una per una', () => {
@@ -29,6 +32,19 @@ test('domande.html elenca tutte le domande tipiche, una per una', () => {
     assert.ok(domandeHtml.includes(`>${categoria}<`), `manca la categoria «${categoria}»`);
   }
   assert.match(domandeHtml, /<h1 class="titolo-pagina">Tutte le domande<\/h1>/);
+});
+
+test('domande.html elenca anche le domande degli altri ambiti: ROUS e Uffici e servizi', () => {
+  const rous = JSON.parse(leggi('data/rous.json')).voci.flatMap(v => v.domande || []);
+  const servizi = JSON.parse(leggi('data/servizi.json'));
+  const testo = linkDecodificati(domandeHtml).replaceAll('&amp;', '&');
+  const senzaRous = rous.filter(d => !testo.includes(`index.html?ambito=rous&q=${d}"`));
+  assert.deepEqual(senzaRous.slice(0, 5), [], `${senzaRous.length} domande ROUS senza link`);
+  const senzaServizio = servizi.filter(s => !testo.includes(`index.html?ambito=uffici&q=${s.titolo}"`));
+  assert.deepEqual(senzaServizio.map(s => s.titolo).slice(0, 5), [], `${senzaServizio.length} schede servizio senza link`);
+  for (const id of ['ambito-generale', 'ambito-uffici', 'ambito-rous']) {
+    assert.ok(domandeHtml.includes(`id="${id}"`), `manca l'ambito ${id}`);
+  }
 });
 
 test('i recapiti degli uffici portano la loro icona, senza rete', () => {
@@ -47,7 +63,7 @@ test('i recapiti degli uffici portano la loro icona, senza rete', () => {
 });
 
 test('ogni link di domande.html porta a una domanda vera', () => {
-  const testo = decodeURIComponent(domandeHtml);
+  const testo = linkDecodificati(domandeHtml);
   const mancanti = domande.filter(d => !testo.includes(`index.html?q=${d}"`));
   assert.deepEqual(mancanti.slice(0, 5), [], `${mancanti.length} domande senza link`);
 });

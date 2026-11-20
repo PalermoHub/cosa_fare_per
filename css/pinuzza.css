@@ -1978,7 +1978,7 @@ body.decifra-aperti .decifra {
 }
 .pagina-domande .indice-categorie a.badge:hover .icona-categoria,
 .pagina-domande .indice-categorie a.badge:focus-visible .icona-categoria { color: var(--accento); }
-.pagina-domande .categoria-domande > h2 {
+.pagina-domande .categoria-domande > h3 {
   display: inline-flex;
   align-items: center;
   gap: .45rem;
@@ -1991,7 +1991,7 @@ body.decifra-aperti .decifra {
   font: 600 .95rem/1.35 var(--sans);
 }
 /* l'icona è decorativa: prende il colore del titolo e non ruba spazio al testo */
-.pagina-domande .categoria-domande > h2 .icona-categoria {
+.pagina-domande .categoria-domande > h3 .icona-categoria {
   width: 1.15rem;
   height: 1.15rem;
   flex: none;
@@ -2000,10 +2000,20 @@ body.decifra-aperti .decifra {
 @media (min-width: 40rem) {
   .pagina-domande .elenco-voci { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.6rem; }
 }
-.pagina-domande .gruppo-domande h3 { margin: 0 0 .25rem; font: 600 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--inchiostro-fio); }
+.pagina-domande .gruppo-domande h4 { margin: 0 0 .25rem; font: 600 .8rem/1.45 var(--sans); letter-spacing: 0; color: var(--inchiostro-fio); }
 .pagina-domande .gruppo-domande ul { list-style: none; margin: 0; padding: 0; }
 .pagina-domande .gruppo-domande li { margin: 0 0 .15rem; font-size: .92rem; line-height: 1.45; }
 .pagina-domande .gruppo-domande a { color: var(--accento); text-decoration-color: var(--linea-forte); text-underline-offset: 2px; }
+
+/* un ambito (Generale, Uffici e servizi, ROUS) raccoglie le sue categorie */
+.pagina-domande .ambito-domande { margin: 0 0 3rem; scroll-margin-top: 1.5rem; }
+.pagina-domande .ambito-domande + .ambito-domande { padding-top: 2rem; border-top: 3px solid var(--linea-forte); }
+.pagina-domande .ambito-domande > h2 { display: flex; align-items: center; gap: .6rem; margin: 0 0 .3rem; font: 700 1.35rem/1.3 var(--sans); color: var(--inchiostro); }
+.pagina-domande .ambito-nota { margin: 0 0 1rem; color: var(--inchiostro-fio); }
+.pagina-domande .ambito-domande > h2 .badge-numero {
+  min-width: 1.6rem; padding: .05rem .5rem; border: 1px solid var(--linea-forte); border-radius: .55rem;
+  background: var(--superficie); color: var(--inchiostro-fio); font: 600 .75rem/1.5 var(--sans); text-align: center;
+}
 
 /* ---------- pagina dell'informativa privacy ---------- */
 
