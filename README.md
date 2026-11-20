@@ -43,7 +43,7 @@ Non ci sono dipendenze per usarlo: è un sito statico (HTML, CSS, moduli JS, JSO
 
 ## Funzioni
 
-- Un selettore sopra il campo sceglie **su che cosa si chiede**: *Argomenti* (voci curate, comportamento
+- Un selettore sotto il campo sceglie **su che cosa si chiede**: *Generale* (voci curate, comportamento
   di sempre), *Uffici e servizi* (schede servizio e ricerca degli uffici per nome e competenze) e *ROUS*
   (Regolamento sull'ordinamento degli Uffici e dei Servizi). Ogni ambito ha il suo indice e le sue
   domande di prova; l'ambito sta nell'indirizzo (`?q=…&ambito=rous`). Le risposte ROUS citano gli

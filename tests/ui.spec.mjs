@@ -112,10 +112,10 @@ const casi = {
   async 'selettore: ROUS risponde con articoli e link ai PDF, e cambia le domande di prova'(pagina, base) {
     await pagina.goto(base, { waitUntil: 'load' });
     await attesa(900);
-    verifica(await pagina.locator('#ambiti input').count() === 3, 'il selettore non ha tre scelte');
-    verifica(await pagina.isChecked('#ambiti input[value="argomenti"]'), 'Argomenti non è la scelta di partenza');
+    verifica(await pagina.locator('#ambiti-badge input').count() === 3, 'il selettore non ha tre scelte');
+    verifica(await (await pagina.isChecked('#ambiti-badge input[value="argomenti"]')), 'Generale non è la scelta di partenza');
     const prima = await pagina.locator('.riga-domande button').allTextContents();
-    await pagina.check('#ambiti input[value="rous"]');
+    await pagina.check('#ambiti-badge input[value="rous"]');
     await attesa(900);
     const dopo = await pagina.locator('.riga-domande button').allTextContents();
     verifica(dopo.length >= 4 && dopo.join() !== prima.join(), 'le domande di prova non sono cambiate');
@@ -139,9 +139,9 @@ const casi = {
   async 'selettore: un link con ?ambito=rous apre l\'ambito giusto, e «Uffici e servizi» trova gli uffici'(pagina, base) {
     await pagina.goto(`${base}?q=${encodeURIComponent('come si chiede il part time')}&ambito=rous`, { waitUntil: 'load' });
     await pagina.waitForSelector('#risultati article.risposta h2');
-    verifica(await pagina.isChecked('#ambiti input[value="rous"]'), 'il selettore non è su ROUS');
+    verifica(await (await pagina.inputValue('#ambiti-menu')) === 'rous', 'il selettore non è su ROUS');
     verifica(/part-time/i.test(await pagina.textContent('#risultati article.risposta h2')), 'risposta sbagliata');
-    await pagina.check('#ambiti input[value="uffici"]');
+    await pagina.check('#ambiti-badge input[value="uffici"]');
     await pagina.fill('#domanda', 'ufficio protezione civile');
     await pagina.press('#domanda', 'Enter');
     await pagina.waitForSelector('#risultati .ufficio');

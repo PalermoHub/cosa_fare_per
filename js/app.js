@@ -18,13 +18,13 @@ const bottoneAzzera = $('#azzera');
 const testata = $('#testata');
 const bottoneInCima = $('#inCima'); // solo per nasconderlo quando si azzera la pagina
 
-let indice = []; // ambito «Argomenti»: le voci curate + le schede servizio
+let indice = []; // ambito «Generale»: le voci curate + le schede servizio
 let indiceRous = null; // ambito «ROUS» (si costruisce alla prima scelta)
 let indiceServizi = null; // ambito «Uffici e servizi»: una voce per ogni scheda servizio
 let ultimeAlternative = [];
 
 // ---------- ambiti: su che cosa si sta chiedendo ----------
-// Argomenti = le voci curate (comportamento di sempre); Uffici e servizi = schede servizio ufficiali
+// Generale (id «argomenti») = le voci curate (comportamento di sempre); Uffici e servizi = schede servizio ufficiali
 // e ricerca degli uffici; ROUS = il Regolamento sull'ordinamento degli Uffici e dei Servizi.
 // Ogni ambito ha il suo indice e le sue domande di prova: le soglie e i sinonimi non si mischiano.
 const AMBITI = {
@@ -587,7 +587,7 @@ async function rispostaVuotaRous(domanda) {
   const altri = el('div', 'domande-vicine');
   altri.append(el('h3', null, 'Cerca altrove'));
   const ul = el('ul');
-  for (const [valore, testo] of [['argomenti', 'Cerca negli Argomenti'], ['uffici', 'Cerca tra Uffici e servizi']]) {
+  for (const [valore, testo] of [['argomenti', 'Cerca in Generale'], ['uffici', 'Cerca tra Uffici e servizi']]) {
     const li = el('li');
     const b = el('button', null, testo);
     b.type = 'button';
@@ -616,7 +616,7 @@ async function rispostaUffici(domanda) {
     frammento.append(contenitore);
   } else {
     box.append(el('h2', null, 'Non ho trovato un ufficio'));
-    box.append(el('p', null, `Su «${domanda}» non trovo né una scheda servizio né un ufficio con quelle competenze: prova con le parole del servizio, per esempio «tari», «cila», «mensa», oppure cerca negli Argomenti.`));
+    box.append(el('p', null, `Su «${domanda}» non trovo né una scheda servizio né un ufficio con quelle competenze: prova con le parole del servizio, per esempio «tari», «cila», «mensa», oppure cerca in «Generale».`));
     frammento.append(box);
   }
   if (ultimeAlternative.length) frammento.append(domandeVicine(ultimeAlternative));
@@ -947,6 +947,8 @@ async function impostaAmbito(nuovo, { aggiornaProva = true } = {}) {
   ambito = nomeAmbito(nuovo);
   const radio = selettoreAmbiti?.querySelector(`input[value="${ambito}"]`);
   if (radio) radio.checked = true;
+  const menu = $('#ambiti-menu');
+  if (menu) menu.value = ambito;
   campo.placeholder = AMBITI[ambito].placeholder;
   const aiuto = $('#aiuto-campo');
   if (aiuto) aiuto.textContent = AMBITI[ambito].aiuto;
@@ -1025,7 +1027,7 @@ async function avvia() {
   });
 
   selettoreAmbiti?.addEventListener('change', evento => {
-    if (evento.target.name === 'ambito') impostaAmbito(evento.target.value);
+    if (evento.target.name === 'ambito' || evento.target.id === 'ambiti-menu') impostaAmbito(evento.target.value);
   });
   bottoneNuova.addEventListener('click', () => tornaAllInizio());
   bottoneAzzera.addEventListener('click', azzeraRisultati);

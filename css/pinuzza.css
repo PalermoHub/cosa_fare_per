@@ -579,48 +579,50 @@ input, textarea { caret-color: var(--accento); }
 }
 .campo .azzera[hidden] { display: none; }
 
-/* Selettore dell'ambito: tre scelte nel campo, sopra la domanda. Sono radio veri (tastiera e
-   lettori di schermo gratis); la pillola attiva usa gli stessi token del resto dell'app. */
-.ambiti {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .3rem;
-  margin: 0 0 .15rem;
-  padding: 0;
-  border: 0;
-  min-width: 0;
-}
+/* Selettore dell'ambito, nella riga in basso del campo: badge su schermo largo, <select> vero
+   sul telefono (tastiera, lettori di schermo e tendina nativa gratis; regge anche più ambiti). */
+.ambiti { flex: 0 0 auto; position: relative; }
+.ambiti-badge { display: flex; gap: .3rem; margin: 0; padding: 0; border: 0; min-width: 0; }
 .ambito { position: relative; cursor: pointer; }
-.ambito input {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-}
+.ambito input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
 .ambito span {
-  display: inline-block;
-  padding: .2rem .7rem;
-  border: 1px solid var(--linea);
-  border-radius: 999px;
-  background: var(--carta-alt);
-  color: var(--inchiostro-tenue);
-  font: 600 .78rem/1.4 var(--sans);
-  transition: background .2s ease, border-color .2s ease, color .2s ease;
+  display: inline-block; padding: .28rem .7rem; border: 1px solid var(--linea); border-radius: 999px;
+  background: var(--carta-alt); color: var(--inchiostro-tenue); font: 600 .78rem/1.4 var(--sans);
+  white-space: nowrap; transition: background .2s ease, border-color .2s ease, color .2s ease;
 }
 .ambito:hover span { border-color: var(--accento); color: var(--accento); }
-.ambito input:checked + span {
-  background: var(--accento-fondo);
-  border-color: var(--accento-fondo);
-  color: var(--su-accento);
-}
+.ambito input:checked + span { background: var(--accento-fondo); border-color: var(--accento-fondo); color: var(--su-accento); }
 .ambito input:focus-visible + span { outline: 2px solid var(--accento); outline-offset: 2px; }
-/* con i risultati il campo diventa una riga sola: le tre scelte stanno sopra, a tutta larghezza */
-body.ha-risultati .campo { flex-wrap: wrap; padding-top: .35rem; }
-body.ha-risultati .ambiti { flex: 0 0 100%; margin: 0; }
+/* telefono: un menù solo; schermo largo: i badge */
+.ambiti select { display: none; }
+@media (max-width: 40rem) {
+  .ambiti-badge { display: none; }
+  .ambiti select { display: block; }
+}
+/* badge/menù e invio sulla stessa riga, l'avvertenza sotto a tutta larghezza */
+.campo-piede { flex-wrap: wrap; }
+.ambiti { flex: 1 1 auto; }
+.aiuto { order: 3; flex: 0 0 100%; }
+body.ha-risultati .campo-piede { flex-wrap: nowrap; }
+.ambiti select {
+  appearance: none;
+  -webkit-appearance: none;
+  max-width: 100%;
+  padding: .4rem 1.8rem .4rem .8rem;
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+  background: var(--carta-alt)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%236b6b6b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E")
+    no-repeat right .6rem center / .7rem;
+  color: var(--inchiostro);
+  font: 600 .8rem/1.3 var(--sans);
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+.ambiti select:hover { border-color: var(--accento); color: var(--accento); }
+.ambiti select:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
 body.ha-risultati .campo input { flex: 1 1 8rem; width: auto; min-width: 0; }
+body.ha-risultati .ambiti select { padding-block: .3rem; }
 
 /* «Prova con» + le domande: l'etichetta sta fuori dal nastro che scorre */
 .suggerimenti {

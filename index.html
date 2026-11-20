@@ -275,16 +275,26 @@ try{if(new URLSearchParams(location.search).get("q"))document.body.classList.add
     <form class="modulo" id="modulo" role="search" autocomplete="off">
       <label class="nascosto" for="domanda">La tua domanda</label>
       <div class="campo">
-        <fieldset class="ambiti" id="ambiti">
-          <legend class="nascosto">Su che cosa vuoi chiedere</legend>
-          <label class="ambito"><input type="radio" name="ambito" value="argomenti" checked><span>Argomenti</span></label>
-          <label class="ambito"><input type="radio" name="ambito" value="uffici"><span>Uffici e servizi</span></label>
-          <label class="ambito"><input type="radio" name="ambito" value="rous"><span>ROUS</span></label>
-        </fieldset>
         <input id="domanda" name="q" type="text" enterkeyhint="search"
                placeholder="Es. come cambio residenza"
                aria-describedby="aiuto-campo">
         <div class="campo-piede">
+          <div class="ambiti" id="ambiti">
+            <!-- schermo largo: badge (si vedono subito le scelte); telefono: menù a tendina.
+                 Sono due viste della stessa scelta, tenute allineate da impostaAmbito() -->
+            <fieldset class="ambiti-badge" id="ambiti-badge">
+              <legend class="nascosto">Su che cosa vuoi chiedere</legend>
+              <label class="ambito"><input type="radio" name="ambito" value="argomenti" checked><span>Generale</span></label>
+              <label class="ambito"><input type="radio" name="ambito" value="uffici"><span>Uffici e servizi</span></label>
+              <label class="ambito"><input type="radio" name="ambito" value="rous"><span>ROUS</span></label>
+            </fieldset>
+            <label class="nascosto" for="ambiti-menu">Su che cosa vuoi chiedere</label>
+            <select id="ambiti-menu" name="ambito-menu">
+              <option value="argomenti" selected>Generale</option>
+              <option value="uffici">Uffici e servizi</option>
+              <option value="rous">ROUS</option>
+            </select>
+          </div>
           <p class="aiuto" id="aiuto-campo">Nessuna registrazione. Le risposte arrivano dai servizi e dagli uffici pubblicati dal Comune di Palermo.</p>
           <div class="campo-azioni">
             <button type="button" class="azzera" id="azzera" hidden
