@@ -556,6 +556,27 @@ const casi = {
     verifica(rimaste.length === 0, `restano ${rimaste.length} voci`);
   },
 
+  async 'condividi una risposta: elenco dei canali con il collegamento ?q= e copia'(pagina, base) {
+    const domanda = 'come cambio residenza';
+    await pagina.goto(base + '?q=' + encodeURIComponent(domanda), { waitUntil: 'load' });
+    await attesa(1200);
+    const bottone = pagina.locator('#risultati .condividi-bottone');
+    verifica(await bottone.count() === 1, 'manca il pulsante «Condividi» sulla scheda');
+    await bottone.click();
+    await attesa(200);
+    verifica(await bottone.getAttribute('aria-expanded') === 'true', 'l’elenco dei canali non si è aperto');
+    const canali = await pagina.locator('#risultati .condividi-canali a').count();
+    verifica(canali === 6, `canali di condivisione: ${canali}`);
+    const wa = pagina.locator('#risultati a[data-canale="whatsapp"]');
+    await wa.focus();
+    const href = await wa.getAttribute('href');
+    verifica(href.startsWith('https://wa.me/?text=') && href.includes(encodeURIComponent('?q=' + domanda.replace(/ /g, '+'))), `collegamento WhatsApp: ${href}`);
+    verifica(await wa.getAttribute('rel') === 'noopener noreferrer', 'manca rel noopener');
+    await bottone.click();
+    await attesa(100);
+    verifica(await pagina.locator('#risultati .condividi-canali').isHidden(), 'l’elenco non si richiude');
+  },
+
   async 'la mappa parte solo quando la scheda entra nello schermo'(pagina, base) {
     await pagina.setViewportSize({ width: 390, height: 844 });
     await pagina.goto(base + '?q=' + encodeURIComponent('come cambio residenza'), { waitUntil: 'load' });

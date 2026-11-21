@@ -2604,6 +2604,32 @@ body.ha-risultati .scorciatoie { display: none; }
 .salva-esito a { color: var(--accento); }
 .salva-nota { flex-basis: 100%; margin: 0; font-size: .82rem; color: var(--inchiostro-fio); }
 
+/* «Condividi»: stesso aspetto di «Salva», con l'elenco dei canali che si apre sotto */
+.condividi { display: contents; }
+.condividi-bottone,
+.condividi-canale {
+  min-height: 2.75rem;
+  padding: .5rem .95rem;
+  border: 1px solid var(--linea-forte);
+  border-radius: .55rem;
+  background: var(--superficie);
+  color: var(--accento);
+  font: 600 .86rem/1.2 var(--sans);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color .18s ease, background .18s ease;
+}
+.condividi-bottone:hover,
+.condividi-canale:hover { border-color: var(--accento); background: var(--accento-chiaro); }
+.condividi-bottone:focus-visible,
+.condividi-canale:focus-visible { outline: 2px solid var(--accento); outline-offset: 2px; }
+.condividi-canali { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; padding: 0; list-style: none; }
+.condividi-canali[hidden] { display: none; }
+.condividi-esito { flex-basis: 100%; font-size: .9rem; color: var(--inchiostro-tenue); overflow-wrap: anywhere; }
+.condividi-esito:empty { display: none; }
+
 /* pagina «Risposte salvate» */
 .elenco-salvati { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .9rem; }
 .salvata {

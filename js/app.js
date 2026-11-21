@@ -790,9 +790,97 @@ function bloccoSalva(voce, domanda) {
     }
   });
 
-  riquadro.append(bottone, esito);
+  riquadro.append(bottone, bloccoCondividi(voce, domanda), esito);
   riquadro.append(el('p', 'salva-nota', 'Resta qui nel browser: la domanda non viene inviata a nessuno.'));
   return riquadro;
+}
+
+// ---------- «condividi questa risposta» ----------
+// Accanto a «Salva»: manda ad altri il collegamento a questa domanda (la pagina riapre la
+// risposta dal `?q=`). Niente pulsanti incorporati né script di terze parti: sono semplici
+// collegamenti che si aprono solo se l'utente li sceglie, quindi non parte nessuna richiesta
+// verso i social finché non si preme. Dove il telefono offre il foglio di condivisione
+// (`navigator.share`) si usa quello; altrove si apre un elenco di canali e «Copia il collegamento».
+
+function collegamentoRisposta(voce, domanda) {
+  const url = new URL(window.location.origin + window.location.pathname);
+  url.searchParams.set('q', domanda || voce.titolo);
+  // stesso ambito in cui è stata fatta la domanda, come nell'indirizzo della pagina
+  if (ambito !== 'argomenti') url.searchParams.set('ambito', ambito);
+  return url.href;
+}
+
+function bloccoCondividi(voce, domanda) {
+  const contenitore = el('div', 'condividi');
+  const bottone = el('button', 'condividi-bottone', 'Condividi');
+  bottone.type = 'button';
+  bottone.setAttribute('aria-expanded', 'false');
+  const stato = el('span', 'condividi-esito');
+  stato.setAttribute('role', 'status');
+
+  const pannello = el('ul', 'condividi-canali');
+  pannello.hidden = true;
+  const titolo = `${voce.titolo}: come fare per… con il Comune di Palermo`;
+
+  const canali = [
+    ['WhatsApp', u => `https://wa.me/?text=${encodeURIComponent(`${titolo} ${u}`)}`],
+    ['Telegram', u => `https://t.me/share/url?url=${encodeURIComponent(u)}&text=${encodeURIComponent(titolo)}`],
+    ['Facebook', u => `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(u)}`],
+    ['X', u => `https://twitter.com/intent/tweet?text=${encodeURIComponent(titolo)}&url=${encodeURIComponent(u)}`],
+    ['LinkedIn', u => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(u)}`],
+    ['Email', u => `mailto:?subject=${encodeURIComponent(titolo)}&body=${encodeURIComponent(`${titolo}\n${u}`)}`],
+  ];
+  for (const [nome, costruisci] of canali) {
+    const voceElenco = el('li');
+    const a = el('a', 'condividi-canale', nome);
+    a.href = '#';
+    a.dataset.canale = nome.toLowerCase();
+    a.rel = 'noopener noreferrer';
+    if (nome !== 'Email') a.target = '_blank';
+    a.setAttribute('aria-label', `Condividi su ${nome}`);
+    // il collegamento si compone al clic: l'indirizzo è quello di adesso (ambito incluso)
+    a.addEventListener('focus', () => { a.href = costruisci(collegamentoRisposta(voce, domanda)); });
+    a.addEventListener('pointerenter', () => { a.href = costruisci(collegamentoRisposta(voce, domanda)); });
+    a.addEventListener('click', () => { a.href = costruisci(collegamentoRisposta(voce, domanda)); });
+    voceElenco.append(a);
+    pannello.append(voceElenco);
+  }
+
+  const copia = el('button', 'condividi-canale condividi-copia', 'Copia il collegamento');
+  copia.type = 'button';
+  copia.addEventListener('click', async () => {
+    const url = collegamentoRisposta(voce, domanda);
+    try {
+      await navigator.clipboard.writeText(url);
+      stato.textContent = 'Collegamento copiato.';
+      annuncia('Collegamento alla risposta copiato negli appunti.');
+    } catch {
+      stato.textContent = '';
+      stato.append('Non riesco a copiare: ', el('code', null, url));
+    }
+  });
+  const voceCopia = el('li');
+  voceCopia.append(copia);
+  pannello.append(voceCopia);
+
+  bottone.addEventListener('click', async () => {
+    stato.textContent = '';
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({ title: titolo, text: titolo, url: collegamentoRisposta(voce, domanda) });
+      } catch (errore) {
+        // chiudere il foglio senza scegliere non è un errore
+        if (errore && errore.name !== 'AbortError') pannello.hidden = false;
+      }
+      bottone.setAttribute('aria-expanded', String(!pannello.hidden));
+      return;
+    }
+    pannello.hidden = !pannello.hidden;
+    bottone.setAttribute('aria-expanded', String(!pannello.hidden));
+  });
+
+  contenitore.append(bottone, pannello, stato);
+  return contenitore;
 }
 
 // ---------- conversazione ----------
